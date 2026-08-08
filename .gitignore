@@ -1,0 +1,47 @@
+# ── Dữ liệu (không commit — tải lại bằng script trong smartaudit/ingest) ──
+data/
+!data/.gitkeep
+*.parquet
+*.zip
+*.rar
+*.tar.gz
+
+# BCTC/BCTN tải về
+*.pdf
+!docs/**/*.pdf
+
+# ── Python ──
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+env/
+.pytest_cache/
+.ipynb_checkpoints/
+
+# ── Model & kết quả huấn luyện ──
+models/
+checkpoints/
+*.pt
+*.pth
+*.safetensors
+wandb/
+mlruns/
+
+# ── Node ──
+node_modules/
+
+# ── Hệ điều hành / IDE ──
+Thumbs.db
+desktop.ini
+.DS_Store
+.vscode/
+.idea/
+
+# ── Tạm ──
+tmp/
+*.log
+*.tmp
+~$*.docx
+~$*.xlsx

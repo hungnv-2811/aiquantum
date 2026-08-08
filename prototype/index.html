@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartAudit-Quantum | Nền tảng Kiểm toán Thông minh</title>
+    <meta name="description" content="SmartAudit-Quantum: Nền tảng kiểm toán ngôn từ và số liệu thông minh cho thị trường chứng khoán Việt Nam sử dụng AI & Điện toán lượng tử">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+</head>
+<body>
+<div class="app-layout">
+
+<!-- ═══════════ SIDEBAR ═══════════ -->
+<aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+        <div class="logo-container">
+            <div class="logo-icon">⚛</div>
+            <div class="logo-text">
+                <h1>SmartAudit</h1>
+                <span>Quantum-Enhanced</span>
+            </div>
+        </div>
+    </div>
+
+    <nav class="sidebar-nav">
+        <div class="nav-section">
+            <div class="nav-section-title">Tổng quan</div>
+            <div class="nav-item active" data-page="dashboard" onclick="switchPage('dashboard')">
+                <span class="icon">📊</span> Dashboard
+            </div>
+            <div class="nav-item" data-page="companies" onclick="switchPage('companies')">
+                <span class="icon">🏢</span> Doanh nghiệp
+            </div>
+            <div class="nav-item" data-page="analysis" onclick="switchPage('analysis')">
+                <span class="icon">🔍</span> Phân tích NNC
+            </div>
+        </div>
+
+        <div class="nav-section">
+            <div class="nav-section-title">Quantum</div>
+            <div class="nav-item" data-page="quantum" onclick="switchPage('quantum')">
+                <span class="icon">⚛️</span> Quantum Engine
+            </div>
+            <div class="nav-item" data-page="anomaly" onclick="switchPage('anomaly')">
+                <span class="icon">🚨</span> Anomaly Detection
+                <span class="nav-badge">8</span>
+            </div>
+        </div>
+
+        <div class="nav-section">
+            <div class="nav-section-title">Hệ thống</div>
+            <div class="nav-item" data-page="alerts" onclick="switchPage('alerts')">
+                <span class="icon">🔔</span> Cảnh báo
+                <span class="nav-badge">5</span>
+            </div>
+        </div>
+    </nav>
+
+    <div class="sidebar-footer">
+        <div class="quantum-status">
+            <span class="quantum-dot"></span>
+            <span>Quantum Simulator: Online</span>
+        </div>
+        <div style="margin-top:8px; font-size:10px; color:var(--text-muted);">
+            AQ2026-064 | Qiskit v1.2
+        </div>
+    </div>
+</aside>
+
+<!-- ═══════════ MAIN CONTENT ═══════════ -->
+<main class="main-content">
+
+    <!-- Header -->
+    <header class="header">
+        <div class="header-left">
+            <h2 id="page-title">Dashboard</h2>
+            <div class="breadcrumb">
+                <span>SmartAudit</span>
+                <span class="sep">/</span>
+                <span id="breadcrumb-page">Tổng quan</span>
+            </div>
+        </div>
+        <div class="header-right">
+            <div class="search-box">
+                <span>🔍</span>
+                <input type="text" placeholder="Tìm doanh nghiệp (VNM, HPG, FPT...)" id="searchInput" onkeyup="handleSearch(this.value)">
+            </div>
+            <button class="header-btn has-notification" title="Thông báo" onclick="switchPage('alerts')">🔔</button>
+        </div>
+    </header>
+
+    <div class="page-content">
+
+        <!-- ═══ PAGE: DASHBOARD ═══ -->
+        <div class="page active" id="page-dashboard">
+            <!-- KPI Cards -->
+            <div class="kpi-grid" id="kpi-grid"></div>
+
+            <div class="grid-2-1">
+                <!-- Sector Consistency Chart -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">📊 Điểm Nhất quán theo Ngành</div>
+                        <button class="btn btn-outline btn-sm">Xem chi tiết</button>
+                    </div>
+                    <div class="card-body">
+                        <div class="chart-container">
+                            <canvas id="sectorChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Real-time Alerts -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">🔔 Cảnh báo mới nhất</div>
+                    </div>
+                    <div class="card-body" id="alert-list"></div>
+                </div>
+            </div>
+
+            <div class="grid-2">
+                <!-- Quantum vs Classical -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">⚛️ Quantum vs Classical Performance</div>
+                    </div>
+                    <div class="card-body">
+                        <div class="chart-container">
+                            <canvas id="quantumCompareChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- NNC Distribution -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">📈 Phân bố NNC Scores</div>
+                    </div>
+                    <div class="card-body">
+                        <div class="chart-container">
+                            <canvas id="nncDistChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ═══ PAGE: COMPANIES ═══ -->
+        <div class="page" id="page-companies">
+            <div class="card" style="margin-bottom:24px">
+                <div class="card-header">
+                    <div class="card-title">🏢 Danh sách Doanh nghiệp được Phân tích</div>
+                    <div style="display:flex;gap:8px;align-items:center;">
+                        <div class="select-wrapper">
+                            <select id="sectorFilter" onchange="filterCompanies()">
+                                <option value="all">Tất cả ngành</option>
+                                <option value="Ngân hàng">Ngân hàng</option>
+                                <option value="Thép & Vật liệu">Thép & Vật liệu</option>
+                                <option value="Công nghệ Thông tin">Công nghệ</option>
+                                <option value="Bán lẻ">Bán lẻ</option>
+                                <option value="Thực phẩm & Đồ uống">Thực phẩm</option>
+                            </select>
+                        </div>
+                        <button class="btn btn-primary btn-sm">+ Thêm DN</button>
+                    </div>
+                </div>
+                <div class="card-body" style="padding:0;">
+                    <table class="company-table" id="company-table">
+                        <thead>
+                            <tr>
+                                <th>Doanh nghiệp</th>
+                                <th>Ngành</th>
+                                <th>NNC Score</th>
+                                <th>Quantum Anomaly</th>
+                                <th>Mức rủi ro</th>
+                                <th>Claims</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody id="company-table-body"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- ═══ PAGE: ANALYSIS (Company Detail) ═══ -->
+        <div class="page" id="page-analysis">
+            <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px;">
+                <div class="select-wrapper">
+                    <select id="companySelect" onchange="selectCompany(this.value)">
+                    </select>
+                </div>
+                <button class="btn btn-primary btn-sm" onclick="runAnalysis()">▶ Chạy phân tích</button>
+            </div>
+
+            <div id="company-detail-container"></div>
+        </div>
+
+        <!-- ═══ PAGE: QUANTUM ═══ -->
+        <div class="page" id="page-quantum">
+            <div class="kpi-grid" style="grid-template-columns:repeat(4,1fr);">
+                <div class="kpi-card">
+                    <div class="kpi-header">
+                        <div class="kpi-label">Qubits</div>
+                        <div class="kpi-icon indigo">⚛</div>
+                    </div>
+                    <div class="kpi-value">8</div>
+                    <div class="kpi-change positive">ZZFeatureMap</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-header">
+                        <div class="kpi-label">Circuit Depth</div>
+                        <div class="kpi-icon purple">🔗</div>
+                    </div>
+                    <div class="kpi-value">12</div>
+                    <div class="kpi-change positive">Optimized</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-header">
+                        <div class="kpi-label">Kernel Alignment</div>
+                        <div class="kpi-icon cyan">🎯</div>
+                    </div>
+                    <div class="kpi-value">0.947</div>
+                    <div class="kpi-change positive">↑ +12.7%</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-header">
+                        <div class="kpi-label">QSVM Accuracy</div>
+                        <div class="kpi-icon emerald">✓</div>
+                    </div>
+                    <div class="kpi-value">94.2%</div>
+                    <div class="kpi-change positive">↑ vs SVM 87.1%</div>
+                </div>
+            </div>
+
+            <div class="grid-2">
+                <!-- Convergence Chart -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">📈 QKA Convergence (SPSA Optimizer)</div>
+                    </div>
+                    <div class="card-body">
+                        <div class="chart-container">
+                            <canvas id="convergenceChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quantum Circuit -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">🔗 Quantum Circuit Visualization (8 Qubits)</div>
+                    </div>
+                    <div class="card-body">
+                        <div class="quantum-circuit-viz" id="quantum-circuit"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">📊 Quantum Kernel Matrix Heatmap</div>
+                    <div style="font-size:12px;color:var(--text-muted);">K(xᵢ, xⱼ) = |⟨φ(xᵢ)|φ(xⱼ)⟩|²</div>
+                </div>
+                <div class="card-body">
+                    <div class="chart-container" style="height:320px">
+                        <canvas id="kernelHeatmap"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ═══ PAGE: ANOMALY ═══ -->
+        <div class="page" id="page-anomaly">
+            <div class="card" style="margin-bottom:24px">
+                <div class="card-header">
+                    <div class="card-title">🚨 QSVM Anomaly Detection — Ranking Doanh nghiệp</div>
+                    <div style="font-size:12px;color:var(--text-muted);">Sắp xếp theo Quantum Anomaly Score (giảm dần)</div>
+                </div>
+                <div class="card-body" id="anomaly-ranking"></div>
+            </div>
+
+            <div class="grid-2">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">📊 Anomaly Score qua các năm</div>
+                    </div>
+                    <div class="card-body">
+                        <div class="chart-container">
+                            <canvas id="anomalyTimeChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">🎯 Consistency vs Anomaly Scatter</div>
+                    </div>
+                    <div class="card-body">
+                        <div class="chart-container">
+                            <canvas id="scatterChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ═══ PAGE: ALERTS ═══ -->
+        <div class="page" id="page-alerts">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">🔔 Lịch sử Cảnh báo</div>
+                    <div style="display:flex;gap:8px">
+                        <button class="btn btn-outline btn-sm" onclick="filterAlerts('all')" style="background:rgba(99,102,241,0.1)">Tất cả</button>
+                        <button class="btn btn-outline btn-sm" onclick="filterAlerts('critical')">🔴 Nghiêm trọng</button>
+                        <button class="btn btn-outline btn-sm" onclick="filterAlerts('warning')">🟡 Cảnh báo</button>
+                    </div>
+                </div>
+                <div class="card-body" id="all-alerts-list"></div>
+            </div>
+        </div>
+
+    </div>
+</main>
+</div>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
