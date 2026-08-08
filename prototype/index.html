@@ -93,6 +93,14 @@
 
     <div class="page-content">
 
+        <!-- Cảnh báo trung thực: mọi số liệu hiện tại là mô phỏng, chưa đo thật.
+             Giữ nguyên cho tới khi backend trả về kết quả tính toán thực. -->
+        <div class="mock-banner">
+            <span class="mock-banner-tag">DỮ LIỆU MÔ PHỎNG</span>
+            <span>Toàn bộ số liệu trên giao diện này là <strong>dữ liệu mẫu phục vụ minh hoạ luồng nghiệp vụ</strong>,
+            chưa phải kết quả đo từ mô hình. Các chỉ số Quantum là <strong>mục tiêu thiết kế</strong>, chưa được benchmark.</span>
+        </div>
+
         <!-- ═══ PAGE: DASHBOARD ═══ -->
         <div class="page active" id="page-dashboard">
             <!-- KPI Cards -->
@@ -218,21 +226,21 @@
                     <div class="kpi-value">12</div>
                     <div class="kpi-change positive">Optimized</div>
                 </div>
-                <div class="kpi-card">
+                <div class="kpi-card is-target">
                     <div class="kpi-header">
-                        <div class="kpi-label">Kernel Alignment</div>
+                        <div class="kpi-label">Kernel Alignment <span class="target-tag">mục tiêu</span></div>
                         <div class="kpi-icon cyan">🎯</div>
                     </div>
                     <div class="kpi-value">0.947</div>
-                    <div class="kpi-change positive">↑ +12.7%</div>
+                    <div class="kpi-change neutral">Chưa benchmark — sẽ đo ở Phase 3</div>
                 </div>
-                <div class="kpi-card">
+                <div class="kpi-card is-target">
                     <div class="kpi-header">
-                        <div class="kpi-label">QSVM Accuracy</div>
+                        <div class="kpi-label">QSVM Accuracy <span class="target-tag">mục tiêu</span></div>
                         <div class="kpi-icon emerald">✓</div>
                     </div>
                     <div class="kpi-value">94.2%</div>
-                    <div class="kpi-change positive">↑ vs SVM 87.1%</div>
+                    <div class="kpi-change neutral">Chưa benchmark — sẽ đo ở Phase 3</div>
                 </div>
             </div>
 
@@ -241,6 +249,7 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="card-title">📈 QKA Convergence (SPSA Optimizer)</div>
+                        <span class="target-tag">đường cong mô phỏng</span>
                     </div>
                     <div class="card-body">
                         <div class="chart-container">

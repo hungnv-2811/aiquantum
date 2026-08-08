@@ -55,7 +55,7 @@ function renderKPIs() {
     { label: 'Bất thường phát hiện', value: MARKET_STATS.anomaliesDetected, icon: '🚨', iconClass: 'rose', change: '+3', positive: false },
     { label: 'Claims đã xác minh', value: MARKET_STATS.verifiedClaims.toLocaleString(), icon: '✓', iconClass: 'emerald', change: '+248', positive: true },
     { label: 'Claims bất nhất quán', value: MARKET_STATS.inconsistentClaims, icon: '⚠', iconClass: 'amber', change: '+18', positive: false },
-    { label: 'Quantum Advantage', value: MARKET_STATS.quantumAdvantage, icon: '⚛', iconClass: 'purple', change: 'vs Classical', positive: true }
+    { label: 'Quantum Advantage <span class="target-tag">mục tiêu</span>', value: MARKET_STATS.quantumAdvantage, icon: '⚛', iconClass: 'purple', change: 'chưa benchmark', positive: null }
   ];
 
   grid.innerHTML = kpis.map(k => `
@@ -65,7 +65,7 @@ function renderKPIs() {
         <div class="kpi-icon ${k.iconClass}">${k.icon}</div>
       </div>
       <div class="kpi-value">${k.value}</div>
-      <span class="kpi-change ${k.positive ? 'positive' : 'negative'}">${k.positive ? '↑' : '↓'} ${k.change}</span>
+      <span class="kpi-change ${k.positive === null ? 'neutral' : k.positive ? 'positive' : 'negative'}">${k.positive === null ? '' : k.positive ? '↑' : '↓'} ${k.change}</span>
     </div>
   `).join('');
 }

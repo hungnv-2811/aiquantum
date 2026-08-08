@@ -2,6 +2,20 @@
 // SmartAudit-Quantum — Mock Data for MVP Prototype
 // Mã đội: AQ2026-064 | AI-Quantum Challenge 2026
 // ============================================================
+//
+// ⚠️  CẢNH BÁO TRUNG THỰC
+// Toàn bộ số liệu trong file này là DỮ LIỆU MẪU do nhóm tự dựng để
+// minh hoạ luồng nghiệp vụ của giao diện. KHÔNG phải kết quả đo từ
+// mô hình thật.
+//
+// Cụ thể, các con số sau là MỤC TIÊU THIẾT KẾ, chưa hề được benchmark:
+//   - MARKET_STATS.quantumAdvantage  ("+12.7%")
+//   - QUANTUM_CIRCUIT.convergenceData (sinh bằng công thức mũ + nhiễu)
+//   - QSVM Accuracy 94.2% / Kernel Alignment 0.947 (trong index.html)
+//
+// Khi backend thật hoàn thành (Phase 3), thay file này bằng dữ liệu
+// từ API và gỡ banner cảnh báo trong index.html.
+// ============================================================
 
 const COMPANIES = [
   {
@@ -244,6 +258,9 @@ const COMPANIES = [
 ];
 
 // Quantum circuit simulation data
+// convergenceData KHÔNG phải kết quả chạy Qiskit — đây là đường cong sinh
+// bằng công thức mũ cộng nhiễu ngẫu nhiên, chỉ để minh hoạ hình dạng hội tụ
+// kỳ vọng của SPSA. Sẽ thay bằng results/qka_convergence.json khi có số thật.
 const QUANTUM_CIRCUIT = {
   qubits: 8,
   depth: 12,
@@ -268,7 +285,7 @@ const MARKET_STATS = {
   totalClaims: 4218,
   verifiedClaims: 3892,
   inconsistentClaims: 326,
-  quantumAdvantage: "+12.7%",
+  quantumAdvantage: "+12.7%",   // MỤC TIÊU thiết kế, chưa benchmark
   processingTime: "3.2s/report"
 };
 
