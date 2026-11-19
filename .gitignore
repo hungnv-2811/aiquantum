@@ -58,3 +58,6 @@ deliverables/build/*.docx
 deliverables/build/slide_png/
 deliverables/build/huong_dan.filled.html
 results/run_nnc_log.txt
+
+# Hồ sơ dự thi có CCCD/SĐT thành viên — giữ trên máy, không đưa vào git
+SmartAudit_Quantum_Proposal*.docx
