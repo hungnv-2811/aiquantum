@@ -1,120 +1,94 @@
 # SmartAudit-Quantum
 
-**Nền tảng kiểm toán ngôn từ và số liệu thông minh cho thị trường chứng khoán Việt Nam sử dụng AI & Điện toán lượng tử**
+**Đối chiếu ngôn từ báo cáo thường niên với số liệu BCTC đã kiểm toán — AI cho kiểm toán và giám sát công bố thông tin, có thí nghiệm lượng tử**
 
-> Đội **AQ2026-064 — Ngôi nhà Hoa Hồng**
-> AI-Quantum Challenge 2026 · Cuộc thi Trí tuệ nhân tạo và Lượng tử trong Kinh tế – Tài chính – Kế toán lần thứ I
-
----
+> Đội **AQ2026-064 — Ngôi nhà Hoa Hồng** · AI-Quantum Challenge 2026 (Học viện Tài chính) · Bản nộp Vòng 2, 19/11/2026
+> **Prototype: https://smartaudit-quantum.vercel.app** (công khai, không cần tài khoản) · Hướng dẫn đầy đủ: `AQ2026-R2-AQ2026-064-Huong_dan.pdf`
 
 ## Bài toán
 
-Hơn 700 doanh nghiệp niêm yết trên HOSE và HNX công bố hàng trăm nghìn trang báo cáo mỗi năm. Việc đối chiếu phần **giải trình bằng văn bản** (Thư gửi cổ đông, MD&A) với **số liệu kế toán thực tế** hiện chủ yếu làm thủ công, tốn 40–80 giờ cho mỗi doanh nghiệp, và vẫn để lọt nhiều bất nhất quán.
+Chuẩn mực kiểm toán Việt Nam số 720 yêu cầu kiểm toán viên đọc các thông tin khác trong tài liệu có BCTC đã kiểm toán — như báo cáo thường niên — để phát hiện điểm không nhất quán trọng yếu. Với hơn 700 doanh nghiệp niêm yết, việc đối chiếu từng câu có số liệu với ô tương ứng trong BCTC hiện chủ yếu làm bằng mắt.
 
-Ví dụ điển hình: Thư gửi cổ đông viết *"chi phí bán hàng được kiểm soát tốt, giảm so với năm trước"*, trong khi Báo cáo kết quả kinh doanh cho thấy chi phí bán hàng **tăng 6,2%**. Loại mâu thuẫn này rất khó phát hiện bằng mắt thường ở quy mô lớn.
+SmartAudit-Quantum tự động hoá bước sàng lọc: mỗi câu có số liệu được **neo vào đúng ô BCTC qua Mã số Thông tư 200** và nhận một trong ba phán quyết — *Nhất quán*, *Cần xem xét*, *Chưa kiểm chứng được* — kèm vết minh chứng kiểm tra lại được (câu gốc, trang, Mã số, phép tính). Nguyên tắc: **thà im lặng có lý do còn hơn cáo buộc sai.**
 
-SmartAudit-Quantum tự động phát hiện những mâu thuẫn đó, kèm **minh chứng truy vết được đến từng ô trong bảng số liệu**.
+## Kết quả đo được (19/11/2026)
 
-## Cách tiếp cận
+| Chỉ số | Bản 21/09 | Sau vá 19/11 |
+|---|---|---|
+| Cặp báo cáo đối chiếu được | 66 | 73 |
+| Khẳng định trích được | 695 | 391 |
+| Cờ "cần xem xét" | 141 | 35 |
+| Precision nhóm cần xem xét, dữ liệu thật (300 cặp nhãn bạc) | 2,8% (4/141) | 0% (0/21) |
+| Cờ oan ước tính trên toàn bộ khẳng định | ~137 | ~23 |
+| Recall trên tập chèn lỗi có kiểm soát (dữ liệu tổng hợp) | — | 82,6% (347/420) |
+| Báo động giả trên câu đối chứng | — | 0/122 |
+| Kiểm thử tự động | 121 | 147 (+24 thí nghiệm lượng tử) |
 
-Hệ thống gồm ba trụ cột:
+**Đọc kết quả trung thực.** Bản vá loại được phần lớn cờ oan (đơn vị tính nghìn/triệu đồng, câu về công ty con, rác bố cục PDF, câu không phải kết quả…). Bộ đối chiếu nhạy với lỗi khi câu được trích đúng. Nhưng **mục tiêu precision 80% chưa đạt** trên dữ liệu thật: mâu thuẫn thật rất hiếm (ước tính ~2% khẳng định) và cả 7 ca trong mẫu đều là lỗi trình bày ở tỷ số, cơ cấu (hệ số nợ/VCSH, tỷ trọng tài sản) — loại hệ thống chưa tính. Đó là bước tiếp theo.
 
-| Trụ cột | Vai trò |
-|---|---|
-| **NLP tiếng Việt miền tài chính** | PhoBERT fine-tuned trích xuất khẳng định (claim) có chứa số liệu hoặc xu hướng từ phần narrative |
-| **Narrative-Number Consistency (NNC)** | Đối chiếu mỗi claim với số liệu tương ứng trong bảng: khớp số, khớp hướng xu hướng, khớp ngữ nghĩa định tính |
-| **Lớp lượng tử (QKA + QSVM)** | Quantum Kernel Alignment tối ưu truy xuất minh chứng; QSVM phát hiện bất thường phi tuyến trên dữ liệu mất cân bằng |
+Nhãn 300 cặp do **hai tác tử AI gán mù, độc lập** theo hướng dẫn của đội (`docs/gan-nhan/`), bất đồng được phân xử (kappa 0,86) — đây là *nhãn bạc*, chưa được chuyên gia kiểm toán kiểm lại toàn bộ.
 
-Vai trò của lượng tử là **lớp tăng cường**, không thay thế pipeline cổ điển. AI xử lý ngữ nghĩa, lượng tử tối ưu tìm kiếm và phân loại trong không gian chiều cao.
+**Thí nghiệm lượng tử (QKA)** cho bài toán khớp khoản mục khi bảng thiếu cột Mã số: QSVM + QKA đạt accuracy 0,840 ± 0,048, **thua** SVM-RBF cổ điển 0,911 ± 0,051 (rapidfuzz đang dùng: 0,812). Ở 8 qubit không thể có lợi thế lượng tử; đây là kiểm chứng khả thi kỹ thuật, công bố cả kết quả âm. Lớp lượng tử tháo rời được. Chi tiết: [docs/quantum-poc.md](docs/quantum-poc.md).
 
-## Trạng thái hiện tại
+## Chạy nhanh
 
-> ⚠️ **Dự án đang ở giai đoạn hồ sơ Vòng 1.** Prototype trong `prototype/` là **bản demo giao diện chạy trên dữ liệu mô phỏng** — chưa có backend, chưa có mô hình AI hay mạch lượng tử nào chạy thật. Mọi chỉ số Quantum hiển thị (QSVM Accuracy 94.2%, Kernel Alignment 0.947, Quantum Advantage +12.7%) là **mục tiêu thiết kế, chưa được benchmark**, và đã được gắn nhãn rõ ràng ngay trên giao diện.
-
-| Hạng mục | Trạng thái |
-|---|---|
-| Hồ sơ Vòng 1 | ✅ Đã nộp 30/07/2026 |
-| Dashboard demo (6 trang) | ✅ Chạy được, dữ liệu mô phỏng |
-| Backend / pipeline NNC | ⬜ Chưa bắt đầu |
-| Mô hình PhoBERT-Fin | ⬜ Chưa bắt đầu |
-| Lớp lượng tử (Qiskit) | ⬜ Chưa bắt đầu |
-
-## Chạy demo
-
-Prototype là trang tĩnh, **không cần cài đặt gì và không cần mạng** (Chart.js cùng font đã đóng gói trong `prototype/vendor/`).
-
-**Cách khuyến nghị — một lệnh duy nhất:**
-
-```
-run_demo.bat
-```
-
-Script tự khởi động HTTP server cục bộ ở cổng 8000 và mở trình duyệt. Nhấn `Ctrl+C` để dừng.
-
-**Hoặc thủ công:**
+**Dashboard** (không cần cài thư viện):
 
 ```bash
-cd prototype
-python -m http.server 8000     # rồi mở http://localhost:8000
+python -m http.server 8000 --directory prototype
 ```
 
-> Nên chạy qua HTTP server thay vì mở thẳng `index.html`: một số trình duyệt chặn tải font qua giao thức `file://` vì chính sách CORS, khiến giao diện mất font dù file đã có sẵn trong máy.
+rồi mở `http://localhost:8000`. Trên Windows có thể nhấp đúp `run_demo.bat`.
 
-Dashboard có 6 trang: Dashboard tổng quan · Doanh nghiệp · Phân tích NNC · Quantum Engine · Anomaly Detection · Cảnh báo.
+**Pipeline và kiểm thử** (Python 3.11):
 
-## Cấu trúc kho mã
-
-```
-├─ SmartAudit_Quantum_Proposal.docx     Hồ sơ đề xuất đã nộp Vòng 1
-├─ 01-mau-nop-bai-du-thi-vong-1.docx    Mẫu hồ sơ của Ban Tổ chức
-├─ Thể lệ AI và Lượng tử 2026...docx    Thể lệ chính thức
-├─ docs/                                Tài liệu nội bộ (Q&A phỏng vấn, cheat sheet)
-└─ prototype/                           Dashboard demo
-   ├─ index.html                        6 trang, điều hướng bằng JS
-   ├─ style.css                         Dark theme
-   ├─ data.js                           ⚠️ DỮ LIỆU MÔ PHỎNG
-   ├─ app.js                            Logic render + biểu đồ Chart.js
-   └─ vendor/                           Chart.js v4.4.4 + font (đóng gói offline)
+```bash
+python -m venv .venv
+.venv\Scripts\Activate.ps1            # macOS/Linux: source .venv/bin/activate
+pip install -r requirements-lock.txt
+pytest tests -q                       # 147 passed, 1 skipped
+python scripts/run_nnc.py             # đối chiếu toàn bộ, ghi results/nnc_results.json
+python scripts/audit_report.py FPT 2022
+python scripts/make_injected_set.py   # tập chèn lỗi
+python scripts/evaluate.py            # số đo trên 300 cặp gán nhãn
+python scripts/export_dashboard.py    # cập nhật dữ liệu dashboard
 ```
 
-## Nguồn dữ liệu
+Dữ liệu mẫu đã kèm trong gói (`data/`), chạy được không cần mạng. Thí nghiệm lượng tử dùng môi trường riêng: `requirements-quantum.txt`, `python scripts/run_qka.py --quick`.
 
-Cả hai bộ đều là dữ liệu mở, đã kiểm chứng tồn tại và truy cập được:
+## Cấu trúc
 
-| Nguồn | Quy mô | Giấy phép |
-|---|---|---|
-| [Vietnam Listed Companies Annual Reports 2000–2025](https://doi.org/10.5281/zenodo.20949551) (Zenodo) | 134.8 GB, báo cáo thường niên | CC-BY-4.0 |
-| [tinixai/ocr_annual_financials](https://huggingface.co/datasets/tinixai/ocr_annual_financials) (HuggingFace) | 18.231 BCTC / 1.491 mã / 2015–2025, kèm text OCR | CC-BY-NC-4.0 |
+```
+smartaudit/        thư viện: ingest · tables (bóc bảng, đơn vị tính) · ontology · nlp (trích khẳng định)
+                   · nnc (đối chiếu, vết minh chứng) · eval · quantum (tách rời) · xai
+scripts/           run_nnc · audit_report · evaluate · make_injected_set · sample_for_labeling
+                   · export_dashboard · run_qka · fetch_* · build_*
+tests/             kiểm thử tự động (có test hồi quy cho từng bản vá)
+prototype/         dashboard tĩnh; data/ (kết quả thật) · py/ (lõi Python cho Pyodide)
+annotation/        mẫu 300 cặp, nhãn A, B, phân xử, nhãn cuối (gold_300.csv)
+results/           kết quả đã chạy sẵn để đối chiếu
+docs/              kế hoạch, hướng dẫn gán nhãn, rà soát ca demo, báo cáo QKA, nháp báo cáo
+data/              dữ liệu mẫu (BCTC TiniX + văn bản BCTN đã bóc)
+```
 
-Bộ TiniX đặc biệt giá trị vì văn bản OCR **đã giữ nguyên bảng biểu dưới dạng HTML `<table>` kèm Mã số theo Thông tư 200**, nên không cần đến các công cụ nhận dạng bảng nặng nề.
+## Giới hạn
 
-## Lộ trình
-
-| Mốc | Nội dung |
-|---|---|
-| 09/08/2026 | Phỏng vấn Vòng 1 |
-| 20/08/2026 | Công bố kết quả Vòng 1 |
-| 25/08 – 10/10/2026 | Xây dựng prototype thật (6–7 tuần) |
-| 25/10/2026 | Thuyết trình Vòng 2 |
-| 10/11/2026 | Chung kết |
+- Trích khẳng định bằng bộ luật, chưa có mô hình học (PhoBERT-Fin là bước sau, chỉ thay khi thắng bộ luật trên cùng tập test).
+- Còn cờ oan khi câu nói về một mảng/công ty con mà không có từ khoá phạm vi, hoặc khi PDF bị trộn cột.
+- Chưa tính tỷ số cơ cấu; ngân hàng (Thông tư 49) và 17 báo cáo thường niên bản scan chưa xử lý.
+- Chưa thử nghiệm với kiểm toán viên; chưa có đối tác.
 
 ## Đội ngũ
 
 | Thành viên | Trường | Vai trò |
 |---|---|---|
-| Nguyễn Việt Hùng | ĐH Xây dựng Hà Nội | Trưởng nhóm & AI/NLP Lead |
-| Nguyễn Hồng Nguyên | Học viện Tài chính | Financial Domain & Ontology Lead |
-| Lê Cao Phong | Học viện Công nghệ BCVT | Quantum ML & System Lead |
-| Mai Đức Tài | Học viện Tài chính | Financial Risk & Product Lead |
+| Nguyễn Việt Hùng | ĐH Xây dựng Hà Nội | Trưởng nhóm, AI/NLP |
+| Nguyễn Hồng Nguyên | Học viện Tài chính | Nghiệp vụ tài chính, ontology |
+| Lê Cao Phong | Học viện Công nghệ BCVT | Quantum ML, hệ thống |
+| Mai Đức Tài | Học viện Tài chính | Rủi ro tài chính, sản phẩm |
 
-## Khai báo sử dụng công cụ AI
+## Khai báo sử dụng công cụ AI (Thể lệ Điều 14)
 
-Theo Điều 5.2 và Điều 14 Thể lệ, nhóm khai báo các công cụ AI đã dùng trong quá trình chuẩn bị:
+Đội dùng trợ lý và tác tử AI (Claude) để viết nháp mã nguồn, nháp tài liệu và slide, gán nhãn bạc cho tập đánh giá 300 cặp, và rà soát. Ý tưởng, bài toán, kiến trúc, các quyết định và việc kiểm duyệt cuối do đội thực hiện. Các thành viên chịu trách nhiệm và giải thích được mọi phần của sản phẩm.
 
-- **Trợ lý lập trình AI** — hỗ trợ soạn thảo mã nguồn giao diện, rà soát lỗi, và gợi ý cấu trúc tài liệu.
-- Mọi ý tưởng, lựa chọn kiến trúc, bài toán và phương pháp đều do nhóm tự đề xuất và có thể giải thích được.
-- Nhóm không sử dụng AI tạo sinh để tạo ra toàn bộ bài dự thi.
-
-## Giấy phép
-
-Mã nguồn và tài liệu trong kho này phục vụ dự thi AI-Quantum Challenge 2026. Quyền sở hữu trí tuệ tuân theo Điều 16 Thể lệ cuộc thi.
+Nguồn dữ liệu và giấy phép: [NOTICE.md](NOTICE.md).

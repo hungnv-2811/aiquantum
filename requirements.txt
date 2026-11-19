@@ -1,0 +1,36 @@
+# ============================================================
+#  SmartAudit-Quantum — phụ thuộc Python
+#  Cài:  uv pip install -r requirements.txt
+#        (hoặc  pip install -r requirements.txt)
+# ============================================================
+
+# ── Giai đoạn 1: nạp và bóc tách dữ liệu ──
+huggingface-hub>=0.23        # tải lọc dataset TiniX theo mã CK (không nhân đôi cache)
+pandas>=2.2
+lxml>=5.2                    # backend đọc bảng HTML cho pandas.read_html
+beautifulsoup4>=4.12
+rapidfuzz>=3.9               # khớp gần tên khoản mục khi thiếu cột Mã số
+pyyaml>=6.0                  # ontology VAS
+
+# ── Giai đoạn 2: đọc PDF báo cáo thường niên (nguồn narrative) ──
+pdfplumber>=0.11
+requests>=2.32
+
+# ── Kiểm thử ──
+pytest>=8.2
+
+# ============================================================
+#  Chưa cài ở Giai đoạn 1 — thêm khi bước sang Giai đoạn 2:
+#
+#    torch                   ~2.5 GB, chỉ cần khi fine-tune PhoBERT
+#    transformers            PhoBERT-base
+#    underthesea             tách từ tiếng Việt
+#    qiskit                  mạch lượng tử
+#    qiskit-machine-learning QKA + QSVM
+#    qiskit-aer              simulator
+#    scikit-learn            baseline cổ điển để benchmark
+#    fastapi / uvicorn       API
+#
+#  Lý do hoãn: nhóm cần pipeline NNC chạy được trên dữ liệu thật trước,
+#  mô hình học máy là bước nâng cấp. Xem README, mục Trạng thái.
+# ============================================================

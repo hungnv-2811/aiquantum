@@ -1,341 +1,235 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SmartAudit-Quantum | Nền tảng Kiểm toán Thông minh</title>
-    <meta name="description" content="SmartAudit-Quantum: Nền tảng kiểm toán ngôn từ và số liệu thông minh cho thị trường chứng khoán Việt Nam sử dụng AI & Điện toán lượng tử">
-    <link rel="stylesheet" href="style.css">
-    <!-- Chart.js đóng gói cục bộ: demo chạy được khi không có mạng -->
-    <script src="vendor/chart.umd.min.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SmartAudit-Quantum — Đối chiếu ngôn từ và số liệu BCTC</title>
+<meta name="description" content="Prototype Vòng 2 — AI-Quantum Challenge 2026, đội AQ2026-064. Kết quả thật trên dữ liệu thật.">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="app.css">
+<script src="vendor/chart.umd.min.js"></script>
 </head>
 <body>
 <div class="app-layout">
 
-<!-- ═══════════ SIDEBAR ═══════════ -->
+<!-- ═══════════ THANH BÊN ═══════════ -->
 <aside class="sidebar" id="sidebar">
-    <div class="sidebar-header">
-        <div class="logo-container">
-            <div class="logo-icon">⚛</div>
-            <div class="logo-text">
-                <h1>SmartAudit</h1>
-                <span>Quantum-Enhanced</span>
-            </div>
-        </div>
+  <div class="sidebar-header">
+    <div class="logo-container">
+      <div class="logo-icon">⚛</div>
+      <div class="logo-text">
+        <h1>SmartAudit</h1>
+        <span>Ngôn từ ↔ Số liệu</span>
+      </div>
     </div>
+  </div>
 
-    <nav class="sidebar-nav">
-        <div class="nav-section">
-            <div class="nav-section-title">Tổng quan</div>
-            <div class="nav-item active" data-page="dashboard" onclick="switchPage('dashboard')">
-                <span class="icon">📊</span> Dashboard
-            </div>
-            <div class="nav-item" data-page="companies" onclick="switchPage('companies')">
-                <span class="icon">🏢</span> Doanh nghiệp
-            </div>
-            <div class="nav-item" data-page="analysis" onclick="switchPage('analysis')">
-                <span class="icon">🔍</span> Phân tích NNC
-            </div>
-        </div>
-
-        <div class="nav-section">
-            <div class="nav-section-title">Quantum</div>
-            <div class="nav-item" data-page="quantum" onclick="switchPage('quantum')">
-                <span class="icon">⚛️</span> Quantum Engine
-            </div>
-            <div class="nav-item" data-page="anomaly" onclick="switchPage('anomaly')">
-                <span class="icon">🚨</span> Anomaly Detection
-                <span class="nav-badge">8</span>
-            </div>
-        </div>
-
-        <div class="nav-section">
-            <div class="nav-section-title">Hệ thống</div>
-            <div class="nav-item" data-page="alerts" onclick="switchPage('alerts')">
-                <span class="icon">🔔</span> Cảnh báo
-                <span class="nav-badge">5</span>
-            </div>
-        </div>
-    </nav>
-
-    <div class="sidebar-footer">
-        <div class="quantum-status">
-            <span class="quantum-dot"></span>
-            <span>Quantum Simulator: Online</span>
-        </div>
-        <div style="margin-top:8px; font-size:10px; color:var(--text-muted);">
-            AQ2026-064 | Qiskit v1.2
-        </div>
+  <nav class="sidebar-nav">
+    <div class="nav-section">
+      <div class="nav-section-title">Kết quả</div>
+      <div class="nav-item active" data-page="overview"><span class="icon">📊</span> Tổng quan</div>
+      <div class="nav-item" data-page="companies"><span class="icon">🏢</span> Doanh nghiệp</div>
+      <div class="nav-item" data-page="report"><span class="icon">🔍</span> Chi tiết báo cáo</div>
     </div>
+    <div class="nav-section">
+      <div class="nav-section-title">Chạy thử</div>
+      <div class="nav-item" data-page="check"><span class="icon">✍️</span> Kiểm tra khẳng định</div>
+    </div>
+    <div class="nav-section">
+      <div class="nav-section-title">Đo lường</div>
+      <div class="nav-item" data-page="evaluation"><span class="icon">🎯</span> Đánh giá chất lượng</div>
+      <div class="nav-item" data-page="quantum"><span class="icon">⚛️</span> Thí nghiệm lượng tử</div>
+      <div class="nav-item" data-page="about"><span class="icon">ℹ️</span> Giới thiệu &amp; dữ liệu</div>
+    </div>
+  </nav>
+
+  <div class="sidebar-footer">
+    <div style="font-size:11px; color:var(--text-muted); line-height:1.5;">
+      Đội AQ2026-064 · Ngôi nhà Hoa Hồng<br>
+      AI-Quantum Challenge 2026 · Vòng 2<br>
+      <span id="generated-at"></span>
+    </div>
+  </div>
 </aside>
 
-<!-- ═══════════ MAIN CONTENT ═══════════ -->
+<!-- ═══════════ NỘI DUNG ═══════════ -->
 <main class="main-content">
-
-    <!-- Header -->
-    <header class="header">
-        <div class="header-left">
-            <h2 id="page-title">Dashboard</h2>
-            <div class="breadcrumb">
-                <span>SmartAudit</span>
-                <span class="sep">/</span>
-                <span id="breadcrumb-page">Tổng quan</span>
-            </div>
-        </div>
-        <div class="header-right">
-            <div class="search-box">
-                <span>🔍</span>
-                <input type="text" placeholder="Tìm doanh nghiệp (VNM, HPG, FPT...)" id="searchInput" onkeyup="handleSearch(this.value)">
-            </div>
-            <button class="header-btn has-notification" title="Thông báo" onclick="switchPage('alerts')">🔔</button>
-        </div>
-    </header>
-
-    <div class="page-content">
-
-        <!-- Cảnh báo trung thực: mọi số liệu hiện tại là mô phỏng, chưa đo thật.
-             Giữ nguyên cho tới khi backend trả về kết quả tính toán thực. -->
-        <div class="mock-banner">
-            <span class="mock-banner-tag">DỮ LIỆU MÔ PHỎNG</span>
-            <span>Toàn bộ số liệu trên giao diện này là <strong>dữ liệu mẫu phục vụ minh hoạ luồng nghiệp vụ</strong>,
-            chưa phải kết quả đo từ mô hình. Các chỉ số Quantum là <strong>mục tiêu thiết kế</strong>, chưa được benchmark.</span>
-        </div>
-
-        <!-- ═══ PAGE: DASHBOARD ═══ -->
-        <div class="page active" id="page-dashboard">
-            <!-- KPI Cards -->
-            <div class="kpi-grid" id="kpi-grid"></div>
-
-            <div class="grid-2-1">
-                <!-- Sector Consistency Chart -->
-                <div class="card">
-                    <div class="card-header">
-                        <div class="card-title">📊 Điểm Nhất quán theo Ngành</div>
-                        <button class="btn btn-outline btn-sm">Xem chi tiết</button>
-                    </div>
-                    <div class="card-body">
-                        <div class="chart-container">
-                            <canvas id="sectorChart"></canvas>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Real-time Alerts -->
-                <div class="card">
-                    <div class="card-header">
-                        <div class="card-title">🔔 Cảnh báo mới nhất</div>
-                    </div>
-                    <div class="card-body" id="alert-list"></div>
-                </div>
-            </div>
-
-            <div class="grid-2">
-                <!-- Quantum vs Classical -->
-                <div class="card">
-                    <div class="card-header">
-                        <div class="card-title">⚛️ Quantum vs Classical Performance</div>
-                    </div>
-                    <div class="card-body">
-                        <div class="chart-container">
-                            <canvas id="quantumCompareChart"></canvas>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- NNC Distribution -->
-                <div class="card">
-                    <div class="card-header">
-                        <div class="card-title">📈 Phân bố NNC Scores</div>
-                    </div>
-                    <div class="card-body">
-                        <div class="chart-container">
-                            <canvas id="nncDistChart"></canvas>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- ═══ PAGE: COMPANIES ═══ -->
-        <div class="page" id="page-companies">
-            <div class="card" style="margin-bottom:24px">
-                <div class="card-header">
-                    <div class="card-title">🏢 Danh sách Doanh nghiệp được Phân tích</div>
-                    <div style="display:flex;gap:8px;align-items:center;">
-                        <div class="select-wrapper">
-                            <select id="sectorFilter" onchange="filterCompanies()">
-                                <option value="all">Tất cả ngành</option>
-                                <option value="Ngân hàng">Ngân hàng</option>
-                                <option value="Thép & Vật liệu">Thép & Vật liệu</option>
-                                <option value="Công nghệ Thông tin">Công nghệ</option>
-                                <option value="Bán lẻ">Bán lẻ</option>
-                                <option value="Thực phẩm & Đồ uống">Thực phẩm</option>
-                            </select>
-                        </div>
-                        <button class="btn btn-primary btn-sm">+ Thêm DN</button>
-                    </div>
-                </div>
-                <div class="card-body" style="padding:0;">
-                    <table class="company-table" id="company-table">
-                        <thead>
-                            <tr>
-                                <th>Doanh nghiệp</th>
-                                <th>Ngành</th>
-                                <th>NNC Score</th>
-                                <th>Quantum Anomaly</th>
-                                <th>Mức rủi ro</th>
-                                <th>Claims</th>
-                                <th></th>
-                            </tr>
-                        </thead>
-                        <tbody id="company-table-body"></tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-
-        <!-- ═══ PAGE: ANALYSIS (Company Detail) ═══ -->
-        <div class="page" id="page-analysis">
-            <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px;">
-                <div class="select-wrapper">
-                    <select id="companySelect" onchange="selectCompany(this.value)">
-                    </select>
-                </div>
-                <button class="btn btn-primary btn-sm" onclick="runAnalysis()">▶ Chạy phân tích</button>
-            </div>
-
-            <div id="company-detail-container"></div>
-        </div>
-
-        <!-- ═══ PAGE: QUANTUM ═══ -->
-        <div class="page" id="page-quantum">
-            <div class="kpi-grid" style="grid-template-columns:repeat(4,1fr);">
-                <div class="kpi-card">
-                    <div class="kpi-header">
-                        <div class="kpi-label">Qubits</div>
-                        <div class="kpi-icon indigo">⚛</div>
-                    </div>
-                    <div class="kpi-value">8</div>
-                    <div class="kpi-change positive">ZZFeatureMap</div>
-                </div>
-                <div class="kpi-card">
-                    <div class="kpi-header">
-                        <div class="kpi-label">Circuit Depth</div>
-                        <div class="kpi-icon purple">🔗</div>
-                    </div>
-                    <div class="kpi-value">12</div>
-                    <div class="kpi-change positive">Optimized</div>
-                </div>
-                <div class="kpi-card is-target">
-                    <div class="kpi-header">
-                        <div class="kpi-label">Kernel Alignment <span class="target-tag">mục tiêu</span></div>
-                        <div class="kpi-icon cyan">🎯</div>
-                    </div>
-                    <div class="kpi-value">0.947</div>
-                    <div class="kpi-change neutral">Chưa benchmark — sẽ đo ở Phase 3</div>
-                </div>
-                <div class="kpi-card is-target">
-                    <div class="kpi-header">
-                        <div class="kpi-label">QSVM Accuracy <span class="target-tag">mục tiêu</span></div>
-                        <div class="kpi-icon emerald">✓</div>
-                    </div>
-                    <div class="kpi-value">94.2%</div>
-                    <div class="kpi-change neutral">Chưa benchmark — sẽ đo ở Phase 3</div>
-                </div>
-            </div>
-
-            <div class="grid-2">
-                <!-- Convergence Chart -->
-                <div class="card">
-                    <div class="card-header">
-                        <div class="card-title">📈 QKA Convergence (SPSA Optimizer)</div>
-                        <span class="target-tag">đường cong mô phỏng</span>
-                    </div>
-                    <div class="card-body">
-                        <div class="chart-container">
-                            <canvas id="convergenceChart"></canvas>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Quantum Circuit -->
-                <div class="card">
-                    <div class="card-header">
-                        <div class="card-title">🔗 Quantum Circuit Visualization (8 Qubits)</div>
-                    </div>
-                    <div class="card-body">
-                        <div class="quantum-circuit-viz" id="quantum-circuit"></div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card-header">
-                    <div class="card-title">📊 Quantum Kernel Matrix Heatmap</div>
-                    <div style="font-size:12px;color:var(--text-muted);">K(xᵢ, xⱼ) = |⟨φ(xᵢ)|φ(xⱼ)⟩|²</div>
-                </div>
-                <div class="card-body">
-                    <div class="chart-container" style="height:320px">
-                        <canvas id="kernelHeatmap"></canvas>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- ═══ PAGE: ANOMALY ═══ -->
-        <div class="page" id="page-anomaly">
-            <div class="card" style="margin-bottom:24px">
-                <div class="card-header">
-                    <div class="card-title">🚨 QSVM Anomaly Detection — Ranking Doanh nghiệp</div>
-                    <div style="font-size:12px;color:var(--text-muted);">Sắp xếp theo Quantum Anomaly Score (giảm dần)</div>
-                </div>
-                <div class="card-body" id="anomaly-ranking"></div>
-            </div>
-
-            <div class="grid-2">
-                <div class="card">
-                    <div class="card-header">
-                        <div class="card-title">📊 Anomaly Score qua các năm</div>
-                    </div>
-                    <div class="card-body">
-                        <div class="chart-container">
-                            <canvas id="anomalyTimeChart"></canvas>
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-header">
-                        <div class="card-title">🎯 Consistency vs Anomaly Scatter</div>
-                    </div>
-                    <div class="card-body">
-                        <div class="chart-container">
-                            <canvas id="scatterChart"></canvas>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- ═══ PAGE: ALERTS ═══ -->
-        <div class="page" id="page-alerts">
-            <div class="card">
-                <div class="card-header">
-                    <div class="card-title">🔔 Lịch sử Cảnh báo</div>
-                    <div style="display:flex;gap:8px">
-                        <button class="btn btn-outline btn-sm" onclick="filterAlerts('all')" style="background:rgba(99,102,241,0.1)">Tất cả</button>
-                        <button class="btn btn-outline btn-sm" onclick="filterAlerts('critical')">🔴 Nghiêm trọng</button>
-                        <button class="btn btn-outline btn-sm" onclick="filterAlerts('warning')">🟡 Cảnh báo</button>
-                    </div>
-                </div>
-                <div class="card-body" id="all-alerts-list"></div>
-            </div>
-        </div>
-
+  <header class="header">
+    <div class="header-left">
+      <button class="header-btn menu-btn" id="menu-btn" title="Mở menu">☰</button>
+      <div>
+        <h2 id="page-title">Tổng quan</h2>
+        <div class="breadcrumb"><span>SmartAudit-Quantum</span><span class="sep">/</span><span id="breadcrumb-page">Tổng quan</span></div>
+      </div>
     </div>
+  </header>
+
+  <div class="page-content">
+    <div class="notice-banner">
+      <strong>Kết quả thử nghiệm tự động phục vụ cuộc thi — không phải kết luận kiểm toán.</strong>
+      Nhãn <span class="vbadge review">Cần xem xét</span> nghĩa là câu văn trong báo cáo thường niên chênh với số liệu
+      BCTC đã kiểm toán theo cách hệ thống hiểu; đó là tín hiệu để người xem lại, không phải cáo buộc doanh nghiệp.
+      Mọi số liệu trên trang này sinh từ pipeline chạy trên dữ liệu thật.
+    </div>
+
+    <!-- ═══ TỔNG QUAN ═══ -->
+    <section class="page active" id="page-overview">
+      <div class="kpi-grid" id="kpi-grid"></div>
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-header"><div class="card-title">Phán quyết trước và sau khi vá nền</div></div>
+          <div class="card-body">
+            <div class="chart-container"><canvas id="chart-before-after"></canvas></div>
+            <p class="note" id="before-after-note"></p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header"><div class="card-title">Cách hệ thống đi tới một phán quyết</div></div>
+          <div class="card-body flow">
+            <div class="flow-step"><b>1. Báo cáo thường niên</b><span>bóc chữ theo cột, tách câu</span></div>
+            <div class="flow-step"><b>2. Trích khẳng định</b><span>chỉ tiêu · giá trị · % · hướng · kỳ; lọc câu về công ty con, kế hoạch, chính sách…</span></div>
+            <div class="flow-step"><b>3. Neo vào Mã số TT200</b><span>tra thẳng ô trong BCTC kiểm toán, có quy đổi đơn vị tính</span></div>
+            <div class="flow-step"><b>4. Đối chiếu 3 chiều</b><span>giá trị · tỷ lệ % · hướng biến động; kiểm soát chi phí</span></div>
+            <div class="flow-step"><b>5. Phán quyết + vết minh chứng</b><span>Nhất quán · Cần xem xét · Chưa kiểm chứng được (kèm lý do)</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header"><div class="card-title">Những câu cần xem xét (toàn bộ, sắp theo doanh nghiệp)</div></div>
+        <div class="card-body" id="review-list"></div>
+      </div>
+    </section>
+
+    <!-- ═══ DOANH NGHIỆP ═══ -->
+    <section class="page" id="page-companies">
+      <div class="card">
+        <div class="card-header"><div class="card-title">Điểm nhất quán NNC theo năm</div></div>
+        <div class="card-body table-scroll">
+          <p class="note">Điểm = trung bình điểm các khẳng định kiểm chứng được (1 = khớp hoàn toàn). Ô trống: năm không có báo cáo thường niên dùng được.
+          Bấm vào một ô để xem chi tiết. Ngân hàng lập BCTC theo Thông tư 49, nằm ngoài phạm vi.</p>
+          <table class="company-table heat" id="heat-table"></table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ CHI TIẾT BÁO CÁO ═══ -->
+    <section class="page" id="page-report">
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">Chọn báo cáo</div>
+          <div class="controls">
+            <div class="select-wrapper"><select id="report-ticker"></select></div>
+            <div class="select-wrapper"><select id="report-year"></select></div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div id="report-summary"></div>
+          <div class="tabs" id="report-tabs">
+            <div class="tab active" data-filter="all">Tất cả</div>
+            <div class="tab" data-filter="mâu thuẫn">Cần xem xét</div>
+            <div class="tab" data-filter="nhất quán">Nhất quán</div>
+            <div class="tab" data-filter="không kiểm chứng được">Chưa kiểm chứng được</div>
+          </div>
+          <div id="report-claims"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ KIỂM TRA KHẲNG ĐỊNH (chạy thật trong trình duyệt) ═══ -->
+    <section class="page" id="page-check">
+      <div class="grid-1-2">
+        <div class="card">
+          <div class="card-header"><div class="card-title">Nhập một câu</div></div>
+          <div class="card-body">
+            <label class="lbl">Doanh nghiệp và năm tài chính (số liệu lấy từ BCTC hợp nhất đã kiểm toán)</label>
+            <div class="controls">
+              <div class="select-wrapper"><select id="check-ticker"></select></div>
+              <div class="select-wrapper"><select id="check-year"></select></div>
+            </div>
+            <label class="lbl" for="check-text">Câu khẳng định (tiếng Việt, như trong báo cáo thường niên)</label>
+            <textarea id="check-text" rows="4" placeholder="Ví dụ: Doanh thu thuần đạt 61.783 tỷ đồng, tăng 2,3% so với năm trước."></textarea>
+            <div class="controls">
+              <button class="btn btn-primary" id="check-run">▶ Đối chiếu</button>
+              <span id="py-status" class="py-status">Lõi Python chưa nạp</span>
+            </div>
+            <p class="note">Câu được xử lý bằng <b>đúng mã nguồn Python của pipeline</b> (trích khẳng định → đối chiếu), chạy ngay trong trình duyệt bằng Pyodide.
+              Không có server; lần đầu cần tải khoảng 10 MB.</p>
+            <div id="examples"></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header"><div class="card-title">Kết quả</div></div>
+          <div class="card-body" id="check-result">
+            <div class="empty-state"><div class="icon">✍️</div><p>Chọn doanh nghiệp, nhập câu rồi bấm Đối chiếu.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ ĐÁNH GIÁ ═══ -->
+    <section class="page" id="page-evaluation">
+      <div class="kpi-grid" id="eval-kpis"></div>
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-header"><div class="card-title">Tập chèn lỗi có kiểm soát — tỷ lệ phát hiện</div></div>
+          <div class="card-body">
+            <div class="chart-container"><canvas id="chart-injected"></canvas></div>
+            <p class="note"><b>Dữ liệu tổng hợp:</b> câu thật bị sửa có chủ đích (đổi số, đổi %, đảo hướng, câu "kiểm soát chi phí").
+              Dùng vì dữ liệu thật gần như không có mâu thuẫn thật để đo khả năng phát hiện. Không trộn với số đo trên dữ liệu thật.</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header"><div class="card-title">Đo trên dữ liệu thật — 300 cặp gán nhãn mù</div></div>
+          <div class="card-body" id="eval-real"></div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header"><div class="card-title">Giới hạn đã biết</div></div>
+        <div class="card-body" id="eval-limits"></div>
+      </div>
+    </section>
+
+    <!-- ═══ LƯỢNG TỬ ═══ -->
+    <section class="page" id="page-quantum">
+      <div class="card">
+        <div class="card-header"><div class="card-title">QKA cho bài toán khớp khoản mục khi bảng thiếu cột Mã số</div></div>
+        <div class="card-body">
+          <div class="grid-2">
+            <div><div class="chart-container"><canvas id="chart-qka"></canvas></div></div>
+            <div id="qka-text"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ GIỚI THIỆU ═══ -->
+    <section class="page" id="page-about">
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-header"><div class="card-title">Bài toán</div></div>
+          <div class="card-body prose">
+            <p>Chuẩn mực kiểm toán Việt Nam số 720 yêu cầu kiểm toán viên đọc các thông tin khác trong tài liệu có báo cáo tài chính
+              (như báo cáo thường niên) để phát hiện chỗ không nhất quán với BCTC đã kiểm toán. Với hơn 700 doanh nghiệp niêm yết,
+              việc này hiện chủ yếu làm bằng mắt.</p>
+            <p>SmartAudit-Quantum tự động đối chiếu từng câu có số liệu trong báo cáo thường niên với ô tương ứng trong BCTC,
+              theo nguyên tắc <b>thà im lặng có lý do còn hơn cáo buộc sai</b>: câu nào không chắc thì trả "chưa kiểm chứng được" kèm lý do.</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header"><div class="card-title">Dữ liệu</div></div>
+          <div class="card-body prose">
+            <p><b>Số liệu:</b> BCTC hợp nhất đã kiểm toán, văn bản OCR của bộ <i>tinixai/ocr_annual_financials</i> (HuggingFace, CC-BY-NC-4.0).</p>
+            <p><b>Ngôn từ:</b> báo cáo thường niên do doanh nghiệp công bố, tải từ Vietstock (tài liệu công bố thông tin bắt buộc).</p>
+            <p><b>Phạm vi:</b> 16 mã, 2018–2024; 3 ngân hàng (Thông tư 49) nằm ngoài phạm vi đối chiếu.</p>
+            <p><b>Khai báo dùng AI:</b> đội dùng trợ lý/tác tử AI để viết nháp mã nguồn, tài liệu, gán nhãn bạc tập đánh giá và rà soát.
+              Bài toán, kiến trúc và quyết định là của đội.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
 </main>
 </div>
-
-<script src="data.js"></script>
 <script src="app.js"></script>
 </body>
 </html>

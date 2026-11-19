@@ -1,0 +1,422 @@
+# Ontology khoản mục theo Thông tư 200/2014/TT-BTC
+#
+# SINH TỰ ĐỘNG bởi scripts/build_ontology.py — đừng sửa tay.
+# Danh sách alias rút từ chính corpus báo cáo tài chính đã tải,
+# nên phản ánh đúng các biến thể tên mà parser sẽ gặp khi chạy thật.
+#
+# Nguồn: 337 báo cáo của 16 mã chứng khoán, 2015-2025.
+
+revenue_gross:
+  statement: income_statement
+  code: '01'
+  coverage: 0.727   # tỷ lệ báo cáo tìm thấy mã này
+  aliases:
+    - '1. Doanh thu bán hàng và cung cấp dịch vụ'   # 114 lần
+    - 'Doanh thu bán hàng và cung cấp dịch vụ'   # 114 lần
+    - 'Doanh thu cung cấp dịch vụ'   # 10 lần
+    - 'Doanh thu bán hàng'   # 3 lần
+    - '1. Doanh thu về bán hàng và cung cấp dịch vụ'   # 3 lần
+    - 'Tổng doanh thu'   # 2 lần
+    - '1. Doanh thu bàn hàng và cung cấp dịch vụ'   # 2 lần
+    - 'Gross revenue from services rendered'   # 1 lần
+
+revenue_deductions:
+  statement: income_statement
+  code: '02'
+  coverage: 0.401   # tỷ lệ báo cáo tìm thấy mã này
+  aliases:
+    - 'Các khoản giảm trừ doanh thu'   # 77 lần
+    - '2. Các khoản giảm trừ doanh thu'   # 55 lần
+    - 'Deductions'   # 1 lần
+    - '2. Các khoản giám trừ doanh thu'   # 1 lần
+    - 'Khẩu hao lãi sản cố định hữu hình, tai sử cố định lưu tài chính bất động sản đầu tư và nao mon tai sản cố định và hình'   # 1 lần
+    - 'Các khoản giám trừ doanh thu'   # 1 lần
+
+revenue_net:
+  statement: income_statement
+  code: '10'
+  coverage: 0.671   # tỷ lệ báo cáo tìm thấy mã này
+  aliases:
+    - '3. Doanh thu thuần về bán hàng và cung cấp dịch vụ'   # 91 lần
+    - 'Doanh thu thuần về bán hàng và cung cấp dịch vụ'   # 80 lần
+    - '3. Doanh thu thuần bán hàng và cung cấp dịch vụ'   # 12 lần
+    - 'Doanh thu thuần'   # 11 lần
+    - 'Doanh thu thuần về cung cấp dịch vụ'   # 6 lần
+    - '2. Doanh thu thuần về bán hàng và cung cấp dịch vụ'   # 6 lần
+    - 'Doanh thu thuần về bán hàng vàcung cấp dịch vụ'   # 4 lần
+    - '3. Doanh thu thuần về bản hàng và cung cấp dịch vụ'   # 3 lần
+
+cost_of_goods_sold:
+  statement: income_statement
+  code: '11'
+  coverage: 0.748   # tỷ lệ báo cáo tìm thấy mã này
+  aliases:
+    - '4. Giá vốn hàng bán và dịch vụ cung cấp'   # 86 lần
+    - 'Giá vốn hàng bán và dịch vụ cung cấp'   # 65 lần
+    - 'Giá vốn hàng bán'   # 34 lần
+    - 'Giá vốn hàng bán và cung cấp dịch vụ'   # 22 lần
+    - '4. Giá vốn hàng bán'   # 15 lần
+    - 'Giá vốn dịch vụ cung cấp'   # 9 lần
+    - '3. Giá vốn hàng bán và dịch vụ cung cấp'   # 5 lần
+    - '4. Giá vốn hàng bán và cung cấp dịch vụ'   # 4 lần
+
+gross_profit:
+  statement: income_statement
+  code: '20'
+  coverage: 0.742   # tỷ lệ báo cáo tìm thấy mã này
+  aliases:
+    - '5. Lợi nhuận gộp về bán hàng và cung cấp dịch vụ'   # 100 lần
+    - 'Lợi nhuận gộp'   # 61 lần
+    - 'Lợi nhuận gộp về bán hàng và cung cấp dịch vụ'   # 59 lần
+    - 'Lợi nhuận gộp về cung cấp dịch vụ'   # 6 lần
+    - '4. Lợi nhuận gộp về bán hàng và cung cấp dịch vụ'   # 6 lần
+    - '5. Lợi nhuận góp về bán hàng và cung cấp dịch vụ'   # 4 lần
+    - '5. Lợi nhuận gộp về bản hàng và cung cấp dịch vụ'   # 3 lần
+    - 'Lợi nhuận gộp về bán hàng và cung cấpdịch vụ'   # 3 lần
+
+financial_income:
+  statement: income_statement
+  code: '21'
+  coverage: 0.807   # tỷ lệ báo cáo tìm thấy mã này
+  aliases:
+    - 'Doanh thu hoạt động tài chính'   # 140 lần
+    - '6. Doanh thu hoạt động tài chính'   # 110 lần
+    - '1. Doanh thu hoạt động tài chính'   # 11 lần
+    - '5. Doanh thu hoạt động tài chính'   # 6 lần
+    - '4. Doanh thu hoạt động tài chính'   # 3 lần
+    - '3,189,254,995,222'   # 1 lần
+    - '5. Financial income'   # 1 lần
+    - 'Doanh thu hoạt động tải chính'   # 1 lần
+
+financial_expense:
+  statement: income_statement
+  code: '22'
+  coverage: 0.816   # tỷ lệ báo cáo tìm thấy mã này
+  aliases:
+    - 'Chi phí tài chính'   # 131 lần
+    - '7. Chi phí tài chính'   # 59 lần
+    - '7. Chi phí tài chính- Trong đó: Chi phí lãi vay'   # 12 lần
+    - '7. Chi phí tài chính Trong đó: Chi phí lãi vay'   # 9 lần
+    - '7. Chi phí tài chính Trong đó: Chi phí lãi vay và phát hành trái phiếu'   # 9 lần
+    - '7. Chỉ phí tài chính'   # 7 lần
+    - '2. Chi phí tài chính'   # 6 lần
+    - 'Chỉ phí tài chính'   # 5 lần
+
+interest_expense:
+  statement: income_statement
+  code: '23'
+  coverage: 0.688   # tỷ lệ báo cáo tìm thấy mã này
+  aliases:
+    - 'Trong đó: Chi phí lãi vay'   # 95 lần
+    - '- Trong đó: Chi phí lãi vay'   # 87 lần
+    - 'Trong đó: chi phí lãi vay'   # 10 lần
+    - '- Trong đó: Chỉ phí lãi vay'   # 9 lần
+    - 'Trong đó: Chi phí đi vay'   # 9 lần
+    - 'Tổng chi phí thuế thu nhập doanh nghiệp'   # 6 lần
+    - 'Thu nhập lãi và các khoản thu nhập tương tự'   # 5 lần
+    - 'Chi phí lãi vay và chi phí phát hành'   # 3 lần
+
+selling_expense:
+  statement: income_statement
+  code: '25'
+  coverage: 0.783   # tỷ lệ báo cáo tìm thấy mã này
+  aliases:
+    - 'Chi phí bán hàng'   # 104 lần
+    - '9. Chi phí bán hàng'   # 54 lần
+    - '8. Chi phí bán hàng'   # 38 lần
+    - 'Thu nhập lãi và các khoản thu nhập tương tự'   # 15 lần
+    - 'Chi phí bán hàng và quản lý doanh nghiệp'   # 9 lần
+    - 'Lãi thuần từ hoạt động dịch vụ'   # 8 lần
+    - '9. Chỉ phí bán hàng'   # 6 lần
+    - '8. Chỉ phí bán hàng'   # 5 lần
+
+admin_expense:
+  statement: income_statement
+  code: '26'
+  coverage: 0.899   # tỷ lệ báo cáo tìm thấy mã này
+  aliases:
+    - 'Chi phí quản lý doanh nghiệp'   # 127 lần
+    - '10. Chi phí quản lý doanh nghiệp'   # 56 lần
+    - '9. Chi phí quản lý doanh nghiệp'   # 39 lần
+    - 'Lãi thuần từ hoạt động dịch vụ'   # 11 lần
+    - '3. Chi phí quản lý doanh nghiệp'   # 9 lần
+    - 'Lãi thuần từ hoạt động kinh doanh ngoại hối'   # 7 lần
+    - 'Chi phí lãi và các chi phí tương tự'   # 7 lần
+    - 'Chi phí lãi và các khoản chi phí tương tự'   # 7 lần
+
+operating_profit:
+  statement: income_statement
+  code: '30'
+  coverage: 0.964   # tỷ lệ báo cáo tìm thấy mã này
+  aliases:
+    - 'Lợi nhuận thuần từ hoạt động kinh doanh'   # 59 lần
+    - '11. Lợi nhuận thuần từ hoạt động kinh doanh'   # 43 lần
+    - '10. Lợi nhuận thuần từ hoạt động kinh doanh'   # 34 lần
+    - 'Lợi nhuận thuần từ hoạt động kinh doanh {30 = 20 + (21 - 22) + 24 - (25 + 26)}'   # 23 lần
+    - 'Lãi thuần từ mua bán chứng khoán đầu tư'   # 14 lần
+    - '11. Lợi nhuận thuần từ hoạt động kinh doanh (30=20+(21-22)+24-(25+26))'   # 12 lần
+    - 'Lợi nhuận thuần từ hoạt động kinh doanh{30 = 20 + (21 - 22) + 24 - (25 + 26)}'   # 12 lần
+    - 'Lợi nhuận thuần từ hoạt động kinh doanh {30 = 20 + (21 - 22) - (25 + 26)}'   # 12 lần
+
+profit_before_tax:
+  statement: income_statement
+  code: '50'
+  coverage: 0.807   # tỷ lệ báo cáo tìm thấy mã này
+  aliases:
+    - 'Lợi nhuận kế toán trước thuế'   # 81 lần
+    - '15. Tổng lợi nhuận kế toán trước thuế'   # 43 lần
+    - 'Tổng lợi nhuận kế toán trước thuế'   # 38 lần
+    - '14. Tổng lợi nhuận kế toán trước thuế'   # 33 lần
+    - '14. Tổng lợi nhuận trước thuế'   # 8 lần
+    - '13. Tổng lợi nhuận kế toán trước thuế'   # 7 lần
+    - '15. Tổng lợi nhuận trước thuế'   # 5 lần
+    - '15. Lợi nhuận kế toán trước thuế'   # 3 lần
+
+current_tax_expense:
+  statement: income_statement
+  code: '51'
+  coverage: 0.792   # tỷ lệ báo cáo tìm thấy mã này
+  aliases:
+    - 'Chi phí thuế TNDN hiện hành'   # 91 lần
+    - '16. Chi phí thuế TNDN hiện hành'   # 40 lần
+    - '15. Chi phí thuế TNDN hiện hành'   # 27 lần
+    - 'Chi phí thuế thu nhập doanh nghiệp hiện hành'   # 15 lần
+    - '16. Chi phí thuế thu nhập doanh nghiệp hiện hành'   # 12 lần
+    - '15. Chi phí thuế thu nhập doanh nghiệp hiện hành'   # 10 lần
+    - 'Chi phí thuế thu nhập doanh nghiệp (“TNDN”) hiện hành'   # 9 lần
+    - 'Chỉ phí thuế thu nhập doanh nghiệp hiện hành'   # 5 lần
+
+profit_after_tax:
+  statement: income_statement
+  code: '60'
+  coverage: 0.804   # tỷ lệ báo cáo tìm thấy mã này
+  aliases:
+    - 'Lợi nhuận sau thuế TNDN'   # 69 lần
+    - '18. Lợi nhuận sau thuế TNDN'   # 36 lần
+    - '17. Lợi nhuận sau thuế TNDN'   # 30 lần
+    - '18. Lợi nhuận sau thuế thu nhập doanh nghiệp'   # 18 lần
+    - 'Lợi nhuận sau thuế thu nhập doanh nghiệp'   # 17 lần
+    - 'Lợi nhuận sau thuế TNDN (60 = 50 - 51 - 52) (mang sang từ trang trước)'   # 15 lần
+    - 'Lợi nhuận sau thuế TNDN (mang sang trang sau)'   # 10 lần
+    - '16. Lợi nhuận sau thuế thu nhập doanh nghiệp'   # 9 lần
+
+eps:
+  statement: income_statement
+  code: '70'
+  coverage: 0.436   # tỷ lệ báo cáo tìm thấy mã này
+  aliases:
+    - 'Lãi cơ bản trên cổ phiếu'   # 65 lần
+    - '21. Lãi cơ bản trên cổ phiếu'   # 37 lần
+    - '19. Lãi cơ bản trên cổ phiếu'   # 10 lần
+    - 'Lãi cơ bản trên cổ phiếu (VND)'   # 9 lần
+    - '21. Lãi cơ bản trên cổ phiếu (VND)'   # 6 lần
+    - '20. Lãi cơ bản trên cổ phiếu'   # 4 lần
+    - '17. Lãi cơ bản trên cổ phiếu'   # 2 lần
+    - '18 Lãi cơ bản trên cổ phiếu'   # 2 lần
+
+current_assets:
+  statement: balance_sheet
+  code: '100'
+  coverage: 0.804   # tỷ lệ báo cáo tìm thấy mã này
+  aliases:
+    - 'A. TÀI SẢN NGẮN HẠN'   # 59 lần
+    - 'Tài sản ngắn hạn'   # 51 lần
+    - 'A. TÀI SẢN NGĂN HẠN'   # 45 lần
+    - 'TÀI SẢN NGĂN HẠN'   # 27 lần
+    - 'TÀI SẢN NGẮN HẠN'   # 22 lần
+    - 'Tài sản ngắn hạn(\( 100 = 110 + 120 + 130 + 140 + 150 \))'   # 20 lần
+    - 'Tài sản ngắn hạn\( (100 = 110 + 120 + 130 + 140 + 150) \)'   # 14 lần
+    - 'TÀI SẢN NGÂN HẠN'   # 9 lần
+
+cash_and_equivalents:
+  statement: balance_sheet
+  code: '110'
+  coverage: 0.810   # tỷ lệ báo cáo tìm thấy mã này
+  aliases:
+    - 'Tiền và các khoản tương đương tiền'   # 148 lần
+    - 'I. Tiền và các khoản tương đương tiền'   # 85 lần
+    - 'I. Tiền'   # 32 lần
+    - 'I. Tiến và các khoản tương đương tiền'   # 2 lần
+    - 'I. Tiên và các khoản tương đương tiền'   # 1 lần
+    - 'Cash and cash equivalents'   # 1 lần
+    - 'I. Cash and cash equivalents'   # 1 lần
+    - 'Tần và các khoản tương đương tiền'   # 1 lần
+
+receivables_short_term:
+  statement: balance_sheet
+  code: '130'
+  coverage: 0.807   # tỷ lệ báo cáo tìm thấy mã này
+  aliases:
+    - 'Các khoản phải thu ngắn hạn'   # 151 lần
+    - 'III. Các khoản phải thu ngắn hạn'   # 88 lần
+    - 'II. Các khoản phải thu ngắn hạn'   # 33 lần
+
+inventories:
+  statement: balance_sheet
+  code: '140'
+  coverage: 0.742   # tỷ lệ báo cáo tìm thấy mã này
+  aliases:
+    - 'Hàng tồn kho'   # 135 lần
+    - 'IV. Hàng tồn kho'   # 84 lần
+    - 'III. Hàng tồn kho'   # 26 lần
+    - 'Hàng tôn kho'   # 5 lần
+    - '3,666,069,027,467'   # 1 lần
+
+non_current_assets:
+  statement: balance_sheet
+  code: '200'
+  coverage: 0.810   # tỷ lệ báo cáo tìm thấy mã này
+  aliases:
+    - 'B. TÀI SẢN DÀI HẠN'   # 121 lần
+    - 'Tài sản dài hạn'   # 76 lần
+    - 'TÀI SẢN DÀI HẠN'   # 60 lần
+    - 'Tài sản dài hạn(\( 200 = 210 + 220 + 230 + 240 + 250 + 260 \))'   # 7 lần
+    - 'Tài sản dài hạn(\( 200 = 210 + 220 + 240 + 250 + 260 \))'   # 2 lần
+    - 'Tài sản dài hạn\( (200 = 210 + 220 + 240 + 250 + 260) \)'   # 2 lần
+    - 'TÀI SẢN DẢI HẠN'   # 1 lần
+    - 'Tải sản dài hạn\( (200 = 210 + 220 + 230 + 240 + 250 + 260) \)'   # 1 lần
+
+total_assets:
+  statement: balance_sheet
+  code: '270'
+  coverage: 0.810   # tỷ lệ báo cáo tìm thấy mã này
+  aliases:
+    - 'TỔNG CỘNG TÀI SẢN'   # 175 lần
+    - 'TỔNG TÀI SẢN'   # 76 lần
+    - 'TỔNG TÀI SẢN (\( 270 = 100 + 200 \))'   # 7 lần
+    - 'TỔNG CÔNG TÀI SẢN'   # 6 lần
+    - 'TỔNG TẢI SẢN (\( 270 = 100 + 200 \))'   # 2 lần
+    - 'TỔNG CỘNG TÀI SẢN(\( 270 = 100 + 200 \))'   # 2 lần
+    - 'TỔNG CỘNG TÀI SẢN\( (270 = 100 + 200) \)'   # 2 lần
+    - 'TỔNG TẢI SẢN'   # 1 lần
+
+total_liabilities:
+  statement: balance_sheet
+  code: '300'
+  coverage: 0.807   # tỷ lệ báo cáo tìm thấy mã này
+  aliases:
+    - 'NỘ PHẢI TRẢ'   # 137 lần
+    - 'C. NỘ PHẢI TRẢ'   # 100 lần
+    - 'C. NỘ PHẢI TRÀ'   # 10 lần
+    - 'NỘ PHẢI TRÀ'   # 8 lần
+    - 'A. NỘ PHẢI TRẢ'   # 6 lần
+    - 'Nợ PHẢI TRẢ'   # 3 lần
+    - 'NỘ PHÁI TRẢ'   # 2 lần
+    - 'C. NỘ PHẢI TRÁ'   # 2 lần
+
+current_liabilities:
+  statement: balance_sheet
+  code: '310'
+  coverage: 0.807   # tỷ lệ báo cáo tìm thấy mã này
+  aliases:
+    - 'Nợ ngắn hạn'   # 151 lần
+    - 'I. Nợ ngắn hạn'   # 120 lần
+    - 'Ng ngắn hạn'   # 1 lần
+
+non_current_liabilities:
+  statement: balance_sheet
+  code: '330'
+  coverage: 0.742   # tỷ lệ báo cáo tìm thấy mã này
+  aliases:
+    - 'Nợ dài hạn'   # 136 lần
+    - 'II. Nợ dài hạn'   # 111 lần
+    - 'II. Nợ ngắn hạn'   # 2 lần
+    - 'II.Nợ dài hạn'   # 1 lần
+
+owners_equity:
+  statement: balance_sheet
+  code: '400'
+  coverage: 0.807   # tỷ lệ báo cáo tìm thấy mã này
+  aliases:
+    - 'VỐN CHỦ SỞ HỮU'   # 142 lần
+    - 'D. VỐN CHỦ SỞ HỮU'   # 111 lần
+    - 'VỐN CHỦ SỐ HỮU'   # 8 lần
+    - 'B. VỐN CHỦ SỞ HỮU'   # 6 lần
+    - 'D. VỐN CHỦ SỐ HỮU'   # 2 lần
+    - 'D. VỐN CHỦ SỞ HỮ&#x27;U'   # 1 lần
+    - 'D. VÔN CHỦ SỞ HỮU'   # 1 lần
+    - 'D. VÔN CHỦ SỐ HỮU'   # 1 lần
+
+total_resources:
+  statement: balance_sheet
+  code: '440'
+  coverage: 0.754   # tỷ lệ báo cáo tìm thấy mã này
+  aliases:
+    - 'TỔNG CỘNG NGUỒN VỐN'   # 152 lần
+    - 'TỔNG NGUỒN VỐN'   # 83 lần
+    - 'TỔNG CÔNG NGUỒN VỐN'   # 9 lần
+    - 'TỔNG CỘNG NGUỐN VỐN'   # 2 lần
+    - 'TỔNG CỔNG NGUỒN VỐN'   # 2 lần
+    - 'TỔNG CỘNG TY KHI VIỆT NAM CỔ PHÁN HINHA BE TR HOCKH MNH'   # 1 lần
+    - 'TỔNG CỘNG NGUỒN VÔN'   # 1 lần
+    - '52.876.577.955.35'   # 1 lần
+
+cash_flow_operating:
+  statement: cash_flow
+  code: '20'
+  coverage: 0.822   # tỷ lệ báo cáo tìm thấy mã này
+  aliases:
+    - 'Lưu chuyển tiền thuần từ hoạt động kinh doanh'   # 180 lần
+    - 'Lưu chuyển tiền thuần sử dụng vào hoạt động kinh doanh'   # 23 lần
+    - 'Lưu chuyển tiền thuần từ hoạt độngkinh doanh'   # 11 lần
+    - 'Lưu chuyển tiền thuần (sử dụng vào)/từ hoạt động kinh doanh'   # 11 lần
+    - 'Lưu chuyển tiền thuần từ/(sử dụng vào) hoạt động kinh doanh'   # 7 lần
+    - 'Lưu chuyển tiên thuần từ hoạt động kinh doanh'   # 5 lần
+    - 'Lưu chuyển tiền thuần từ các hoạt động kinh doanh'   # 5 lần
+    - 'Lưu chuyển tiền thuần tử/(sử dụng vào) hoạt động kinh doanh'   # 5 lần
+
+cash_flow_investing:
+  statement: cash_flow
+  code: '30'
+  coverage: 0.816   # tỷ lệ báo cáo tìm thấy mã này
+  aliases:
+    - 'Lưu chuyển tiền thuần từ hoạt động đầu tư'   # 161 lần
+    - 'Lưu chuyển tiền thuần sử dụng vào hoạt động đầu tư'   # 47 lần
+    - 'Lưu chuyển tiền thuần từ các hoạt động đầu tư'   # 9 lần
+    - 'Lưu chuyển tiền thuần (sử dụng vào)/từ hoạt động đầu tư'   # 8 lần
+    - 'Lưu chuyển tiền thuần từ/(sử dụng vào) hoạt động đầu tư'   # 7 lần
+    - 'Lưu chuyển tiền thuần từ (sử dụng vào) hoạt động đầu tư'   # 6 lần
+    - 'Lưu chuyển tiền thuần từ hoạt độngđầu tư'   # 5 lần
+    - 'Lưu chuyển tiên thuần từ hoạt động đầu tư'   # 4 lần
+
+cash_flow_financing:
+  statement: cash_flow
+  code: '40'
+  coverage: 0.804   # tỷ lệ báo cáo tìm thấy mã này
+  aliases:
+    - 'Lưu chuyển tiền thuần từ hoạt động tài chính'   # 191 lần
+    - 'Lưu chuyển tiền thuần sử dụng vào hoạt động tài chính'   # 19 lần
+    - 'Lưu chuyển tiền thuần (sử dụng vào)/từ hoạt động tài chính'   # 10 lần
+    - 'Lưu chuyển tiền thuần từ/(sử dụng vào) hoạt động tài chính'   # 10 lần
+    - 'Lưu chuyển thuần từ hoạt động tài chính'   # 7 lần
+    - 'Lưu chuyển tiền thuần từ các hoạt động tài chính'   # 7 lần
+    - 'Lưu chuyển tiền thuần từ hoạt độngtài chính'   # 7 lần
+    - 'Lưu chuyển tiền thuần (sử dụng vào) từ hoạt động tài chính'   # 5 lần
+
+cash_flow_net:
+  statement: cash_flow
+  code: '50'
+  coverage: 0.801   # tỷ lệ báo cáo tìm thấy mã này
+  aliases:
+    - 'Lưu chuyển tiền thuần trong năm'   # 181 lần
+    - 'Lưu chuyển tiền thuần trong năm\( (50 = 20 + 30 + 40) \)'   # 52 lần
+    - 'Lưu chuyển tiền thuần trong năm (\( 50 = 20 + 30 + 40 \))'   # 12 lần
+    - 'Lưu chuyển tiền và tương đương tiền thuần trong năm'   # 7 lần
+    - 'Tăng tiền và tương đương tiền thuần trong năm'   # 3 lần
+    - 'Lưu chuyển tiên thuần trong năm'   # 2 lần
+    - 'Lưu chuyển tiền thuần trong năm \( (50 = 20 + 30 + 40) \)'   # 2 lần
+    - 'Lưu chuyển tiền thuần trong năm(\( 50 = 20 + 30 + 40 \))'   # 2 lần
+
+cash_end_of_period:
+  statement: cash_flow
+  code: '70'
+  coverage: 0.804   # tỷ lệ báo cáo tìm thấy mã này
+  aliases:
+    - 'Tiền và tương đương tiền cuối năm'   # 134 lần
+    - 'Tiền cuối năm'   # 33 lần
+    - 'Tiền và các khoản tương đương tiền cuối năm'   # 24 lần
+    - 'Tiền và các khoản tương đương tiền cuối năm \( (70 = 50 + 60 + 61) \)'   # 22 lần
+    - 'Tiền và các khoản tương đương tiền cuối năm(\( 70 = 50 + 60 + 61 \))'   # 6 lần
+    - 'Tiền và các khoản tương đương tiền cuối năm \( (70 = 50 + 60 + 61 + 62) \)'   # 6 lần
+    - 'Tiền và các khoản tương đương tiền cuối năm (\( 70 = 50 + 60 + 61 \))'   # 5 lần
+    - 'Tiền và các khoản tương đương tiền cuối năm \( (70 = 50 + 60 + 61) \) (Thuyết minh 4)'   # 5 lần

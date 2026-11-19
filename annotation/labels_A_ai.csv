@@ -1,0 +1,301 @@
+﻿id,la_khang_dinh,chi_tieu_dung,nhan,ghi_chu,do_tin_cay
+NN-001,K,?,KKC,"Chỉ nói chuỗi WinMart+ (WMP), một mảng của MSN",cao
+NN-002,K,?,KKC,"Mục đơn vị thành viên Angkormilk (Campuchia); hợp nhất Mã 10 chỉ +2,34%",cao
+NN-003,K,?,KKC,"Cơ cấu doanh thu theo mảng (bò, hàng hóa), trộn cột",cao
+NN-004,K,?,KKC,Chỉ nói mảng trái cây,cao
+NN-005,K,?,KKC,Mảnh biểu đồ cơ cấu doanh thu + mảng trái cây,cao
+NN-006,K,?,KKC,Chỉ nói mảng viễn thông/truyền hình trả tiền,cao
+NN-007,C,K,KKC,"Câu nói ROE, sheet đưa VCSH. Tự tính: Mã 60 / VCSH bình quân = 9.427,4/32.830,3 = 28,7% (cty mẹ 7.856,8/27.384,2 = 28,7%); 28,5% lệch 0,2 điểm, ROE không có định nghĩa chuẩn trên BCTC",tb
+NN-008,K,?,KKC,Chỉ nói mảng trái cây,cao
+NN-009,C,K,MT,"Trộn cột nhưng chủ ngữ-số còn nguyên (""toàn Tổng công ty ... doanh thu 12.965 tỷ, lợi nhuận 396 tỷ""; BCTN tr.khác ghi ""tổng doanh thu, thu nhập""). BCTC: 10+21+31 = 12.703,8+351,4+22,1 = 13.077,2 (lệch -0,9%); Mã 10 = 12.703,8; Mã 01 = 12.709,8 - không cách nào ra 12.965. LNST Mã 60 = 396,4 khớp. Cần phân xử",tb
+NN-010,K,?,KKC,Chỉ nói Vinmec (công ty con),cao
+NN-011,C,K,NQ,"Trộn cột, các vế còn nguyên. Sheet đưa VCSH. LCTT Mã 20: 12.277,6/26.720,9 = -54,05% ✓; nợ vay (320+338) 57.900,3/96.112,9 = 0,60 ✓; vay ròng (trừ Mã 110, 120) 23.307,5/96.112,9 = 0,24 ✓",tb
+NN-012,K,?,KKC,"Nói thị trường/ngành hàng chăm sóc gia đình, không phải kết quả DN",cao
+NN-013,K,?,KKC,"Nhiệm vụ kế hoạch 2019 (so với 2018), không phải kết quả",cao
+NN-014,C,C,NQ,"Số nổi bật (callout) LNTT 5.043 tỷ; Mã 50 = 5.042,6 ✓",tb
+NN-015,K,?,KKC,"Rác trộn cột về mô hình điểm bán, không có khẳng định số liệu DN",cao
+NN-016,C,C,NQ,"Mã 60 = 4.101,7 ✓; 4.101,7/4.901,4 = -16,3% ✓",cao
+NN-017,C,C,NQ,"Mã 10 +19,44% ✓; Mã 50 11.069,7/9.203,0 = +20,28% ✓",cao
+NN-018,K,?,KKC,"Doanh số bán hàng bất động sản (Vinhomes), không phải doanh thu BCTC",cao
+NN-019,C,K,KKC,"Câu nói thành phẩm+hàng hóa và vòng quay, sheet đưa tổng HTK. TM HTK: TP+HH thuần 8.316,8 vs 11.273,9 = -26,2% (giá gốc -30,3%), không ra đúng 25%; vòng quay phụ thuộc định nghĩa (bình quân hay cuối kỳ)",tb
+NN-020,C,C,NQ,"Mã 300: 18.324,5 < 20.453,3 (giảm) ✓; Mã 400 +8,54% ✓",cao
+NN-021,K,?,KKC,Chỉ nói chuỗi An Khang,cao
+NN-022,K,?,KKC,"Nói địa bàn đơn vị thành viên, không có khẳng định số",cao
+NN-023,K,?,KKC,Nói Phúc Long (công ty liên kết/con),cao
+NN-024,K,?,KKC,"Trộn cột, câu cụt (""đặc biệt tổng doanh thu"" bị cắt); ""hầu hết các chỉ tiêu"" gồm cả chỉ tiêu phi tài chính",tb
+NN-025,C,K,NQ,"Phần lớn là rác biểu đồ; vế kiểm được ""Tài sản dài hạn tăng"": Mã 200 105.066,1 vs 89.820,8 ✓. Sheet đưa vòng quay HTK",tb
+NN-026,C,C,NQ,"Mã 270: 30.969,4 ✓; tăng 11.359,4 tỷ ✓; +57,93% ✓",cao
+NN-027,K,?,KKC,Chính sách kế toán (dự phòng đầu tư),cao
+NN-028,C,C,NQ,"""6 tháng cuối năm"" nhưng BCTC POW 2018 chính là kỳ 01/7-31/12/2018 (sau cổ phần hóa) nên kiểm được: Mã 50 = 655,1 ✓",tb
+NN-029,K,?,KKC,"Nói cơ cấu tài sản ""những năm gần đây"" (nhiều năm); 2019 TSNH/TTS = 4.153/8.315 ≈ 50% nếu cần",tb
+NN-030,K,?,KKC,Chỉ nói khối Công nghệ,cao
+NN-031,K,?,KKC,"Trộn cột, câu cụt (cơ cấu tài sản ""cũng thay đổi""), xen số công ty mẹ",tb
+NN-032,K,?,KKC,Nói địa bàn đơn vị thành viên,cao
+NN-033,K,?,KKC,"Mảnh infographic, nhãn và số bị xáo (sản lượng, tổng DT, LNTT, nộp NS, % kế hoạch)",tb
+NN-034,K,?,KKC,Chỉ nói mảng hàng hóa,cao
+NN-035,C,K,NQ,"Câu nói biên LN ròng, sheet đưa LNST. Mã 60/Mã 10: 710,0/10.088,9 = 7,04% ✓; 2023: 181,6/7.693,8 = 2,36% ✓",cao
+NN-036,C,K,NQ,"Trộn cột (số ""1"" bị tách). Sheet đưa VCSH. NPT/VCSH: 74.222,6/96.112,9 = 0,77 (2021: 0,96) - giảm, dưới 1 ✓",tb
+NN-037,K,?,KKC,Chỉ nói mảng ớt,cao
+NN-038,K,?,KKC,"Mục rủi ro lãi suất, trộn cột với câu giả định",tb
+NN-039,C,K,NQ,"Câu dùng HTK bình quân: Mã 11 / bình quân Mã 140 = 28.308,0/((1.795,1+2.167,4)/2) = 14,29 ✓, tăng ✓. Sheet tính trên HTK cuối kỳ (15,77) nên sai định nghĩa",cao
+NN-040,K,?,KKC,Chỉ nói chuỗi Bách Hóa Xanh,cao
+NN-041,K,?,KKC,Chỉ nói mảng dịch vụ khác,cao
+NN-042,K,?,KKC,Nói cơ cấu doanh thu khối Công nghệ,cao
+NN-043,K,?,KKC,"Lịch sử năm 2014-2015, không phải năm báo cáo",cao
+NN-044,K,?,KKC,"Cơ hội ngành, không phải kết quả",cao
+NN-045,K,?,KKC,"Nói nhóm đơn vị thành viên (số vài tỷ đồng), không phải hợp nhất",tb
+NN-046,K,?,KKC,Chính sách kế toán HTK,cao
+NN-047,K,?,KKC,Chỉ nói mảng hàng hóa,cao
+NN-048,K,?,KKC,Mô tả sản phẩm VinHMS,cao
+NN-049,K,?,KKC,Chỉ nói mảng dịch vụ khác,cao
+NN-050,C,K,MT,"Sheet đưa VCSH. Vay (320+338)/VCSH = 65.381,0/102.836,4 = 0,64 ✓ tăng ✓; vay ròng (trừ 110,120) 30.951,7/102.836,4 = 0,30 ✓; nhưng NPT/VCSH 84.946,2/102.836,4 = 0,83 TĂNG từ 0,77 (câu ghi ""giảm dưới mức 1"", có vẻ chép từ BCTN 2022). Sai hướng một vế - cần phân xử",tb
+NN-051,K,?,KKC,Nói mảng trái cây (vườn cây ở Lào ngập lụt),cao
+NN-052,K,?,KKC,Chỉ nói Vinmec,cao
+NN-053,C,K,NQ,"Trộn cột, vế còn nguyên: ""Tổng LN hợp nhất trước thuế 40.848 tỷ, giảm nhẹ 6%"". Sheet đưa DTT. Mã 50 (triệu đồng) 40.847.949 ✓; /43.310.285 = -5,69% ✓",tb
+NN-054,C,C,NQ,"Mã 270 -3,81% ✓. ""Nợ"" = vay (320+338) 12.382,2: /TTS 51.650,4 = 23,97% ✓; /VCSH 25.356,1 = 48,8% ✓; 2021 là 37,4% nên giảm ✓",cao
+NN-055,K,?,KKC,"Nói chuỗi Giấc Mơ Sữa Việt, số cửa hàng, kênh online",cao
+NN-056,K,?,KKC,"Doanh thu ký mới mảng Dịch vụ CNTT trong nước (bộ phận, phi BCTC)",cao
+NN-057,C,C,NQ,"Trộn cột; câu thật: ""doanh thu thuần tăng 14,8% so với năm 2020"". Mã 10 +14,78% ✓",tb
+NN-058,C,C,NQ,"Mã 270 187.782,6, +10,24% ✓; vế ""gấp bốn lần so với 2017"" không kiểm được bằng BCTC năm nay",tb
+NN-059,K,?,KKC,Chỉ nói mảng heo,cao
+NN-060,C,K,NQ,"Trộn cột. Câu nói ROA, sheet đưa LNST. ROA = Mã 60 / Mã 270 cuối kỳ: 8.444,4/170.335,5 = 4,96% ≈ 5% ✓; 2021: 34.521,0/178.236,4 = 19,4% ✓; giảm ✓",tb
+NN-061,C,K,NQ,"Trộn cột. Thuyết minh doanh thu: cho thuê và dịch vụ liên quan 1.340.413 tr ✓; /1.200.847 = +11,6% ≈ 12% ✓. Sheet đưa DTT",tb
+NN-062,C,C,NQ,"Mã 25: 58.053 vs 92.716 = -37,39% ✓ (ngoặc là quy ước trình bày)",cao
+NN-063,K,?,KKC,"Biện pháp quản trị rủi ro, chủ trương",cao
+NN-064,C,C,NQ,"Mã 140: 1.434,0 ✓, +88,8% ≈ 89% ✓; Mã 100: 4.152,9 ✓, +31,84% ✓",cao
+NN-065,C,C,NQ,"Mã 60 = 10.632,5 ✓; vế % kế hoạch không kiểm được",cao
+NN-066,C,C,KKC,"Chỉ có % hoàn thành kế hoạch (74,6% DT, 80,3% LN); BCTC không có số kế hoạch",tb
+NN-067,C,K,NQ,"Biên LN ròng tính trên LNST cty mẹ: Mã 61/Mã 10 = 31.801.258/102.323.186 = 31,08% ✓. Sheet dùng Mã 60 (34,28%)",cao
+NN-068,K,?,KKC,Chính sách kế toán dự phòng HTK,cao
+NN-069,K,?,KKC,Mảnh bảng nhiều năm 2019-2023 + câu nói năm 2022,tb
+NN-070,C,K,NQ,"Câu định tính có neo số (ví dụ #7 hướng dẫn): (Mã 25+26)/Mã 10 = 23,8% (2021) vs 25,8% (2020) ✓. Sheet đưa biên LN ròng",cao
+NN-071,K,?,KKC,Chỉ nói mảng dịch vụ khác,cao
+NN-072,K,?,KKC,Chính sách kế toán HTK,cao
+NN-073,K,?,KKC,Nói công ty con An Khang Pharma,cao
+NN-074,K,?,KKC,Nói Vinhomes (công ty con) và VinFast,cao
+NN-075,K,?,KKC,Chỉ nói mảng heo,cao
+NN-076,K,?,KKC,Giải thích nguyên nhân năm 2021 (năm khác năm báo cáo),cao
+NN-077,K,?,KKC,Nói 5 cửa hàng thí điểm CVLife,cao
+NN-078,K,?,KKC,Cơ hội vĩ mô/ngành,cao
+NN-079,C,K,NQ,"Sheet trống (không tra được chỉ tiêu). Mã 23: 434,3 vs 832,9 = -47,85%, ""giảm mạnh"" ✓; phần nguyên nhân là phỏng đoán, không kiểm",tb
+NN-080,K,?,KKC,Nói thị trường viễn thông,cao
+NN-081,C,C,NQ,"Mã 400: 52.557,0 → 99.013,7 ✓; +88,39% ≈ 88% ✓ (BCTC VIC 2018 lập theo VND)",cao
+NN-082,K,?,KKC,Chính sách kế toán dự phòng phải thu,cao
+NN-083,K,?,KKC,Chỉ nói mảng trái cây,cao
+NN-084,K,?,KKC,Chỉ nói mảng dịch vụ khác,cao
+NN-085,K,?,KKC,"So sánh nhiều năm (""gấp ba sau 5 năm"", từ 2017)",cao
+NN-086,C,K,NQ,"LNTT Công ty mẹ → BCTC riêng POW 2022 Mã 50 = 1.110,0 ✓; 1.110/1.012 = 110% kế hoạch (tự nhất quán). Sheet đưa số hợp nhất",cao
+NN-087,C,C,NQ,"Mã 50 = 2.809,2 ✓; +20,09% ≈ ""vượt 20%"" ✓; % kế hoạch không kiểm",cao
+NN-088,C,K,NQ,"Kèm mảnh bảng nhiều năm. Sheet đưa TTS, câu nói tỷ số. NPT/TTS 12.964,4/20.234,8 = 0,64 (2022: 0,67); NPT/VCSH 12.964,4/7.270,4 = 1,78 (2022: 2,03) → giảm nhẹ ✓",tb
+NN-089,C,C,NQ,"Mã 270: 20.987,6 ✓; +812,5 tỷ ✓; +4,03% ✓",cao
+NN-090,K,?,KKC,"Trộn cột, câu cụt: con số 0,09% nằm ở mảnh sau, không thuộc câu",tb
+NN-091,K,?,KKC,Nói công ty con PV Power REC,cao
+NN-092,C,C,NQ,"Mã 140 +65,8% ""tăng mạnh"" ✓; TM HTK: hàng mua đi đường 21,6 vs 0,5 tỷ; CP SXKD dở dang 1.189,2 vs 511,6 tỷ (gấp 2,3) ✓",cao
+NN-093,C,K,NQ,"Tổng tài sản Công ty mẹ → BCTC riêng VCG 2021 Mã 270: 22.454,0 vs 13.057,3: +9.396,7 tỷ ✓, +71,97% ✓. Sheet đưa hợp nhất",cao
+NN-094,K,?,KKC,"Câu ghép từ hai cột: ""Doanh thu dịch vụ tổng thầu"" bị ghép với EPS 7.348 đồng",tb
+NN-095,K,?,KKC,"Nói đơn vị thương mại dịch vụ (PV Machino, PV Power Services), kế hoạch 6 tháng",cao
+NN-096,C,C,MT,"LNTT Mã 50 -9,34% ✓; nhưng DTT Mã 10: 23.213,5/42.658,6 = -45,6% (Mã 01: -46,3%), câu ghi -47,1%. BCTN dùng gốc 2017 = 43.845 tỷ, không khớp cột năm trước BCTC (có thể do trình bày lại). Cần phân xử",tb
+NN-097,K,?,KKC,Chỉ nói mảng trái cây,cao
+NN-098,K,?,KKC,Chỉ nói mảng heo,cao
+NN-099,K,?,KKC,"Nói phát triển sản phẩm mới, không có khẳng định số",cao
+NN-100,K,?,KKC,"Trộn cột nặng; xen số Công ty mẹ (DT 8.741 tỷ, LNST 220 tỷ) và danh sách công trình",tb
+NN-101,K,?,KKC,"Giá trị doanh thu 8.254 tỷ của các dự án (một mảng/hoạt động xây lắp), không phải DTT hợp nhất 12.703,8",tb
+NN-102,K,?,KKC,Nói địa bàn đơn vị thành viên,cao
+NN-103,C,K,NQ,"Trộn cột, vế còn nguyên. Sheet đưa TTS. Mã 100 (triệu đồng) 242.340.589 ✓ = 54,5% TTS ≈ 55% ✓, +23,3% ✓; Mã 200 202.290.086 ✓, +22,4% ✓",tb
+NN-104,K,?,KKC,Kế hoạch/nỗ lực năm 2024,cao
+NN-105,K,?,KKC,"Nhận định, chủ trương tái cấu trúc",cao
+NN-106,C,C,NQ,"Mã 10 = 118.279,8 tỷ (> 118 nghìn tỷ) ✓; 118.279,8/133.404,8 = 88,7% ≈ 89% ✓; % kế hoạch không kiểm",cao
+NN-107,C,C,NQ,"Trộn cột. Mã 10 -5,53% (nới 0,1 điểm, hoặc Mã 01 -5,37%) ≈ ""giảm 5%"" ✓; LNST Mã 60 8.444,4 ✓; % kế hoạch không kiểm",tb
+NN-108,K,?,KKC,"Trộn cột, nói ngành hàng của Masan Consumer",cao
+NN-109,K,?,KKC,"Rác trộn cột về nợ dài hạn/xếp hạng tín nhiệm, không có khẳng định trọn",cao
+NN-110,C,C,NQ,"Mã 60 = 536,9 ✓; giảm -29,75% ✓",cao
+NN-111,K,?,KKC,Nói công ty con CNG Việt Nam,cao
+NN-112,C,C,KKC,"Câu: vòng quay HTK giảm xuống 12,5 lần. BCTC: Mã 11/HTK cuối kỳ 14,1→14,6; /HTK bình quân 14,2→15,7 (đều TĂNG). Không cách tính chuẩn nào ra 12,5; DN có thể dùng định nghĩa riêng → không đủ kết luận, cần phân xử",tb
+NN-113,K,?,KKC,"Nêu biện pháp/nỗ lực (""đã thúc đẩy HTK luân chuyển nhanh hơn""), không có con số",tb
+NN-114,K,?,KKC,Doanh thu phát điện (một mảng),cao
+NN-115,K,?,KKC,Kế hoạch/nỗ lực năm 2023,cao
+NN-116,K,?,KKC,Chỉ nói mảng cho thuê,cao
+NN-117,K,?,KKC,Kỳ quý 4/2021 (ví dụ #5 hướng dẫn),cao
+NN-118,K,?,KKC,Giải thích nguyên nhân năm 2021,cao
+NN-119,K,?,KKC,"Mảnh bảng lịch sử tăng vốn điều lệ (06/2024), không phải số cuối năm",cao
+NN-120,K,?,KKC,Chỉ nói mảng viễn thông,cao
+NN-121,K,?,KKC,Nói thị trường thép,cao
+NN-122,C,C,NQ,"Mã 10 +2,98% (Mã 01 +2,92%) ""gần 3%"" ✓; Mã 60 10.205,6/10.278,2 = -0,71% ✓; thị phần không kiểm",cao
+NN-123,C,K,NQ,"Trộn cột. Câu nói TSNH, sheet đưa TTS. Mã 100 285.478.928 tr ✓ = 50,6% TTS ≈ 51% ✓ (TTS +26,9% ≈ 27% ✓)",tb
+NN-124,K,?,KKC,Nói số cửa hàng Phúc Long/WCM,cao
+NN-125,K,?,KKC,Chỉ nói mảng viễn thông,cao
+NN-126,K,?,KKC,"Câu ghép từ hai cột: số 9.746 tỷ (tổng DT, TN Công ty mẹ) bị ghép với ""doanh thu hoạt động bất động sản""",tb
+NN-127,K,?,KKC,"Trộn cột nặng, con số 0,3 lần nằm ở mảnh khác; câu xen giải thích người mua trả trước",tb
+NN-128,K,?,KKC,"Nói các chuỗi An Khang, Avakids, EraBlue",cao
+NN-129,C,C,NQ,"Mã 270 +10,24% ≈ 10% ✓; Mã 200 105.066,1 ✓, tăng 15.245,3 tỷ ✓",cao
+NN-130,K,?,KKC,Nói doanh thu sản phẩm Apple/TopZone (ngành hàng),cao
+NN-131,K,?,KKC,"Trộn cột, nói cơ cấu doanh thu theo dự án",cao
+NN-132,K,?,KKC,Nói công ty con Driftwood (Mỹ),cao
+NN-133,K,?,KKC,Nói công ty con PV Power REC,cao
+NN-134,K,?,KKC,Số liệu thị trường/vĩ mô,cao
+NN-135,C,K,NQ,"Sheet đưa LNST. LNST/TTS: 1.108,4/29.440,6 = 3,76% vs 396,4/30.694,4 = 1,29% → gấp 2,9 ✓; Mã 22: 446,1 vs 854,4 = -47,8% ✓",tb
+NN-136,C,K,MT,"Sheet đưa TTS. Mã 100 6.868,4 ✓, giảm 1.045,0 ✓ (-13%) ✓, 34% ✓. Nhưng ""Tiền và phải thu ngắn hạn TĂNG lần lượt 2.082 và 2.821 tỷ"": đó là số dư (Mã 110 2.082,2; Mã 130 2.821,2), thực tế GIẢM từ 2.581,4 và 3.174,4. Lỗi trình bày - cần phân xử",tb
+NN-137,K,?,KKC,Chính sách kế toán dự phòng HTK,cao
+NN-138,C,K,NQ,"""Tổng doanh thu hợp nhất"" = Mã 01 61.012,1 ✓, +2,16% ≈ 2,2% ✓. Sheet đưa Mã 10",cao
+NN-139,K,?,KKC,Nói công ty con PV GAS South,cao
+NN-140,K,?,KKC,"Chính sách kế toán (hợp nhất, ước tính)",cao
+NN-141,C,C,NQ,"Trộn cột với số The CrownX nhưng vế hợp nhất còn đọc được: Mã 20 22.134.801 vs 17.888.697 tr = +23,7% ✓; biên LN gộp 24,97% vs 23,17% ≈ 25,0% / 23,2% ✓",tb
+NN-142,C,K,MT,"Sheet đưa TTS. NPT/TTS 62,7% vs 67,8%, NPT/VCSH 1,68 vs 2,10 → giảm ✓; VCSH +17% ✓. Nhưng vế ""NPT tăng không đáng kể"": Mã 300 268.812.599 vs 286.975.562 tr = GIẢM 6,3%. Sai hướng vế giải thích - cần phân xử",tb
+NN-143,K,?,KKC,Chỉ nói chuỗi Bách Hóa Xanh,cao
+NN-144,K,?,KKC,"Trộn cột, nói rủi ro/chi phí chung, không có khẳng định số",cao
+NN-145,K,?,KKC,Doanh thu hoạt động xây lắp (một mảng),cao
+NN-146,K,?,KKC,Chỉ nói chuỗi Bách Hóa Xanh,cao
+NN-147,C,C,NQ,"Mã 11: 10.889,1/11.522,8 = -5,50% ✓; biên LN gộp 9,30% → 15,39% cải thiện ✓",cao
+NN-148,C,K,NQ,"Trộn cột. Sheet đưa VCSH. LNST/VCSH: 1.108,4/11.116,1 = 9,97% vs 396,4/10.241,0 = 3,87% → tăng mạnh ✓",tb
+NN-149,K,?,KKC,"Nói mảng bất động sản, không có số",cao
+NN-150,K,?,KKC,Nói công ty con CNG Việt Nam,cao
+NN-151,K,?,KKC,"Doanh số bán hàng (hợp đồng) bất động sản, không phải doanh thu BCTC; trộn cột",cao
+NN-152,K,?,KKC,"So sánh nhiều năm (""gấp bốn sau 7 năm"")",cao
+NN-153,K,?,KKC,"Chi phí tiết kiệm, tiết giảm - không phải đại lượng BCTC",cao
+NN-154,C,C,NQ,"Biên LN ròng 18,84% vs 18,74%: 18,8% ✓, +10 điểm cơ bản ✓",cao
+NN-155,K,?,KKC,Chính sách kế toán HTK,cao
+NN-156,C,K,NQ,"Trộn cột. Sheet đưa TTS. Vay (320+338) 7.863,4 vs 6.965,7 = +12,9% ✓; vay/TTS 23,5% (2018: 23,4%) gần như không đổi ✓; LNTT Mã 50 +20,9% ✓",tb
+NN-157,K,?,KKC,Chỉ nói mảng trái cây,cao
+NN-158,K,?,KKC,Chỉ nói chuỗi Bách Hóa Xanh,cao
+NN-159,K,?,KKC,"Doanh thu theo thị trường (Mỹ, APAC) của mảng CNTT nước ngoài",cao
+NN-160,K,?,KKC,"Trộn cột; câu nói biên LN gộp của Masan Consumer (ngữ cảnh ngành hàng MCH), xen cơ cấu LN gộp theo mảng",tb
+NN-161,C,C,NQ,"Mã 10 +19,40% ✓; Mã 50 4.664,5/3.857,6 = +20,9% ✓; % kế hoạch không kiểm",cao
+NN-162,C,K,NQ,"Ví dụ #4 hướng dẫn: tổng DT = 10+21+31 = 102.403,6 ≥ 102.400 ✓; Mã 50 18.806,3 ≥ 18.800 ✓. Sheet đưa Mã 10",cao
+NN-163,K,?,KKC,"Trộn cột nặng, số TSNH và vay dài hạn đan xen (""31/12/2019""?), kỳ BCTC 6 tháng",tb
+NN-164,K,?,KKC,Công việc của Ban Kiểm soát,cao
+NN-165,C,C,NQ,"Mã 270 21.754,4 ✓; +3.067,4 tỷ ✓; +16,4% ✓",cao
+NN-166,K,?,KKC,Nói công ty con bảo hiểm (PJICO),cao
+NN-167,K,?,KKC,Doanh thu dịch vụ chuyển đổi số (một mảng),cao
+NN-168,C,C,NQ,"Trộn cột. ""Tăng trưởng cả doanh thu và lợi nhuận so với 2019"": Mã 10 +14,3% ✓; Mã 60 544,1 vs 376,5 ✓",tb
+NN-169,C,C,NQ,"Trộn cột. Vế toàn tập đoàn ""chi phí tài chính tiếp tục tăng cao"": Mã 22 +27,8% ✓; vế LN từ MHT/TCB là công ty con/liên kết, không kiểm",tb
+NN-170,C,K,NQ,"Sheet trống. Mã 01/10: 7.775,2 vs 8.357,6 = -6,97% ≈ 7% ✓; vế ""hơn 6.500 tỷ EPC"" là một mảng, không kiểm",tb
+NN-171,K,?,KKC,Chỉ nói mảng trái cây,cao
+NN-172,C,K,NQ,"Trộn cột nhưng vế còn đọc được. Sheet lấy BCTC RIÊNG (Mã 10 = 2.554,5) → sai phạm vi. BCTC hợp nhất 2018: Mã 01 9.731,1 ✓; tổng DT 10+21+31 = 10.084,2, 9.731/10.084 = 96,5% ✓",tb
+NN-173,K,?,KKC,Chỉ nói chuỗi Bách Hóa Xanh,cao
+NN-174,K,?,KKC,Mục tiêu chiến lược (tăng trưởng 7-9%/năm),cao
+NN-175,C,K,NQ,"Câu dùng HTK bình quân: Mã 11 / bình quân Mã 140 = 27.950,5/4.773,5 = 5,86 (2017: 6,28) → giảm ✓, xấp xỉ 5,8/6,2 (lệch < 0,1 lần, có thể do dùng giá gốc). Sheet dùng HTK cuối kỳ (5,06/6,67)",tb
+NN-176,K,?,KKC,Chỉ nói mảng mủ cao su (mảnh infographic),cao
+NN-177,K,?,KKC,Mục tiêu của chuỗi Avakids,cao
+NN-178,K,?,KKC,"Số liệu thị trường bán lẻ, kỳ quý IV",cao
+NN-179,C,K,NQ,"Trộn ô infographic (""97,9%"" là % kế hoạch). ""Tổng doanh thu hợp nhất"" = Mã 01 61.823,9 ≈ 61.824 ✓; /60.478,9 = +2,22% ✓. Sheet đưa Mã 10",tb
+NN-180,K,?,KKC,"Câu nêu nỗ lực (""đã nỗ lực để duy trì tăng trưởng""), không có số; nếu tính: Mã 10 +2,15%",tb
+NN-181,C,K,NQ,"Sheet trống. Câu giới thiệu DN 2021: ""doanh thu gần 10.000 tỷ"" - Mã 01/10 9.828,5 (lệch -1,7%, trong ±5%) ✓; xếp hạng TOP 500 không kiểm",tb
+NN-182,K,?,KKC,Chỉ nói mảng dịch vụ khác,cao
+NN-183,K,?,KKC,"Biên LN gộp mảng xây lắp điện (8,8%→10%); biên hợp nhất là 14,0%→17,4%",cao
+NN-184,C,K,NQ,"Trộn cột. Sheet đưa VCSH. Mã 300: 21.489,1 vs 26.575,3 → giảm 5.086,3 tỷ ✓, -19,1% ✓",tb
+NN-185,K,?,KKC,Nói The CrownX (công ty con),cao
+NN-186,K,?,KKC,Chỉ nói mảng dịch vụ khác,cao
+NN-187,K,?,KKC,"Mảnh bảng cân đối kế toán (dòng 140, 141, 149)",cao
+NN-188,K,?,KKC,"Rác trộn cột (số điểm bán, tiền và tương đương tiền), không có khẳng định trọn",cao
+NN-189,K,?,KKC,Chỉ nói mảng heo,cao
+NN-190,K,?,KKC,Nói công ty con PV GAS South,cao
+NN-191,K,?,KKC,Chỉ nói mảng cho thuê,cao
+NN-192,K,?,KKC,Chỉ nói mảng hàng hóa,cao
+NN-193,K,?,KKC,"Trộn cột, câu cụt: chỉ còn ""LNST đạt 73% kế hoạch"", số kế hoạch 8.500 tỷ ở mảnh khác (nếu ghép: 6.190,9/8.500 = 72,8%)",tb
+NN-194,K,?,KKC,Chỉ nói mảng mủ cao su,cao
+NN-195,K,?,KKC,Nói mảng thịt chế biến (MML),cao
+NN-196,K,?,KKC,"Trộn cột, câu cụt; nói doanh thu theo lĩnh vực (chuyển nhượng BĐS, cho thuê)",tb
+NN-197,K,?,KKC,Lịch sử năm 2014 so với 2013,cao
+NN-198,C,C,NQ,"BCTC HAG theo nghìn đồng: 48.111,4 vs 53.062,1 tỷ → giảm 4.950,7 tỷ ✓, -9,33% ✓",cao
+NN-199,K,?,KKC,Liệt kê rủi ro/thách thức cho năm tới,cao
+NN-200,K,?,KKC,Chỉ nói mảng heo,cao
+NN-201,C,K,KKC,"Câu nói ROE/ROA/ROCE, sheet đưa VCSH. Theo cách FPT dùng năm 2021 (Mã 60 / VCSH bình quân): ROE 2023 = 7.788,0/27.644,6 = 28,2% (2022: 27,8%), ROA = 7.788,0/TTS bình quân 55.966,6 = 13,9%; câu ghi 27,9% và 13,6% - lệch ~0,3 điểm, có thể do bình quân theo quý; hướng tăng khớp",tb
+NN-202,K,?,KKC,Nói mô hình mini mall của WCM,cao
+NN-203,K,?,KKC,Mô tả hệ thống quản trị HTK,cao
+NN-204,K,?,KKC,Số liệu thị trường/vĩ mô,cao
+NN-205,K,?,KKC,"Nói hai chuỗi TGDĐ, ĐMX",cao
+NN-206,C,K,NQ,"Sheet đưa TTS. Vay (320+338) 14.046,0 vs 12.382,2 = +13,4% ✓; /TTS 60.282,8 = 23,3% ✓; /VCSH 29.933,0 = 46,9% ✓ (2022: 24,0%, 48,8%) giảm ✓",cao
+NN-207,K,?,KKC,Mảnh bảng cân đối (chỉ nhãn dòng),cao
+NN-208,C,K,NQ,"Trộn cột. Câu nói biên LN ròng, sheet đưa DTT. Mã 60/Mã 10 = 6.800,4/118.953,0 = 5,72% ✓",tb
+NN-209,K,?,KKC,Kỳ quý 4/2021,cao
+NN-210,C,C,NQ,"Trộn cột, vế còn nguyên. Mã 10 103.556.722 tr ✓, +66,0% ✓; Mã 50 43.310.285 ✓, /38.642.699 = +12,1% ✓",tb
+NN-211,K,?,KKC,Nói Masan MEATLife (công ty con),cao
+NN-212,C,K,NQ,"Sheet đưa VCSH. ROE = Mã 60 / VCSH bình quân = 5.349,3/20.011,8 = 26,7% ✓; ROA 11,2% vs 11,8% giảm nhẹ ✓; nợ vay tăng ✓ (độ lớn ""nhẹ"" không xét)",tb
+NN-213,C,C,NQ,"Trộn cột. ""Doanh thu và lợi nhuận tăng trưởng mạnh"": Mã 10 +1,3%, Mã 60 +179,6% - hướng đều tăng ✓ (độ lớn ""mạnh"" không dùng để gán MT)",tb
+NN-214,K,?,KKC,Chính sách kế toán doanh thu hợp đồng xây dựng,cao
+NN-215,K,?,KKC,Mảng đầu tư năng lượng (552 tỷ),cao
+NN-216,C,K,NQ,"Kèm rác biểu đồ. Câu nói chi phí tài chính, sheet đưa DTT. Mã 22: 243,8/171,8 = +41,9% ≈ 42% ✓",tb
+NN-217,K,?,KKC,Doanh thu dịch vụ chuyển đổi số (một mảng),cao
+NN-218,K,?,KKC,Chỉ nói mảng hàng hóa,cao
+NN-219,C,C,NQ,"LN thuần HĐKD Mã 30 +6,3%, LNTT Mã 50 +5,8% > DTT Mã 10 +2,3% ✓",cao
+NN-220,C,C,NQ,"Số hợp nhất: Mã 270 +11.359,4 tỷ ✓, +57,9% ✓",cao
+NN-221,K,?,KKC,Chính sách kế toán hàng hóa BĐS,cao
+NN-222,K,?,KKC,Nói công ty con PV Coating,cao
+NN-223,C,K,NQ,"Công ty mẹ → BCTC riêng VCG 2021 Mã 110: 2.326,5 vs 1.587,2 → +739,3 tỷ ✓, +46,58% ✓. Sheet đưa hợp nhất (+40,9%)",cao
+NN-224,K,?,KKC,"Trộn cột; nói việc trả nợ đúng hạn của Công ty mẹ, không có số kiểm được",cao
+NN-225,C,K,NQ,"Công ty mẹ → BCTC riêng VCG 2021 Mã 60 = 757,4 ✓. Sheet đưa LNST hợp nhất 519,9 (sai phạm vi)",cao
+NN-226,K,?,KKC,"Nói mảng xây lắp điện (biên LN, LN gộp 172→264 tỷ)",cao
+NN-227,K,?,KKC,Nói Masan MEATLife,cao
+NN-228,C,K,MT,"Mục Công ty mẹ, trộn 3 cột. LNST 861 tỷ = BCTC riêng Mã 60 860,6 ✓; 860,6/219,9 = 391% ✓. Nhưng vế ""doanh thu năm 2024 tăng trưởng 23%"": BCTC riêng Mã 10 9.011,5/7.887,1 = +14,3%, tổng DT,TN 9.745,8/8.741,6 = +11,5%, hợp nhất +1,3% - không ra 23%. Chưa chắc phạm vi của vế này - cần phân xử",thap
+NN-229,K,?,KKC,Nói công ty con An Khang (2.200 tỷ),cao
+NN-230,K,?,KKC,Chỉ nói mảng bò,cao
+NN-231,K,?,KKC,Chỉ nói mảng viễn thông,cao
+NN-232,C,C,NQ,"Mã 400: 96.112,9 → 102.836,4 ✓; +7,00% ✓",cao
+NN-233,C,C,NQ,"Mã 400: 90.780,6 → 96.112,9 ✓; +5,87% ≈ 6% ✓ (ví dụ trong hướng dẫn)",cao
+NN-234,C,K,NQ,"Câu nói (CPBH + QLDN)/DTT, sheet chỉ đưa CPBH. (Mã 25+26)/Mã 10 = 23,8% ✓",cao
+NN-235,K,?,KKC,Nói Techcombank (công ty liên kết),cao
+NN-236,K,?,KKC,Nói Vincom Retail (công ty con),cao
+NN-237,K,?,KKC,Nói công ty liên kết SHE,cao
+NN-238,K,?,KKC,Chỉ nói mảng mủ cao su,cao
+NN-239,C,K,NQ,"Sheet trống. Câu giới thiệu DN: ""doanh thu gần 8.500 tỷ"" - Mã 01 2022 8.357,6 (lệch -1,7%, trong ±5%) ✓; xếp hạng Top 50 không kiểm",tb
+NN-240,K,?,KKC,"Chi phí tiết kiệm và tiến độ dự án, không phải đại lượng BCTC",cao
+NN-241,K,?,KKC,"Nói VinFast (công ty con), biên LN gộp theo quý",cao
+NN-242,K,?,KKC,Chính sách kế toán ghi nhận doanh thu,cao
+NN-243,C,K,NQ,"Trộn cột. Sheet đưa TTS. ROA = Mã 60 / TTS bình quân: 1.108,4/30.067,5 = 0,037 ≈ 0,04 ✓; 2023: 396,4/~30.000 ≈ 0,01 ✓",tb
+NN-244,K,?,KKC,Nói Vinpearl Land (một mảng),cao
+NN-245,C,K,NQ,"Trộn cột. Sheet đưa HTK. Vòng quay HTK và tài sản tăng: HTK giảm 6% trong khi DTT +58,6% (giá vốn tăng), DTT/TTS tăng ✓",tb
+NN-246,K,?,KKC,Nói hoạt động mua bán điện (một mảng),cao
+NN-247,K,?,KKC,Chỉ nói mảng heo,cao
+NN-248,C,K,NQ,"Trộn cột. Sheet đưa DTT. Mã 21 (triệu đồng) 19.954.131 ✓; /16.690.167 = +19,6% ≈ 20% ✓",tb
+NN-249,K,?,KKC,Nói Phúc Long Heritage,cao
+NN-250,C,K,NQ,"Công ty mẹ → BCTC riêng VCG 2022: tổng DT (10+21+31) 7.531,3+630,8+69,0 = 8.231,0 ✓; Mã 60 283,0 ✓. Sheet đưa hợp nhất",cao
+NN-251,K,?,KKC,Chỉ nói Vinmec,cao
+NN-252,K,?,KKC,"Số giả định ""nếu loại các chi phí này"" (LNST điều chỉnh, không có trên BCTC)",cao
+NN-253,K,?,KKC,Nói VinBigData/giải pháp công nghệ,cao
+NN-254,K,?,KKC,"Trộn cột, mục tài sản Công ty mẹ; các số (480, 490 tỷ, 61%/39%) xen nhau",tb
+NN-255,K,?,KKC,Nói Phúc Long/MML (mảng),cao
+NN-256,C,K,NQ,"Câu cụt (chủ ngữ ""HTK giảm 50%"" ở mảnh trước). Sheet đưa TTS. Mã 140/Mã 270 = 729,6/10.721,7 = 6,8% ≈ 7% ✓; HTK -49,1% ✓",tb
+NN-257,K,?,KKC,Nêu nỗ lực/chủ trương,cao
+NN-258,K,?,KKC,Chính sách kế toán hợp đồng xây dựng,cao
+NN-259,K,?,KKC,Doanh thu bình quân/kỹ sư - chỉ số phi BCTC,cao
+NN-260,K,?,KKC,Mô tả hệ thống quản trị HTK,cao
+NN-261,K,?,KKC,Chỉ nói mảng dịch vụ khác,cao
+NN-262,C,C,NQ,"BCTC nghìn đồng: Mã 100 7.073,7 vs 6.567,9 tỷ (tăng 505,8) ✓; Mã 140 +804,3 tỷ (+57,6%) → ""chủ yếu do HTK tăng"" ✓",cao
+NN-263,K,?,KKC,Nói doanh thu mảng BĐS và tái cấu trúc so với kế hoạch,cao
+NN-264,K,?,KKC,"Ví dụ #2 hướng dẫn: câu ghép hai cột (số 7,6%/48,4% là của Angkormilk)",cao
+NN-265,K,?,KKC,Mảnh infographic doanh thu theo mảng,cao
+NN-266,C,K,MT,"Mảnh bảng + câu. Sheet đưa TTS. NPT/TTS 13.271,6/20.987,6 = 0,63 ✓ (2023: 0,65 ✓); nhưng NPT/VCSH 2024 = 13.271,6/7.716,0 = 1,72, bảng ghi 1,82 (2023: 1,82 ✓). Lỗi trình bày một ô; vế ""không nhiều thay đổi"" vẫn đúng - cần phân xử",tb
+NN-267,K,?,KKC,Lịch sử năm 2014,cao
+NN-268,K,?,KKC,Nói Masan High-Tech Materials,cao
+NN-269,K,?,KKC,Chỉ nói mảng hàng hóa,cao
+NN-270,C,K,NQ,"Sheet đưa VCSH. NPT/VCSH: 18.324,5/11.116,1 = 1,65 vs 20.453,3/10.241,0 = 2,00 → giảm ✓",cao
+NN-271,K,?,KKC,Số liệu thị trường vonfram/vĩ mô,cao
+NN-272,C,K,MT,"Trộn cột, vế còn nguyên: ""các khoản phải thu ngắn hạn năm 2018 giảm mạnh so với 2017"". Mã 130: 10.213,7 vs 9.174,9 = TĂNG 11,3% (chỉ Mã 131 phải thu KH giảm 6,1%). Sheet đưa DTT - cần phân xử",tb
+NN-273,K,?,KKC,Lịch sử năm 2016 so với 2015,cao
+NN-274,K,?,KKC,"Câu về rủi ro cạnh tranh, xen nhãn infographic ""DOANH THU HỢP NHẤT"" (số ở mảnh khác)",tb
+NN-275,K,?,KKC,Báo cáo của Ban Kiểm soát về thực hiện nghị quyết,cao
+NN-276,K,?,KKC,Chỉ nói mảng ớt,cao
+NN-277,K,?,KKC,Chỉ nói mảng trái cây,cao
+NN-278,C,C,NQ,"Câu giới thiệu DN: ""doanh thu trên 6.600 tỷ"" - Mã 10 6.678,6 (trong [6.600; 7.260]) ✓; xếp hạng TOP 500 không kiểm",tb
+NN-279,K,?,KKC,Chính sách kế toán HTK/đầu tư,cao
+NN-280,C,C,NQ,"Ví dụ #6 hướng dẫn. ""Duy trì ổn định mức doanh thu"": Mã 10 5.388,2/4.841,2 tỷ (nghìn đồng) = +11,3% - không giảm nên không ngược thông điệp",tb
+NN-281,C,K,NQ,"Trộn cột. Vế LNTT 3.146 tỷ: Mã 50 (triệu đồng) 3.146.451 ✓; vế ""doanh thu thuần điều chỉnh 131.133 tỷ"" là số điều chỉnh phi BCTC, không kiểm",tb
+NN-282,K,?,KKC,Doanh thu bình quân/người - chỉ số phi BCTC,cao
+NN-283,K,?,KKC,Chỉ nói mảng dịch vụ khác,cao
+NN-284,K,?,KKC,Doanh thu hoạt động xây lắp (một mảng),cao
+NN-285,C,C,NQ,"Mã 270 (nghìn đồng): 37.265,8 vs 33.575,4 tỷ → +3.690,4 tỷ ✓, +10,99% ≈ 11% ✓. Ghi ""so với năm 2020"" là lỗi trình bày năm so sánh, không làm sai số liệu",tb
+NN-286,C,C,NQ,"Mã 110 = 5.417,8 ✓; +15,61% ✓",cao
+NN-287,K,?,KKC,"Trộn cột, nói Công ty mẹ và mảng xây lắp so với kế hoạch",cao
+NN-288,C,K,MT,"Công ty mẹ → BCTC riêng VCG 2022: TSNH 10.549,3/20.820,1 = 50,7% ≈ 51% ✓, TSDH = 49,3% nhưng câu ghi ""69%"" (51%+69% > 100%); 2021: 61%/39% ✓. Lỗi trình bày ở con số - cần phân xử",tb
+NN-289,K,?,KKC,"Trộn cột; vế chính là lãi suất vay bình quân 10,5% (không phải đại lượng trên BCTC)",tb
+NN-290,K,?,KKC,"Nêu chủ trương tái cấu trúc, không có số",cao
+NN-291,K,?,KKC,Nói mảng xây lắp điện,cao
+NN-292,K,?,KKC,Doanh thu chuyển đổi số (một mảng),cao
+NN-293,K,?,KKC,"Nói hai chuỗi TGDĐ, ĐMX",cao
+NN-294,K,?,KKC,Nói chuỗi siêu thị WinMart,cao
+NN-295,K,?,KKC,"Rác trộn cột, câu cụt",cao
+NN-296,K,?,KKC,Rủi ro/dự báo cho ngành xây dựng,cao
+NN-297,C,C,NQ,"Mã 10 44.009,5/35.657,3 = +23,42% ✓; vế từng khối là bộ phận, không kiểm; % kế hoạch không kiểm",cao
+NN-298,K,?,KKC,"Rác trộn cột, câu cụt",cao
+NN-299,K,?,KKC,"Trộn cột; nói doanh thu cho thuê BĐS đầu tư, sản xuất theo lĩnh vực",tb
+NN-300,C,C,NQ,"Mã 23: 605,0 vs 315,4 → tăng ✓; nguyên nhân không kiểm",cao

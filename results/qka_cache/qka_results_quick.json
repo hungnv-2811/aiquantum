@@ -1,0 +1,1036 @@
+{
+  "experiment": "QKA proof-of-concept: khớp khoản mục khi bảng thiếu cột Mã số",
+  "note": "Kiểm chứng tính khả thi kỹ thuật trên mô phỏng statevector; không phải tuyên bố lợi thế lượng tử.",
+  "run_at": "2026-11-12T08:06:03+07:00",
+  "total_seconds": 33.6,
+  "command": "python scripts/run_qka.py --quick",
+  "config": {
+    "seed": 42,
+    "n_folds": 2,
+    "max_train_per_fold": 500,
+    "split": "StratifiedKFold trên tên đã khử trùng lặp (mỗi tên một mẫu)",
+    "statement": "cash_flow",
+    "codes": [
+      "21",
+      "22",
+      "23",
+      "24",
+      "25",
+      "26",
+      "27",
+      "30"
+    ],
+    "excluded_tickers": [
+      "MBB",
+      "TCB",
+      "VPB"
+    ],
+    "features": "TF-IDF char_wb 2-4 gram (sublinear) -> TruncatedSVD 8 chiều -> MinMax [0, π], học trên tập huấn luyện của từng phần",
+    "n_qubits": 8,
+    "feature_map": "ZZFeatureMap, linear, reps=2",
+    "feature_reps": 2,
+    "simulator": "qiskit.quantum_info.Statevector — chính xác, không nhiễu, không shot",
+    "qka_trainable": "8 hệ số co giãn λ (x_i -> λ_i·x_i) + 8 góc RY θ trước mã hoá",
+    "qka_initial_point": "λ = 1, θ = 0 (trùng kernel cố định)",
+    "qka_loss": "âm của centered kernel-target alignment",
+    "qka_optimizer": "COBYLA",
+    "qka_maxiter": 20,
+    "qka_rhobeg": 1.0,
+    "svm_c_grid": [
+      0.1,
+      1.0,
+      10.0,
+      100.0,
+      1000.0
+    ],
+    "rbf_gamma_grid": [
+      0.001,
+      0.003,
+      0.01,
+      0.03,
+      0.1,
+      0.3,
+      1.0
+    ],
+    "svm_inner_cv": "StratifiedKFold 3 phần trong tập huấn luyện, chấm macro-F1",
+    "svm_class_weight": "balanced",
+    "rapidfuzz": "Ontology.by_label (token_sort_ratio), ontology dựng lại từ tập huấn luyện mỗi phần; cutoff=0 cho bảng chính",
+    "system_fuzzy_cutoff": 88
+  },
+  "versions": {
+    "python": "3.11.9",
+    "platform": "Windows-10-10.0.26300-SP0",
+    "qiskit": "2.6.2",
+    "qiskit-machine-learning": "0.9.1",
+    "scikit-learn": "1.9.1",
+    "numpy": "2.4.6",
+    "scipy": "1.17.1",
+    "rapidfuzz": "3.14.6"
+  },
+  "dataset": {
+    "n_rows": 1945,
+    "n_short_dropped": 1,
+    "n_unique_names": 282,
+    "n_conflicts": 2,
+    "n_conflicts_dropped": 0,
+    "n_samples": 282,
+    "classes": [
+      {
+        "code": "21",
+        "n_names": 35,
+        "n_rows": 250,
+        "most_common_name": "Tiền chi mua tài sản cố định và tài sản dài hạn khác"
+      },
+      {
+        "code": "22",
+        "n_names": 35,
+        "n_rows": 227,
+        "most_common_name": "Tiền thu từ thanh lý tài sản cố định và tài sản dài hạn khác"
+      },
+      {
+        "code": "23",
+        "n_names": 46,
+        "n_rows": 261,
+        "most_common_name": "Tiền chi cho vay, mua các công cụ nợ của đơn vị khác"
+      },
+      {
+        "code": "24",
+        "n_names": 41,
+        "n_rows": 246,
+        "most_common_name": "Tiền thu hồi cho vay, bán lại công cụ nợ của đơn vị khác"
+      },
+      {
+        "code": "25",
+        "n_names": 34,
+        "n_rows": 229,
+        "most_common_name": "Tiền chi đầu tư góp vốn vào đơn vị khác"
+      },
+      {
+        "code": "26",
+        "n_names": 25,
+        "n_rows": 207,
+        "most_common_name": "Tiền thu hồi đầu tư góp vốn vào đơn vị khác"
+      },
+      {
+        "code": "27",
+        "n_names": 54,
+        "n_rows": 256,
+        "most_common_name": "Tiền thu lãi cho vay, cổ tức và lợi nhuận được chia"
+      },
+      {
+        "code": "30",
+        "n_names": 12,
+        "n_rows": 268,
+        "most_common_name": "Lưu chuyển tiền thuần từ hoạt động đầu tư"
+      }
+    ],
+    "tickers": [
+      "FPT",
+      "GAS",
+      "HAG",
+      "HPG",
+      "MSN",
+      "MWG",
+      "PC1",
+      "PLX",
+      "POW",
+      "VCG",
+      "VHM",
+      "VIC",
+      "VNM"
+    ],
+    "years": [
+      2015,
+      2025
+    ]
+  },
+  "circuits": {
+    "qsvm_fixed": {
+      "n_qubits": 8,
+      "feature_map_depth": 33,
+      "feature_map_cx": 28,
+      "kernel_circuit_depth": 63,
+      "kernel_circuit_cx": 54
+    },
+    "qsvm_qka": {
+      "n_qubits": 8,
+      "feature_map_depth": 34,
+      "feature_map_cx": 28,
+      "kernel_circuit_depth": 65,
+      "kernel_circuit_cx": 54,
+      "n_training_parameters": 16
+    }
+  },
+  "methods": {
+    "rapidfuzz_top8": {
+      "label": "rapidfuzz, 8 alias/mã (như hệ thống)",
+      "role": "chính",
+      "per_fold": [
+        {
+          "accuracy": 0.8226950354609929,
+          "macro_f1": 0.8391293896183698,
+          "train_seconds": 0.0008433000000422908,
+          "infer_seconds": 0.05351250000001073,
+          "n_test": 141
+        },
+        {
+          "accuracy": 0.8085106382978723,
+          "macro_f1": 0.7860369952797012,
+          "train_seconds": 0.0008224000000041087,
+          "infer_seconds": 0.013872100000014598,
+          "n_test": 141
+        }
+      ],
+      "confusion": [
+        [
+          32,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          1,
+          31,
+          1,
+          0,
+          0,
+          2,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          33,
+          11,
+          1,
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          4,
+          32,
+          0,
+          3,
+          2,
+          0
+        ],
+        [
+          0,
+          0,
+          3,
+          0,
+          26,
+          3,
+          1,
+          1
+        ],
+        [
+          0,
+          1,
+          1,
+          0,
+          1,
+          17,
+          2,
+          3
+        ],
+        [
+          0,
+          0,
+          2,
+          2,
+          0,
+          1,
+          47,
+          2
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          12
+        ]
+      ],
+      "accuracy_mean": 0.8156028368794326,
+      "accuracy_std": 0.010029883421085795,
+      "macro_f1_mean": 0.8125831924490354,
+      "macro_f1_std": 0.037541992066302855,
+      "train_seconds_mean": 0.0008328500000231998,
+      "train_seconds_std": 1.4778531753797624e-05,
+      "infer_seconds_mean": 0.033692300000012665,
+      "infer_seconds_std": 0.028029995648944487,
+      "infer_ms_per_sample": 0.23895248226959337
+    },
+    "svm_rbf": {
+      "label": "SVM-RBF, 8 chiều",
+      "role": "chính",
+      "per_fold": [
+        {
+          "accuracy": 0.900709219858156,
+          "macro_f1": 0.8941345545362762,
+          "train_seconds": 0.4694343999999546,
+          "infer_seconds": 0.0007615000000100736,
+          "n_test": 141,
+          "best_params": {
+            "C": 1000.0,
+            "gamma": 0.1
+          }
+        },
+        {
+          "accuracy": 0.8865248226950354,
+          "macro_f1": 0.8771568784476393,
+          "train_seconds": 0.45428100000003724,
+          "infer_seconds": 0.0007259000000203741,
+          "n_test": 141,
+          "best_params": {
+            "C": 100.0,
+            "gamma": 0.01
+          }
+        }
+      ],
+      "confusion": [
+        [
+          33,
+          2,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          34,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          40,
+          5,
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          5,
+          32,
+          0,
+          4,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          30,
+          2,
+          1,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          2,
+          1,
+          21,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          52,
+          1
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          2,
+          0,
+          10
+        ]
+      ],
+      "accuracy_mean": 0.8936170212765957,
+      "accuracy_std": 0.010029883421085795,
+      "macro_f1_mean": 0.8856457164919578,
+      "macro_f1_std": 0.012005029891063832,
+      "train_seconds_mean": 0.46185769999999593,
+      "train_seconds_std": 0.01071507189797381,
+      "infer_seconds_mean": 0.0007437000000152238,
+      "infer_seconds_std": 2.5173001402957487e-05,
+      "infer_ms_per_sample": 0.005274468085214354
+    },
+    "qsvm_fixed": {
+      "label": "QSVM, kernel ZZ cố định",
+      "role": "chính",
+      "per_fold": [
+        {
+          "accuracy": 0.624113475177305,
+          "macro_f1": 0.6159003569529886,
+          "train_seconds": 0.5098449000000187,
+          "infer_seconds": 0.79288600000001,
+          "n_test": 141,
+          "best_params": {
+            "C": 1.0
+          }
+        },
+        {
+          "accuracy": 0.6099290780141844,
+          "macro_f1": 0.621190064464521,
+          "train_seconds": 0.5185000999999829,
+          "infer_seconds": 0.805183100000022,
+          "n_test": 141,
+          "best_params": {
+            "C": 10.0
+          }
+        }
+      ],
+      "confusion": [
+        [
+          26,
+          0,
+          0,
+          1,
+          0,
+          0,
+          8,
+          0
+        ],
+        [
+          0,
+          22,
+          1,
+          6,
+          0,
+          0,
+          6,
+          0
+        ],
+        [
+          0,
+          0,
+          26,
+          11,
+          1,
+          0,
+          8,
+          0
+        ],
+        [
+          0,
+          0,
+          6,
+          24,
+          0,
+          0,
+          11,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          14,
+          0,
+          19,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          5,
+          3,
+          3,
+          14,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          1,
+          2,
+          0,
+          50,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          2,
+          9
+        ]
+      ],
+      "accuracy_mean": 0.6170212765957447,
+      "accuracy_std": 0.010029883421085795,
+      "macro_f1_mean": 0.6185452107087548,
+      "macro_f1_std": 0.0037403880518979415,
+      "train_seconds_mean": 0.5141725000000008,
+      "train_seconds_std": 0.006120150612500509,
+      "infer_seconds_mean": 0.799034550000016,
+      "infer_seconds_std": 0.008695362798937614,
+      "infer_ms_per_sample": 5.666911702127773
+    },
+    "qsvm_qka": {
+      "label": "QSVM, kernel huấn luyện bằng QKA",
+      "role": "chính",
+      "per_fold": [
+        {
+          "accuracy": 0.7588652482269503,
+          "macro_f1": 0.7595666655817032,
+          "train_seconds": 10.887036300000034,
+          "infer_seconds": 0.9467963999999824,
+          "n_test": 141,
+          "best_params": {
+            "C": 1.0
+          },
+          "qka_optimize_seconds": 10.285142600000029
+        },
+        {
+          "accuracy": 0.7588652482269503,
+          "macro_f1": 0.7680961149843413,
+          "train_seconds": 11.051640200000008,
+          "infer_seconds": 0.925547999999992,
+          "n_test": 141,
+          "best_params": {
+            "C": 10.0
+          },
+          "qka_optimize_seconds": 10.42406920000002
+        }
+      ],
+      "confusion": [
+        [
+          29,
+          0,
+          2,
+          3,
+          0,
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          27,
+          4,
+          0,
+          0,
+          1,
+          3,
+          0
+        ],
+        [
+          0,
+          0,
+          37,
+          6,
+          1,
+          0,
+          2,
+          0
+        ],
+        [
+          0,
+          0,
+          11,
+          23,
+          4,
+          1,
+          2,
+          0
+        ],
+        [
+          0,
+          0,
+          3,
+          0,
+          29,
+          0,
+          2,
+          0
+        ],
+        [
+          0,
+          0,
+          3,
+          4,
+          6,
+          10,
+          2,
+          0
+        ],
+        [
+          0,
+          0,
+          2,
+          2,
+          1,
+          0,
+          49,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          1,
+          0,
+          0,
+          0,
+          10
+        ]
+      ],
+      "accuracy_mean": 0.7588652482269503,
+      "accuracy_std": 0.0,
+      "macro_f1_mean": 0.7638313902830223,
+      "macro_f1_std": 0.006031231512392956,
+      "train_seconds_mean": 10.969338250000021,
+      "train_seconds_std": 0.11639253389973439,
+      "infer_seconds_mean": 0.9361721999999872,
+      "infer_seconds_std": 0.015024887729357447,
+      "infer_ms_per_sample": 6.639519148936079
+    },
+    "rapidfuzz_1nn": {
+      "label": "rapidfuzz, mọi tên huấn luyện (1-NN)",
+      "role": "tham khảo",
+      "per_fold": [
+        {
+          "accuracy": 0.8439716312056738,
+          "macro_f1": 0.8467513063059665,
+          "train_seconds": 0.001840000000015607,
+          "infer_seconds": 0.031420200000013665,
+          "n_test": 141
+        },
+        {
+          "accuracy": 0.8226950354609929,
+          "macro_f1": 0.7936319075978686,
+          "train_seconds": 0.001922799999988456,
+          "infer_seconds": 0.03370719999998073,
+          "n_test": 141
+        }
+      ],
+      "confusion": [
+        [
+          32,
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          33,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          37,
+          8,
+          0,
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          8,
+          31,
+          0,
+          2,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          2,
+          0,
+          28,
+          0,
+          2,
+          1
+        ],
+        [
+          0,
+          1,
+          0,
+          4,
+          2,
+          13,
+          3,
+          2
+        ],
+        [
+          0,
+          0,
+          1,
+          0,
+          0,
+          1,
+          51,
+          1
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          1,
+          10
+        ]
+      ],
+      "accuracy_mean": 0.8333333333333333,
+      "accuracy_std": 0.015044825131628692,
+      "macro_f1_mean": 0.8201916069519175,
+      "macro_f1_std": 0.03756108703904795,
+      "train_seconds_mean": 0.0018814000000020314,
+      "train_seconds_std": 5.8548441463047504e-05,
+      "infer_seconds_mean": 0.0325636999999972,
+      "infer_seconds_std": 0.001617153208550346,
+      "infer_ms_per_sample": 0.23094822695033473
+    },
+    "svm_linear_full": {
+      "label": "SVM tuyến tính, TF-IDF đầy đủ (không nén)",
+      "role": "tham khảo",
+      "per_fold": [
+        {
+          "accuracy": 0.9148936170212766,
+          "macro_f1": 0.9171991055094935,
+          "train_seconds": 0.34541300000000774,
+          "infer_seconds": 0.013170899999977337,
+          "n_test": 141,
+          "best_params": {
+            "svc__C": 100.0
+          }
+        },
+        {
+          "accuracy": 0.900709219858156,
+          "macro_f1": 0.8948032466555136,
+          "train_seconds": 0.3479182000000378,
+          "infer_seconds": 0.013503600000035476,
+          "n_test": 141,
+          "best_params": {
+            "svc__C": 100.0
+          }
+        }
+      ],
+      "confusion": [
+        [
+          32,
+          2,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0
+        ],
+        [
+          2,
+          33,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          43,
+          2,
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          5,
+          33,
+          0,
+          2,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          2,
+          0,
+          30,
+          1,
+          1,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          1,
+          3,
+          20,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          53,
+          1
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          12
+        ]
+      ],
+      "accuracy_mean": 0.9078014184397163,
+      "accuracy_std": 0.010029883421085795,
+      "macro_f1_mean": 0.9060011760825035,
+      "macro_f1_std": 0.01583626366614595,
+      "train_seconds_mean": 0.3466656000000228,
+      "train_seconds_std": 0.0017714439082498032,
+      "infer_seconds_mean": 0.013337250000006406,
+      "infer_seconds_std": 0.00023525442614187502,
+      "infer_ms_per_sample": 0.09459042553196033
+    }
+  },
+  "rapidfuzz_system_cutoff88": {
+    "accuracy": {
+      "mean": 0.45035460992907805,
+      "std": 0.035104591973800246
+    },
+    "macro_f1": {
+      "mean": 0.6176480022831463,
+      "std": 0.05681416847195626
+    },
+    "coverage": {
+      "mean": 0.4574468085106383,
+      "std": 0.035104591973800205
+    },
+    "precision_when_answered": {
+      "mean": 0.984450337512054,
+      "std": 0.0011932853105848698
+    }
+  },
+  "alignment": {
+    "rbf_train": {
+      "mean": 0.602301991706742,
+      "std": 0.03480976408131306
+    },
+    "rbf_test": {
+      "mean": 0.5808991248830724,
+      "std": 0.06582834331281034
+    },
+    "fixed_train": {
+      "mean": 0.33408903750749985,
+      "std": 0.03048443212038732
+    },
+    "fixed_test": {
+      "mean": 0.32653813239180707,
+      "std": 0.01162883210266093
+    },
+    "qka_train_before": {
+      "mean": 0.33408903750749985,
+      "std": 0.03048443212038732
+    },
+    "qka_train_after": {
+      "mean": 0.4431285782120012,
+      "std": 0.030978172771911845
+    },
+    "qka_test_after": {
+      "mean": 0.42469572338623884,
+      "std": 0.02676165953839995
+    },
+    "offdiag_fixed_train": {
+      "mean": 0.011994859926380826,
+      "std": 0.001161808711014574
+    },
+    "offdiag_qka_train": {
+      "mean": 0.020397626446220077,
+      "std": 0.0011169843838983765
+    }
+  },
+  "folds": [
+    {
+      "fold": 0,
+      "n_train": 141,
+      "n_test": 141,
+      "feature_seconds": 0.020152300000006562,
+      "svd_explained_variance": 0.5462816525369729,
+      "alignment_rbf_train": 0.6269162119401424,
+      "alignment_rbf_test": 0.6274467928338366,
+      "alignment_fixed_train": 0.35564478618044676,
+      "alignment_fixed_test": 0.33476095842887843,
+      "offdiag_fixed_train": 0.012816382744380832,
+      "alignment_qka_train_before": 0.35564478618044676,
+      "alignment_qka_train_after": 0.4650334542477885,
+      "alignment_qka_test_after": 0.4436190743216471,
+      "offdiag_qka_train": 0.021187453678554097,
+      "qka_lambda": [
+        0.5835,
+        0.0328,
+        0.3109,
+        0.821,
+        0.4783,
+        0.1123,
+        0.6994,
+        1.2117
+      ],
+      "qka_theta": [
+        1.4436,
+        1.369,
+        1.2518,
+        1.2019,
+        1.2077,
+        1.1942,
+        1.3515,
+        1.066
+      ],
+      "qka_evaluations": 20,
+      "qka_loss_history": [
+        -0.355645,
+        -0.336985,
+        -0.324855,
+        -0.330981,
+        -0.342218,
+        -0.334669,
+        -0.326605,
+        -0.339539,
+        -0.350824,
+        -0.355932,
+        -0.364061,
+        -0.369608,
+        -0.374057,
+        -0.378631,
+        -0.382909,
+        -0.390652,
+        -0.392106,
+        -0.416954,
+        -0.465033,
+        -0.32702
+      ]
+    },
+    {
+      "fold": 1,
+      "n_train": 141,
+      "n_test": 141,
+      "feature_seconds": 0.02040310000001,
+      "svd_explained_variance": 0.5596865805412851,
+      "alignment_rbf_train": 0.5776877714733416,
+      "alignment_rbf_test": 0.534351456932308,
+      "alignment_fixed_train": 0.312533288834553,
+      "alignment_fixed_test": 0.3183153063547357,
+      "offdiag_fixed_train": 0.011173337108380818,
+      "alignment_qka_train_before": 0.312533288834553,
+      "alignment_qka_train_after": 0.42122370217621385,
+      "alignment_qka_test_after": 0.4057723724508306,
+      "offdiag_qka_train": 0.019607799213886057,
+      "qka_lambda": [
+        -0.4813,
+        0.3386,
+        0.1193,
+        -0.2527,
+        2.225,
+        0.5137,
+        -0.3156,
+        0.127
+      ],
+      "qka_theta": [
+        1.3063,
+        1.306,
+        1.703,
+        1.2245,
+        1.3245,
+        1.5818,
+        1.0038,
+        1.1967
+      ],
+      "qka_evaluations": 20,
+      "qka_loss_history": [
+        -0.312533,
+        -0.293315,
+        -0.303012,
+        -0.300419,
+        -0.296019,
+        -0.313494,
+        -0.307743,
+        -0.297936,
+        -0.30317,
+        -0.317117,
+        -0.320735,
+        -0.329049,
+        -0.331704,
+        -0.335542,
+        -0.342422,
+        -0.342468,
+        -0.344794,
+        -0.37895,
+        -0.421224,
+        -0.317503
+      ]
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "dashboard",
+      "runtimeExecutable": "D:\\AIquantumhvtc\\.claude\\worktrees\\round-2-planning-6ea84b\\.venv\\Scripts\\python.exe",
+      "runtimeArgs": ["-m", "http.server", "8765", "--directory", "D:\\AIquantumhvtc\\.claude\\worktrees\\round-2-planning-6ea84b\\prototype"],
+      "port": 8765
+    },
+    {
+      "name": "deliverables",
+      "runtimeExecutable": "D:\\AIquantumhvtc\\.claude\\worktrees\\round-2-planning-6ea84b\\.venv\\Scripts\\python.exe",
+      "runtimeArgs": ["-m", "http.server", "8766", "--bind", "127.0.0.1", "--directory", "D:\\AIquantumhvtc\\.claude\\worktrees\\round-2-planning-6ea84b\\deliverables\\build"],
+      "port": 8766
+    }
+  ]
+}

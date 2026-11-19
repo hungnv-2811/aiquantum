@@ -1,0 +1,40 @@
+# ============================================================
+#  SmartAudit-Quantum — phụ thuộc của LỚP LƯỢNG TỬ (QKA proof-of-concept)
+#
+#  Cài vào môi trường RIÊNG, không đụng .venv chính, để lớp lượng tử
+#  tháo rời được (pipeline NNC không cần qiskit):
+#
+#      uv venv --python 3.11 .venv-quantum
+#      uv pip install --python .venv-quantum\Scripts\python.exe -r requirements-quantum.txt
+#
+#  (hoặc: python -m venv .venv-quantum
+#         .venv-quantum\Scripts\pip install -r requirements-quantum.txt)
+#
+#  Rồi chạy: .venv-quantum\Scripts\python.exe scripts\run_qka.py
+# ============================================================
+
+# Toàn bộ phụ thuộc của hệ thống chính (parser, ontology, rapidfuzz...)
+-r requirements.txt
+
+# ── Lớp lượng tử — ghim đúng phiên bản đã chạy ra results/qka_results.json ──
+qiskit==2.6.2
+qiskit-machine-learning==0.9.1   # QuantumKernelTrainer, kernel statevector
+scikit-learn==1.9.1              # TF-IDF, SVD, SVM, kiểm chứng chéo
+
+# Đường cơ sở rapidfuzz: ghim để điểm khớp gần không đổi giữa các lần chạy
+rapidfuzz==3.14.6
+
+# ── Phụ thuộc kéo theo — ghim luôn để chạy lại ra đúng số ──
+numpy==2.4.6
+scipy==1.17.1                    # COBYLA nằm ở đây
+rustworkx==0.18.1                # qiskit
+stevedore==5.9.1                 # qiskit
+dill==0.4.1                      # qiskit, qiskit-machine-learning
+setuptools==84.2.1               # qiskit-machine-learning
+joblib==1.6.0                    # scikit-learn
+threadpoolctl==3.8.0             # scikit-learn
+narwhals==2.28.0                 # scikit-learn
+cloudpickle==3.1.2               # joblib
+
+# KHÔNG cần qiskit-aer: mô phỏng statevector dùng qiskit.quantum_info.Statevector
+# có sẵn trong qiskit, chính xác và đủ nhanh cho 8 qubit (256 biên độ).

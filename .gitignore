@@ -45,3 +45,16 @@ tmp/
 *.tmp
 ~$*.docx
 ~$*.xlsx
+
+# Môi trường riêng cho lớp lượng tử (qiskit) — tách khỏi .venv chính
+.venv-quantum/
+
+# Thông tin cá nhân thành viên (CCCD, SĐT) — chỉ dùng để điền báo cáo nộp BTC
+*.local.json
+
+# Bộ nộp Vòng 2 — báo cáo .docx có bảng CCCD thành viên; mẫu Word và ảnh xem trước là tệp sinh/nhị phân lớn
+deliverables/*.docx
+deliverables/build/*.docx
+deliverables/build/slide_png/
+deliverables/build/huong_dan.filled.html
+results/run_nnc_log.txt

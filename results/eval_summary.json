@@ -1,0 +1,70 @@
+{
+  "n_labeled": 300,
+  "n_disagreements_open": 0,
+  "labelers": "Hai tác tử AI gán mù, độc lập theo hướng dẫn của đội; bất đồng được phân xử (nhãn bạc).",
+  "kappa_nhan": 0.8598,
+  "kappa_la_khang_dinh": 0.9012,
+  "dong_thuan_nhan": 0.9367,
+  "gold_distribution": {
+    "KKC": 209,
+    "NQ": 84,
+    "MT": 7
+  },
+  "before": {
+    "flags_in_sample": 141,
+    "true_mt": 4,
+    "precision": 0.0284,
+    "ci": [
+      0.0111,
+      0.0707
+    ],
+    "false_flags_est": 137
+  },
+  "after": {
+    "flags_in_sample": 21,
+    "true_mt": 0,
+    "precision": 0.0,
+    "ci": [
+      0.0,
+      0.1546
+    ],
+    "false_flags_est": 23,
+    "flags_total": 35,
+    "flags_outside_sample": 14
+  },
+  "test_only": {
+    "before": {
+      "flags_in_sample": 96,
+      "true_mt": 3,
+      "precision": 0.0312,
+      "ci": [
+        0.0107,
+        0.0879
+      ],
+      "false_flags_est": 93
+    },
+    "after": {
+      "flags_in_sample": 13,
+      "true_mt": 0,
+      "precision": 0.0,
+      "ci": [
+        0.0,
+        0.2281
+      ],
+      "false_flags_est": 15
+    },
+    "n": 198
+  },
+  "gold_mt": {
+    "n": 7,
+    "flagged_before": 4,
+    "flagged_after": 0
+  },
+  "removed_after": {
+    "n": 191,
+    "gold_not_claim_or_kkc": 152,
+    "gold_nq": 36,
+    "gold_mt": 3
+  },
+  "ghi_chu": "Mẫu lấy từ bản 21/09: toàn bộ 141 cờ 'mâu thuẫn' + 159 câu ngẫu nhiên (bỏ ngân hàng). Bản vá nền được thiết kế từ phân tích lỗi của chính 141 cờ đó, nên số 'sau vá' có thiên lệch lạc quan. 14 cờ sau vá nằm ngoài mẫu (chưa gán nhãn)."
+}

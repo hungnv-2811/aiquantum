@@ -1,0 +1,124 @@
+/* Bổ sung cho bản Vòng 2 — dùng chung biến màu của style.css */
+
+.notice-banner {
+  background: rgba(245, 158, 11, 0.08);
+  border: 1px solid rgba(245, 158, 11, 0.35);
+  border-radius: var(--radius-md);
+  padding: 12px 16px;
+  margin-bottom: 20px;
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+.notice-banner strong { color: var(--accent-amber); }
+
+.note { font-size: 12px; color: var(--text-muted); line-height: 1.6; margin-top: 10px; }
+.lbl { display: block; font-size: 12px; color: var(--text-secondary); margin: 12px 0 6px; }
+.controls { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin: 8px 0; }
+.prose p { font-size: 13px; line-height: 1.7; color: var(--text-secondary); margin-bottom: 10px; }
+.prose b { color: var(--text-primary); }
+.table-scroll { overflow-x: auto; }
+
+textarea#check-text {
+  width: 100%;
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  padding: 10px 12px;
+  font: inherit;
+  font-size: 14px;
+  resize: vertical;
+}
+textarea#check-text:focus { outline: none; border-color: var(--accent-indigo); }
+
+/* Nhãn phán quyết */
+.vbadge {
+  display: inline-block;
+  padding: 2px 9px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.vbadge.ok { background: rgba(16, 185, 129, 0.15); color: #34d399; }
+.vbadge.review { background: rgba(245, 158, 11, 0.15); color: #fbbf24; }
+.vbadge.unk { background: rgba(148, 163, 184, 0.15); color: #cbd5e1; }
+
+/* Thẻ khẳng định */
+.claim {
+  border: 1px solid var(--border-color);
+  border-left: 3px solid var(--text-muted);
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+  margin-bottom: 10px;
+  background: var(--bg-glass);
+}
+.claim.ok { border-left-color: var(--accent-emerald); }
+.claim.review { border-left-color: var(--accent-amber); }
+.claim-top { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; font-size: 12px; color: var(--text-muted); }
+.claim-quote { font-size: 14px; color: var(--text-primary); margin: 8px 0; line-height: 1.6; }
+.ev { font-size: 12.5px; color: var(--text-secondary); line-height: 1.6; padding-left: 18px; position: relative; margin-top: 4px; }
+.ev::before { position: absolute; left: 0; top: 0; }
+.ev.pass::before { content: "✓"; color: var(--accent-emerald); }
+.ev.fail::before { content: "✗"; color: var(--accent-amber); }
+.ev.info::before { content: "i"; color: var(--text-muted); font-weight: 700; }
+.ev .src { color: var(--text-muted); }
+
+/* Bảng nhiệt */
+.heat td, .heat th { text-align: center; padding: 8px 10px; }
+.heat td:first-child, .heat th:first-child { text-align: left; }
+.heat td.cell { cursor: pointer; border-radius: 6px; font-weight: 600; font-size: 12px; }
+.heat td.cell:hover { outline: 1px solid var(--accent-indigo); }
+.heat .sub { display: block; font-weight: 400; font-size: 10px; color: var(--text-muted); }
+
+/* Luồng xử lý */
+.flow { display: flex; flex-direction: column; gap: 8px; }
+.flow-step {
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.flow-step b { font-size: 13px; color: var(--text-primary); }
+.flow-step span { font-size: 12px; color: var(--text-muted); }
+
+.py-status { font-size: 12px; color: var(--text-muted); }
+.py-status.ready { color: var(--accent-emerald); }
+.py-status.busy { color: var(--accent-amber); }
+.py-status.err { color: var(--accent-rose); }
+
+.example {
+  display: block;
+  width: 100%;
+  text-align: left;
+  background: var(--bg-glass);
+  border: 1px dashed var(--border-color);
+  color: var(--text-secondary);
+  border-radius: var(--radius-sm);
+  padding: 8px 10px;
+  margin-top: 8px;
+  font: inherit;
+  font-size: 12.5px;
+  cursor: pointer;
+}
+.example:hover { border-color: var(--accent-indigo); color: var(--text-primary); }
+.example .tag { font-size: 10.5px; color: var(--accent-cyan); display: block; margin-bottom: 2px; }
+.example .tag.synthetic { color: var(--accent-amber); }
+
+table.simple { width: 100%; border-collapse: collapse; font-size: 13px; }
+table.simple th, table.simple td { padding: 7px 8px; border-bottom: 1px solid var(--border-color); text-align: left; }
+table.simple th { color: var(--text-muted); font-weight: 500; font-size: 12px; }
+table.simple td.num { text-align: right; font-variant-numeric: tabular-nums; }
+table.simple tr.best td { color: var(--accent-emerald); }
+
+.menu-btn { display: none; margin-right: 8px; }
+@media (max-width: 1024px) {
+  .menu-btn { display: inline-flex; }
+}
+@media (max-width: 640px) {
+  .page-content { padding: 16px; }
+  .notice-banner { font-size: 12px; }
+}

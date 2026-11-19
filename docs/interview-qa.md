@@ -69,6 +69,64 @@ Nếu bị hỏi tiếp *"vậy sao không bỏ quantum đi cho gọn?"*:
 
 ---
 
+### Q1b. "Các em đã làm được gì rồi, hay mới chỉ có ý tưởng?"
+
+**Người trả lời chính: Hùng** — đây là câu ăn điểm, phải trả lời bằng số.
+
+> "Chúng em đã có pipeline chạy thật trên dữ liệu thật, không phải mô phỏng:
+>
+> - Tải và bóc tách **338 báo cáo tài chính kiểm toán** và **93 báo cáo thường niên** của 16 doanh nghiệp, giai đoạn 2015–2025.
+> - Bóc được bảng số liệu từ **337/338 báo cáo**, ánh xạ theo Mã số Thông tư 200.
+> - Sinh **ontology 31 khoản mục** tự động từ chính corpus, không soạn tay.
+> - Cơ chế NNC chạy end-to-end, mỗi kết luận kèm minh chứng chỉ rõ trang nào, mã số nào, phép tính ra sao.
+> - **70 phép kiểm tự động**, chạy trong dưới một giây.
+>
+> Kết quả mẫu với Vinamilk 2024: điểm nhất quán 0,84 trên 11 khẳng định, phát hiện 2 điểm cần xem xét."
+
+Nếu BGK muốn xem: mở terminal chạy `python scripts/audit_report.py VNM 2024`, in ra báo cáo ngay tại chỗ.
+
+**Điểm mạnh nhất nên nhấn** — hai nguồn hoàn toàn độc lập nối được với nhau:
+
+> "Báo cáo thường niên nói doanh thu trong nước 50.799 tỷ và nước ngoài 10.983 tỷ. Cộng lại đúng bằng 61.782 tỷ — chính là con số doanh thu thuần mã 10 mà chúng em bóc được từ báo cáo tài chính kiểm toán trên HuggingFace. Hai nguồn khác nhau hoàn toàn, khớp đến từng đồng. Đó là cơ chế NNC đang chạy thật."
+
+---
+
+### Q1c. "Các em gặp khó khăn gì khi làm? Kể một cái cụ thể."
+
+Câu này BGK hay hỏi để đo xem đội có thật sự tự làm hay không. Kể được lỗi cụ thể kèm cách sửa là bằng chứng mạnh nhất.
+
+**Chọn kể ba cái này, theo thứ tự:**
+
+**1. Mã số kế toán không duy nhất.** Mã `10` là *Doanh thu thuần* trong Báo cáo kết quả kinh doanh, nhưng là *Biến động hàng tồn kho* trong Lưu chuyển tiền tệ, và là *số hiệu thuyết minh* trong phần Thuyết minh. Ban đầu chúng em tra thẳng theo mã nên ghép nhầm số. Phải thêm bước nhận diện loại báo cáo trước khi diễn giải mã. Sau khi sửa, số biến thể tên của mã 10 giảm từ 133 xuống 20.
+
+**2. Cột "Thuyết minh" bị đọc thành giá trị.** Bố cục bảng là `[tên | mã số | thuyết minh | năm nay | năm trước]`. Vinamilk ghi thuyết minh dạng `VI.1` nên không sao, nhưng FPT ghi số trần `26` — hệ thống nuốt luôn thành giá trị, biến doanh thu FPT 2023 thành **26 đồng** thay vì 52.618 tỷ. Chúng em phát hiện nhờ thấy điểm nhất quán của FPT thấp bất thường rồi lần ngược lại. Cách sửa: trong một hàng, số liệu các kỳ luôn cùng cỡ, còn số hiệu thuyết minh nhỏ hơn hàng nghìn lần. Sau khi sửa, FPT 2023 từ 0,33 lên **1,00**.
+
+**3. Đứt gãy chuỗi số liệu do thoái vốn** — cái này hay nhất vì nó là bài học về nghiệp vụ, không phải về code.
+
+> "FPT năm 2018 có doanh thu **giảm 45,6%**, từ 42.659 tỷ xuống 23.214 tỷ. Hệ thống của chúng em lúc đầu gắn cờ mâu thuẫn cho mọi câu nói về tăng trưởng trong báo cáo thường niên năm đó.
+>
+> Nhưng khi đọc kỹ, báo cáo ghi rõ *'tăng trưởng 17,4% trong điều kiện so sánh tương đương'*. FPT năm đó thoái vốn mảng bán lẻ và phân phối, nên số hai năm không cùng phạm vi. **Cả hai con số đều đúng** — hệ thống của chúng em mới là cái sai.
+>
+> Chúng em xử lý bằng hai lớp: nhận diện cụm 'điều kiện so sánh tương đương' ở tầng ngôn ngữ, và phát hiện biến động vượt 40% ở tầng số liệu. Gặp trường hợp đó, hệ thống báo *'chưa kiểm chứng được'* kèm giải thích, chứ không kết luận mâu thuẫn."
+
+Câu chốt nên nói:
+
+> "Nguyên tắc chúng em đặt ra là **thà im lặng còn hơn cáo buộc sai**. Một công cụ kiểm toán gắn cờ oan cho doanh nghiệp thì tệ hơn là bỏ sót, vì nó làm mất niềm tin của kiểm toán viên ngay từ lần dùng đầu tiên."
+
+---
+
+### Q1d. "Vì sao cần PhoBERT? Luật với biểu thức chính quy chưa đủ à?"
+
+Giờ nhóm trả lời được bằng **ví dụ thật từ dữ liệu**, không phải lập luận suông.
+
+> "Chúng em có một ví dụ cụ thể. Câu này trong báo cáo Vinamilk: *'công ty duy trì chính sách quản lý hàng tồn kho'*. Hệ thống dùng luật của chúng em thấy từ 'duy trì' và từ 'hàng tồn kho' nên kết luận: câu này nói tồn kho đi ngang. Nhưng số liệu cho thấy tồn kho tăng 37,4%, nên nó báo mâu thuẫn.
+>
+> Thực ra 'duy trì' gắn với **chính sách**, không gắn với **giá trị tồn kho**. Phân biệt được điều đó cần phân tích quan hệ phụ thuộc trong câu — đúng thứ mà mô hình ngôn ngữ làm được còn luật thì không.
+>
+> Trước mắt chúng em xử lý bằng cách bỏ qua nhóm câu nói về chính sách, chấp nhận bỏ sót để không kết luận sai. Nhưng đây chính là chỗ PhoBERT-Fin sẽ tạo khác biệt, và chúng em có sẵn đường cơ sở bằng luật để so sánh xem mô hình cải thiện được bao nhiêu."
+
+---
+
 ### Q2. "Con số 94.2% và +12.7% trên dashboard ở đâu ra?"
 
 **Người trả lời chính: Hùng (Trưởng nhóm)**

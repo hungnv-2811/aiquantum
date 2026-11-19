@@ -1,0 +1,42 @@
+{
+  "ten_giai_phap": "SmartAudit-Quantum: Đối chiếu ngôn từ báo cáo thường niên với số liệu BCTC đã kiểm toán bằng AI, có thí nghiệm lượng tử",
+  "ten_ngan": "SmartAudit-Quantum",
+  "truong_dai_dien": "Trường Đại học Xây dựng Hà Nội (ngành Khoa học máy tính)",
+  "thanh_vien": ["Nguyễn Việt Hùng", "Nguyễn Hồng Nguyên", "Lê Cao Phong", "Mai Đức Tài"],
+  "thong_tin_doi": [
+    "AQ2026-064 / Ngôi nhà Hoa Hồng",
+    "SmartAudit-Quantum: Nền tảng kiểm toán ngôn từ và số liệu thông minh cho thị trường chứng khoán Việt Nam sử dụng AI & Điện toán lượng tử",
+    "Tài chính – Kế toán (kiểm toán, giám sát công bố thông tin)",
+    "AI cho Quản trị rủi ro và tuân thủ; Quantum Computing cho Tài chính",
+    "(điền từ tệp thông tin thành viên)",
+    "Không"
+  ],
+  "san_pham": [
+    ["Web app tĩnh (dashboard) + chạy lõi Python trong trình duyệt (Pyodide)", "Bản 19/11/2026"],
+    ["https://smartaudit-quantum.vercel.app", "Công khai, không cần tài khoản"],
+    ["AQ2026-R2-AQ2026-064-Ma_nguon.zip (tệp nén nộp kèm)", "Kèm dữ liệu mẫu, chạy offline"],
+    ["AQ2026-R2-AQ2026-064-Huong_dan.pdf", "Cài đặt, chạy thử, đầu ra kỳ vọng"]
+  ],
+  "tom_luoc": [
+    ["Đối chiếu câu văn trong BCTN với ô BCTC đã kiểm toán (VSA 720) cho kiểm toán viên, giám sát công bố thông tin; xử lý 7 nhóm ràng buộc thực tế (đơn vị tính, công ty con, trộn cột PDF, câu không phải kết quả…).", "Mục 03, bảng 1.4"],
+    ["338 BCTC (TiniX, CC-BY-NC) + 93 BCTN (Vietstock), 16 mã, 2018–2024; quy đổi đơn vị tính; 300 cặp gán nhãn mù, 2 người gán độc lập (tác tử AI, kappa 0,86).", "Mục 04; annotation/"],
+    ["Neo vào Mã số TT200, đối chiếu 3 chiều, im lặng có lý do. Chèn lỗi: recall 82,6%, 0/122 báo động giả; cờ oan giảm ~83%; precision dữ liệu thật chưa đạt. QKA 0,840 < SVM-RBF 0,911.", "Mục 05, bảng 3.4"],
+    ["Pipeline end-to-end trên 73 cặp báo cáo thật (77 giây); dashboard 7 trang; kiểm tra khẳng định chạy Python trong trình duyệt (2–11 ms/câu); 147 phép kiểm.", "Mục 06; link prototype"],
+    ["Trang tĩnh, chạy tại máy người dùng: chi phí hạ tầng ≈ 0, không gửi dữ liệu ra ngoài; lộ trình 4 bước. Chưa thử nghiệm với kiểm toán viên, chưa có đối tác.", "Mục 07, bảng 7.1"],
+    ["Báo cáo theo mẫu, slide, hướng dẫn có đầu ra kỳ vọng, mã nguồn chạy offline, prototype công khai; khai báo dùng AI.", "Mục 08; 4 tệp + link"]
+  ],
+  "gia_tri_cot_loi": "SmartAudit-Quantum giúp kiểm toán viên và cơ quan giám sát sàng lọc những câu trong báo cáo thường niên không khớp với BCTC đã kiểm toán. Mỗi câu có số liệu được neo vào đúng ô BCTC qua Mã số Thông tư 200 và nhận một trong ba phán quyết, kèm vết minh chứng kiểm tra lại được. Prototype chạy trên 73 cặp báo cáo thật của 16 doanh nghiệp; trên tập chèn lỗi có kiểm soát, hệ thống bắt 82,6% câu sai và không báo động giả câu đúng nào. Đội công bố trung thực giới hạn: mâu thuẫn thật rất hiếm và precision trên dữ liệu thật chưa đạt mục tiêu; lớp lượng tử (QKA) là thí nghiệm khả thi, chưa vượt cổ điển.",
+  "so_do_chinh": [
+    ["Cờ oan (ước tính, toàn bộ khẳng định)", "~137 (bản 21/09)", "~23 (giảm ~83%)", "300 cặp nhãn bạc"],
+    ["Recall trên câu chèn lỗi", "—", "82,6% (347/420)", "Dữ liệu tổng hợp; 0/122 báo động giả"],
+    ["Precision nhóm cần xem xét (dữ liệu thật)", "2,8% (4/141)", "0% (0/21)", "Mục tiêu 80% chưa đạt"]
+  ],
+  "link": "https://smartaudit-quantum.vercel.app",
+  "video": "chưa có (demo trực tiếp trên link)",
+  "replace": {
+    "⟦CHỜ: số test⟧": "147 (171 khi cài thêm môi trường lượng tử)",
+    "⟦CHỜ: link prototype⟧": "https://smartaudit-quantum.vercel.app",
+    "⟦CHỜ: link video⟧": "chưa có (demo trực tiếp trên link)",
+    " ⟦CHỜ: thời lượng Vòng 2 do BTC công bố⟧": " (điều chỉnh theo thời lượng BTC công bố)"
+  }
+}
