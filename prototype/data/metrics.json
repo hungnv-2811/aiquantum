@@ -1,0 +1,809 @@
+{
+ "generated_at": "2026-11-20T16:58",
+ "pipeline": {
+  "reports": 98,
+  "companies": 16,
+  "claims_now": 511,
+  "claims_before": 695,
+  "verdicts_now": {
+   "nhất quán": 108,
+   "mâu thuẫn": 52,
+   "không kiểm chứng được": 351
+  },
+  "verdicts_before": {
+   "nhất quán": 155,
+   "mâu thuẫn": 141,
+   "không kiểm chứng được": 399
+  },
+  "reports_before": 66,
+  "missing": {
+   "GAS_2024": {
+    "short": "không phải BCTN",
+    "why": "Tệp là công văn công bố thông tin, không phải báo cáo thường niên"
+   },
+   "HAG_2021": {
+    "short": "bản scan",
+    "why": "Bản scan ảnh — không bóc được chữ"
+   },
+   "MSN_2019": {
+    "short": "bản scan",
+    "why": "Bản scan ảnh — không bóc được chữ"
+   },
+   "MWG_2018": {
+    "short": "bản scan",
+    "why": "Bản scan ảnh — không bóc được chữ"
+   },
+   "MWG_2019": {
+    "short": "bản scan",
+    "why": "Bản scan ảnh — không bóc được chữ"
+   },
+   "MWG_2020": {
+    "short": "bản scan",
+    "why": "Bản scan ảnh — không bóc được chữ"
+   },
+   "MWG_2021": {
+    "short": "bản scan",
+    "why": "Bản scan ảnh — không bóc được chữ"
+   },
+   "MWG_2024": {
+    "short": "bản scan",
+    "why": "Bản scan ảnh — không bóc được chữ"
+   },
+   "PLX_2024": {
+    "short": "không phải BCTN",
+    "why": "Tệp là công văn công bố thông tin, không phải báo cáo thường niên"
+   },
+   "TCB_2022": {
+    "short": "chữ lỗi",
+    "why": "Chữ bóc ra gần như mất hết dấu tiếng Việt (nhiều khả năng là bản scan)"
+   },
+   "VCG_2019": {
+    "short": "chữ lỗi",
+    "why": "Chữ bóc ra gần như mất hết dấu tiếng Việt (nhiều khả năng là bản scan)"
+   },
+   "TCB_2024": {
+    "short": "thiếu BCTC",
+    "why": "Chưa có BCTC kiểm toán của năm này để đối chiếu"
+   },
+   "VHM_2018": {
+    "short": "thiếu BCTC",
+    "why": "Chưa có BCTC kiểm toán của năm này để đối chiếu"
+   },
+   "VPB_2023": {
+    "short": "thiếu BCTC",
+    "why": "Chưa có BCTC kiểm toán của năm này để đối chiếu"
+   }
+  }
+ },
+ "evaluation": {
+  "n_labeled": 300,
+  "n_disagreements_open": 0,
+  "labelers": "Hai tác tử AI gán mù, độc lập theo hướng dẫn của đội; bất đồng được phân xử (nhãn bạc).",
+  "kappa_nhan": 0.8598,
+  "kappa_la_khang_dinh": 0.9012,
+  "dong_thuan_nhan": 0.9367,
+  "gold_distribution": {
+   "KKC": 209,
+   "NQ": 84,
+   "MT": 7
+  },
+  "before": {
+   "flags_in_sample": 141,
+   "true_mt": 4,
+   "precision": 0.0284,
+   "ci": [
+    0.0111,
+    0.0707
+   ],
+   "false_flags_est": 137
+  },
+  "after": {
+   "flags_in_sample": 21,
+   "true_mt": 0,
+   "precision": 0.0,
+   "ci": [
+    0.0,
+    0.1546
+   ],
+   "false_flags_est": 23,
+   "flags_total": 52,
+   "flags_outside_sample": 31
+  },
+  "test_only": {
+   "before": {
+    "flags_in_sample": 96,
+    "true_mt": 3,
+    "precision": 0.0312,
+    "ci": [
+     0.0107,
+     0.0879
+    ],
+    "false_flags_est": 93
+   },
+   "after": {
+    "flags_in_sample": 13,
+    "true_mt": 0,
+    "precision": 0.0,
+    "ci": [
+     0.0,
+     0.2281
+    ],
+    "false_flags_est": 15
+   },
+   "n": 198
+  },
+  "gold_mt": {
+   "n": 7,
+   "flagged_before": 4,
+   "flagged_after": 0
+  },
+  "removed_after": {
+   "n": 191,
+   "gold_not_claim_or_kkc": 152,
+   "gold_nq": 36,
+   "gold_mt": 3
+  },
+  "ghi_chu": "Mẫu lấy từ bản 21/09: toàn bộ 141 cờ 'mâu thuẫn' + 159 câu ngẫu nhiên (bỏ ngân hàng). Bản vá nền được thiết kế từ phân tích lỗi của chính 141 cờ đó, nên số 'sau vá' có thiên lệch lạc quan. 31 cờ sau vá nằm ngoài mẫu (chưa gán nhãn)."
+ },
+ "injected": {
+  "ghi_chu": "DỮ LIỆU TỔNG HỢP — câu thật bị sửa có chủ đích. Không trộn với số đo trên dữ liệu thật.",
+  "seed": 2026,
+  "recall_chen_loi": {
+   "n": 570,
+   "dung": 473,
+   "ty_le": 0.8298
+  },
+  "recall_theo_loai": {
+   "gia_tri": {
+    "n": 330,
+    "dung": 293,
+    "ty_le": 0.8879
+   },
+   "phan_tram": {
+    "n": 129,
+    "dung": 107,
+    "ty_le": 0.8295
+   },
+   "huong": {
+    "n": 90,
+    "dung": 65,
+    "ty_le": 0.7222
+   },
+   "kiem_soat_chi_phi": {
+    "n": 21,
+    "dung": 8,
+    "ty_le": 0.381
+   }
+  },
+  "bao_dong_gia_doi_chung": {
+   "n": 163,
+   "dung": 163,
+   "ty_le": 1.0
+  },
+  "kiem_soat_chi_phi_dung_chieu_nhat_quan": {
+   "n": 58,
+   "dung": 40,
+   "ty_le": 0.6897
+  },
+  "chi_tiet": [
+   {
+    "loai": "doi_chung",
+    "muc": "goc",
+    "n": 108,
+    "dung": 108,
+    "ty_le": 1.0
+   },
+   {
+    "loai": "doi_chung",
+    "muc": "lech_0.5%",
+    "n": 55,
+    "dung": 55,
+    "ty_le": 1.0
+   },
+   {
+    "loai": "gia_tri",
+    "muc": "+10%",
+    "n": 55,
+    "dung": 53,
+    "ty_le": 0.9636
+   },
+   {
+    "loai": "gia_tri",
+    "muc": "+2%",
+    "n": 55,
+    "dung": 45,
+    "ty_le": 0.8182
+   },
+   {
+    "loai": "gia_tri",
+    "muc": "+20%",
+    "n": 55,
+    "dung": 54,
+    "ty_le": 0.9818
+   },
+   {
+    "loai": "gia_tri",
+    "muc": "+5%",
+    "n": 55,
+    "dung": 50,
+    "ty_le": 0.9091
+   },
+   {
+    "loai": "gia_tri",
+    "muc": "-10%",
+    "n": 55,
+    "dung": 49,
+    "ty_le": 0.8909
+   },
+   {
+    "loai": "gia_tri",
+    "muc": "-2%",
+    "n": 55,
+    "dung": 42,
+    "ty_le": 0.7636
+   },
+   {
+    "loai": "huong",
+    "muc": "đảo chiều",
+    "n": 90,
+    "dung": 65,
+    "ty_le": 0.7222
+   },
+   {
+    "loai": "kiem_soat_chi_phi",
+    "muc": "+0.5 điểm",
+    "n": 1,
+    "dung": 1,
+    "ty_le": 1.0
+   },
+   {
+    "loai": "kiem_soat_chi_phi",
+    "muc": "+0.6 điểm",
+    "n": 7,
+    "dung": 6,
+    "ty_le": 0.8571
+   },
+   {
+    "loai": "kiem_soat_chi_phi",
+    "muc": "+0.7 điểm",
+    "n": 3,
+    "dung": 1,
+    "ty_le": 0.3333
+   },
+   {
+    "loai": "kiem_soat_chi_phi",
+    "muc": "+0.8 điểm",
+    "n": 1,
+    "dung": 0,
+    "ty_le": 0.0
+   },
+   {
+    "loai": "kiem_soat_chi_phi",
+    "muc": "+0.9 điểm",
+    "n": 3,
+    "dung": 2,
+    "ty_le": 0.6667
+   },
+   {
+    "loai": "kiem_soat_chi_phi",
+    "muc": "+1.0 điểm",
+    "n": 2,
+    "dung": 2,
+    "ty_le": 1.0
+   },
+   {
+    "loai": "kiem_soat_chi_phi",
+    "muc": "+1.2 điểm",
+    "n": 1,
+    "dung": 1,
+    "ty_le": 1.0
+   },
+   {
+    "loai": "kiem_soat_chi_phi",
+    "muc": "+1.4 điểm",
+    "n": 3,
+    "dung": 0,
+    "ty_le": 0.0
+   },
+   {
+    "loai": "kiem_soat_chi_phi",
+    "muc": "+1.6 điểm",
+    "n": 1,
+    "dung": 1,
+    "ty_le": 1.0
+   },
+   {
+    "loai": "kiem_soat_chi_phi",
+    "muc": "+1.7 điểm",
+    "n": 1,
+    "dung": 1,
+    "ty_le": 1.0
+   },
+   {
+    "loai": "kiem_soat_chi_phi",
+    "muc": "+1.8 điểm",
+    "n": 1,
+    "dung": 0,
+    "ty_le": 0.0
+   },
+   {
+    "loai": "kiem_soat_chi_phi",
+    "muc": "+11.3 điểm",
+    "n": 1,
+    "dung": 0,
+    "ty_le": 0.0
+   },
+   {
+    "loai": "kiem_soat_chi_phi",
+    "muc": "+14.0 điểm",
+    "n": 1,
+    "dung": 1,
+    "ty_le": 1.0
+   },
+   {
+    "loai": "kiem_soat_chi_phi",
+    "muc": "+18.1 điểm",
+    "n": 1,
+    "dung": 0,
+    "ty_le": 0.0
+   },
+   {
+    "loai": "kiem_soat_chi_phi",
+    "muc": "+2.2 điểm",
+    "n": 1,
+    "dung": 1,
+    "ty_le": 1.0
+   },
+   {
+    "loai": "kiem_soat_chi_phi",
+    "muc": "+2.3 điểm",
+    "n": 2,
+    "dung": 1,
+    "ty_le": 0.5
+   },
+   {
+    "loai": "kiem_soat_chi_phi",
+    "muc": "+2.4 điểm",
+    "n": 1,
+    "dung": 1,
+    "ty_le": 1.0
+   },
+   {
+    "loai": "kiem_soat_chi_phi",
+    "muc": "+2.5 điểm",
+    "n": 1,
+    "dung": 0,
+    "ty_le": 0.0
+   },
+   {
+    "loai": "kiem_soat_chi_phi",
+    "muc": "+2.7 điểm",
+    "n": 1,
+    "dung": 0,
+    "ty_le": 0.0
+   },
+   {
+    "loai": "kiem_soat_chi_phi",
+    "muc": "+2.8 điểm",
+    "n": 1,
+    "dung": 0,
+    "ty_le": 0.0
+   },
+   {
+    "loai": "kiem_soat_chi_phi",
+    "muc": "+2.9 điểm",
+    "n": 1,
+    "dung": 0,
+    "ty_le": 0.0
+   },
+   {
+    "loai": "kiem_soat_chi_phi",
+    "muc": "+21.1 điểm",
+    "n": 1,
+    "dung": 0,
+    "ty_le": 0.0
+   },
+   {
+    "loai": "kiem_soat_chi_phi",
+    "muc": "+22.5 điểm",
+    "n": 1,
+    "dung": 0,
+    "ty_le": 0.0
+   },
+   {
+    "loai": "kiem_soat_chi_phi",
+    "muc": "+3.1 điểm",
+    "n": 1,
+    "dung": 1,
+    "ty_le": 1.0
+   },
+   {
+    "loai": "kiem_soat_chi_phi",
+    "muc": "+3.7 điểm",
+    "n": 3,
+    "dung": 2,
+    "ty_le": 0.6667
+   },
+   {
+    "loai": "kiem_soat_chi_phi",
+    "muc": "+3.9 điểm",
+    "n": 1,
+    "dung": 0,
+    "ty_le": 0.0
+   },
+   {
+    "loai": "kiem_soat_chi_phi",
+    "muc": "+6.4 điểm",
+    "n": 1,
+    "dung": 0,
+    "ty_le": 0.0
+   },
+   {
+    "loai": "kiem_soat_chi_phi",
+    "muc": "+7.0 điểm",
+    "n": 1,
+    "dung": 0,
+    "ty_le": 0.0
+   },
+   {
+    "loai": "kiem_soat_chi_phi",
+    "muc": "+7.2 điểm",
+    "n": 1,
+    "dung": 1,
+    "ty_le": 1.0
+   },
+   {
+    "loai": "kiem_soat_chi_phi",
+    "muc": "-0.5 điểm",
+    "n": 2,
+    "dung": 1,
+    "ty_le": 0.5
+   },
+   {
+    "loai": "kiem_soat_chi_phi",
+    "muc": "-0.6 điểm",
+    "n": 1,
+    "dung": 1,
+    "ty_le": 1.0
+   },
+   {
+    "loai": "kiem_soat_chi_phi",
+    "muc": "-0.7 điểm",
+    "n": 2,
+    "dung": 2,
+    "ty_le": 1.0
+   },
+   {
+    "loai": "kiem_soat_chi_phi",
+    "muc": "-0.8 điểm",
+    "n": 3,
+    "dung": 3,
+    "ty_le": 1.0
+   },
+   {
+    "loai": "kiem_soat_chi_phi",
+    "muc": "-1.0 điểm",
+    "n": 1,
+    "dung": 1,
+    "ty_le": 1.0
+   },
+   {
+    "loai": "kiem_soat_chi_phi",
+    "muc": "-1.1 điểm",
+    "n": 3,
+    "dung": 3,
+    "ty_le": 1.0
+   },
+   {
+    "loai": "kiem_soat_chi_phi",
+    "muc": "-1.2 điểm",
+    "n": 1,
+    "dung": 0,
+    "ty_le": 0.0
+   },
+   {
+    "loai": "kiem_soat_chi_phi",
+    "muc": "-1.3 điểm",
+    "n": 3,
+    "dung": 3,
+    "ty_le": 1.0
+   },
+   {
+    "loai": "kiem_soat_chi_phi",
+    "muc": "-1.5 điểm",
+    "n": 1,
+    "dung": 1,
+    "ty_le": 1.0
+   },
+   {
+    "loai": "kiem_soat_chi_phi",
+    "muc": "-1.6 điểm",
+    "n": 4,
+    "dung": 4,
+    "ty_le": 1.0
+   },
+   {
+    "loai": "kiem_soat_chi_phi",
+    "muc": "-1.7 điểm",
+    "n": 2,
+    "dung": 0,
+    "ty_le": 0.0
+   },
+   {
+    "loai": "kiem_soat_chi_phi",
+    "muc": "-1.9 điểm",
+    "n": 1,
+    "dung": 1,
+    "ty_le": 1.0
+   },
+   {
+    "loai": "kiem_soat_chi_phi",
+    "muc": "-2.0 điểm",
+    "n": 1,
+    "dung": 0,
+    "ty_le": 0.0
+   },
+   {
+    "loai": "kiem_soat_chi_phi",
+    "muc": "-2.8 điểm",
+    "n": 1,
+    "dung": 1,
+    "ty_le": 1.0
+   },
+   {
+    "loai": "kiem_soat_chi_phi",
+    "muc": "-24.0 điểm",
+    "n": 1,
+    "dung": 0,
+    "ty_le": 0.0
+   },
+   {
+    "loai": "kiem_soat_chi_phi",
+    "muc": "-24.7 điểm",
+    "n": 1,
+    "dung": 0,
+    "ty_le": 0.0
+   },
+   {
+    "loai": "kiem_soat_chi_phi",
+    "muc": "-3.4 điểm",
+    "n": 2,
+    "dung": 1,
+    "ty_le": 0.5
+   },
+   {
+    "loai": "kiem_soat_chi_phi",
+    "muc": "-3.7 điểm",
+    "n": 1,
+    "dung": 1,
+    "ty_le": 1.0
+   },
+   {
+    "loai": "kiem_soat_chi_phi",
+    "muc": "-3.8 điểm",
+    "n": 1,
+    "dung": 1,
+    "ty_le": 1.0
+   },
+   {
+    "loai": "kiem_soat_chi_phi",
+    "muc": "-4.4 điểm",
+    "n": 1,
+    "dung": 0,
+    "ty_le": 0.0
+   },
+   {
+    "loai": "kiem_soat_chi_phi",
+    "muc": "-7.3 điểm",
+    "n": 1,
+    "dung": 1,
+    "ty_le": 1.0
+   },
+   {
+    "loai": "phan_tram",
+    "muc": "+10 điểm",
+    "n": 43,
+    "dung": 36,
+    "ty_le": 0.8372
+   },
+   {
+    "loai": "phan_tram",
+    "muc": "+2 điểm",
+    "n": 43,
+    "dung": 35,
+    "ty_le": 0.814
+   },
+   {
+    "loai": "phan_tram",
+    "muc": "+5 điểm",
+    "n": 43,
+    "dung": 36,
+    "ty_le": 0.8372
+   }
+  ],
+  "vi_du": {
+   "ticker": "VNM",
+   "year": 2020,
+   "goc": "Lợi nhuận ròng đạt 11.235 tỷ đồng trong cả năm, tăng 6,5% so với năm trước và hoàn thành 105% kế hoạch cả năm",
+   "bien_the": {
+    "gia_tri": {
+     "text": "Lợi nhuận ròng đạt 11.460 tỷ đồng trong cả năm, tăng 6,5% so với năm trước và hoàn thành 105% kế hoạch cả năm",
+     "ket_qua": "mâu thuẫn",
+     "muc": "+2%"
+    },
+    "phan_tram": {
+     "text": "Lợi nhuận ròng đạt 11.235 tỷ đồng trong cả năm, tăng 8,5% so với năm trước và hoàn thành 105% kế hoạch cả năm",
+     "ket_qua": "mâu thuẫn",
+     "muc": "+2 điểm"
+    },
+    "huong": {
+     "text": "Lợi nhuận ròng đạt 11.235 tỷ đồng trong cả năm, giảm 6,5% so với năm trước và hoàn thành 105% kế hoạch cả năm",
+     "ket_qua": "mâu thuẫn",
+     "muc": "đảo chiều"
+    }
+   },
+   "kiem_soat_chi_phi": {
+    "ticker": "FPT",
+    "year": 2018,
+    "text": "Năm 2018, chi phí quản lý doanh nghiệp được kiểm soát tốt.",
+    "muc": "+7.2 điểm"
+   }
+  }
+ },
+ "quantum": {
+  "methods": {
+   "rapidfuzz_top8": {
+    "accuracy_mean": 0.8119674185463659,
+    "accuracy_std": 0.030394445579677305,
+    "macro_f1_mean": 0.8010279598282694,
+    "macro_f1_std": 0.0471485973693759,
+    "train_seconds_mean": 0.0017809601500630378
+   },
+   "svm_rbf": {
+    "accuracy_mean": 0.9110902255639097,
+    "accuracy_std": 0.05084143449353258,
+    "macro_f1_mean": 0.9044849728015363,
+    "macro_f1_std": 0.06163695352179935,
+    "train_seconds_mean": 0.8221723400056362
+   },
+   "qsvm_fixed": {
+    "accuracy_mean": 0.7338345864661654,
+    "accuracy_std": 0.054553393116728875,
+    "macro_f1_mean": 0.7224430001529148,
+    "macro_f1_std": 0.06395322172435151,
+    "train_seconds_mean": 1.4516129199415446
+   },
+   "qsvm_qka": {
+    "accuracy_mean": 0.8403508771929824,
+    "accuracy_std": 0.048472212221978006,
+    "macro_f1_mean": 0.829499426871718,
+    "macro_f1_std": 0.06231187602159204,
+    "train_seconds_mean": 216.70173214003444
+   },
+   "rapidfuzz_1nn": {
+    "accuracy_mean": 0.8510025062656641,
+    "accuracy_std": 0.04265405813575091,
+    "macro_f1_mean": 0.8325010853757153,
+    "macro_f1_std": 0.05769747101382405,
+    "train_seconds_mean": 0.003838800173252821
+   },
+   "svm_linear_full": {
+    "accuracy_mean": 0.9041979949874687,
+    "accuracy_std": 0.016170391299041055,
+    "macro_f1_mean": 0.8928983065811711,
+    "macro_f1_std": 0.027883136020791982,
+    "train_seconds_mean": 0.7465162199921906
+   }
+  },
+  "alignment": {
+   "rbf_train": {
+    "mean": 0.5977405817505284,
+    "std": 0.03437787831335909
+   },
+   "rbf_test": {
+    "mean": 0.6294653283788421,
+    "std": 0.04183567182710494
+   },
+   "fixed_train": {
+    "mean": 0.293466818634037,
+    "std": 0.013712255225501943
+   },
+   "fixed_test": {
+    "mean": 0.40712502566721875,
+    "std": 0.00993672853988818
+   },
+   "qka_train_before": {
+    "mean": 0.293466818634037,
+    "std": 0.013712255225501943
+   },
+   "qka_train_after": {
+    "mean": 0.5109665427014308,
+    "std": 0.08809806416535915
+   },
+   "qka_test_after": {
+    "mean": 0.5733400277156271,
+    "std": 0.08984668500582904
+   },
+   "offdiag_fixed_train": {
+    "mean": 0.011341359319354247,
+    "std": 0.0010049508349195438
+   },
+   "offdiag_qka_train": {
+    "mean": 0.043938939507999354,
+    "std": 0.023471996687196423
+   }
+  },
+  "dataset": {
+   "n_samples": 282,
+   "n_rows": 1945,
+   "classes": [
+    {
+     "code": "21",
+     "n_names": 35,
+     "n_rows": 250,
+     "most_common_name": "Tiền chi mua tài sản cố định và tài sản dài hạn khác"
+    },
+    {
+     "code": "22",
+     "n_names": 35,
+     "n_rows": 227,
+     "most_common_name": "Tiền thu từ thanh lý tài sản cố định và tài sản dài hạn khác"
+    },
+    {
+     "code": "23",
+     "n_names": 46,
+     "n_rows": 261,
+     "most_common_name": "Tiền chi cho vay, mua các công cụ nợ của đơn vị khác"
+    },
+    {
+     "code": "24",
+     "n_names": 41,
+     "n_rows": 246,
+     "most_common_name": "Tiền thu hồi cho vay, bán lại công cụ nợ của đơn vị khác"
+    },
+    {
+     "code": "25",
+     "n_names": 34,
+     "n_rows": 229,
+     "most_common_name": "Tiền chi đầu tư góp vốn vào đơn vị khác"
+    },
+    {
+     "code": "26",
+     "n_names": 25,
+     "n_rows": 207,
+     "most_common_name": "Tiền thu hồi đầu tư góp vốn vào đơn vị khác"
+    },
+    {
+     "code": "27",
+     "n_names": 54,
+     "n_rows": 256,
+     "most_common_name": "Tiền thu lãi cho vay, cổ tức và lợi nhuận được chia"
+    },
+    {
+     "code": "30",
+     "n_names": 12,
+     "n_rows": 268,
+     "most_common_name": "Lưu chuyển tiền thuần từ hoạt động đầu tư"
+    }
+   ],
+   "tickers": [
+    "FPT",
+    "GAS",
+    "HAG",
+    "HPG",
+    "MSN",
+    "MWG",
+    "PC1",
+    "PLX",
+    "POW",
+    "VCG",
+    "VHM",
+    "VIC",
+    "VNM"
+   ]
+  },
+  "n_qubits": 8,
+  "n_folds": 5,
+  "total_seconds": 1121.1
+ }
+}

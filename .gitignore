@@ -1,6 +1,6 @@
 # ── Dữ liệu (không commit — tải lại bằng script trong smartaudit/ingest) ──
-data/
-!data/.gitkeep
+/data/
+!/data/.gitkeep
 *.parquet
 *.zip
 *.rar

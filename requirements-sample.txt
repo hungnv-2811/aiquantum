@@ -1,0 +1,2 @@
+# Chỉ cần cho scripts/run_sample.py; dashboard không cần cài gói Python.
+PyYAML==6.0.3

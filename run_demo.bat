@@ -10,14 +10,19 @@ REM ============================================================
 
 setlocal
 set PORT=8000
-cd /d "%~dp0prototype"
+cd /d "%~dp0"
 
 where python >nul 2>&1
 if errorlevel 1 (
     echo [LOI] Khong tim thay Python trong PATH.
     echo       Cai Python tu https://python.org roi chay lai.
     echo.
-    echo       Hoac mo truc tiep: %~dp0prototype\index.html
+    pause
+    exit /b 1
+)
+
+python scripts\check_environment.py
+if errorlevel 1 (
     pause
     exit /b 1
 )
@@ -30,6 +35,6 @@ echo   Dung lai: nhan Ctrl+C
 echo.
 
 start "" "http://localhost:%PORT%"
-python -m http.server %PORT%
+python -m http.server %PORT% --bind 127.0.0.1 --directory prototype
 
 endlocal

@@ -1,0 +1,62 @@
+[
+ {
+  "ticker": "HPG",
+  "year": 2023,
+  "text": "Vốn chủ sở hữu tăng 7%, từ 96.113 tỷ đồng lên 102.836 tỷ đồng nhờ dòng lợi nhuận làm ra trong năm",
+  "real": true,
+  "page": 33
+ },
+ {
+  "ticker": "VNM",
+  "year": 2020,
+  "text": "Lợi nhuận ròng đạt 11.235 tỷ đồng trong cả năm, tăng 6,5% so với năm trước và hoàn thành 105% kế hoạch cả năm",
+  "real": true,
+  "page": 46
+ },
+ {
+  "ticker": "MSN",
+  "year": 2020,
+  "text": "Tổng tài sản tăng 19,0% lên 115.736 tỷ đồng Việt Nam",
+  "real": true,
+  "page": 46
+ },
+ {
+  "ticker": "POW",
+  "year": 2022,
+  "text": "Lợi nhuận trước thuế toàn Tổng công ty đạt 2.809 tỷ đồng, đạt 325% kế hoạch và vượt 20% so với năm trước",
+  "real": true,
+  "page": 42
+ },
+ {
+  "ticker": "POW",
+  "year": 2022,
+  "text": "Lợi nhuận trước thuế toàn Tổng công ty đạt 3.090 tỷ đồng, đạt 325% kế hoạch và vượt 20% so với năm trước",
+  "real": false,
+  "loai": "gia_tri",
+  "original": "Lợi nhuận trước thuế toàn Tổng công ty đạt 2.809 tỷ đồng, đạt 325% kế hoạch và vượt 20% so với năm trước"
+ },
+ {
+  "ticker": "HPG",
+  "year": 2023,
+  "text": "Vốn chủ sở hữu tăng 12,0%, từ 96.113 tỷ đồng lên 102.836 tỷ đồng nhờ dòng lợi nhuận làm ra trong năm",
+  "real": false,
+  "loai": "phan_tram",
+  "original": "Vốn chủ sở hữu tăng 7%, từ 96.113 tỷ đồng lên 102.836 tỷ đồng nhờ dòng lợi nhuận làm ra trong năm"
+ },
+ {
+  "ticker": "VNM",
+  "year": 2020,
+  "text": "Lợi nhuận ròng đạt 11.235 tỷ đồng trong cả năm, giảm 6,5% so với năm trước và hoàn thành 105% kế hoạch cả năm",
+  "real": false,
+  "loai": "huong",
+  "original": "Lợi nhuận ròng đạt 11.235 tỷ đồng trong cả năm, tăng 6,5% so với năm trước và hoàn thành 105% kế hoạch cả năm"
+ },
+ {
+  "ticker": "MSN",
+  "year": 2022,
+  "text": "Năm 2022, chi phí bán hàng được kiểm soát tốt.",
+  "real": false,
+  "loai": "kiem_soat_chi_phi",
+  "original": "(câu tổng hợp)"
+ }
+]
