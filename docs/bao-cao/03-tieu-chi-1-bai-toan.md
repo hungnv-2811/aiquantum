@@ -17,16 +17,18 @@ Ví dụ: BCTN Vinamilk 2024 tr.31 ghi *"tổng doanh thu hợp nhất 61.824 t�
 
 **Tác động** (ACFE 2026): gian lận BCTC chỉ chiếm 6% số vụ nhưng thiệt hại trung vị cao nhất (1 triệu USD), và tồn tại trung vị 12 tháng trước khi lộ.
 
-**Yêu cầu:** R1 vết minh chứng tới ô bảng; R2 không cáo buộc oan, precision nhóm "mâu thuẫn" ≥ 80%; R3 chạy trên máy thường, không gửi dữ liệu ra ngoài; R4 hiểu tiếng Việt và Thông tư 200.
+**Yêu cầu:** R1 vết minh chứng tới ô bảng; R2 không cáo buộc oan, precision nhóm "cần xem xét" ≥ 80%; R3 chạy trên máy thường, không gửi dữ liệu ra ngoài; R4 hiểu tiếng Việt và Thông tư 200.
 
 ## 1.3. Phát biểu bài toán dữ liệu
 
 - **Đầu vào:** cặp (BCTN năm *t*, BCTC hợp nhất đã kiểm toán năm *t*).
-- **Đầu ra:** mỗi khẳng định (câu, trang, chỉ tiêu, hướng, giá trị, kỳ, mốc so sánh) nhận **nhất quán / mâu thuẫn / không kiểm chứng được**, kèm Mã số, trang BCTC, giá trị hai kỳ, độ lệch, điểm ưu tiên.
+- **Đầu ra:** mỗi khẳng định (câu, trang, chỉ tiêu, hướng, giá trị, kỳ, mốc so sánh) nhận **nhất quán / cần xem xét (lệch với BCTC) / chưa kiểm chứng được**, kèm Mã số, trang BCTC, giá trị hai kỳ và độ lệch.
 - **Điều kiện:** chỉ kết luận khi tra được ô cùng phạm vi, kỳ, đơn vị; còn lại nêu lý do.
-- **Thước đo:** precision, recall nhóm "mâu thuẫn" trên 300 cặp nhãn bạc (mục 2.2); recall trên tập chèn lỗi có kiểm soát; tỷ lệ "không kiểm chứng được" theo lý do. Kết quả ở mục 3.4.
+- **Thước đo:** precision nhóm "cần xem xét" trên 300 cặp có nhãn (mục 2.2); recall trên tập chèn lỗi có kiểm soát, vì mâu thuẫn thật quá hiếm (7/300 cặp) để đo recall ổn định trên dữ liệu thật; tỷ lệ "chưa kiểm chứng được" theo lý do. Kết quả ở mục 3.4.
 
 ## 1.4. Các ràng buộc và cách đội đã xử lý
+
+**Bảng 1.1. Ràng buộc thực tế và cách đội xử lý**
 
 | Ràng buộc | Ví dụ thật | Cách xử lý · trạng thái |
 |---|---|---|
@@ -35,15 +37,13 @@ Ví dụ: BCTN Vinamilk 2024 tr.31 ghi *"tổng doanh thu hợp nhất 61.824 t�
 | Chữ hai, ba cột bị trộn khi bóc PDF | VNM 2024 tr.31 sinh câu ghép không có trong báo cáo | Tách cột; loại dãy số trần của biểu đồ · **xử lý một phần** |
 | Câu không phải kết quả | Kế hoạch, chính sách kế toán, rủi ro, số giả định "nếu … sẽ" | Bộ lọc tương lai, chính sách kế toán, giả định, số liệu quý · **đã xử lý** (có test) |
 | Đọc nhầm bảng | Mã 10 ở LCTT là biến động tồn kho; doanh thu FPT 2023 đọc thành "26 đồng" (cột Thuyết minh) | Nhận diện loại báo cáo; so độ lớn số trong hàng · **đã xử lý** (có test) |
-| Thoái vốn làm đứt chuỗi | Doanh thu FPT 2018 giảm 45,6% | Biến động > 40% hoặc "so sánh tương đương" → không kiểm chứng được, kèm lý do · **đã xử lý** |
+| Thoái vốn làm đứt chuỗi | Doanh thu FPT 2018 giảm 45,6% | Biến động > 40% hoặc "so sánh tương đương" → chưa kiểm chứng được, kèm lý do · **đã xử lý** |
 | Ngân hàng (Thông tư 49), BCTN scan hoặc PDF lỗi | 3 ngân hàng; 11/112 BCTN là bản scan, mất dấu tiếng Việt hoặc không phải BCTN | Ngoài phạm vi, tính vào độ phủ · **có chủ đích** |
-
-Phần lớn cờ oan của bản 21/09 thuộc bốn dòng đầu bảng; bản vá ngày 19/11 nhắm đúng các nhóm này: số cờ "mâu thuẫn" giảm từ 141 (66 cặp) xuống 52 dù số cặp tăng lên 98; trên cùng tập khẳng định của bản 21/09, cờ oan ước tính giảm từ khoảng 137 xuống khoảng 23 (mục 3.4).
 
 ## Kết luận tiêu chí 1
 
-**Đã đạt:** nghiệp vụ đối chiếu thành bài toán neo bằng Mã số, ba trạng thái, có vết minh chứng; chạy end-to-end trên 98 cặp thật của 16 doanh nghiệp (511 khẳng định); bảy nhóm ràng buộc có ví dụ thật và cách xử lý.
+**Đã đạt:** nghiệp vụ đối chiếu thành bài toán neo bằng Mã số, ba trạng thái, có vết minh chứng; chạy end-to-end trên 98 cặp thật của 16 doanh nghiệp (511 khẳng định); bảy nhóm ràng buộc có ví dụ thật và cách xử lý (Bảng 1.1); mỗi phán quyết có vết minh chứng tới ô bảng (Hình 1.1).
 
-**Chưa đạt:** yêu cầu R2 — precision nhóm "mâu thuẫn" ≥ 80% — chưa đạt trên dữ liệu thật (0/21 cờ sau vá là mâu thuẫn thật, nhãn bạc): mâu thuẫn thật rất hiếm (ước tính khoảng 2% khẳng định) và nằm ở tỷ số cơ cấu mà hệ thống chưa tính. Chưa có nhãn người kiểm toàn bộ; chưa thử nghiệm với kiểm toán viên; ngân hàng, bản scan ngoài phạm vi.
+**Phần còn lại:** yêu cầu R2 mới đạt một phần. Hệ thống không báo động giả trên câu đúng (0/163) và cờ oan giảm khoảng 83%, nhưng precision trên dữ liệu thật chưa đo được ổn định: chỉ 7/300 cặp là mâu thuẫn thật, và các ca này nằm ở tỷ số cơ cấu (Nợ/VCSH, tỷ trọng tài sản) mà bộ luật chưa tính. Việc tính tỷ số cơ cấu là giai đoạn 2 của lộ trình (mục 5.4).
 
-Minh chứng: `results/nnc_results.json`, `results/eval_summary.json`, `docs/demo/ung-vien-demo.md`.
+![Hình 1.1. Vết minh chứng trên prototype: câu trong BCTN FPT 2022 (tr.52) được đối chiếu tới Mã số 10, trang 13 BCTC hợp nhất đã kiểm toán; cả giá trị và tỷ lệ tăng đều khớp.](hinh/vet-minh-chung-fpt-2022.png "15")

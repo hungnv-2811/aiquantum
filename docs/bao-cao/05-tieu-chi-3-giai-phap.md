@@ -4,7 +4,7 @@
 
 Hai luồng độc lập gặp nhau tại **Mã số Thông tư 200**: luồng ngôn từ (báo cáo thường niên) và luồng số liệu (BCTC hợp nhất đã kiểm toán).
 
-**BCTN (PDF)** → bóc chữ theo cột, tách câu → **trích khẳng định** (chỉ tiêu, giá trị, %, hướng, kỳ; lọc câu ngoài phạm vi) → **neo Mã số** (tra thẳng ô BCTC, quy đổi đơn vị tính) → **đối chiếu 3 chiều** (giá trị · tỷ lệ · hướng; kiểm soát chi phí) → **phán quyết + vết minh chứng**.
+![Hình 3.1. Luồng xử lý: hai luồng độc lập gặp nhau tại Mã số Thông tư 200; lớp lượng tử là thí nghiệm tách rời.](hinh/luong-xu-ly.png "17")
 
 Mã nguồn: `smartaudit/ingest`, `nlp/claims.py`, `tables/parser.py`, `nnc/checker.py`; lớp lượng tử tách rời ở `smartaudit/quantum`.
 
@@ -16,6 +16,8 @@ Mã nguồn: `smartaudit/ingest`, `nlp/claims.py`, `tables/parser.py`, `nnc/chec
 - **Lượng tử ở đúng chỗ có dữ liệu:** QKA cho bài toán khớp khoản mục khi bảng thiếu cột Mã số (nhãn sinh tự động từ bảng có Mã số); QSVM phát hiện bất thường bị hoãn vì chỉ có 31 mẫu dương.
 
 ### 3.3. Thuật toán, cấu hình và giả định
+
+**Bảng 3.1. Tham số chính của bộ đối chiếu**
 
 | Tham số | Giá trị | Lý do |
 |---|---|---|
@@ -29,6 +31,8 @@ Mã nguồn: `smartaudit/ingest`, `nlp/claims.py`, `tables/parser.py`, `nnc/chec
 Bản vá ngày 19/11 sửa đúng các nguyên nhân cờ oan đã định danh: đọc dòng "Đơn vị tính" (26% BCTC ghi nghìn/triệu đồng), lọc trang giới thiệu đơn vị thành viên, câu chính sách kế toán, số liệu quý, câu năm khác; lấy số "từ X lên Y" đúng vế; chặn so hướng giữa tỷ số và khoản mục tiền. Mỗi bản vá có test hồi quy: **⟦CHỜ: số test⟧ phép kiểm tự động**.
 
 ### 3.4. Kết quả chạy thử và so sánh cơ bản
+
+**Bảng 3.2. Kết quả chạy thử, so với bản 21/09** *(ví dụ đầu ra: Hình 1.1)*
 
 | Chỉ số | Bản 21/09 | Hiện tại (20/11) | Ghi chú |
 |---|---|---|---|
@@ -44,7 +48,7 @@ Bản vá ngày 19/11 sửa đúng các nguyên nhân cờ oan đã định danh
 
 ### Giới hạn của giải pháp và điều kiện áp dụng
 
-- Còn cờ oan khi câu nói về một mảng/công ty con mà không có từ khoá phạm vi, và khi PDF bị trộn cột.
-- Chưa tính tỷ số cơ cấu (Nợ/VCSH, tỷ trọng tài sản) — nơi 7/7 mâu thuẫn thật trong mẫu xuất hiện.
-- Nhãn đánh giá là nhãn bạc do hai tác tử AI gán mù; bản vá thiết kế từ phân tích lỗi của 141 cờ cũ nên số "sau vá" có thiên lệch lạc quan.
-- Chỉ áp dụng cho BCTC theo TT200; ngân hàng (TT49) và báo cáo thường niên bản scan chưa xử lý.
+- **Trường hợp chưa đạt:** khẳng định về tỷ số cơ cấu (Nợ/VCSH, tỷ trọng tài sản) và câu nói về một mảng, công ty con mà không có từ chỉ phạm vi. Hệ thống trả "chưa kiểm chứng được" hoặc gắn "cần xem xét" để người rà, không tự kết luận sai phạm.
+- **Giả định ảnh hưởng kết quả:** BCTC hợp nhất đã kiểm toán là chuẩn đúng; câu không ghi phạm vi được hiểu là số hợp nhất; dung sai giá trị 1% và tỷ lệ 1 điểm phần trăm (Bảng 3.1).
+- **Điều kiện áp dụng:** BCTC lập theo Thông tư 200 và báo cáo thường niên có lớp chữ (PDF bóc được văn bản).
+- **Hướng phát triển ở vòng tới:** mở rộng sang BCTC ngân hàng theo Thông tư 49 (ánh xạ Mã số của biểu mẫu ngân hàng vào ontology) và báo cáo thường niên bản scan (thêm bước OCR trước khi trích khẳng định).

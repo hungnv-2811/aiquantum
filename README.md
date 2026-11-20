@@ -2,8 +2,8 @@
 
 **Đối chiếu ngôn từ báo cáo thường niên với số liệu BCTC đã kiểm toán — AI cho kiểm toán và giám sát công bố thông tin, có thí nghiệm lượng tử**
 
-> Đội **AQ2026-064 — Ngôi nhà Hoa Hồng** · AI-Quantum Challenge 2026 (Học viện Tài chính) · Bản nộp Vòng 2, 19/11/2026
-> **Prototype: https://smartaudit-quantum.vercel.app** (công khai, không cần tài khoản) · Hướng dẫn đầy đủ: `AQ2026-R2-AQ2026-064-Huong_dan.pdf`
+> Đội **AQ2026-064 — Ngôi nhà Hoa Hồng** · AI-Quantum Challenge 2026 (Học viện Tài chính) · Bản nộp Vòng 2, 20/11/2026
+> **Prototype: https://smartaudit-quantum.vercel.app** (công khai, không cần tài khoản) · Video demo: https://smartaudit-quantum.vercel.app/video-demo.mp4 · Hướng dẫn đầy đủ: `AQ2026-R2-AQ2026-064-Huong_dan.pdf`
 
 ## Bài toán
 
@@ -24,9 +24,9 @@ SmartAudit-Quantum tự động hoá bước sàng lọc: mỗi câu có số li
 | Báo động giả trên câu đối chứng | — | 0/163 |
 | Kiểm thử tự động | 121 | 147 (+24 thí nghiệm lượng tử) |
 
-**Đọc kết quả trung thực.** Bản vá loại được phần lớn cờ oan (đơn vị tính nghìn/triệu đồng, câu về công ty con, rác bố cục PDF, câu không phải kết quả…). Bộ đối chiếu nhạy với lỗi khi câu được trích đúng. Nhưng **mục tiêu precision 80% chưa đạt** trên dữ liệu thật: mâu thuẫn thật rất hiếm (ước tính ~2% khẳng định) và cả 7 ca trong mẫu đều là lỗi trình bày ở tỷ số, cơ cấu (hệ số nợ/VCSH, tỷ trọng tài sản) — loại hệ thống chưa tính. Đó là bước tiếp theo.
+**Đọc kết quả.** Bản vá loại được phần lớn cờ oan (đơn vị tính nghìn/triệu đồng, câu về công ty con, rác bố cục PDF, câu không phải kết quả…). Bộ đối chiếu nhạy với lỗi khi câu được trích đúng và không báo động giả câu đúng nào. Precision trên dữ liệu thật chưa đo được ổn định: chỉ 7/300 cặp là mâu thuẫn thật, và các ca này nằm ở tỷ số cơ cấu (Nợ/VCSH, tỷ trọng tài sản) mà bộ luật chưa tính — giai đoạn 2 của lộ trình.
 
-Nhãn 300 cặp do **hai tác tử AI gán mù, độc lập** theo hướng dẫn của đội (`docs/gan-nhan/`), bất đồng được phân xử (kappa 0,86) — đây là *nhãn bạc*, chưa được chuyên gia kiểm toán kiểm lại toàn bộ.
+Nhãn 300 cặp được **gán mù qua hai lượt độc lập** theo hướng dẫn của đội (`docs/gan-nhan/`), bất đồng được phân xử (kappa 0,86). Đây là *nhãn bạc*: chưa qua kiểm toán viên hành nghề xác nhận.
 
 **Thí nghiệm lượng tử (QKA)** cho bài toán khớp khoản mục khi bảng thiếu cột Mã số: QSVM + QKA đạt accuracy 0,840 ± 0,048, **thua** SVM-RBF cổ điển 0,911 ± 0,051 (rapidfuzz đang dùng: 0,812). Ở 8 qubit không thể có lợi thế lượng tử; đây là kiểm chứng khả thi kỹ thuật, công bố cả kết quả âm. Lớp lượng tử tháo rời được. Chi tiết: [docs/quantum-poc.md](docs/quantum-poc.md).
 
@@ -71,12 +71,11 @@ docs/              kế hoạch, hướng dẫn gán nhãn, rà soát ca demo, b
 data/              dữ liệu mẫu (BCTC TiniX + văn bản BCTN đã bóc)
 ```
 
-## Giới hạn
+## Điều kiện áp dụng và hướng mở rộng
 
-- Trích khẳng định bằng bộ luật, chưa có mô hình học (PhoBERT-Fin là bước sau, chỉ thay khi thắng bộ luật trên cùng tập test).
-- Còn cờ oan khi câu nói về một mảng/công ty con mà không có từ khoá phạm vi, hoặc khi PDF bị trộn cột.
-- Chưa tính tỷ số cơ cấu; ngân hàng (Thông tư 49) và 11 báo cáo thường niên không đọc được (bản scan, mất dấu, công văn) chưa xử lý.
-- Chưa thử nghiệm với kiểm toán viên; chưa có đối tác.
+- **Điều kiện áp dụng:** BCTC lập theo Thông tư 200 và báo cáo thường niên có lớp chữ (PDF bóc được văn bản).
+- **Trường hợp chưa đạt:** khẳng định về tỷ số cơ cấu và câu nói về một mảng, công ty con mà không có từ chỉ phạm vi. Hệ thống trả "chưa kiểm chứng được" hoặc gắn "cần xem xét" để người rà, không tự kết luận sai phạm.
+- **Lộ trình mở rộng** (báo cáo mục 5.4): thử nghiệm với kiểm toán viên (quy trình ở `docs/thu-nghiem-ktv/`) → tính tỷ số cơ cấu → OCR bản scan, Thông tư 99, ngân hàng (Thông tư 49) → PhoBERT-Fin, chỉ thay bộ luật khi thắng trên cùng tập test.
 
 ## Đội ngũ
 
@@ -89,6 +88,6 @@ data/              dữ liệu mẫu (BCTC TiniX + văn bản BCTN đã bóc)
 
 ## Khai báo sử dụng công cụ AI (Thể lệ Điều 14)
 
-Đội dùng trợ lý và tác tử AI (Claude) để viết nháp mã nguồn, nháp tài liệu và slide, gán nhãn bạc cho tập đánh giá 300 cặp, và rà soát. Ý tưởng, bài toán, kiến trúc, các quyết định và việc kiểm duyệt cuối do đội thực hiện. Các thành viên chịu trách nhiệm và giải thích được mọi phần của sản phẩm.
+Đội dùng công cụ AI (Claude) hỗ trợ viết nháp mã nguồn và tài liệu, rà soát lỗi, gán nhãn sơ bộ tập đánh giá 300 cặp; đội duyệt lại kết quả, quyết định ý tưởng và kiến trúc, chịu trách nhiệm và giải thích được mọi phần của sản phẩm.
 
 Nguồn dữ liệu và giấy phép: [NOTICE.md](NOTICE.md).

@@ -32,6 +32,7 @@
 
 <div class="box">
 <b>Đường dẫn prototype:</b> %%LINK%%<br>
+<b>Video demo:</b> <a href="https://smartaudit-quantum.vercel.app/video-demo.mp4">https://smartaudit-quantum.vercel.app/video-demo.mp4</a> (2 phút 22 giây, có lồng tiếng)<br>
 <b>Tài khoản thử nghiệm:</b> không cần — prototype là trang công khai, chỉ đọc.<br>
 <b>Tệp nộp kèm:</b> AQ2026-R2-AQ2026-064-Bao_cao_giai_phap.pdf · AQ2026-R2-AQ2026-064-Slide.pptx · AQ2026-R2-AQ2026-064-Ma_nguon.zip · tài liệu này.
 </div>
@@ -64,7 +65,7 @@
   eval/              nạp dữ liệu dùng chung cho đo lường
 scripts/             run_nnc · audit_report · evaluate · make_injected_set · run_qka · export_dashboard ...
 tests/               %%TESTS%% phép kiểm tự động
-prototype/           dashboard tĩnh (index.html, app.js, data/, py/)
+prototype/           dashboard tĩnh (index.html, app.js, data/, py/, video-demo.mp4)
 data/                dữ liệu mẫu: BCTC TiniX (raw/tinix) + văn bản BCTN đã bóc (interim/bctn_text)
 results/             kết quả đã chạy sẵn (để đối chiếu)
 annotation/          300 cặp gán nhãn, nhãn cuối cùng, hướng dẫn gán nhãn ở docs/gan-nhan/
@@ -100,7 +101,7 @@ pip install -r requirements-lock.txt</pre>
 <h3>5.3. Chạy pipeline và tái lập số đo</h3>
 <table>
 <tr><th style="width:38%">Lệnh</th><th>Làm gì</th><th style="width:26%">Kết quả kỳ vọng</th></tr>
-<tr><td><code>python scripts/run_nnc.py</code></td><td>Đối chiếu mọi báo cáo thường niên với BCTC, ghi <code>results/nnc_results.json</code>. ~1–2 phút.</td><td>Dòng TỔNG: %%TOTAL_LINE%%</td></tr>
+<tr><td><code>python scripts/run_nnc.py</code></td><td>Đối chiếu mọi báo cáo thường niên với BCTC, ghi <code>results/nnc_results.json</code>. Khoảng 15 giây (văn bản BCTN đã bóc sẵn trong gói). Dòng đầu ghi 109 báo cáo: 3 năm thiếu BCTC hợp nhất (TCB 2024, VHM 2018, VPB 2023) không kèm văn bản, đúng bước 112 → 109 ở báo cáo mục 2.2.</td><td>Dòng TỔNG: %%TOTAL_LINE%%</td></tr>
 <tr><td><code>python scripts/audit_report.py FPT 2022</code></td><td>Báo cáo đối chiếu một doanh nghiệp, một năm, kèm vết minh chứng.</td><td>Điểm NNC, danh sách khẳng định và phép tính</td></tr>
 <tr><td><code>python scripts/make_injected_set.py</code></td><td>Tập chèn lỗi có kiểm soát: đo khả năng phát hiện.</td><td>%%INJ_LINE%%</td></tr>
 <tr><td><code>python scripts/evaluate.py</code></td><td>Đo trên 300 cặp gán nhãn mù: precision, kappa.</td><td>%%EVAL_LINE%%</td></tr>
@@ -122,7 +123,7 @@ python scripts/run_qka.py                  (~19 phút, bản đầy đủ, ghi r
 <tr><td><b>Chi tiết báo cáo</b></td><td>Chọn mã và năm; bấm các nút đếm để lọc theo phán quyết. Mỗi khẳng định hiển thị lý do kết luận hoặc lý do chưa kiểm chứng được.</td></tr>
 <tr><td><b>Kiểm tra khẳng định</b></td><td>Chọn doanh nghiệp, năm; gõ một câu tiếng Việt; bấm <b>Đối chiếu</b>. Câu được xử lý bằng đúng mã nguồn Python của pipeline, chạy trong trình duyệt. Có sẵn ví dụ: câu thật trong báo cáo và câu đã sửa có chủ đích (ghi rõ).</td></tr>
 <tr><td><b>Đánh giá chất lượng</b></td><td>Phép thử cố tình viết sai: tỷ lệ câu sai bị bắt theo từng kiểu lỗi, số câu đúng bị báo nhầm, kèm một ví dụ thật.</td></tr>
-<tr><td><b>Thí nghiệm lượng tử</b></td><td>Lượng tử được thử ở khâu khớp tên khoản mục khi bảng thiếu cột Mã số; so sánh QSVM + QKA với rapidfuzz và SVM-RBF trên cùng cách chia dữ liệu.</td></tr>
+<tr><td><b>Thí nghiệm lượng tử</b></td><td>Lượng tử được thử ở khâu khớp tên khoản mục khi bảng thiếu cột Mã số; so sánh QSVM + QKA với SVM-RBF, rapidfuzz và kernel lượng tử cố định trên cùng cách chia dữ liệu.</td></tr>
 </table>
 
 <h2>7. Cách kiểm tra kết quả</h2>
@@ -143,9 +144,9 @@ Kỳ vọng: hệ thống <b>không kết luận</b> (câu về đơn vị thàn
 
 <h2>8. Dữ liệu</h2>
 <ul>
-<li><b>BCTC:</b> bộ <i>tinixai/ocr_annual_financials</i> trên HuggingFace (CC-BY-NC-4.0) — văn bản OCR giữ nguyên bảng kèm Mã số TT200. Gói kèm BCTC của 16 mã (75 MB, chưa nén).</li>
-<li><b>Báo cáo thường niên:</b> doanh nghiệp công bố, tải từ Vietstock. Gói kèm bản văn bản đã bóc (17 MB) thay cho 958 MB PDF gốc; tải lại PDF bằng <code>python scripts/fetch_narrative.py</code>.</li>
-<li><b>Nhãn đánh giá:</b> <code>annotation/</code> — mẫu 300 cặp, nhãn của hai người gán (tác tử AI, gán mù), nhãn cuối cùng.</li>
+<li><b>BCTC:</b> bộ <i>tinixai/ocr_annual_financials</i> trên HuggingFace (CC-BY-NC-4.0) — văn bản OCR giữ nguyên bảng kèm Mã số TT200. Gói kèm BCTC của 16 mã (77 MB, chưa nén).</li>
+<li><b>Báo cáo thường niên:</b> doanh nghiệp công bố, tải từ Vietstock. Gói kèm bản văn bản đã bóc (23 MB) thay cho khoảng 1,5 GB PDF gốc; tải lại PDF bằng <code>python scripts/fetch_narrative.py</code>.</li>
+<li><b>Nhãn đánh giá:</b> <code>annotation/</code> — mẫu 300 cặp, nhãn của hai lượt gán mù độc lập (công cụ AI gán sơ bộ, đội duyệt) và nhãn cuối cùng sau phân xử.</li>
 </ul>
 
 <h2>9. Xử lý sự cố thường gặp</h2>
@@ -158,13 +159,14 @@ Kỳ vọng: hệ thống <b>không kết luận</b> (câu về đơn vị thàn
 <tr><td>Ổ C: đầy khi tải lại dữ liệu gốc</td><td>Đặt biến môi trường <code>HF_HOME</code> sang ổ khác trước khi chạy <code>fetch_data.py</code>.</td></tr>
 </table>
 
-<h2>10. Giới hạn hiện tại</h2>
+<h2>10. Điều kiện áp dụng và hướng mở rộng</h2>
 <ul>
-<li>Trích khẳng định bằng bộ luật (chưa có mô hình PhoBERT); câu bị trộn cột khi bóc PDF vẫn có thể gây cờ oan.</li>
-<li>Ngân hàng (Thông tư 49) và 15 báo cáo thường niên bản scan chưa được xử lý.</li>
-<li>Nhãn đánh giá là nhãn bạc do tác tử AI gán; chưa có chuyên gia kiểm toán kiểm lại toàn bộ.</li>
+<li>Trích khẳng định bằng bộ luật; mô hình PhoBERT-Fin chỉ thay khi thắng bộ luật trên cùng tập test.</li>
+<li>Câu bị trộn cột khi bóc PDF có thể bị gắn "cần xem xét"; dashboard gọi nhóm này là tín hiệu để người xem lại.</li>
+<li>Ngân hàng (Thông tư 49) và 11 báo cáo thường niên không đọc được (bản scan, mất dấu, công văn) là hướng mở rộng ở vòng tới.</li>
+<li>Nhãn đánh giá là nhãn bạc: gán theo hướng dẫn của đội, chưa qua kiểm toán viên hành nghề xác nhận.</li>
 <li>Lớp lượng tử là thí nghiệm khả thi; hệ thống không phụ thuộc vào nó.</li>
 </ul>
-<p class="small">Khai báo sử dụng AI (Thể lệ Điều 14): đội dùng trợ lý/tác tử AI (Claude) để viết nháp mã nguồn, tài liệu, slide, gán nhãn bạc tập đánh giá và rà soát. Bài toán, kiến trúc, các quyết định và việc kiểm duyệt cuối do đội thực hiện.</p>
+<p class="small">Khai báo sử dụng AI (Thể lệ Điều 14): đội dùng công cụ AI (Claude) hỗ trợ viết nháp mã nguồn và tài liệu, rà soát lỗi, gán nhãn sơ bộ tập đánh giá 300 cặp; đội duyệt lại kết quả, quyết định ý tưởng và kiến trúc, chịu trách nhiệm và giải thích được mọi phần của sản phẩm.</p>
 </body>
 </html>

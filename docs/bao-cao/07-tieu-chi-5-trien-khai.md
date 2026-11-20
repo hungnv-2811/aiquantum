@@ -11,33 +11,45 @@ Người dùng: kiểm toán viên, giám sát công bố thông tin, nhà đầ
 
 ## 5.2. Hiệu quả: đã đo gì, chưa đo gì
 
-Doanh nghiệp lớn hiếm khi viết sai số liệu đã kiểm toán (ước tính khoảng 2% khẳng định trong mẫu), nên công cụ tốt phải gần như im lặng. Chất lượng được đo bằng hai số đo:
+**Lợi ích đo được trên prototype:**
 
-1. **Cờ oan trên dữ liệu thật** (300 cặp có nhãn): trước vá 137/141 cờ là oan; sau vá còn khoảng 23 cờ oan ước tính trên toàn bộ khẳng định (giảm ~83%), nhưng 0/21 cờ trong mẫu là mâu thuẫn thật. Đây là **nhãn bạc** do hai tác tử AI gán mù, độc lập, không phải nhãn người; kappa 0,86.
-2. **Recall trên tập chèn lỗi có kiểm soát**: câu đúng bị sửa có chủ đích. Đây là **dữ liệu tổng hợp**, báo cáo riêng: bắt 83,0% (đổi giá trị 89%, đổi tỷ lệ 83%, đảo hướng 72%, "kiểm soát chi phí" 38%); 0/163 báo động giả trên câu đối chứng.
+1. **Tự động hoá phần đọc và tra cứu:** 112 BCTN chạy trong 14 giây; 108/511 khẳng định được xác nhận nhất quán kèm Mã số và trang BCTC, KTV chỉ cần mở đúng ô để kiểm lại.
+2. **Không làm nhiễu người dùng:** 0/163 báo động giả trên câu đúng; cờ oan ước tính giảm khoảng 83% so với bản 21/09.
+3. **Nhạy với câu viết sai:** bắt 83,0% câu bị sửa có chủ đích (đổi giá trị 89%, đổi tỷ lệ 83%, đảo hướng 72%; dữ liệu tổng hợp, báo cáo riêng).
 
-**Chưa thử nghiệm với kiểm toán viên** vì không kịp. Quy trình đã soạn sẵn (`docs/thu-nghiem-ktv/`): làm tay và dùng công cụ trên hai doanh nghiệp khác nhau, đảo thứ tự, ghi thời gian và độ đúng; sẽ chạy sau Vòng 2. **Chưa có đối tác.** Mức tiết kiệm 8–45 tỷ đồng/năm ở hồ sơ Vòng 1 là ước tính, chưa kiểm chứng.
+**Quy mô toàn thị trường:** 702 doanh nghiệp niêm yết HOSE, HNX × khoảng 0,13 giây/báo cáo ≈ 1,5 phút cho một năm báo cáo khi đã bóc chữ; bóc PDF lần đầu khoảng 12 giây/báo cáo, tức khoảng 2,3 giờ trên một laptop.
+
+**Cơ sở ước tính hiệu quả kinh tế:** hồ sơ Vòng 1 ước tính tiết kiệm 8–45 tỷ đồng/năm (khoảng 700 doanh nghiệp × 40–80 giờ đối chiếu × mức tiết kiệm 60–80% × 0,5–1 triệu đồng/giờ KTV). Thử nghiệm với kiểm toán viên là bước kế tiếp, đã sẵn sàng: quy trình soạn sẵn (làm tay và dùng công cụ trên hai doanh nghiệp, đảo thứ tự, ghi thời gian và độ đúng), triển khai ngay sau Vòng 2; số đo thời gian thực tế sẽ kiểm chứng ước tính này.
 
 ## 5.3. Chi phí, bảo mật, rủi ro
 
-**Bảng 7.1. Chi phí vận hành prototype** *(giá tra ngày 12/11/2026)*
+**Bảng 5.1. Chi phí vận hành prototype** *(giá tra ngày 12/11/2026)*
 
 | Thành phần | Cách chạy | Chi phí |
 |---|---|---|
-| Giao diện kết quả | Trang tĩnh, gói miễn phí (Cloudflare Pages/Netlify) | 0 |
+| Giao diện kết quả | Trang tĩnh trên Vercel, gói miễn phí | 0 |
 | "Kiểm tra khẳng định" | Lõi Python chạy trong trình duyệt bằng Pyodide, không server | 0; tải ~10 MB lần đầu |
 | Pipeline | Offline trên CPU, không gọi API trả phí | 0; 14 giây cho 112 BCTN (khoảng 0,1 giây/báo cáo khi đã bóc chữ; bóc PDF lần đầu khoảng 12 giây/báo cáo) |
 | Con người | KTV rà cờ, bảo trì ontology | Khoản lớn nhất |
 
-Không có dữ liệu cá nhân, không gửi văn bản ra ngoài, nên cài nội bộ được. Rủi ro:
+Không có dữ liệu cá nhân, không gửi văn bản ra ngoài, nên cài nội bộ được tại công ty kiểm toán hay cơ quan quản lý. **Khả năng mở rộng:** xử lý theo lô, mỗi báo cáo độc lập nên chạy song song theo mã được; thêm doanh nghiệp chỉ cần thêm dữ liệu, không sửa mã. Rủi ro và biện pháp:
 
-- **Cờ oan:** không chắc thì trả "chưa kiểm chứng được"; giao diện ghi "cần xem xét" và "không phải kết luận kiểm toán".
-- **Giấy phép:** TiniX theo CC-BY-NC-4.0, chỉ phi thương mại.
+- **Cờ oan:** không chắc thì trả "chưa kiểm chứng được"; giao diện gọi nhóm cờ là tín hiệu để người xem lại, mỗi cờ kèm minh chứng để tự kiểm.
+- **Giấy phép:** TiniX theo CC-BY-NC-4.0, chỉ phi thương mại. Bản thương mại tự bóc BCTC từ PDF công bố (khâu OCR ở giai đoạn 3), không phụ thuộc TiniX.
 - **Thông tư 99/2025/TT-BTC** thay Thông tư 200 từ năm tài chính 2026: cần ánh xạ lại Mã số theo biểu mẫu mới. Ontology là tệp cấu hình sinh tự động từ dữ liệu, nên đây là việc cấu hình, không phải viết lại hệ thống.
 
 ## 5.4. Lộ trình sau cuộc thi
 
-Thử nghiệm với 2–3 KTV, tìm đơn vị thử nghiệm → gán nhãn người → OCR, Thông tư 99, thêm doanh nghiệp → PhoBERT-Fin, chỉ thay bộ luật khi thắng trên cùng tập test. Lớp lượng tử tháo rời được: QSVM + QKA đạt 0,840 ± 0,048 accuracy, thua SVM-RBF (0,911 ± 0,051), chưa vào luồng chính.
+**Bảng 5.2. Lộ trình dự kiến, nguồn lực và mốc kiểm chứng**
+
+| Giai đoạn | Việc chính | Nguồn lực | Mốc kiểm chứng |
+|---|---|---|---|
+| 1 · 12/2026–02/2027 | Thử nghiệm với 2–3 KTV, giảng viên kiểm toán theo quy trình đã soạn | Cả đội; 2–3 KTV | Thời gian đối chiếu có và không có công cụ; tỷ lệ cờ KTV xác nhận |
+| 2 · 03–06/2027 | Tính tỷ số cơ cấu và số bình quân; KTV gán nhãn tập test | Nhóm AI, nhóm tài chính | Precision nhóm cần xem xét trên tập test do KTV gán |
+| 3 · 07–12/2027 | OCR bản scan; Thông tư 99/2025; ngân hàng (TT49); mở rộng toàn HOSE, HNX | Thêm 1–2 người; máy chủ nội bộ | Độ phủ báo cáo đọc được; số doanh nghiệp |
+| 4 · 2028 | PhoBERT-Fin thay bộ luật khi thắng trên cùng tập test; bản cài nội bộ | GPU thuê theo giờ | Ký thử nghiệm với ít nhất một đơn vị |
+
+**Tiềm năng thương mại hoá:** Chuẩn mực kiểm toán số 720 áp dụng cho mọi cuộc kiểm toán có báo cáo thường niên, nên mỗi công ty kiểm toán doanh nghiệp niêm yết là khách hàng tiềm năng; UBCKNN, HOSE, HNX dùng để giám sát; doanh nghiệp tự kiểm tra trước khi công bố. Bản cài nội bộ phù hợp yêu cầu bảo mật hồ sơ kiểm toán. Lớp lượng tử tháo rời được; QKA chỉ vào luồng chính khi vượt SVM-RBF trên cùng tập kiểm tra.
 
 ═══════════════════════════════════════════════════════════════
 

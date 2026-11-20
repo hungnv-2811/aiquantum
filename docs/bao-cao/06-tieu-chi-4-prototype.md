@@ -4,7 +4,7 @@
 
 **Đã chạy thật trên dữ liệu thật:**
 
-- Pipeline đầu–cuối: 112 báo cáo thường niên ↔ 165 BCTC, ra 98 cặp đối chiếu được, 511 khẳng định, mỗi khẳng định có vết minh chứng (câu gốc, trang BCTN, Mã số, trang BCTC, phép tính).
+- Pipeline đầu–cuối: 112 báo cáo thường niên ↔ 165 BCTC (mỗi mã–năm một báo cáo, ưu tiên hợp nhất, chọn từ 338), ra 98 cặp đối chiếu được, 511 khẳng định, mỗi khẳng định có vết minh chứng (câu gốc, trang BCTN, Mã số, trang BCTC, phép tính).
 - Dashboard web tĩnh 7 trang, đọc kết quả xuất từ pipeline, không có dữ liệu mô phỏng.
 - **Kiểm tra khẳng định trực tiếp:** người dùng gõ một câu, hệ thống chạy **đúng mã nguồn Python của pipeline** ngay trong trình duyệt (Pyodide/WebAssembly) và trả phán quyết kèm minh chứng. Không cần server.
 - Bộ đo lường: gán nhãn 300 cặp, tập chèn lỗi, thí nghiệm QKA — đều chạy lại được bằng một lệnh.
@@ -21,12 +21,14 @@
 
 ### 4.3. Kiểm thử và kết quả bước đầu
 
+**Bảng 4.1. Kiểm thử và kết quả bước đầu**
+
 | Hạng mục | Kết quả | Điều kiện |
 |---|---|---|
 | Kiểm thử tự động | ⟦CHỜ: số test⟧ | `pytest tests -q`, Python 3.11, Windows 11 |
 | Thời gian chạy toàn bộ pipeline | 14 giây cho 112 báo cáo | laptop, văn bản BCTN đã bóc sẵn |
 | Recall tập chèn lỗi / báo động giả đối chứng | 83,0% / 0 trên 163 | 791 câu tổng hợp từ câu thật |
-| Cờ oan ước tính | ~137 → ~23 | 300 cặp gán nhãn mù (nhãn bạc) |
+| Cờ oan ước tính | ~137 → ~23 | 300 cặp gán nhãn mù |
 | Kiểm tra khẳng định trong trình duyệt | 2–11 ms mỗi câu sau khi nạp | tải lần đầu ~10 MB |
 
 Lỗi nhỏ đã biết: một số câu bị trộn cột khi bóc PDF vẫn được trích và có thể bị gắn "cần xem xét" oan; vì vậy dashboard gọi nhóm này là tín hiệu để người xem lại, không phải kết luận.

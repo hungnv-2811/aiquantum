@@ -64,3 +64,7 @@ SmartAudit_Quantum_Proposal*.docx
 
 # Bản sao lưu bộ nộp trước khi bổ sung dữ liệu
 deliverables/_ban_*/
+
+# Chữ ký tay và ảnh cá nhân: chỉ giữ trên máy, không commit, không vào gói nộp
+*.local.png
+*.local.jpg

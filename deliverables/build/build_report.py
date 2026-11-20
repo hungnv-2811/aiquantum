@@ -24,7 +24,7 @@ from docx import Document
 from docx.enum.table import WD_TABLE_ALIGNMENT
 from docx.oxml import OxmlElement
 from docx.oxml.ns import qn
-from docx.shared import Pt, RGBColor
+from docx.shared import Cm, Pt, RGBColor
 from docx.table import Table
 from docx.text.paragraph import Paragraph
 
@@ -33,6 +33,7 @@ TEMPLATE = ROOT / "deliverables" / "build" / "template_bao_cao.docx"
 OUT = ROOT / "deliverables" / "AQ2026-R2-AQ2026-064-Bao_cao_giai_phap.docx"
 VALUES = ROOT / "deliverables" / "build" / "values.json"
 MEMBERS = ROOT / "deliverables" / "build" / "members.local.json"  # chứa CCCD — KHÔNG commit, KHÔNG đưa vào zip
+SIGNATURE = ROOT / "deliverables" / "build" / "chu_ky.local.png"  # chữ ký đội trưởng — KHÔNG commit
 
 TEAL = RGBColor(0x08, 0x67, 0x78)
 BODY_PT = 11
@@ -49,6 +50,8 @@ def fill(text: str) -> str:
 
 
 # ── Đọc markdown ──────────────────────────────────────────────────────────
+
+_IMG = re.compile(r'^!\[(.+)\]\(([^)\s]+)(?:\s+"([\d.]+)")?\)$')
 
 def parse_md(path: Path) -> dict[str, list[tuple[str, object]]]:
     text = path.read_text(encoding="utf-8")
@@ -93,6 +96,11 @@ def parse_md(path: Path) -> dict[str, list[tuple[str, object]]]:
             table = []
         if not line.strip():
             flush()
+            continue
+        img = _IMG.match(line.strip())
+        if img:  # ![chú thích](đường/dẫn.png "rộng cm")
+            flush()
+            current.append(("img", (img.group(1), path.parent / img.group(2), float(img.group(3) or 15))))
             continue
         if re.match(r"^(\s*[-*]\s+|\s*\d+\.\s+)", line):
             flush()
@@ -169,6 +177,11 @@ def table_before(doc, anchor, rows: list[list[str]]):
     tbl.alignment = WD_TABLE_ALIGNMENT.CENTER
     set_table_borders(tbl)
     for i, row in enumerate(rows):
+        # Không cắt một hàng ra hai trang; dòng tiêu đề lặp lại nếu bảng sang trang mới
+        trPr = tbl.rows[i]._tr.get_or_add_trPr()
+        trPr.append(OxmlElement("w:cantSplit"))
+        if i == 0:
+            trPr.append(OxmlElement("w:tblHeader"))
         for j in range(ncols):
             cell = tbl.cell(i, j)
             cell.paragraphs[0].paragraph_format.space_after = Pt(0)
@@ -198,6 +211,19 @@ def render_blocks(doc, anchor_p: Paragraph, blocks):
             add_runs(p, text)
         elif kind == "table":
             table_before(doc, anchor, content)
+        elif kind == "img":
+            caption, img_path, width_cm = content
+            p = new_paragraph_before(anchor, anchor_p)
+            p.alignment = 1  # center
+            p.paragraph_format.space_before = Pt(4)
+            p.paragraph_format.keep_with_next = True
+            p.add_run().add_picture(str(img_path), width=Cm(width_cm))
+            cap = new_paragraph_before(anchor, anchor_p)
+            cap.alignment = 1
+            cap.paragraph_format.space_after = Pt(6)
+            add_runs(cap, caption, size=9.5, color=RGBColor(0x3B, 0x4A, 0x51))
+            for r in cap.runs:
+                r.italic = True
 
 
 def delete(p: Paragraph):
@@ -366,6 +392,30 @@ def main() -> int:
     for p in doc.paragraphs:
         if p.text.strip().startswith("Liên kết chạy demo: [URL]"):
             set_text(p, fill(f"Liên kết chạy demo: {V['link']}   |   Video demo: {V['video']}"))
+
+    # Cam kết: chừa chỗ ký, ghi họ tên đại diện (đội trưởng) dưới dòng "(Ký, ghi rõ họ tên)"
+    for p in doc.paragraphs:
+        if p.text.strip().startswith("ĐẠI DIỆN ĐỘI THI"):
+            name_el = copy.deepcopy(p._p)
+            p._p.addnext(name_el)
+            name_p = Paragraph(name_el, p._parent)
+            set_text(name_p, names[0])
+            name_p.paragraph_format.space_before = Pt(26)
+            if SIGNATURE.exists():  # có chữ ký trên máy thì chèn ảnh vào chỗ trống
+                sig_el = copy.deepcopy(p._p)
+                p._p.addnext(sig_el)
+                sig_p = Paragraph(sig_el, p._parent)
+                for r in sig_p.runs:
+                    r._r.getparent().remove(r._r)
+                sig_p.paragraph_format.space_before = Pt(2)
+                sig_p.paragraph_format.space_after = Pt(0)
+                sig_p.add_run().add_picture(str(SIGNATURE), height=Cm(1.3))
+                name_p.paragraph_format.space_before = Pt(0)
+                p.paragraph_format.space_before = Pt(6)  # bớt khoảng trống phía trên để khối ký nằm gọn một trang
+                prev = p._p.getprevious()
+                if prev is not None and prev.tag == qn("w:p") and not "".join(prev.itertext()).strip():
+                    prev.getparent().remove(prev)  # đoạn trống ngay trên khối ký
+            break
 
     # Bìa sau
     for p in doc.paragraphs:

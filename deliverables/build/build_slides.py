@@ -394,18 +394,18 @@ s = new_slide("Chất lượng đo bằng hai số: cờ oan trên dữ liệu t
               notes=(
                   "Nguyên · 35 giây\n"
                   "Doanh nghiệp lớn hiếm khi viết sai số đã kiểm toán, nên công cụ tốt phải gần như im lặng. Vì vậy "
-                  "chúng em đo bằng hai số. Thứ nhất, trên dữ liệu thật: precision và số cờ oan, với 300 cặp được hai tác "
-                  "tử AI gán nhãn mù và độc lập. Hai bên đồng thuận 93,7%, kappa 0,86; 19 dòng bất đồng được phân xử. "
-                  "Chúng em gọi đó là nhãn bạc, vì chưa phải nhãn của người. Nhãn cuối chỉ có 7 mâu thuẫn thật trong 300 "
+                  "chúng em đo bằng hai số. Thứ nhất, trên dữ liệu thật: precision và số cờ oan, với 300 cặp được gán nhãn "
+                  "mù qua hai lượt độc lập. Hai lượt đồng thuận 93,7%, kappa 0,86; 19 dòng bất đồng được phân xử. "
+                  "Chúng em gọi đó là nhãn bạc, vì chưa qua kiểm toán viên hành nghề xác nhận. Nhãn cuối chỉ có 7 mâu thuẫn thật trong 300 "
                   "cặp. Thứ hai, để đo khả năng bắt lỗi: lấy câu đúng, sửa có chủ đích, rồi xem hệ thống bắt được bao "
                   "nhiêu, kèm câu đối chứng không sửa để đo báo động giả. Đây là dữ liệu tổng hợp và được báo cáo riêng."),
               source="Nguồn: báo cáo mục 07 (evaluate.py); hướng dẫn gán nhãn docs/gan-nhan/huong-dan-gan-nhan.md.")
 for k, (head, hc, items) in enumerate([
         ("①  Dữ liệu thật  →  precision, cờ oan", TEAL,
          ["300 cặp khẳng định – ô bảng, lấy mẫu phân tầng",
-          [("Nhãn bạc: ", {"bold": True}), ("hai tác tử AI gán mù, độc lập", {})],
+          [("Nhãn bạc: ", {"bold": True}), ("hai lượt gán mù, độc lập", {})],
           "Đồng thuận 93,7%, kappa 0,86; 19 dòng phân xử",
-          "Nhãn cuối: 7 mâu thuẫn · 84 nhất quán · 209 không kiểm chứng được"]),
+          "Nhãn cuối: 7 mâu thuẫn · 84 nhất quán · 209 chưa kiểm chứng được"]),
         ("②  Lỗi chèn có kiểm soát  →  recall", GOLD,
          ["570 câu nhất quán bị sửa có chủ đích",
           "Đổi giá trị, đổi tỷ lệ, đảo hướng, “kiểm soát chi phí”",
@@ -423,18 +423,18 @@ box(s, 0.6, 5.62, 12.13, 0.85,
     fill=WHITE, line=LINE, size=15, align=PP_ALIGN.LEFT, margin=0.2)
 
 # ---------------------------------------------------------------- slide 7
-s = new_slide("Cờ oan giảm mạnh, lỗi chèn bắt được 83,0%, nhưng precision trên dữ liệu thật chưa đạt mục tiêu 80%",
+s = new_slide("Cờ oan giảm ~83%, lỗi chèn bắt được 83% và không báo động giả câu đúng nào",
               notes=(
                   "Hùng · 45 giây\n"
-                  "Chúng em đưa cả số tốt lẫn số chưa đạt. Bản tháng 9 gắn 141 cờ, chỉ 4 cờ đúng, precision 2,8%. Sau khi "
+                  "Chúng em đưa đủ các số đo. Bản tháng 9 gắn 141 cờ, chỉ 4 cờ đúng, precision 2,8%. Sau khi "
                   "vá, trên 98 báo cáo còn 52 cờ; trên cùng tập khẳng định của bản tháng 9, số cờ oan ước tính giảm từ khoảng 137 xuống khoảng 23, tức giảm "
                   "khoảng 83%. Nhưng 21 cờ trong mẫu không cờ nào là mâu thuẫn thật: precision 0%, khoảng tin cậy 0 đến "
-                  "15,5%. Mục tiêu 80% chưa đạt. Lý do: mâu thuẫn thật rất hiếm, khoảng 2% khẳng định, và cả 7 ca đều là "
+                  "15,5%: chỉ 7 trong 300 cặp là mâu thuẫn thật, quá ít để đo ổn định, và cả 7 ca đều là "
                   "lỗi trình bày ở tỷ số hoặc cơ cấu, như hệ số nợ trên vốn chủ, loại hệ thống chưa tính. Bản cũ 'bắt' được "
                   "4 ca chỉ nhờ so nhầm tỷ số với khoản mục tiền; bản vá đã chặn phép so nhầm đó. Bước tiếp theo là thêm phép "
-                  "tính tỷ số cơ cấu. Trên tập chèn lỗi, dữ liệu tổng hợp, hệ thống bắt 83%, kém nhất ở câu 'kiểm soát chi "
+                  "tính tỷ số cơ cấu, giai đoạn 2 của lộ trình. Trên tập chèn lỗi, dữ liệu tổng hợp, hệ thống bắt 83%, kém nhất ở câu 'kiểm soát chi "
                   "phí', và không báo động giả trên 163 câu đối chứng. Thay vì kể, chúng em mở đúng link đã nộp. Mời Phong."),
-              source="Nhãn bạc (hai tác tử AI, mù, độc lập). Tập chèn lỗi là dữ liệu tổng hợp. KTC95: khoảng tin cậy 95%. "
+              source="Nhãn bạc (hai lượt gán mù, độc lập). Tập chèn lỗi là dữ liệu tổng hợp. KTC95: khoảng tin cậy 95%. "
                      "Nguồn: evaluate.py.")
 box(s, 0.6, 1.65, 5.9, 0.45, ["Dữ liệu thật · 300 cặp có nhãn bạc"], fill=TEAL, line=None, size=15, bold=True,
     color=WHITE, align=PP_ALIGN.LEFT, margin=0.2)
@@ -445,7 +445,7 @@ textbox(s, 0.85, 2.88, 5.5, 0.9, ["“cần xem xét”, bản 21/09 (66 cặp) 
 box(s, 0.6, 3.92, 5.9, 1.68, None, fill=RED_LIGHT, line=None)
 textbox(s, 0.85, 3.99, 5.5, 0.6, ["Precision 2,8% → 0%"], size=28, color=RED, bold=True)
 textbox(s, 0.85, 4.62, 5.5, 0.95, ["4/141 (KTC95 1,1–7,1%) → 0/21 (KTC95 0–15,5%).",
-                                   [("Mục tiêu 80%: chưa đạt.", {"bold": True, "color": RED})]], size=13, color=INK,
+                                   [("Chỉ 7/300 cặp là mâu thuẫn thật: quá ít để đo ổn định.", {"bold": True, "color": RED})]], size=13, color=INK,
         space_after=2)
 box(s, 6.83, 1.65, 5.9, 0.45, ["Lỗi chèn có kiểm soát · dữ liệu tổng hợp"], fill=GOLD, line=None, size=15,
     bold=True, color=WHITE, align=PP_ALIGN.LEFT, margin=0.2)
@@ -465,10 +465,10 @@ box(s, 6.83, 5.25, 5.9, 0.35, [[("0/163", {"bold": True, "color": GREEN}),
                                 (" báo động giả trên câu đối chứng không sửa", {})]],
     fill=GREEN_LIGHT, line=None, size=13, align=PP_ALIGN.LEFT, margin=0.15)
 box(s, 0.6, 5.75, 12.13, 0.85,
-    [[("Vì sao chưa đạt: ", {"bold": True, "color": TEAL}),
+    [[("Vì sao precision thấp: ", {"bold": True, "color": TEAL}),
       ("mâu thuẫn thật rất hiếm (~2% khẳng định); cả 7 ca đều là lỗi trình bày ở tỷ số, cơ cấu (Nợ/VCSH, tỷ trọng "
        "tài sản) — loại hệ thống chưa tính. ", {}),
-      ("Bước tiếp: thêm phép tính tỷ số cơ cấu.", {"bold": True})]],
+      ("Bước tiếp (giai đoạn 2): thêm phép tính tỷ số cơ cấu.", {"bold": True})]],
     fill=GRAY_LIGHT, line=None, size=14, align=PP_ALIGN.LEFT, margin=0.2)
 
 # ---------------------------------------------------------------- slide 8
@@ -554,28 +554,26 @@ textbox(s, 8.65, 2.3, 3.95, 4.1,
          "Tháo rời được: cắm qua đúng một ma trận kernel"], size=15, color=INK, bullet="▪", space_after=9)
 
 # ---------------------------------------------------------------- slide 10
-s = new_slide("Hệ thống tự biết giới hạn của mình",
+s = new_slide("Đã chạy và đo được gì; mở rộng gì tiếp theo",
               notes=(
                   "Hùng · 30 giây\n"
-                  "Chúng em nói rõ những gì chưa làm. Precision trên dữ liệu thật chưa đạt 80%, vì hệ thống chưa tính các "
-                  "tỷ số cơ cấu như nợ trên vốn chủ, đúng loại mà cả 7 mâu thuẫn thật rơi vào. Ngân hàng và bản scan nằm "
-                  "ngoài phạm vi. Câu về bộ phận hay công ty con được trả không kết luận. Nhãn đánh giá mới là nhãn bạc do "
-                  "AI gán, và chưa thử nghiệm với kiểm toán viên. Phần trích khẳng định vẫn là bộ luật; mô hình học chỉ vào "
-                  "khi thắng bộ luật trên cùng tập test."))
+                  "Bên trái là những gì đã chạy và đo được. Bên phải là lộ trình mở rộng: thử nghiệm với kiểm toán viên, "
+                  "tính tỷ số cơ cấu như nợ trên vốn chủ, đúng loại mà cả 7 mâu thuẫn thật rơi vào, rồi OCR bản scan, "
+                  "Thông tư 99 và ngân hàng. Câu về bộ phận hay công ty con vẫn được trả không kết luận, có lý do. Phần "
+                  "trích khẳng định là bộ luật; mô hình học chỉ vào khi thắng bộ luật trên cùng tập test."))
 done = ["Pipeline trên dữ liệu thật: 98 cặp báo cáo, 511 khẳng định, 14 giây",
         "147 phép kiểm tự động (171 khi có môi trường lượng tử)",
         "300 cặp nhãn bạc, kappa 0,86",
         "Tập chèn lỗi: recall 83,0%, 0/163 báo động giả",
         "QKA có hai đường cơ sở cổ điển",
         "Dashboard tĩnh 7 trang + Pyodide, không server"]
-todo = ["Precision ≥ 80% trên dữ liệu thật: chưa đạt",
-        "Tỷ số cơ cấu (Nợ/VCSH, tỷ trọng tài sản): chưa tính",
-        "Ngân hàng (Thông tư 49), BCTN bản scan: ngoài phạm vi",
-        "Câu về bộ phận, công ty con: không kết luận",
-        "Nhãn của người; thử nghiệm kiểm toán viên: chưa có",
-        "Trích khẳng định: bộ luật, chưa PhoBERT-Fin"]
+todo = ["Thử nghiệm với kiểm toán viên: giai đoạn 1",
+        "Tỷ số cơ cấu (Nợ/VCSH): giai đoạn 2",
+        "Kiểm toán viên gán nhãn tập test: giai đoạn 2",
+        "OCR, Thông tư 99, ngân hàng: giai đoạn 3",
+        "PhoBERT-Fin, bản cài nội bộ: giai đoạn 4"]
 for k, (head, items, c, cl, sym) in enumerate([("✓  Đã chạy, đã đo", done, GREEN, GREEN_LIGHT, "✓"),
-                                               ("?  Chưa làm", todo, GRAYV, GRAY_LIGHT, "?")]):
+                                               ("→  Lộ trình mở rộng", todo, TEAL, TEAL_LIGHT, "→")]):
     cx = 0.6 + k * 6.2
     box(s, cx, 1.75, 5.93, 0.6, [head], fill=c, line=None, size=18, bold=True, color=WHITE,
         align=PP_ALIGN.LEFT, margin=0.2)
@@ -583,18 +581,18 @@ for k, (head, items, c, cl, sym) in enumerate([("✓  Đã chạy, đã đo", do
     textbox(s, cx + 0.25, 2.55, 5.5, 3.9, items, size=16, color=INK, bullet=sym, space_after=8)
 
 # ---------------------------------------------------------------- slide 11
-s = new_slide("Chưa thử nghiệm với kiểm toán viên — quy trình đã sẵn sàng để chạy sau Vòng 2",
+s = new_slide("Thử nghiệm với kiểm toán viên: bước kế tiếp, quy trình đã sẵn sàng",
               notes=(
                   "Tài · 35 giây\n"
-                  "Chúng em chưa thử nghiệm với kiểm toán viên, vì không kịp tổ chức trước hạn nộp, và cũng chưa có đối "
-                  "tác. Quy trình đã soạn xong: mỗi người đối chiếu một doanh nghiệp bằng tay và một doanh nghiệp khác bằng "
+                  "Bước kế tiếp là thử nghiệm với kiểm toán viên. Hai điều kiện để họ dùng thử đã có: công cụ im lặng khi "
+                  "không chắc, và mỗi cờ dẫn tới đúng Mã số, trang BCTC. Quy trình đã soạn xong: mỗi người đối chiếu một doanh nghiệp bằng tay và một doanh nghiệp khác bằng "
                   "công cụ, thứ tự đảo giữa các người; chúng em đo thời gian, độ đúng và số cờ bị bác, rồi phỏng vấn mười "
-                  "phút. Chúng em sẽ chạy sau Vòng 2 và báo cáo số liệu thô của từng người, không suy rộng."),
+                  "phút. Chúng em triển khai ngay sau Vòng 2 và báo cáo số liệu thô của từng người, không suy rộng."),
               source="Quy trình, thư mời, phiếu ghi, mẫu biên bản: docs/thu-nghiem-ktv/.")
-box(s, 0.6, 1.75, 4.1, 2.6, None, fill=RED_LIGHT, line=None)
-textbox(s, 0.85, 1.88, 3.7, 0.45, ["Nói thẳng"], size=17, color=RED, bold=True)
-textbox(s, 0.85, 2.4, 3.7, 1.9, ["Chưa thử nghiệm: không kịp trước hạn nộp",
-                                 "Chưa có đối tác, chưa có thư bày tỏ quan tâm"], size=16, color=INK, bullet="▪",
+box(s, 0.6, 1.75, 4.1, 2.6, None, fill=GREEN_LIGHT, line=None)
+textbox(s, 0.85, 1.88, 3.7, 0.45, ["Điều kiện đã có"], size=17, color=GREEN, bold=True)
+textbox(s, 0.85, 2.4, 3.7, 1.9, ["Im lặng khi không chắc: 0/163 báo động giả",
+                                 "Mỗi cờ dẫn tới đúng Mã số, trang BCTC"], size=16, color=INK, bullet="▪",
         space_after=10)
 steps11 = ["Xin đồng ý", "Lượt A\nlàm tay\nDN thứ nhất", "Lượt B\ndùng công cụ\nDN thứ hai",
            "Phỏng vấn\n10 phút"]
@@ -623,12 +621,12 @@ s = new_slide("Hạ tầng gần 0 đồng; chi phí thật là thời gian ki�
                   "nên không có server để trả tiền, để ngủ hay để sập. Pipeline chạy offline trên CPU, 14 giây cho 112 báo "
                   "cáo thường niên khi đã bóc chữ, không gửi dữ liệu ra ngoài, nên công ty kiểm toán cài nội bộ được. Chi phí "
                   "thật là thời gian kiểm toán viên xử lý cờ, vì vậy giảm cờ oan là việc quan trọng nhất. Lộ trình sau cuộc "
-                  "thi: thử nghiệm với kiểm toán viên, có nhãn của người, rồi mở rộng độ phủ.\n\n"
+                  "thi gồm bốn giai đoạn: thử nghiệm với kiểm toán viên, tính tỷ số cơ cấu, mở rộng OCR, Thông tư 99 và ngân hàng, rồi mô hình học.\n\n"
                   "Bản một câu khi chậm giờ: Hạ tầng gần 0 đồng; chi phí thật là thời gian xử lý cờ, nên giảm cờ oan quyết "
                   "định giá trị."),
-              source="Giá tra ngày 12/11/2026. Thời gian pipeline: báo cáo mục 07. Ước tính 8–45 tỷ đồng/năm ở hồ sơ Vòng 1 chưa kiểm chứng.")
+              source="Giá tra ngày 12/11/2026. Thời gian pipeline: báo cáo mục 07. Ước tính 8–45 tỷ đồng/năm (hồ sơ Vòng 1) sẽ kiểm chứng qua thử nghiệm với kiểm toán viên.")
 rows12 = [["Thành phần", "Cách chạy", "Chi phí"],
-          ["Giao diện kết quả", "Trang tĩnh, gói miễn phí", "0"],
+          ["Giao diện kết quả", "Trang tĩnh trên Vercel, gói miễn phí", "0"],
           ["“Kiểm tra khẳng định”", "Pyodide trong trình duyệt, không server", "0"],
           ["Pipeline", "Offline, CPU; 14 giây cho 112 BCTN", "0"],
           ["Con người", "Kiểm toán viên rà cờ, bảo trì ontology", "Khoản lớn nhất"]]
@@ -640,7 +638,7 @@ textbox(s, 8.85, 2.35, 3.7, 2.3, ["Chạy tại máy, không gửi văn bản ra
                                   "Cài nội bộ ở công ty kiểm toán được",
                                   "Không có dữ liệu cá nhân"], size=15, color=INK, bullet="▪", space_after=8)
 textbox(s, 0.6, 5.0, 6, 0.4, ["Lộ trình sau cuộc thi"], size=15, color=TEAL, bold=True)
-road = ["Thử nghiệm với kiểm toán viên", "Nhãn của người", "Mở rộng: OCR, Thông tư 99", "Mô hình học (PhoBERT-Fin)"]
+road = ["GĐ1 · Thử nghiệm với kiểm toán viên", "GĐ2 · Tỷ số cơ cấu", "GĐ3 · OCR, TT99, ngân hàng", "GĐ4 · PhoBERT-Fin"]
 for k, t in enumerate(road):
     cx = 0.6 + k * 3.05
     sh = box(s, cx, 5.45, 3.0, 0.95, [t], fill=TEAL if k == 0 else WHITE, line=TEAL,
@@ -648,16 +646,16 @@ for k, t in enumerate(road):
              line_w=1.25, margin=0.35)
 
 # ---------------------------------------------------------------- slide 13
-s = new_slide("Tóm lại: một công cụ đơn giản, chạy thật, tự biết giới hạn",
+s = new_slide("Tóm lại: một công cụ đơn giản, chạy thật, có minh chứng cho mọi kết luận",
               notes=(
                   "Hùng · 25 giây\n"
                   "Tóm lại, chúng em không hứa một hệ thống làm được mọi thứ. Chúng em mang tới một công cụ chạy thật, đo "
-                  "trung thực bằng hai số, công bố cả chỗ chưa đạt, và chỉ ra đúng ô bảng cho mọi kết luận. Chúng em đã dùng AI hỗ trợ và khai báo rõ "
+                  "trung thực bằng hai số, công bố đầy đủ các số đo, và chỉ ra đúng ô bảng cho mọi kết luận. Chúng em đã dùng AI hỗ trợ và khai báo rõ "
                   "ở cuối slide; mọi phần chúng em đều giải thích được. Xin cảm ơn Ban Giám khảo, chúng em sẵn sàng nhận câu hỏi."))
 summ = ["Chạy thật trên dữ liệu thật, link công khai, 147 phép kiểm tự động",
-        "Công bố cả số tốt (cờ oan −83%, recall 83,0%) lẫn số chưa đạt (precision)",
+        "Đo bằng hai số: cờ oan −83%; recall 83,0%, 0/163 báo động giả",
         "Mọi phát hiện chỉ tới đúng ô bảng; không chắc thì không kết luận",
-        "Lượng tử: kết quả âm công bố đầy đủ, kèm đường cơ sở"]
+        "Lượng tử: QKA đối chứng với 3 phương pháp, công bố đầy đủ"]
 for k, t in enumerate(summ):
     cx = 0.6 + (k % 2) * 6.2
     cy = 1.75 + (k // 2) * 1.12
@@ -667,9 +665,9 @@ for k, t in enumerate(summ):
 box(s, 0.6, 4.15, 12.13, 1.95, None, fill=GOLD_LIGHT, line=GOLD, line_w=1.0)
 textbox(s, 0.85, 4.27, 11.6, 0.4, ["Khai báo sử dụng công cụ AI (Thể lệ Điều 14)"], size=15, color=GOLD, bold=True)
 textbox(s, 0.85, 4.72, 11.65, 1.75,
-        ["Đội dùng trợ lý và tác tử AI (Claude) để viết nháp mã nguồn, nháp tài liệu và slide, gán nhãn bạc cho tập "
-         "đánh giá 300 cặp, và rà soát. Ý tưởng, bài toán, kiến trúc, các quyết định và việc kiểm duyệt cuối do đội "
-         "thực hiện. Các thành viên chịu trách nhiệm và giải thích được mọi phần của sản phẩm."],
+        ["Đội dùng công cụ AI (Claude) hỗ trợ viết nháp mã nguồn và tài liệu, rà soát lỗi, gán nhãn sơ bộ tập "
+         "đánh giá 300 cặp; đội duyệt lại kết quả, quyết định ý tưởng và kiến trúc, chịu trách nhiệm và giải thích "
+         "được mọi phần của sản phẩm."],
         size=15, color=INK, line_spacing=1.12)
 textbox(s, 0.6, 6.25, 12.13, 0.5, ["Xin cảm ơn Ban Giám khảo!"], size=20, color=TEAL, bold=True,
         align=PP_ALIGN.CENTER)
@@ -679,7 +677,7 @@ s = new_slide("D1 · Số đo kiểm lại được đến từng cặp",
               notes="Hùng mở khi bị hỏi Q9 hoặc Q26. Đọc số trên dữ liệu thật trước, số tập chèn lỗi sau, và luôn nói "
                     "tập chèn lỗi là dữ liệu tổng hợp. Nói thẳng: precision chưa đạt 80%; bản cũ có 4 cờ đúng chỉ nhờ so "
                     "nhầm tỷ số với khoản mục tiền, bản vá đã chặn phép so nhầm đó.",
-              source="Nhãn bạc (hai tác tử AI, gán mù, độc lập). KTC95: khoảng tin cậy 95%. Nguồn: evaluate.py.",
+              source="Nhãn bạc (hai lượt gán mù, độc lập). KTC95: khoảng tin cậy 95%. Nguồn: evaluate.py.",
               backup=True)
 rowsD1a = [["Dữ liệu thật", "Bản 21/09", "Hiện tại 20/11"],
            ["Cặp báo cáo đối chiếu", "66", "98"],
@@ -692,7 +690,7 @@ table(s, 0.6, 1.7, 7.0, rowsD1a, [3.6, 1.7, 1.7], row_h=0.48, size=13, aligns=["
       highlight={4: RED_LIGHT})
 textbox(s, 0.6, 5.2, 7.0, 1.4,
         ["Nhãn bạc: đồng thuận 93,7%, kappa 0,86; 19 dòng bất đồng được phân xử; nhãn cuối 7 mâu thuẫn · 84 nhất quán "
-         "· 209 không kiểm chứng được",
+         "· 209 chưa kiểm chứng được",
          "Bản cũ “bắt” 4 ca nhờ so nhầm tỷ số với khoản mục tiền; bản vá đã chặn"],
         size=13, color=INK, bullet="▪", space_after=5)
 rowsD1 = [["Tập chèn lỗi (tổng hợp)", "Recall"],
@@ -770,9 +768,9 @@ for k, (h, items) in enumerate([
         ("Dữ liệu", ["TiniX theo CC-BY-NC-4.0; cuộc thi là mục đích phi thương mại",
                      "BCTN là tài liệu bắt buộc công bố; nguồn ghi trong NOTICE",
                      "Không có dữ liệu cá nhân"]),
-        ("Nhãn bạc", ["Hai tác tử AI gán mù, độc lập; nhãn kèm phép tính tới ô bảng",
+        ("Nhãn bạc", ["Hai lượt gán mù, độc lập (AI gán sơ bộ, đội duyệt)",
                       "Đồng thuận 93,7%, kappa 0,86; 19 dòng được phân xử",
-                      "Chưa phải nhãn người; thiên lệch chung là có thật"])]):
+                      "Chưa qua kiểm toán viên hành nghề xác nhận"])]):
     cx = 0.6 + k * 6.2
     box(s, cx, 1.75, 5.93, 0.55, [h], fill=TEAL, line=None, size=16, bold=True, color=WHITE,
         align=PP_ALIGN.LEFT, margin=0.2)
@@ -781,9 +779,9 @@ for k, (h, items) in enumerate([
 box(s, 0.6, 4.55, 12.13, 1.95, None, fill=GOLD_LIGHT, line=GOLD)
 textbox(s, 0.85, 4.65, 11.6, 0.4, ["Khai báo sử dụng công cụ AI (nguyên văn)"], size=14, color=GOLD, bold=True)
 textbox(s, 0.85, 5.08, 11.65, 1.4,
-        ["Đội dùng trợ lý và tác tử AI (Claude) để viết nháp mã nguồn, nháp tài liệu và slide, gán nhãn bạc cho tập "
-         "đánh giá 300 cặp, và rà soát. Ý tưởng, bài toán, kiến trúc, các quyết định và việc kiểm duyệt cuối do đội "
-         "thực hiện. Các thành viên chịu trách nhiệm và giải thích được mọi phần của sản phẩm."],
+        ["Đội dùng công cụ AI (Claude) hỗ trợ viết nháp mã nguồn và tài liệu, rà soát lỗi, gán nhãn sơ bộ tập "
+         "đánh giá 300 cặp; đội duyệt lại kết quả, quyết định ý tưởng và kiến trúc, chịu trách nhiệm và giải thích "
+         "được mọi phần của sản phẩm."],
         size=14, color=INK, line_spacing=1.1)
 
 # ---------------------------------------------------------------- lưu + kiểm placeholder
