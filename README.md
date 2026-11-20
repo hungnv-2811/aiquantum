@@ -32,13 +32,33 @@ Nhãn 300 cặp được **gán mù qua hai lượt độc lập** theo hướng
 
 ## Chạy nhanh
 
-**Dashboard** (không cần cài thư viện):
+**Dashboard** (Python >= 3.10, khuyến nghị 3.11; không cần cài thư viện Python).
+Bản Git kèm JSON của 98 báo cáo trong `prototype/data/`, được khôi phục từ
+prototype công khai và đối chiếu với kết quả trong `results/`:
 
 ```bash
-python -m http.server 8000 --directory prototype
+python scripts/check_environment.py
+python -m http.server 8000 --bind 127.0.0.1 --directory prototype
 ```
 
-rồi mở `http://localhost:8000`. Trên Windows có thể nhấp đúp `run_demo.bat`.
+rồi mở `http://127.0.0.1:8000`. Trên Windows có thể nhấp đúp `run_demo.bat`
+(tự kiểm tra dữ liệu trước khi mở). Các trang kết quả dùng dữ liệu tại máy;
+chức năng **Kiểm tra khẳng định cần mạng để nạp Pyodide lần đầu** từ CDN.
+
+**Chạy lõi với mẫu nhỏ**, không cần tải toàn bộ corpus:
+
+```bash
+python -m pip install -r requirements-sample.txt
+python scripts/check_environment.py --mode sample
+python scripts/run_sample.py
+# Tuỳ chọn lưu riêng, không ghi đè benchmark:
+python scripts/run_sample.py --output sample_result.json
+```
+
+Mẫu gồm hai BCTC thật (VNM 2024, FPT 2022) và bốn trích đoạn BCTN từ kết quả
+đã lưu. Sau khi cài PyYAML, chạy mẫu không cần mạng. Nguồn, checksum và giới
+hạn: [sample_data/README.md](sample_data/README.md). Đây là phép thử khả năng
+chạy, không phải đo lại chất lượng trên 98 báo cáo.
 
 **Pipeline và kiểm thử** (Python 3.11):
 
@@ -46,7 +66,8 @@ rồi mở `http://localhost:8000`. Trên Windows có thể nhấp đúp `run_de
 python -m venv .venv
 .venv\Scripts\Activate.ps1            # macOS/Linux: source .venv/bin/activate
 pip install -r requirements-lock.txt
-pytest tests -q                       # 147 passed, 1 skipped
+python scripts/check_environment.py --mode pipeline
+pytest tests -q                       # số trong bảng trên là kết quả đã công bố
 python scripts/run_nnc.py             # đối chiếu toàn bộ, ghi results/nnc_results.json
 python scripts/audit_report.py FPT 2022
 python scripts/make_injected_set.py   # tập chèn lỗi
@@ -54,7 +75,17 @@ python scripts/evaluate.py            # số đo trên 300 cặp gán nhãn
 python scripts/export_dashboard.py    # cập nhật dữ liệu dashboard
 ```
 
-Dữ liệu mẫu đã kèm trong gói (`data/`), chạy được không cần mạng. Thí nghiệm lượng tử dùng môi trường riêng: `requirements-quantum.txt`, `python scripts/run_qka.py --quick`.
+**Bộ dữ liệu đầy đủ `data/` không nằm trong Git.** Các lệnh toàn bộ pipeline,
+chèn lỗi, xuất lại dashboard cần corpus này. Nhận corpus từ gói bàn giao của
+đội hoặc tải bằng `scripts/fetch_data.py`, `scripts/fetch_narrative.py` và
+`scripts/fetch_narrative_extra.py` theo tài liệu của từng script. Không thay
+corpus đầy đủ bằng mẫu nhỏ để xuất lại các số đo đã công bố.
+
+Thí nghiệm lượng tử dùng môi trường riêng: `requirements-quantum.txt`,
+`python scripts/run_qka.py --quick`; lệnh này vẫn cần TiniX đầy đủ.
+
+Kiểm tra đóng gói (thư viện chuẩn + PyYAML, không cần pytest):
+`python -m unittest discover -s tests -p test_distribution.py -v`.
 
 ## Cấu trúc
 
@@ -68,7 +99,8 @@ prototype/         dashboard tĩnh; data/ (kết quả thật) · py/ (lõi Pyth
 annotation/        mẫu 300 cặp, nhãn A, B, phân xử, nhãn cuối (gold_300.csv)
 results/           kết quả đã chạy sẵn để đối chiếu
 docs/              kế hoạch, hướng dẫn gán nhãn, rà soát ca demo, báo cáo QKA, nháp báo cáo
-data/              dữ liệu mẫu (BCTC TiniX + văn bản BCTN đã bóc)
+sample_data/       2 BCTC OCR + 4 trích đoạn BCTN, nguồn và checksum (có trong Git)
+data/              corpus đầy đủ trên máy / gói bàn giao (không có trong Git)
 ```
 
 ## Điều kiện áp dụng và hướng mở rộng

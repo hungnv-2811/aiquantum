@@ -28,7 +28,7 @@ TOP = "AQ2026-064"
 
 INCLUDE = [
     "README.md", "NOTICE.md", "requirements.txt", "requirements-lock.txt",
-    "requirements-quantum.txt", "run_demo.bat",
+    "requirements-quantum.txt", "requirements-sample.txt", "run_demo.bat", "sample_data",
     "smartaudit", "scripts", "tests", "prototype", "results", "annotation",
     "data/raw/tinix", "data/interim/bctn_text", "data/processed",
     "docs/quantum-poc.md", "docs/gan-nhan", "docs/demo/ung-vien-demo.md",

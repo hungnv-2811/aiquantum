@@ -14,6 +14,12 @@ Bộ *Vietnam Listed Companies Annual Reports* trên Zenodo khai trong hồ sơ 
 
 ## Thư viện đóng gói hoặc tải khi chạy
 
+Bản Git kèm hai BCTC OCR TiniX trong `sample_data/tinix/` (CC BY-NC 4.0),
+bốn trích đoạn BCTN trong `sample_data/narratives.json`, và snapshot JSON
+công khai của dashboard trong `prototype/data/`. Nguồn tải, revision và
+checksum được ghi tại `sample_data/manifest.json`. Corpus đầy đủ `data/`
+trong bảng trên chỉ có ở gói bàn giao, không có trong bản clone Git.
+
 | Thành phần | Giấy phép | Ghi chú |
 |---|---|---|
 | Chart.js 4.4.4 | MIT | `prototype/vendor/chart.umd.min.js` |

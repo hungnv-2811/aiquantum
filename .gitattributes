@@ -1,0 +1,4 @@
+# Preserve downloaded/snapshotted bytes so manifest SHA-256 survives Windows checkout.
+sample_data/tinix/** -text whitespace=cr-at-eol
+sample_data/narratives.json -text whitespace=cr-at-eol
+prototype/data/*.json -text whitespace=cr-at-eol

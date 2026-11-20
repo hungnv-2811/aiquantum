@@ -1,0 +1,45 @@
+{
+  "tinix_revision": "efd2d198d0e0c9f467bbc7a4682cc27aeb4d290f",
+  "files": [
+    {
+      "path": "sample_data/tinix/ocr_results/VNM/2024/VNM_Baocaotaichinh_2024_Kiemtoan_Hopnhat/VNM_Baocaotaichinh_2024_Kiemtoan_Hopnhat_extracted.txt",
+      "url": "https://huggingface.co/datasets/tinixai/ocr_annual_financials/resolve/efd2d198d0e0c9f467bbc7a4682cc27aeb4d290f/ocr_results/VNM/2024/VNM_Baocaotaichinh_2024_Kiemtoan_Hopnhat/VNM_Baocaotaichinh_2024_Kiemtoan_Hopnhat_extracted.txt",
+      "sha256": "68a08e6f1d0b9264604e01cb0bbd080324cb687272a4c563aa7635b6947ee0a5"
+    },
+    {
+      "path": "sample_data/tinix/ocr_results/FPT/2022/FPT_Baocaotaichinh_2022_Kiemtoan_Hopnhat/FPT_Baocaotaichinh_2022_Kiemtoan_Hopnhat_extracted.txt",
+      "url": "https://huggingface.co/datasets/tinixai/ocr_annual_financials/resolve/efd2d198d0e0c9f467bbc7a4682cc27aeb4d290f/ocr_results/FPT/2022/FPT_Baocaotaichinh_2022_Kiemtoan_Hopnhat/FPT_Baocaotaichinh_2022_Kiemtoan_Hopnhat_extracted.txt",
+      "sha256": "2114c8f091c29fd7f6a26bbfb205fcc747ca280e617a4c0a8a2015cfd89579d7"
+    },
+    {
+      "path": "prototype/data/results.json",
+      "url": "https://smartaudit-quantum.vercel.app/data/results.json",
+      "sha256": "898cef0c38e13b2fbe83054f0a1728602f21e7dc602087189ce8a0681eec1170"
+    },
+    {
+      "path": "prototype/data/facts.json",
+      "url": "https://smartaudit-quantum.vercel.app/data/facts.json",
+      "sha256": "7afa3c1b18905e77d66d5bf290295aaa80f3c96fbf84ce7518232c87d33c6c9d"
+    },
+    {
+      "path": "prototype/data/metrics.json",
+      "url": "https://smartaudit-quantum.vercel.app/data/metrics.json",
+      "sha256": "bf26acf5115fed50a02e962cff32e3c25fdbc2e74d420f868ec6f9fef7f99184"
+    },
+    {
+      "path": "prototype/data/examples.json",
+      "url": "https://smartaudit-quantum.vercel.app/data/examples.json",
+      "sha256": "493e95d365a0a9876a34ba641c78c0851bdce1f34ef97baccf16840b268c3d4f"
+    },
+    {
+      "path": "prototype/data/py_files.json",
+      "url": "https://smartaudit-quantum.vercel.app/data/py_files.json",
+      "sha256": "6f0f50475142f58bdc94c4bdd3519fde95a2b81986a4e20e3f2154fa76ccb406"
+    },
+    {
+      "path": "sample_data/narratives.json",
+      "source": "results/nnc_results.json",
+      "sha256": "dbad017bd53f9776444c9ea077cd2728703e3964c188797c3952097b5b3e0033"
+    }
+  ]
+}

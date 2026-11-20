@@ -1,0 +1,30 @@
+[
+  {
+    "ticker": "FPT",
+    "year": 2022,
+    "page": 52,
+    "text": "Doanh thu đạt 44.010 tỷ đồng, tăng 23,4% so với doanh thu 2021. Lợi nhuận trước thuế đạt 7.662 tỷ đồng, tăng 20,9% so năm 2021 là điểm sáng tích cực trong bối cảnh kinh tế toàn cầu và Việt Nam đang đứng trước làn sóng khủng hoảng kinh tế, nhiều tập đoàn công nghệ hàng đầu trên thế giới đang có xu hướng tăng trưởng chậm và điều chỉnh tái cấu trúc sản phẩm",
+    "source": "results/nnc_results.json"
+  },
+  {
+    "ticker": "FPT",
+    "year": 2022,
+    "page": 56,
+    "text": "Xây dựng các chương trình Các chỉ tiêu kinh doanh tiếp tục tăng trưởng ổn định, với doanh thu và lợi nhuận hành động, giải pháp đảm tăng trưởng lần lượt 23,4% và 20,9%",
+    "source": "results/nnc_results.json"
+  },
+  {
+    "ticker": "VNM",
+    "year": 2024,
+    "page": 35,
+    "text": "▪ HĐQT phối hợp với Ban Điều hành triển khai thực hiện kế hoạch kinh doanh với kết quả là tổng doanh thu hợp nhất của Vinamilk đạt 61.824 tỷ đồng, tăng 2,2% so với cùng kỳ và hoàn thành 97,8% kế hoạch năm",
+    "source": "results/nnc_results.json"
+  },
+  {
+    "ticker": "VNM",
+    "year": 2024,
+    "page": 35,
+    "text": "Lợi nhuân trước thuế đạt 11.600 tỷ đồng, tăng 5,8% so với cùng kỳ và hoàn thành 100,7% kế hoạch năm",
+    "source": "results/nnc_results.json"
+  }
+]
