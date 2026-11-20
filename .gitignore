@@ -61,3 +61,6 @@ results/run_nnc_log.txt
 
 # Hồ sơ dự thi có CCCD/SĐT thành viên — giữ trên máy, không đưa vào git
 SmartAudit_Quantum_Proposal*.docx
+
+# Bản sao lưu bộ nộp trước khi bổ sung dữ liệu
+deliverables/_ban_*/

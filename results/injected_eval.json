@@ -2,105 +2,105 @@
   "ghi_chu": "DỮ LIỆU TỔNG HỢP — câu thật bị sửa có chủ đích. Không trộn với số đo trên dữ liệu thật.",
   "seed": 2026,
   "recall_chen_loi": {
-    "n": 420,
-    "dung": 347,
-    "ty_le": 0.8262
+    "n": 570,
+    "dung": 473,
+    "ty_le": 0.8298
   },
   "recall_theo_loai": {
     "gia_tri": {
-      "n": 234,
-      "dung": 202,
-      "ty_le": 0.8632
+      "n": 330,
+      "dung": 293,
+      "ty_le": 0.8879
     },
     "phan_tram": {
-      "n": 102,
-      "dung": 89,
-      "ty_le": 0.8725
+      "n": 129,
+      "dung": 107,
+      "ty_le": 0.8295
     },
     "huong": {
-      "n": 69,
-      "dung": 49,
-      "ty_le": 0.7101
+      "n": 90,
+      "dung": 65,
+      "ty_le": 0.7222
     },
     "kiem_soat_chi_phi": {
-      "n": 15,
-      "dung": 7,
-      "ty_le": 0.4667
+      "n": 21,
+      "dung": 8,
+      "ty_le": 0.381
     }
   },
   "bao_dong_gia_doi_chung": {
-    "n": 122,
-    "dung": 122,
+    "n": 163,
+    "dung": 163,
     "ty_le": 1.0
   },
   "kiem_soat_chi_phi_dung_chieu_nhat_quan": {
-    "n": 41,
-    "dung": 30,
-    "ty_le": 0.7317
+    "n": 58,
+    "dung": 40,
+    "ty_le": 0.6897
   },
   "chi_tiet": [
     {
       "loai": "doi_chung",
       "muc": "goc",
-      "n": 83,
-      "dung": 83,
+      "n": 108,
+      "dung": 108,
       "ty_le": 1.0
     },
     {
       "loai": "doi_chung",
       "muc": "lech_0.5%",
-      "n": 39,
-      "dung": 39,
+      "n": 55,
+      "dung": 55,
       "ty_le": 1.0
     },
     {
       "loai": "gia_tri",
       "muc": "+10%",
-      "n": 39,
-      "dung": 37,
-      "ty_le": 0.9487
+      "n": 55,
+      "dung": 53,
+      "ty_le": 0.9636
     },
     {
       "loai": "gia_tri",
       "muc": "+2%",
-      "n": 39,
-      "dung": 31,
-      "ty_le": 0.7949
+      "n": 55,
+      "dung": 45,
+      "ty_le": 0.8182
     },
     {
       "loai": "gia_tri",
       "muc": "+20%",
-      "n": 39,
-      "dung": 38,
-      "ty_le": 0.9744
+      "n": 55,
+      "dung": 54,
+      "ty_le": 0.9818
     },
     {
       "loai": "gia_tri",
       "muc": "+5%",
-      "n": 39,
-      "dung": 34,
-      "ty_le": 0.8718
+      "n": 55,
+      "dung": 50,
+      "ty_le": 0.9091
     },
     {
       "loai": "gia_tri",
       "muc": "-10%",
-      "n": 39,
-      "dung": 34,
-      "ty_le": 0.8718
+      "n": 55,
+      "dung": 49,
+      "ty_le": 0.8909
     },
     {
       "loai": "gia_tri",
       "muc": "-2%",
-      "n": 39,
-      "dung": 28,
-      "ty_le": 0.7179
+      "n": 55,
+      "dung": 42,
+      "ty_le": 0.7636
     },
     {
       "loai": "huong",
       "muc": "đảo chiều",
-      "n": 69,
-      "dung": 49,
-      "ty_le": 0.7101
+      "n": 90,
+      "dung": 65,
+      "ty_le": 0.7222
     },
     {
       "loai": "kiem_soat_chi_phi",
@@ -112,16 +112,16 @@
     {
       "loai": "kiem_soat_chi_phi",
       "muc": "+0.6 điểm",
-      "n": 4,
-      "dung": 3,
-      "ty_le": 0.75
+      "n": 7,
+      "dung": 6,
+      "ty_le": 0.8571
     },
     {
       "loai": "kiem_soat_chi_phi",
       "muc": "+0.7 điểm",
-      "n": 2,
+      "n": 3,
       "dung": 1,
-      "ty_le": 0.5
+      "ty_le": 0.3333
     },
     {
       "loai": "kiem_soat_chi_phi",
@@ -140,9 +140,23 @@
     {
       "loai": "kiem_soat_chi_phi",
       "muc": "+1.0 điểm",
+      "n": 2,
+      "dung": 2,
+      "ty_le": 1.0
+    },
+    {
+      "loai": "kiem_soat_chi_phi",
+      "muc": "+1.2 điểm",
       "n": 1,
       "dung": 1,
       "ty_le": 1.0
+    },
+    {
+      "loai": "kiem_soat_chi_phi",
+      "muc": "+1.4 điểm",
+      "n": 3,
+      "dung": 0,
+      "ty_le": 0.0
     },
     {
       "loai": "kiem_soat_chi_phi",
@@ -181,6 +195,13 @@
     },
     {
       "loai": "kiem_soat_chi_phi",
+      "muc": "+18.1 điểm",
+      "n": 1,
+      "dung": 0,
+      "ty_le": 0.0
+    },
+    {
+      "loai": "kiem_soat_chi_phi",
       "muc": "+2.2 điểm",
       "n": 1,
       "dung": 1,
@@ -189,9 +210,9 @@
     {
       "loai": "kiem_soat_chi_phi",
       "muc": "+2.3 điểm",
-      "n": 1,
-      "dung": 0,
-      "ty_le": 0.0
+      "n": 2,
+      "dung": 1,
+      "ty_le": 0.5
     },
     {
       "loai": "kiem_soat_chi_phi",
@@ -203,6 +224,13 @@
     {
       "loai": "kiem_soat_chi_phi",
       "muc": "+2.5 điểm",
+      "n": 1,
+      "dung": 0,
+      "ty_le": 0.0
+    },
+    {
+      "loai": "kiem_soat_chi_phi",
+      "muc": "+2.7 điểm",
       "n": 1,
       "dung": 0,
       "ty_le": 0.0
@@ -230,6 +258,13 @@
     },
     {
       "loai": "kiem_soat_chi_phi",
+      "muc": "+22.5 điểm",
+      "n": 1,
+      "dung": 0,
+      "ty_le": 0.0
+    },
+    {
+      "loai": "kiem_soat_chi_phi",
       "muc": "+3.1 điểm",
       "n": 1,
       "dung": 1,
@@ -238,13 +273,20 @@
     {
       "loai": "kiem_soat_chi_phi",
       "muc": "+3.7 điểm",
-      "n": 2,
+      "n": 3,
       "dung": 2,
-      "ty_le": 1.0
+      "ty_le": 0.6667
     },
     {
       "loai": "kiem_soat_chi_phi",
       "muc": "+3.9 điểm",
+      "n": 1,
+      "dung": 0,
+      "ty_le": 0.0
+    },
+    {
+      "loai": "kiem_soat_chi_phi",
+      "muc": "+6.4 điểm",
       "n": 1,
       "dung": 0,
       "ty_le": 0.0
@@ -301,9 +343,16 @@
     {
       "loai": "kiem_soat_chi_phi",
       "muc": "-1.1 điểm",
-      "n": 1,
-      "dung": 1,
+      "n": 3,
+      "dung": 3,
       "ty_le": 1.0
+    },
+    {
+      "loai": "kiem_soat_chi_phi",
+      "muc": "-1.2 điểm",
+      "n": 1,
+      "dung": 0,
+      "ty_le": 0.0
     },
     {
       "loai": "kiem_soat_chi_phi",
@@ -322,16 +371,23 @@
     {
       "loai": "kiem_soat_chi_phi",
       "muc": "-1.6 điểm",
-      "n": 3,
-      "dung": 3,
+      "n": 4,
+      "dung": 4,
       "ty_le": 1.0
     },
     {
       "loai": "kiem_soat_chi_phi",
       "muc": "-1.7 điểm",
-      "n": 1,
+      "n": 2,
       "dung": 0,
       "ty_le": 0.0
+    },
+    {
+      "loai": "kiem_soat_chi_phi",
+      "muc": "-1.9 điểm",
+      "n": 1,
+      "dung": 1,
+      "ty_le": 1.0
     },
     {
       "loai": "kiem_soat_chi_phi",
@@ -339,6 +395,13 @@
       "n": 1,
       "dung": 0,
       "ty_le": 0.0
+    },
+    {
+      "loai": "kiem_soat_chi_phi",
+      "muc": "-2.8 điểm",
+      "n": 1,
+      "dung": 1,
+      "ty_le": 1.0
     },
     {
       "loai": "kiem_soat_chi_phi",
@@ -357,9 +420,9 @@
     {
       "loai": "kiem_soat_chi_phi",
       "muc": "-3.4 điểm",
-      "n": 1,
+      "n": 2,
       "dung": 1,
-      "ty_le": 1.0
+      "ty_le": 0.5
     },
     {
       "loai": "kiem_soat_chi_phi",
@@ -392,23 +455,23 @@
     {
       "loai": "phan_tram",
       "muc": "+10 điểm",
-      "n": 34,
-      "dung": 30,
-      "ty_le": 0.8824
+      "n": 43,
+      "dung": 36,
+      "ty_le": 0.8372
     },
     {
       "loai": "phan_tram",
       "muc": "+2 điểm",
-      "n": 34,
-      "dung": 29,
-      "ty_le": 0.8529
+      "n": 43,
+      "dung": 35,
+      "ty_le": 0.814
     },
     {
       "loai": "phan_tram",
       "muc": "+5 điểm",
-      "n": 34,
-      "dung": 30,
-      "ty_le": 0.8824
+      "n": 43,
+      "dung": 36,
+      "ty_le": 0.8372
     }
   ]
 }

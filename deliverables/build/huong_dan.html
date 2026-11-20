@@ -117,12 +117,12 @@ python scripts/run_qka.py                  (~19 phút, bản đầy đủ, ghi r
 <h2>6. Sử dụng các chức năng chính (prototype)</h2>
 <table>
 <tr><th style="width:24%">Trang</th><th>Thao tác và kết quả quan sát được</th></tr>
-<tr><td><b>Tổng quan</b></td><td>Số doanh nghiệp, báo cáo, khẳng định; phân bố phán quyết trước và sau khi vá nền; toàn bộ câu "Cần xem xét" kèm vết minh chứng (câu gốc, trang BCTN, Mã số và trang BCTC, phép tính).</td></tr>
-<tr><td><b>Doanh nghiệp</b></td><td>Bảng điểm nhất quán theo năm. Bấm một ô để mở chi tiết báo cáo đó.</td></tr>
-<tr><td><b>Chi tiết báo cáo</b></td><td>Chọn mã và năm; lọc theo phán quyết. Mỗi khẳng định hiển thị lý do kết luận hoặc lý do chưa kiểm chứng được.</td></tr>
+<tr><td><b>Tổng quan</b></td><td>Số doanh nghiệp, báo cáo, khẳng định; phân bố phán quyết theo doanh nghiệp; toàn bộ câu "Cần xem xét" kèm vết minh chứng (câu gốc, trang BCTN, Mã số và trang BCTC, phép tính).</td></tr>
+<tr><td><b>Doanh nghiệp</b></td><td>Bảng kết quả theo năm: mỗi ô ghi số câu nhất quán (✓) và cần xem xét (!); ô trống là năm không đối chiếu được (rê chuột để xem lý do). Bấm một ô để mở chi tiết báo cáo đó.</td></tr>
+<tr><td><b>Chi tiết báo cáo</b></td><td>Chọn mã và năm; bấm các nút đếm để lọc theo phán quyết. Mỗi khẳng định hiển thị lý do kết luận hoặc lý do chưa kiểm chứng được.</td></tr>
 <tr><td><b>Kiểm tra khẳng định</b></td><td>Chọn doanh nghiệp, năm; gõ một câu tiếng Việt; bấm <b>Đối chiếu</b>. Câu được xử lý bằng đúng mã nguồn Python của pipeline, chạy trong trình duyệt. Có sẵn ví dụ: câu thật trong báo cáo và câu đã sửa có chủ đích (ghi rõ).</td></tr>
-<tr><td><b>Đánh giá chất lượng</b></td><td>Số đo trên dữ liệu thật (300 cặp gán nhãn), tập chèn lỗi, các giới hạn đã biết.</td></tr>
-<tr><td><b>Thí nghiệm lượng tử</b></td><td>So sánh QSVM + QKA với rapidfuzz và SVM-RBF trên cùng cách chia dữ liệu.</td></tr>
+<tr><td><b>Đánh giá chất lượng</b></td><td>Phép thử cố tình viết sai: tỷ lệ câu sai bị bắt theo từng kiểu lỗi, số câu đúng bị báo nhầm, kèm một ví dụ thật.</td></tr>
+<tr><td><b>Thí nghiệm lượng tử</b></td><td>Lượng tử được thử ở khâu khớp tên khoản mục khi bảng thiếu cột Mã số; so sánh QSVM + QKA với rapidfuzz và SVM-RBF trên cùng cách chia dữ liệu.</td></tr>
 </table>
 
 <h2>7. Cách kiểm tra kết quả</h2>

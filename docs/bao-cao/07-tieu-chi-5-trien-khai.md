@@ -14,7 +14,7 @@ Người dùng: kiểm toán viên, giám sát công bố thông tin, nhà đầ
 Doanh nghiệp lớn hiếm khi viết sai số liệu đã kiểm toán (ước tính khoảng 2% khẳng định trong mẫu), nên công cụ tốt phải gần như im lặng. Chất lượng được đo bằng hai số đo:
 
 1. **Cờ oan trên dữ liệu thật** (300 cặp có nhãn): trước vá 137/141 cờ là oan; sau vá còn khoảng 23 cờ oan ước tính trên toàn bộ khẳng định (giảm ~83%), nhưng 0/21 cờ trong mẫu là mâu thuẫn thật. Đây là **nhãn bạc** do hai tác tử AI gán mù, độc lập, không phải nhãn người; kappa 0,86.
-2. **Recall trên tập chèn lỗi có kiểm soát**: câu đúng bị sửa có chủ đích. Đây là **dữ liệu tổng hợp**, báo cáo riêng: bắt 82,6% (đổi giá trị 86%, đổi tỷ lệ 87%, đảo hướng 71%, "kiểm soát chi phí" 47%); 0/122 báo động giả trên câu đối chứng.
+2. **Recall trên tập chèn lỗi có kiểm soát**: câu đúng bị sửa có chủ đích. Đây là **dữ liệu tổng hợp**, báo cáo riêng: bắt 83,0% (đổi giá trị 89%, đổi tỷ lệ 83%, đảo hướng 72%, "kiểm soát chi phí" 38%); 0/163 báo động giả trên câu đối chứng.
 
 **Chưa thử nghiệm với kiểm toán viên** vì không kịp. Quy trình đã soạn sẵn (`docs/thu-nghiem-ktv/`): làm tay và dùng công cụ trên hai doanh nghiệp khác nhau, đảo thứ tự, ghi thời gian và độ đúng; sẽ chạy sau Vòng 2. **Chưa có đối tác.** Mức tiết kiệm 8–45 tỷ đồng/năm ở hồ sơ Vòng 1 là ước tính, chưa kiểm chứng.
 
@@ -26,7 +26,7 @@ Doanh nghiệp lớn hiếm khi viết sai số liệu đã kiểm toán (ước
 |---|---|---|
 | Giao diện kết quả | Trang tĩnh, gói miễn phí (Cloudflare Pages/Netlify) | 0 |
 | "Kiểm tra khẳng định" | Lõi Python chạy trong trình duyệt bằng Pyodide, không server | 0; tải ~10 MB lần đầu |
-| Pipeline | Offline trên CPU, không gọi API trả phí | 0; 77 giây cho 93 BCTN (khoảng 1 giây/báo cáo khi đã bóc chữ; bóc PDF lần đầu khoảng 12 giây/báo cáo) |
+| Pipeline | Offline trên CPU, không gọi API trả phí | 0; 14 giây cho 112 BCTN (khoảng 0,1 giây/báo cáo khi đã bóc chữ; bóc PDF lần đầu khoảng 12 giây/báo cáo) |
 | Con người | KTV rà cờ, bảo trì ontology | Khoản lớn nhất |
 
 Không có dữ liệu cá nhân, không gửi văn bản ra ngoài, nên cài nội bộ được. Rủi ro:

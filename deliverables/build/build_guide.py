@@ -36,7 +36,7 @@ def main() -> int:
     r = inj["recall_chen_loi"]
     dc = inj["bao_dong_gia_doi_chung"]
     tokens = {
-        "%%DATE%%": "19/11/2026",
+        "%%DATE%%": "20/11/2026",
         "%%LINK%%": link_html,
         "%%TESTS%%": "171",
         "%%TESTS_MAIN%%": "147 passed, 1 skipped",

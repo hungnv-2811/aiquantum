@@ -11,17 +11,17 @@ Chuẩn mực kiểm toán Việt Nam số 720 yêu cầu kiểm toán viên đ�
 
 SmartAudit-Quantum tự động hoá bước sàng lọc: mỗi câu có số liệu được **neo vào đúng ô BCTC qua Mã số Thông tư 200** và nhận một trong ba phán quyết — *Nhất quán*, *Cần xem xét*, *Chưa kiểm chứng được* — kèm vết minh chứng kiểm tra lại được (câu gốc, trang, Mã số, phép tính). Nguyên tắc: **thà im lặng có lý do còn hơn cáo buộc sai.**
 
-## Kết quả đo được (19/11/2026)
+## Kết quả đo được (20/11/2026)
 
-| Chỉ số | Bản 21/09 | Sau vá 19/11 |
+| Chỉ số | Bản 21/09 | Hiện tại (20/11) |
 |---|---|---|
-| Cặp báo cáo đối chiếu được | 66 | 73 |
-| Khẳng định trích được | 695 | 391 |
-| Cờ "cần xem xét" | 141 | 35 |
+| Cặp báo cáo đối chiếu được | 66 | 98 |
+| Khẳng định trích được | 695 | 511 |
+| Cờ "cần xem xét" | 141 | 52 |
 | Precision nhóm cần xem xét, dữ liệu thật (300 cặp nhãn bạc) | 2,8% (4/141) | 0% (0/21) |
-| Cờ oan ước tính trên toàn bộ khẳng định | ~137 | ~23 |
-| Recall trên tập chèn lỗi có kiểm soát (dữ liệu tổng hợp) | — | 82,6% (347/420) |
-| Báo động giả trên câu đối chứng | — | 0/122 |
+| Cờ oan ước tính trên tập khẳng định bản 21/09 | ~137 | ~23 |
+| Recall trên tập chèn lỗi có kiểm soát (dữ liệu tổng hợp) | — | 83,0% (473/570) |
+| Báo động giả trên câu đối chứng | — | 0/163 |
 | Kiểm thử tự động | 121 | 147 (+24 thí nghiệm lượng tử) |
 
 **Đọc kết quả trung thực.** Bản vá loại được phần lớn cờ oan (đơn vị tính nghìn/triệu đồng, câu về công ty con, rác bố cục PDF, câu không phải kết quả…). Bộ đối chiếu nhạy với lỗi khi câu được trích đúng. Nhưng **mục tiêu precision 80% chưa đạt** trên dữ liệu thật: mâu thuẫn thật rất hiếm (ước tính ~2% khẳng định) và cả 7 ca trong mẫu đều là lỗi trình bày ở tỷ số, cơ cấu (hệ số nợ/VCSH, tỷ trọng tài sản) — loại hệ thống chưa tính. Đó là bước tiếp theo.
@@ -75,7 +75,7 @@ data/              dữ liệu mẫu (BCTC TiniX + văn bản BCTN đã bóc)
 
 - Trích khẳng định bằng bộ luật, chưa có mô hình học (PhoBERT-Fin là bước sau, chỉ thay khi thắng bộ luật trên cùng tập test).
 - Còn cờ oan khi câu nói về một mảng/công ty con mà không có từ khoá phạm vi, hoặc khi PDF bị trộn cột.
-- Chưa tính tỷ số cơ cấu; ngân hàng (Thông tư 49) và 17 báo cáo thường niên bản scan chưa xử lý.
+- Chưa tính tỷ số cơ cấu; ngân hàng (Thông tư 49) và 11 báo cáo thường niên không đọc được (bản scan, mất dấu, công văn) chưa xử lý.
 - Chưa thử nghiệm với kiểm toán viên; chưa có đối tác.
 
 ## Đội ngũ

@@ -30,14 +30,14 @@ Bản vá ngày 19/11 sửa đúng các nguyên nhân cờ oan đã định danh
 
 ### 3.4. Kết quả chạy thử và so sánh cơ bản
 
-| Chỉ số | Bản 21/09 | Sau vá 19/11 | Ghi chú |
+| Chỉ số | Bản 21/09 | Hiện tại (20/11) | Ghi chú |
 |---|---|---|---|
-| Khẳng định trích được | 695 | 391 | 73 báo cáo, 16 mã |
-| Cờ "cần xem xét" | 141 | 35 | |
+| Khẳng định trích được | 695 | 511 | 66 → 98 báo cáo, 16 mã |
+| Cờ "cần xem xét" | 141 | 52 | 31 cờ nằm ngoài mẫu đã gán nhãn |
 | Precision nhóm cần xem xét (mẫu 300 cặp, nhãn bạc) | 2,8% (4/141) | 0% (0/21) | KTC 95%: 1,1–7,1% / 0–15,5% |
-| Cờ oan ước tính trên toàn bộ khẳng định | ~137 | ~23 | giảm ~83% |
-| Recall trên tập chèn lỗi (dữ liệu tổng hợp) | — | 82,6% (347/420) | đổi giá trị ≥ 10%: 87–97% |
-| Báo động giả trên câu đối chứng | — | 0/122 | câu gốc + câu lệch 0,5% |
+| Cờ oan ước tính trên tập khẳng định bản 21/09 | ~137 | ~23 | giảm ~83% |
+| Recall trên tập chèn lỗi (dữ liệu tổng hợp) | — | 83,0% (473/570) | đổi giá trị ≥ 10%: 89–98% |
+| Báo động giả trên câu đối chứng | — | 0/163 | câu gốc + câu lệch 0,5% |
 | QKA khớp khoản mục: QSVM+QKA / SVM-RBF / rapidfuzz | — | 0,840 / 0,911 / 0,812 | accuracy, 5 phần, 8 qubit |
 
 Đọc kết quả: bộ đối chiếu nhạy với lỗi khi câu được trích đúng (tập chèn lỗi), và bản vá loại được phần lớn cờ oan. Trên dữ liệu thật, mâu thuẫn thật rất hiếm (ước tính 2,1% khẳng định) và đều nằm ở tỷ số, cơ cấu — loại hệ thống chưa tính — nên precision chưa đạt mục tiêu 80% đã đặt ở Vòng 1.

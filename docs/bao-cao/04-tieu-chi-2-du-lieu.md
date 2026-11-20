@@ -8,7 +8,7 @@ Giới hạn: ≤ 550 từ ngoài bảng + 1 bảng. ⟦CHỜ: …⟧ = số ch�
 ## 2.1. Nguồn dữ liệu, quyền sử dụng và phạm vi
 
 - **Số liệu:** TiniX OCR Annual Financials (HuggingFace `tinixai/ocr_annual_financials`, 18.231 BCTC, CC BY-NC 4.0), bảng HTML giữ cột Mã số TT200; đội dùng 338 BCTC hợp nhất và riêng của 16 mã.
-- **Ngôn từ:** 93 BCTN (16 mã, 2018–2024) công bố bắt buộc theo Thông tư 96/2020/TT-BTC, tải qua Vietstock; repo không phân phối lại PDF, chỉ giữ script tải.
+- **Ngôn từ:** 112 BCTN (16 mã × 7 năm, 2018–2024) công bố bắt buộc theo Thông tư 96/2020/TT-BTC, tải qua Vietstock; repo không phân phối lại PDF, chỉ giữ script tải.
 
 Hai nguồn độc lập, công khai, không có dữ liệu cá nhân. Bộ Zenodo khai trong hồ sơ chưa dùng (56,58 GB riêng 2021–2025).
 
@@ -17,9 +17,9 @@ Hai nguồn độc lập, công khai, không có dữ liệu cá nhân. Bộ Zen
 | Bước | Vào → ra | Loại bỏ · lý do |
 |---|---|---|
 | Bóc bảng BCTC theo Mã số | 338 → 337 | Ontology 31 khoản mục |
-| Bóc chữ BCTN, tách cột | 93 → 76 | 17 bản scan hoặc rỗng (có TCB 2022, VCG 2019: không có dấu tiếng Việt); lỗi hình học PDF đã vá |
-| Ghép BCTC hợp nhất cùng năm | 76 → **73 cặp** | 3 thiếu BCTC hợp nhất |
-| Trích, đối chiếu | 695 → 391 khẳng định | Bản 21/09: 141 mâu thuẫn · 155 nhất quán · 399 chưa kiểm chứng; sau vá 19/11: 35 · 83 · 273 |
+| Ghép BCTC hợp nhất cùng năm | 112 → 109 | 3 thiếu BCTC hợp nhất (TCB 2024, VHM 2018, VPB 2023) |
+| Bóc chữ BCTN, tách cột | 109 → **98 cặp** | 11 không dùng được: 7 bản scan, 2 mất dấu tiếng Việt (TCB 2022, VCG 2019), 2 là công văn (GAS, PLX 2024); lỗi hình học PDF đã vá |
+| Trích, đối chiếu | 98 cặp → 511 khẳng định | 52 cần xem xét · 108 nhất quán · 351 chưa kiểm chứng (bản 21/09 trên 66 cặp: 695 khẳng định; 141 · 155 · 399) |
 
 **Kiểm soát chất lượng:** đơn vị tính đọc theo từng bảng vì có thể đổi theo năm (VIC 2018 ghi đồng, 2020–2024 triệu đồng); đọc trang bìa 66 cặp thấy 1 cặp ghép nhầm BCTC riêng (VCG 2018) — chưa vá, ghi vào giới hạn. Các nguồn cờ oan khác: bảng mục 1.4.
 
@@ -37,7 +37,7 @@ Hai nguồn độc lập, công khai, không có dữ liệu cá nhân. Bộ Zen
 
 **Đặc trưng:** Mã số TT200 qua ontology (tra cứu tất định); 5 tỷ số suy ra; hướng, mốc so sánh, kỳ, đơn vị; bộ lọc phạm vi, tương lai, bên thứ ba. Gán nhãn cho thấy cần thêm tỷ số trên số **bình quân** (POW 2024: vòng quay tồn kho 14,29 lần).
 
-**Không tăng cường dữ liệu để huấn luyện:** hệ thống dùng luật, không học từ dữ liệu; câu tổng hợp chỉ dùng **để đo** (tập chèn lỗi, 583 câu từ câu thật) và luôn báo cáo tách riêng. Nhãn thí nghiệm QKA sinh tự động từ bảng có Mã số: 1.945 dòng, 282 tên khác nhau, 8 Mã số.
+**Không tăng cường dữ liệu để huấn luyện:** hệ thống dùng luật, không học từ dữ liệu; câu tổng hợp chỉ dùng **để đo** (tập chèn lỗi, 791 câu từ câu thật) và luôn báo cáo tách riêng. Nhãn thí nghiệm QKA sinh tự động từ bảng có Mã số: 1.945 dòng, 282 tên khác nhau, 8 Mã số.
 
 ## Minh chứng chất lượng dữ liệu
 

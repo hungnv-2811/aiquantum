@@ -1,13 +1,12 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="vi">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>SmartAudit-Quantum — Đối chiếu ngôn từ và số liệu BCTC</title>
 <meta name="description" content="Prototype Vòng 2 — AI-Quantum Challenge 2026, đội AQ2026-064. Kết quả thật trên dữ liệu thật.">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="stylesheet" href="style.css">
-<link rel="stylesheet" href="app.css">
-<script src="vendor/chart.umd.min.js"></script>
 </head>
 <body>
 <div class="app-layout">
@@ -15,98 +14,125 @@
 <!-- ═══════════ THANH BÊN ═══════════ -->
 <aside class="sidebar" id="sidebar">
   <div class="sidebar-header">
-    <div class="logo-container">
-      <div class="logo-icon">⚛</div>
+    <a class="logo-container" href="#overview" aria-label="SmartAudit-Quantum — Tổng quan">
+      <img class="logo-mark" src="favicon.svg" alt="" width="40" height="40">
       <div class="logo-text">
-        <h1>SmartAudit</h1>
-        <span>Ngôn từ ↔ Số liệu</span>
+        <h1>SmartAudit<em>Quantum</em></h1>
+        <span>Lời văn ↔ Số liệu BCTC</span>
       </div>
-    </div>
+    </a>
+    <button class="sidebar-close" id="sidebar-close" type="button" aria-label="Đóng menu">✕</button>
   </div>
 
   <nav class="sidebar-nav">
     <div class="nav-section">
       <div class="nav-section-title">Kết quả</div>
-      <div class="nav-item active" data-page="overview"><span class="icon">📊</span> Tổng quan</div>
-      <div class="nav-item" data-page="companies"><span class="icon">🏢</span> Doanh nghiệp</div>
-      <div class="nav-item" data-page="report"><span class="icon">🔍</span> Chi tiết báo cáo</div>
+      <div class="nav-item active" data-page="overview"><svg class="icon" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></svg> Tổng quan</div>
+      <div class="nav-item" data-page="companies"><svg class="icon" viewBox="0 0 24 24"><path d="M4 21V5a1 1 0 0 1 1-1h9a1 1 0 0 1 1 1v16M15 10h4a1 1 0 0 1 1 1v10M2 21h20M8 8h3M8 12h3M8 16h3"/></svg> Doanh nghiệp</div>
+      <div class="nav-item" data-page="report"><svg class="icon" viewBox="0 0 24 24"><path d="M14 3H6a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V8z"/><path d="M14 3v5h5"/><circle cx="11.5" cy="14" r="2.5"/><path d="m13.5 16 2 2"/></svg> Chi tiết báo cáo</div>
     </div>
     <div class="nav-section">
       <div class="nav-section-title">Chạy thử</div>
-      <div class="nav-item" data-page="check"><span class="icon">✍️</span> Kiểm tra khẳng định</div>
+      <div class="nav-item nav-cta" data-page="check"><svg class="icon" viewBox="0 0 24 24"><path d="M4 7h9M4 12h6M4 17h7"/><path d="m14.5 15.5 2.5 2.5 4.5-5"/></svg> Kiểm tra khẳng định</div>
     </div>
     <div class="nav-section">
       <div class="nav-section-title">Đo lường</div>
-      <div class="nav-item" data-page="evaluation"><span class="icon">🎯</span> Đánh giá chất lượng</div>
-      <div class="nav-item" data-page="quantum"><span class="icon">⚛️</span> Thí nghiệm lượng tử</div>
-      <div class="nav-item" data-page="about"><span class="icon">ℹ️</span> Giới thiệu &amp; dữ liệu</div>
+      <div class="nav-item" data-page="evaluation"><svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="0.8"/></svg> Đánh giá chất lượng</div>
+      <div class="nav-item" data-page="quantum"><svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="1.6"/><ellipse cx="12" cy="12" rx="9" ry="3.6"/><ellipse cx="12" cy="12" rx="9" ry="3.6" transform="rotate(60 12 12)"/><ellipse cx="12" cy="12" rx="9" ry="3.6" transform="rotate(120 12 12)"/></svg> Thí nghiệm lượng tử</div>
+      <div class="nav-item" data-page="about"><svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.01"/></svg> Giới thiệu &amp; dữ liệu</div>
     </div>
   </nav>
 
   <div class="sidebar-footer">
-    <div style="font-size:11px; color:var(--text-muted); line-height:1.5;">
-      Đội AQ2026-064 · Ngôi nhà Hoa Hồng<br>
-      AI-Quantum Challenge 2026 · Vòng 2<br>
-      <span id="generated-at"></span>
+    <div class="team-chip">AQ2026-064</div>
+    <div class="team-meta">
+      Ngôi nhà Hoa Hồng · AI-Quantum Challenge 2026
     </div>
   </div>
 </aside>
+<div class="sidebar-backdrop" id="sidebar-backdrop" hidden></div>
 
 <!-- ═══════════ NỘI DUNG ═══════════ -->
 <main class="main-content">
   <header class="header">
     <div class="header-left">
-      <button class="header-btn menu-btn" id="menu-btn" title="Mở menu">☰</button>
-      <div>
-        <h2 id="page-title">Tổng quan</h2>
-        <div class="breadcrumb"><span>SmartAudit-Quantum</span><span class="sep">/</span><span id="breadcrumb-page">Tổng quan</span></div>
-      </div>
+      <button class="header-btn menu-btn" id="menu-btn" type="button" aria-label="Mở menu" aria-controls="sidebar" aria-expanded="false">☰</button>
+      <h2 id="page-title">Tổng quan</h2>
     </div>
   </header>
 
   <div class="page-content">
-    <div class="notice-banner">
-      <strong>Kết quả thử nghiệm tự động phục vụ cuộc thi — không phải kết luận kiểm toán.</strong>
-      Nhãn <span class="vbadge review">Cần xem xét</span> nghĩa là câu văn trong báo cáo thường niên chênh với số liệu
-      BCTC đã kiểm toán theo cách hệ thống hiểu; đó là tín hiệu để người xem lại, không phải cáo buộc doanh nghiệp.
-      Mọi số liệu trên trang này sinh từ pipeline chạy trên dữ liệu thật.
-    </div>
-
     <!-- ═══ TỔNG QUAN ═══ -->
     <section class="page active" id="page-overview">
-      <div class="kpi-grid" id="kpi-grid"></div>
-      <div class="grid-2">
-        <div class="card">
-          <div class="card-header"><div class="card-title">Phán quyết trước và sau khi vá nền</div></div>
-          <div class="card-body">
-            <div class="chart-container"><canvas id="chart-before-after"></canvas></div>
-            <p class="note" id="before-after-note"></p>
+      <div class="hero">
+        <div class="hero-text">
+          <h1>Đối chiếu từng câu trong báo cáo thường niên với đúng ô số liệu đã kiểm toán</h1>
+          <p>Neo theo Mã số Thông tư 200 · mỗi phán quyết kèm vết minh chứng · thà im lặng có lý do còn hơn cáo buộc sai.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#check">Thử kiểm tra một câu</a>
+            <a class="btn btn-ghost" href="#companies">Xem các doanh nghiệp</a>
           </div>
         </div>
-        <div class="card">
-          <div class="card-header"><div class="card-title">Cách hệ thống đi tới một phán quyết</div></div>
-          <div class="card-body flow">
-            <div class="flow-step"><b>1. Báo cáo thường niên</b><span>bóc chữ theo cột, tách câu</span></div>
-            <div class="flow-step"><b>2. Trích khẳng định</b><span>chỉ tiêu · giá trị · % · hướng · kỳ; lọc câu về công ty con, kế hoạch, chính sách…</span></div>
-            <div class="flow-step"><b>3. Neo vào Mã số TT200</b><span>tra thẳng ô trong BCTC kiểm toán, có quy đổi đơn vị tính</span></div>
-            <div class="flow-step"><b>4. Đối chiếu 3 chiều</b><span>giá trị · tỷ lệ % · hướng biến động; kiểm soát chi phí</span></div>
-            <div class="flow-step"><b>5. Phán quyết + vết minh chứng</b><span>Nhất quán · Cần xem xét · Chưa kiểm chứng được (kèm lý do)</span></div>
+        <div class="hero-visual" aria-hidden="true">
+          <div class="hv-card">
+            <div class="hv-label">Báo cáo thường niên · trang 52</div>
+            <div class="hv-quote">“Doanh thu đạt <mark>44.010&nbsp;tỷ&nbsp;đồng</mark>, tăng <mark>23,4%</mark>”</div>
           </div>
+          <div class="hv-arrow">↓ neo Mã số 10</div>
+          <div class="hv-card">
+            <div class="hv-label">BCTC hợp nhất đã kiểm toán · trang 13</div>
+            <div class="hv-table"><span>Mã số 10</span><span>35.657 tỷ</span><span class="hl">44.010 tỷ</span></div>
+          </div>
+          <div class="hv-verdict"><span class="vbadge ok">✓ Nhất quán</span> giá trị khớp · +23,4% khớp</div>
+        </div>
+      </div>
+      <div class="card summary" id="summary"></div>
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">Phân bố phán quyết theo doanh nghiệp</div>
+          <div class="seg-legend">
+            <span><i class="sw ok"></i>Nhất quán</span>
+            <span><i class="sw review"></i>Cần xem xét</span>
+            <span><i class="sw unk"></i>Chưa kiểm chứng được</span>
+          </div>
+        </div>
+        <div class="card-body">
+          <div id="company-bars" class="company-bars"></div>
+          <p class="note" id="company-bars-note"></p>
         </div>
       </div>
       <div class="card">
-        <div class="card-header"><div class="card-title">Những câu cần xem xét (toàn bộ, sắp theo doanh nghiệp)</div></div>
+        <div class="card-header">
+          <div class="card-title">Những câu cần xem xét <span class="count" id="review-count"></span></div>
+          <div class="select-wrapper"><select id="review-filter"><option value="">Tất cả doanh nghiệp</option></select></div>
+        </div>
         <div class="card-body" id="review-list"></div>
+      </div>
+      <div class="section-title">Cách hệ thống đi tới một phán quyết</div>
+      <div class="flow flow-row">
+        <div class="flow-step"><em>1</em><b>Báo cáo thường niên</b><span>bóc chữ theo cột, tách câu</span></div>
+        <div class="flow-step"><em>2</em><b>Trích khẳng định</b><span>chỉ tiêu · giá trị · % · hướng · kỳ; lọc câu ngoài phạm vi</span></div>
+        <div class="flow-step"><em>3</em><b>Neo vào Mã số TT200</b><span>tra thẳng ô BCTC kiểm toán, quy đổi đơn vị tính</span></div>
+        <div class="flow-step"><em>4</em><b>Đối chiếu 3 chiều</b><span>giá trị · tỷ lệ % · hướng biến động</span></div>
+        <div class="flow-step"><em>5</em><b>Phán quyết + minh chứng</b><span>nhất quán · cần xem xét · chưa kiểm chứng (kèm lý do)</span></div>
       </div>
     </section>
 
     <!-- ═══ DOANH NGHIỆP ═══ -->
     <section class="page" id="page-companies">
       <div class="card">
-        <div class="card-header"><div class="card-title">Điểm nhất quán NNC theo năm</div></div>
+        <div class="card-header">
+          <div class="card-title">Kết quả đối chiếu theo năm</div>
+          <div class="legend">
+            <span><i class="c-review"></i>Có câu cần xem xét</span>
+            <span><i class="c-ok"></i>Các câu kiểm chứng được đều khớp</span>
+            <span><i class="c-unk"></i>Chưa có câu kiểm chứng được</span>
+            <span><i class="c-none"></i>Không đối chiếu được</span>
+          </div>
+        </div>
         <div class="card-body table-scroll">
-          <p class="note">Điểm = trung bình điểm các khẳng định kiểm chứng được (1 = khớp hoàn toàn). Ô trống: năm không có báo cáo thường niên dùng được.
-          Bấm vào một ô để xem chi tiết. Ngân hàng lập BCTC theo Thông tư 49, nằm ngoài phạm vi.</p>
+          <p class="note heat-note">Mỗi ô là một báo cáo thường niên: <b class="k-ok">✓</b> số câu nhất quán, <b class="k-review">!</b> số câu cần xem xét.
+            Bấm vào ô để xem từng câu. Doanh nghiệp nhiều câu cần xem xét nhất xếp trên cùng.</p>
           <table class="company-table heat" id="heat-table"></table>
         </div>
       </div>
@@ -115,21 +141,13 @@
     <!-- ═══ CHI TIẾT BÁO CÁO ═══ -->
     <section class="page" id="page-report">
       <div class="card">
-        <div class="card-header">
-          <div class="card-title">Chọn báo cáo</div>
-          <div class="controls">
-            <div class="select-wrapper"><select id="report-ticker"></select></div>
-            <div class="select-wrapper"><select id="report-year"></select></div>
-          </div>
+        <div class="card-header report-pick">
+          <div class="select-wrapper"><select id="report-ticker" aria-label="Doanh nghiệp"></select></div>
+          <div class="year-chips" id="report-years" role="tablist" aria-label="Năm"></div>
+          <select id="report-year" hidden></select>
         </div>
         <div class="card-body">
           <div id="report-summary"></div>
-          <div class="tabs" id="report-tabs">
-            <div class="tab active" data-filter="all">Tất cả</div>
-            <div class="tab" data-filter="mâu thuẫn">Cần xem xét</div>
-            <div class="tab" data-filter="nhất quán">Nhất quán</div>
-            <div class="tab" data-filter="không kiểm chứng được">Chưa kiểm chứng được</div>
-          </div>
           <div id="report-claims"></div>
         </div>
       </div>
@@ -150,17 +168,18 @@
             <textarea id="check-text" rows="4" placeholder="Ví dụ: Doanh thu thuần đạt 61.783 tỷ đồng, tăng 2,3% so với năm trước."></textarea>
             <div class="controls">
               <button class="btn btn-primary" id="check-run">▶ Đối chiếu</button>
-              <span id="py-status" class="py-status">Lõi Python chưa nạp</span>
             </div>
-            <p class="note">Câu được xử lý bằng <b>đúng mã nguồn Python của pipeline</b> (trích khẳng định → đối chiếu), chạy ngay trong trình duyệt bằng Pyodide.
-              Không có server; lần đầu cần tải khoảng 10 MB.</p>
             <div id="examples"></div>
           </div>
         </div>
-        <div class="card">
+        <div class="card check-result-card">
           <div class="card-header"><div class="card-title">Kết quả</div></div>
           <div class="card-body" id="check-result">
-            <div class="empty-state"><div class="icon">✍️</div><p>Chọn doanh nghiệp, nhập câu rồi bấm Đối chiếu.</p></div>
+            <ol class="steps guide">
+              <li><b>Chọn doanh nghiệp và năm</b><span>Hệ thống lấy số liệu từ BCTC hợp nhất đã kiểm toán của năm đó.</span></li>
+              <li><b>Nhập hoặc bấm chọn một câu ví dụ</b><span>Câu cần nêu một chỉ tiêu tài chính kèm con số, tỷ lệ % hoặc chiều tăng/giảm.</span></li>
+              <li><b>Bấm Đối chiếu</b><span>Phán quyết hiện ở đây, kèm minh chứng: Mã số và trang BCTC đã dùng.</span></li>
+            </ol>
           </div>
         </div>
       </div>
@@ -168,38 +187,44 @@
 
     <!-- ═══ ĐÁNH GIÁ ═══ -->
     <section class="page" id="page-evaluation">
-      <div class="kpi-grid" id="eval-kpis"></div>
-      <div class="grid-2">
-        <div class="card">
-          <div class="card-header"><div class="card-title">Tập chèn lỗi có kiểm soát — tỷ lệ phát hiện</div></div>
-          <div class="card-body">
-            <div class="chart-container"><canvas id="chart-injected"></canvas></div>
-            <p class="note"><b>Dữ liệu tổng hợp:</b> câu thật bị sửa có chủ đích (đổi số, đổi %, đảo hướng, câu "kiểm soát chi phí").
-              Dùng vì dữ liệu thật gần như không có mâu thuẫn thật để đo khả năng phát hiện. Không trộn với số đo trên dữ liệu thật.</p>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-header"><div class="card-title">Đo trên dữ liệu thật — 300 cặp gán nhãn mù</div></div>
-          <div class="card-body" id="eval-real"></div>
+      <div class="card">
+        <div class="card-header"><div class="card-title">Phép thử: cố tình viết sai, xem hệ thống có bắt được không</div></div>
+        <div class="card-body test-how">
+          <ol class="steps" id="eval-steps"></ol>
+          <div class="demo" id="eval-demo"></div>
         </div>
       </div>
+      <div class="big-kpis" id="eval-kpis"></div>
       <div class="card">
-        <div class="card-header"><div class="card-title">Giới hạn đã biết</div></div>
-        <div class="card-body" id="eval-limits"></div>
+        <div class="card-header">
+          <div class="card-title">Bắt được bao nhiêu, theo từng kiểu viết sai</div>
+          <div class="seg-legend"><span><i class="sw caught"></i>Bắt được</span><span><i class="sw missed"></i>Bỏ lọt</span></div>
+        </div>
+        <div class="card-body">
+          <div class="hbars" id="eval-types"></div>
+          <p class="note" id="eval-note"></p>
+        </div>
       </div>
     </section>
 
     <!-- ═══ LƯỢNG TỬ ═══ -->
     <section class="page" id="page-quantum">
       <div class="card">
-        <div class="card-header"><div class="card-title">QKA cho bài toán khớp khoản mục khi bảng thiếu cột Mã số</div></div>
+        <div class="card-header"><div class="card-title">Lượng tử được thử ở khâu nào?</div></div>
+        <div class="card-body q-intro" id="qka-intro"></div>
+      </div>
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">Bốn cách đoán khoản mục — cách nào đúng nhiều nhất?</div>
+          <div class="seg-legend"><span><i class="sw classic"></i>Cổ điển</span><span><i class="sw quantum"></i>Lượng tử</span></div>
+        </div>
         <div class="card-body">
-          <div class="grid-2">
-            <div><div class="chart-container"><canvas id="chart-qka"></canvas></div></div>
-            <div id="qka-text"></div>
-          </div>
+          <div class="hbars" id="qka-bars"></div>
+          <p class="note" id="qka-bars-note"></p>
         </div>
       </div>
+      <div class="q-conclusions" id="qka-text"></div>
+      <details class="card tech" id="qka-tech"></details>
     </section>
 
     <!-- ═══ GIỚI THIỆU ═══ -->
@@ -221,8 +246,6 @@
             <p><b>Số liệu:</b> BCTC hợp nhất đã kiểm toán, văn bản OCR của bộ <i>tinixai/ocr_annual_financials</i> (HuggingFace, CC-BY-NC-4.0).</p>
             <p><b>Ngôn từ:</b> báo cáo thường niên do doanh nghiệp công bố, tải từ Vietstock (tài liệu công bố thông tin bắt buộc).</p>
             <p><b>Phạm vi:</b> 16 mã, 2018–2024; 3 ngân hàng (Thông tư 49) nằm ngoài phạm vi đối chiếu.</p>
-            <p><b>Khai báo dùng AI:</b> đội dùng trợ lý/tác tử AI để viết nháp mã nguồn, tài liệu, gán nhãn bạc tập đánh giá và rà soát.
-              Bài toán, kiến trúc và quyết định là của đội.</p>
           </div>
         </div>
       </div>

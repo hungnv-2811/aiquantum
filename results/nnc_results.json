@@ -172,6 +172,47 @@
   },
   {
     "ticker": "FPT",
+    "year": 2020,
+    "nnc_score": 1.0,
+    "claims": [
+      {
+        "text": "Tuy nhiên, năm 2020 cũng là năm chứng kiến sự tập hợp (cid:24)ược một (cid:24)ội ngũ bán hàng lên tới hàng chục thăng hoa của ngành CNTT, khi công nghệ trở thành công nghìn người như hiện tại, góp phần tăng doanh thu (cid:24)áng cụ quan trọng (cid:24)ưa các hoạt (cid:24)ộng offline lên online, giúp kể cho FPT",
+        "page": 6,
+        "metric": "revenue_net",
+        "trend": "tăng",
+        "verdict": "nhất quán",
+        "score": 1.0,
+        "evidence": [
+          {
+            "dimension": "directional",
+            "explanation": "Câu khẳng định tăng; số liệu cho thấy tăng 7.6% (27.717 tỷ → 29.830 tỷ, mã 10, trang 13).",
+            "passed": true,
+            "source_page": 13,
+            "source_code": "10"
+          }
+        ]
+      },
+      {
+        "text": "Tỷ suất sinh lời trên vốn chủ sở hữu tăng nhẹ 0,1% trong khi tỷ suất sinh lời trên vốn (cid:13)ầu tư và tỷ suất sinh lời trên tổng tài sản giảm do việc gia tăng nợ vay",
+        "page": 55,
+        "metric": "owners_equity",
+        "trend": "tăng",
+        "verdict": "không kiểm chứng được",
+        "score": null,
+        "evidence": [
+          {
+            "dimension": "lookup",
+            "explanation": "Câu không nêu con số hay hướng biến động kiểm chứng được từ báo cáo tài chính.",
+            "passed": false,
+            "source_page": 12,
+            "source_code": "400"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "ticker": "FPT",
     "year": 2021,
     "nnc_score": 0.8,
     "claims": [
@@ -858,6 +899,180 @@
   },
   {
     "ticker": "GAS",
+    "year": 2019,
+    "nnc_score": null,
+    "claims": [
+      {
+        "text": "Việc duy trì dư nợ vay thấp giúp giảm bớt rủi ro về chi phí lãi vay và áp lực trả nợ gốc",
+        "page": 20,
+        "metric": "interest_expense",
+        "trend": "giảm",
+        "verdict": "không kiểm chứng được",
+        "score": null,
+        "evidence": [
+          {
+            "dimension": "continuity",
+            "explanation": "Số liệu hai kỳ biến động -55% (440 tỷ → 198 tỷ, mã 23, trang 10). Mức này thường đến từ thoái vốn hoặc thay đổi phạm vi hợp nhất, khiến hai năm không so sánh trực tiếp được. Hệ thống không kết luận về xu hướng.",
+            "passed": false,
+            "source_page": 10,
+            "source_code": "23"
+          }
+        ]
+      },
+      {
+        "text": "Trường hợp giao dịch về cung cấp dịch vụ liên quan đến nhiều năm thì doanh thu được ghi nhận trong năm theo kết quả phần công việc đã hoàn thành tại ngày của Bảng cân đối kế toán hợp nhất của năm đó",
+        "page": 48,
+        "metric": "revenue_net",
+        "trend": "đạt",
+        "verdict": "không kiểm chứng được",
+        "score": null,
+        "evidence": [
+          {
+            "dimension": "lookup",
+            "explanation": "Câu không nêu con số hay hướng biến động kiểm chứng được từ báo cáo tài chính.",
+            "passed": false,
+            "source_page": 10,
+            "source_code": "10"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "ticker": "GAS",
+    "year": 2020,
+    "nnc_score": 0.0,
+    "claims": [
+      {
+        "text": "• Tăng cường công tác quản lý, đánh giá phân loại và có các biện pháp thu hồi, xử lý với các khoản nợ, hàng tồn kho, tài sản không cần dùng tại đơn vị nhằm giảm thiểu rủi ro, hạn chế bị chiếm dụng vốn ảnh hưởng đến công tác cân đối vốn, dòng tiền phục vụ cho hoạt động sản xuất kinh doanh",
+        "page": 22,
+        "metric": "inventories",
+        "trend": "giảm",
+        "verdict": "mâu thuẫn",
+        "score": 0.0,
+        "evidence": [
+          {
+            "dimension": "directional",
+            "explanation": "Câu khẳng định giảm; số liệu cho thấy tăng 5.6% (1.575 tỷ → 1.663 tỷ, mã 140, trang 7).",
+            "passed": false,
+            "source_page": 7,
+            "source_code": "140"
+          }
+        ]
+      },
+      {
+        "text": "Ban Tổng Giám đốc tăng cường công tác quản lý, đánh giá phân loại và có các biện pháp thu hồi, xử lý với các khoản nợ, hàng tồn kho, tài sản không cần dùng tại đơn vị nhằm giảm thiểu rủi ro, hạn chế bị chiếm dụng vốn ảnh hưởng đến công tác cân đối vốn, dòng tiền phục vụ cho hoạt động sản xuất kinh doanh",
+        "page": 24,
+        "metric": "inventories",
+        "trend": "giảm",
+        "verdict": "mâu thuẫn",
+        "score": 0.0,
+        "evidence": [
+          {
+            "dimension": "directional",
+            "explanation": "Câu khẳng định giảm; số liệu cho thấy tăng 5.6% (1.575 tỷ → 1.663 tỷ, mã 140, trang 7).",
+            "passed": false,
+            "source_page": 7,
+            "source_code": "140"
+          }
+        ]
+      },
+      {
+        "text": "Các chỉ số tài chính khả quan: Tỷ suất lợi nhuận sau thuế/Vốn chủ sở hữu bình quân đạt 21%, trên vốn điều lệ bình quân đạt 51%; Top đầu những đơn vị có vốn hóa lớn; Tỷ lệ chia cổ tức hàng năm bằng tiền mặt cao (tổng cổ tức 5 năm là 208%/vốn điều lệ)",
+        "page": 27,
+        "metric": "profit_after_tax",
+        "trend": "đạt",
+        "verdict": "không kiểm chứng được",
+        "score": null,
+        "evidence": [
+          {
+            "dimension": "lookup",
+            "explanation": "Câu không nêu con số hay hướng biến động kiểm chứng được từ báo cáo tài chính.",
+            "passed": false,
+            "source_page": 10,
+            "source_code": "60"
+          }
+        ]
+      },
+      {
+        "text": "Chỉ số nợ vay trên vốn chủ sở hữu duy trì mức 0.06 lần",
+        "page": 31,
+        "metric": "owners_equity",
+        "trend": "ổn định",
+        "verdict": "không kiểm chứng được",
+        "score": null,
+        "evidence": [
+          {
+            "dimension": "lookup",
+            "explanation": "Câu không nêu con số hay hướng biến động kiểm chứng được từ báo cáo tài chính.",
+            "passed": false,
+            "source_page": 9,
+            "source_code": "400"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "ticker": "GAS",
+    "year": 2021,
+    "nnc_score": 1.0,
+    "claims": [
+      {
+        "text": "Vượt qua các khó khăn, thách thức do đại dịch Covid-19 và suy giảm nhu cầu của thị trường, duy trì ổn định các hoạt động SXKD, đảm bảo sức khỏe cho người lao động, hoàn thành và hoàn thành vượt mức kế hoạch tất cả các chỉ tiêu tài chính và tăng so với năm 2020. Năm đạt doanh thu lớn nhất kể từ khi thành lập PV GAS (trên 80.000 tỷ đồng)",
+        "page": 26,
+        "metric": "revenue_net",
+        "trend": "đạt",
+        "verdict": "nhất quán",
+        "score": 1.0,
+        "evidence": [
+          {
+            "dimension": "numeric",
+            "explanation": "Câu nêu 80.000 tỷ; báo cáo tài chính (mã 10+21+31, trang 12) ghi 80.262 tỷ — khớp 0.3% (câu nêu cận dưới). Câu dùng định nghĩa tổng doanh thu gồm doanh thu tài chính và thu nhập khác (Mã 10 + 21 + 31).",
+            "passed": true,
+            "source_page": 12,
+            "source_code": "10+21+31"
+          }
+        ]
+      },
+      {
+        "text": "Cung cấp Doanh thu trên 7,1 80 tỷ m3 khí khô nghìn tỷ đồng ROE đạt ROE đạt 17% 11%",
+        "page": 42,
+        "metric": "revenue_net",
+        "trend": "đạt",
+        "verdict": "không kiểm chứng được",
+        "score": null,
+        "evidence": [
+          {
+            "dimension": "scope",
+            "explanation": "Câu nêu 80 tỷ, trong khi số hợp nhất là 78.992 tỷ (mã 10, trang 12) — chênh 100%. Chênh lệch quá lớn nên nhiều khả năng câu nói về một công ty con, một mảng kinh doanh hoặc một thị trường lẻ. Hệ thống không kết luận mâu thuẫn.",
+            "passed": false,
+            "source_page": 12,
+            "source_code": "10"
+          }
+        ]
+      },
+      {
+        "text": "Tình hình nguồn vốn: Tính đến hết ngày 31/12/2021, nợ phải trả đạt 26.575 tỷ Việc duy trì dư nợ vay ở mức phù hợp thông qua kế hoạch đồng, chiếm khoảng 33,7% tổng nguồn vốn, trong đó trên giải ngân hợp lý giúp giảm bớt rủi ro về chi phí lãi vay và 62% là nợ ngắn hạn",
+        "page": 60,
+        "metric": "interest_expense",
+        "trend": "giảm",
+        "verdict": "không kiểm chứng được",
+        "score": null,
+        "evidence": [
+          {
+            "dimension": "scope",
+            "explanation": "Câu nêu 26.575 tỷ, trong khi số hợp nhất là 304 tỷ (mã 23, trang 12) — chênh 8638%. Chênh lệch quá lớn nên nhiều khả năng câu nói về một công ty con, một mảng kinh doanh hoặc một thị trường lẻ. Hệ thống không kết luận mâu thuẫn.",
+            "passed": false,
+            "source_page": 12,
+            "source_code": "23"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "ticker": "GAS",
     "year": 2022,
     "nnc_score": 0.5,
     "claims": [
@@ -950,6 +1165,132 @@
             "passed": false,
             "source_page": 11,
             "source_code": "400"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "ticker": "GAS",
+    "year": 2023,
+    "nnc_score": 1.0,
+    "claims": [
+      {
+        "text": "vốn chủ sở hữu của Tổng công ty đạt 65.298 tỷ Tổng vay ngân hàng (ngắn hạn và dài hạn) giảm đồng, chiếm khoảng 74% tổng nguồn vốn",
+        "page": 32,
+        "metric": "owners_equity",
+        "trend": "đạt",
+        "verdict": "nhất quán",
+        "score": 1.0,
+        "evidence": [
+          {
+            "dimension": "numeric",
+            "explanation": "Câu nêu 65.298 tỷ; báo cáo tài chính (mã 400, trang 11) ghi 65.299 tỷ — khớp 0.0%.",
+            "passed": true,
+            "source_page": 11,
+            "source_code": "400"
+          }
+        ]
+      },
+      {
+        "text": "tư cơ sở hạ tầng mới có tính chất doanh thu đến từ thị trường nước đón đầu xu thế, có giá trị gia tăng ngoài đạt gần 12 nghìn tỷ đồng",
+        "page": 6,
+        "metric": "revenue_net",
+        "trend": "tăng",
+        "verdict": "không kiểm chứng được",
+        "score": null,
+        "evidence": [
+          {
+            "dimension": "scope",
+            "explanation": "Câu nêu 12.000 tỷ, trong khi số hợp nhất là 89.954 tỷ (mã 10, trang 12) — chênh 87%. Chênh lệch quá lớn nên nhiều khả năng câu nói về một công ty con, một mảng kinh doanh hoặc một thị trường lẻ. Hệ thống không kết luận mâu thuẫn.",
+            "passed": false,
+            "source_page": 12,
+            "source_code": "10"
+          }
+        ]
+      },
+      {
+        "text": "Kết quả là các nhiệm vụ, 1 trong 3 doanh nghiệp trong động hợp tác, kinh doanh quốc chỉ tiêu kế hoạch năm đã được Petrovietnam đạt doanh thu trên tế; phù hợp với xu thế và định PV GAS kiểm soát, bám sát, 100 nghìn tỷ đồng; chỉ số ROA và hướng phát triển năng lượng giảm thiểu mức độ ảnh hưởng ROE lần lượt đạt trên 14% và 19%; xanh tại Việt Nam",
+        "page": 28,
+        "metric": "revenue_net",
+        "trend": "kiểm soát",
+        "verdict": "không kiểm chứng được",
+        "score": null,
+        "evidence": [
+          {
+            "dimension": "lookup",
+            "explanation": "Câu không nêu con số hay hướng biến động kiểm chứng được từ báo cáo tài chính.",
+            "passed": false,
+            "source_page": 12,
+            "source_code": "10"
+          }
+        ]
+      },
+      {
+        "text": "“Top 50 Công ty niêm yết tốt 7,5 tỷ m3 khí; sản xuất và cung cấp nhất Việt Nam năm 2023” – gần 7,2 tỷ m3 khí khô (bao gồm Tích cực triển khai các dự án trọng Top 4 Công ty đạt doanh thu và lợi nhuận tốt nhất; khí tái hóa từ LNG nhập khẩu); điểm, góp phần đảm bảo an ninh hoàn thành kế hoạch sản lượng năng lượng quốc gia",
+        "page": 28,
+        "metric": "revenue_net",
+        "trend": "đạt",
+        "verdict": "không kiểm chứng được",
+        "score": null,
+        "evidence": [
+          {
+            "dimension": "scope",
+            "explanation": "Câu nêu 8 tỷ, trong khi số hợp nhất là 89.954 tỷ (mã 10, trang 12) — chênh 100%. Chênh lệch quá lớn nên nhiều khả năng câu nói về một công ty con, một mảng kinh doanh hoặc một thị trường lẻ. Hệ thống không kết luận mâu thuẫn.",
+            "passed": false,
+            "source_page": 12,
+            "source_code": "10"
+          }
+        ]
+      },
+      {
+        "text": "và DO, bằng 100% kế hoạch; ứng với doanh thu đạt trên 1,2 nghìn tỷ đồng, bằng 122% y GPP Cà Mau: Sản xuất 127 nghìn tấn LPG, bằng kế hoạch",
+        "page": 29,
+        "metric": "revenue_net",
+        "trend": "đạt",
+        "verdict": "không kiểm chứng được",
+        "score": null,
+        "evidence": [
+          {
+            "dimension": "scope",
+            "explanation": "Câu nêu 1.200 tỷ, trong khi số hợp nhất là 89.954 tỷ (mã 10, trang 12) — chênh 99%. Chênh lệch quá lớn nên nhiều khả năng câu nói về một công ty con, một mảng kinh doanh hoặc một thị trường lẻ. Hệ thống không kết luận mâu thuẫn.",
+            "passed": false,
+            "source_page": 12,
+            "source_code": "10"
+          }
+        ]
+      },
+      {
+        "text": "So với 3,4% so với năm 2022 do thực hiện trả nợ đối với năm 2022, vốn chủ sở hữu tăng 6,7%, tương đương các khoản vay tài trợ dự án Kho LNG 1 MMTPA tại Thị tăng 4.125 tỷ đồng chủ yếu do PV GAS đã hoàn Vải và Đường ống dẫn khí Nam Côn Sơn 2. thành việc tăng vốn điều lệ lên 22.967 tỷ đồng",
+        "page": 32,
+        "metric": "owners_equity",
+        "trend": "tăng",
+        "verdict": "không kiểm chứng được",
+        "score": null,
+        "evidence": [
+          {
+            "dimension": "scope",
+            "explanation": "Câu nêu 4.125 tỷ, trong khi số hợp nhất là 65.299 tỷ (mã 400, trang 11) — chênh 94%. Chênh lệch quá lớn nên nhiều khả năng câu nói về một công ty con, một mảng kinh doanh hoặc một thị trường lẻ. Hệ thống không kết luận mâu thuẫn.",
+            "passed": false,
+            "source_page": 11,
+            "source_code": "400"
+          }
+        ]
+      },
+      {
+        "text": "trí là doanh nghiệp hàng đầu trong đầu tư và y Tỷ suất lợi nhuận sau thuế/Vốn điều lệ đạt trên nhập khẩu khí, LNG cho sản xuất điện và các 20%/năm",
+        "page": 52,
+        "metric": "profit_after_tax",
+        "trend": "đạt",
+        "verdict": "không kiểm chứng được",
+        "score": null,
+        "evidence": [
+          {
+            "dimension": "lookup",
+            "explanation": "Câu không nêu con số hay hướng biến động kiểm chứng được từ báo cáo tài chính.",
+            "passed": false,
+            "source_page": 12,
+            "source_code": "60"
           }
         ]
       }
@@ -1563,6 +1904,149 @@
             "passed": false,
             "source_page": 15,
             "source_code": "25"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "ticker": "HAG",
+    "year": 2022,
+    "nnc_score": 0.0,
+    "claims": [
+      {
+        "text": "Các chỉ tiêu vòng quay hàng tồn kho và vòng quay tổng tài sản năm 2022 cải thiện rõ rệt cho thấy Tập đoàn đã đẩy nhanh việc tiêu thụ sản phẩm, giảm số lượnghàngtồnkhodựtrữvềmứchợplýđểcóthểđáp ứng kịp thời hoạt động của Tập đoàn",
+        "page": 33,
+        "metric": "inventory_turnover",
+        "trend": "tăng",
+        "verdict": "mâu thuẫn",
+        "score": 0.0,
+        "evidence": [
+          {
+            "dimension": "directional",
+            "explanation": "Câu khẳng định tăng; số liệu cho thấy giảm 11.6% (3.88 lần → 3.43 lần, mã 11/140, trang 12).",
+            "passed": false,
+            "source_page": 12,
+            "source_code": "11/140"
+          }
+        ]
+      },
+      {
+        "text": "33,2% 42,2% CƠ CẤU DOANH THU NĂM 2022 Tráicây Heo Sảnphẩm,hànghóa 18,1% Dịchvụcungcấpkhác 5,7% Khác 0,8% Nhữngnhântốảnhhưởngđếntìnhhình TRONGĐÓ: hoạtđộngvàkinhdoanhcủaTậpđoàn Doanh thu bán trái cây đạt 2.156 tỷ đồng và chiếm tỷ trongnăm2022 trọng42,2%trongtổngdoanhthu.Sốlợinhuậngộpđạt643 Giá heo giảm trong khi nguồn cung ổn định tỷ đồng và biên lợi nhuận gộp đạt 29,8%",
+        "page": 37,
+        "metric": "gross_margin",
+        "trend": "đạt",
+        "verdict": "mâu thuẫn",
+        "score": 0.0,
+        "evidence": [
+          {
+            "dimension": "numeric",
+            "explanation": "Câu nêu mức 33.2%; tính từ báo cáo tài chính (biên lợi nhuận gộp = 5. Lợi nhuận gộp về bán hàng và cung cấp dịch vụ / 3. Doanh thu thuần về bán hàng và cung cấp dịch vụ) ra 23.0% — lệch 10.24 điểm phần trăm.",
+            "passed": false,
+            "source_page": 12,
+            "source_code": "20/10"
+          }
+        ]
+      },
+      {
+        "text": "Số lợi nhuận quản trị luôn sát cánh và chỉ đạo Ban Tổng gộp đạt 73 tỷ đồng và biên lợi nhuận gộp đạt 7,9%",
+        "page": 37,
+        "metric": "gross_margin",
+        "trend": "đạt",
+        "verdict": "mâu thuẫn",
+        "score": 0.0,
+        "evidence": [
+          {
+            "dimension": "numeric",
+            "explanation": "Câu nêu mức 7.9%; tính từ báo cáo tài chính (biên lợi nhuận gộp = 5. Lợi nhuận gộp về bán hàng và cung cấp dịch vụ / 3. Doanh thu thuần về bán hàng và cung cấp dịch vụ) ra 23.0% — lệch 15.06 điểm phần trăm.",
+            "passed": false,
+            "source_page": 12,
+            "source_code": "20/10"
+          }
+        ]
+      },
+      {
+        "text": "Tổng doanh thu thuần Tăng 144% 5.111 sovớinăm2021 tỷ đồng Lãi sau thuế Gấp 9lần 1.125 sovớinăm2021 tỷ đồng GiaLai,giảmsốdưnợvay,cảithiệnhiệuquả sản xuất kinh doanh… Kết quả kinh doanh năm 2022 với con số tổng doanh thu thuần 5.111 tỷ đồng (tăng 144% so với năm 2021) vàlãisauthuế1.125tỷđồng(gấp9lầnsovới năm2021),làmộtkếtquảcủasựnỗlựcrấtlớn củaHAGL",
+        "page": 5,
+        "metric": "revenue_net",
+        "trend": "tăng",
+        "verdict": "không kiểm chứng được",
+        "score": null,
+        "evidence": [
+          {
+            "dimension": "scope",
+            "explanation": "Câu nêu 2.021 tỷ, trong khi số hợp nhất là 5.111 tỷ (mã 10, trang 12) — chênh 60%. Chênh lệch quá lớn nên nhiều khả năng câu nói về một công ty con, một mảng kinh doanh hoặc một thị trường lẻ. Hệ thống không kết luận mâu thuẫn.",
+            "passed": false,
+            "source_page": 12,
+            "source_code": "10"
+          }
+        ]
+      },
+      {
+        "text": "Nga-Ukrainechínhlàcácnhântốảnhhưởng đến lợi nhuận của doanh nghiệp chăn nuôi Doanh thu bán heo đạt 1.697 tỷ đồng và chiếm tỷ trọng trongnăm2022,trongđócóTậpđoàn.Mặt 33,2% trong tổng doanh thu",
+        "page": 37,
+        "metric": "revenue_net",
+        "trend": "đạt",
+        "verdict": "không kiểm chứng được",
+        "score": null,
+        "evidence": [
+          {
+            "dimension": "continuity",
+            "explanation": "Số liệu hai kỳ biến động +144% (2.097 tỷ → 5.111 tỷ, mã 10, trang 12). Mức này thường đến từ thoái vốn hoặc thay đổi phạm vi hợp nhất, khiến hai năm không so sánh trực tiếp được. Hệ thống không kết luận về xu hướng.",
+            "passed": false,
+            "source_page": 12,
+            "source_code": "10"
+          }
+        ]
+      },
+      {
+        "text": "mới nhất lan rộng trên toàn lãnh thổ Trung Doanh thu bán sản phẩm hàng hóa đạt 924 tỷ đồng và Quốc",
+        "page": 37,
+        "metric": "revenue_net",
+        "trend": "đạt",
+        "verdict": "không kiểm chứng được",
+        "score": null,
+        "evidence": [
+          {
+            "dimension": "scope",
+            "explanation": "Câu nêu 924 tỷ, trong khi số hợp nhất là 5.111 tỷ (mã 10, trang 12) — chênh 82%. Chênh lệch quá lớn nên nhiều khả năng câu nói về một công ty con, một mảng kinh doanh hoặc một thị trường lẻ. Hệ thống không kết luận mâu thuẫn.",
+            "passed": false,
+            "source_page": 12,
+            "source_code": "10"
+          }
+        ]
+      },
+      {
+        "text": "cấutrúcsâurộng,khoảnnợvayngânhàng đãđượckiểmsoáthợplýnênTậpđoàngiảm Doanh thu khác đạt 41 tỷ đồng chiếm tỷ trọng 0,8% trong bớtáplựctrảnợvay,từđótậptrungnguồn tổngsốdoanhthu.Sốlợinhuậngộpđạt2tỷđồngvàbiênlợi lực đầu tư và mở rộng sản xuất trong năm nhuậngộplà4,9%.Doanhthukhácchủyếulàdoanhthubánbò",
+        "page": 37,
+        "metric": "revenue_net",
+        "trend": "đạt",
+        "verdict": "không kiểm chứng được",
+        "score": null,
+        "evidence": [
+          {
+            "dimension": "continuity",
+            "explanation": "Số liệu hai kỳ biến động +144% (2.097 tỷ → 5.111 tỷ, mã 10, trang 12). Mức này thường đến từ thoái vốn hoặc thay đổi phạm vi hợp nhất, khiến hai năm không so sánh trực tiếp được. Hệ thống không kết luận về xu hướng.",
+            "passed": false,
+            "source_page": 12,
+            "source_code": "10"
+          }
+        ]
+      },
+      {
+        "text": "Biệnpháphạnchếrủiro Tập đoàn chú trọng xây dựng cơ cấu nợ và vốn chủ sở hữu phù hợp với từng thời kỳ hoạt động sản xuất kinh doanh; nỗ lực giảm dần nợ vay và tăngvốnchủsởhữu",
+        "page": 55,
+        "metric": "owners_equity",
+        "trend": "giảm",
+        "verdict": "không kiểm chứng được",
+        "score": null,
+        "evidence": [
+          {
+            "dimension": "lookup",
+            "explanation": "Câu không nêu con số hay hướng biến động kiểm chứng được từ báo cáo tài chính.",
+            "passed": false,
+            "source_page": 11,
+            "source_code": "400"
           }
         ]
       }
@@ -2945,6 +3429,170 @@
     ]
   },
   {
+    "ticker": "HPG",
+    "year": 2024,
+    "nnc_score": 0.75,
+    "claims": [
+      {
+        "text": "Để giảm thiểu những ảnh hưởng tiêu cực từ thị trường đến Ebitda, Tập đoàn vẫn tiếp tục thực hiện các biện pháp thắt chặt quản lý hàng tồn kho, quản trị chi phí bán hàng và chi phí quản lý nhằm giảm áp lực vốn lưu động",
+        "page": 31,
+        "metric": "inventories",
+        "trend": "giảm",
+        "verdict": "mâu thuẫn",
+        "score": 0.0,
+        "evidence": [
+          {
+            "dimension": "directional",
+            "explanation": "Câu khẳng định giảm; số liệu cho thấy tăng 33.6% (34.504 tỷ → 46.091 tỷ, mã 140, trang 7).",
+            "passed": false,
+            "source_page": 7,
+            "source_code": "140"
+          }
+        ]
+      },
+      {
+        "text": "Tập đoàn Hòa Phát đạt 140.561 tỷ đồng doanh thu và đạt lợi nhuận ròng 12.020 tỷ đồng, tăng lần lượt 17% và 77% so với năm 2023. Tổng nộp ngân sách Nhà nước trong năm đạt gần 13.500 tỷ đồng",
+        "page": 28,
+        "metric": "revenue_net",
+        "trend": "đạt",
+        "verdict": "nhất quán",
+        "score": 1.0,
+        "evidence": [
+          {
+            "dimension": "numeric",
+            "explanation": "Câu nêu 140.561 tỷ; báo cáo tài chính (mã 01, trang 11) ghi 140.561 tỷ — khớp 0.0%. Câu dùng định nghĩa tổng doanh thu bán hàng (Mã 01).",
+            "passed": true,
+            "source_page": 11,
+            "source_code": "01"
+          },
+          {
+            "dimension": "numeric",
+            "explanation": "Câu nêu mức 17.0%; tính từ báo cáo tài chính (118.953 tỷ → 138.855 tỷ) ra +16.7% — lệch 0.27 điểm phần trăm.",
+            "passed": true,
+            "source_page": 11,
+            "source_code": "10"
+          }
+        ]
+      },
+      {
+        "text": "Giá thép xây 400 dựng tăng trở lại trong đầu năm nhưng giảm nhẹ trong suốt năm 2024. 200 Bên cạnh đó, giá nguyên vật liệu có xu hướng giảm trong suốt năm 2024 giúp hạ giá thành sản xuất, tăng biên lợi nhuận gộp so với năm trước",
+        "page": 31,
+        "metric": "gross_margin",
+        "trend": "tăng",
+        "verdict": "nhất quán",
+        "score": 1.0,
+        "evidence": [
+          {
+            "dimension": "directional",
+            "explanation": "Câu khẳng định tăng; số liệu cho thấy tăng 22.5% (10.9% → 13.3%, mã 20/10, trang 11).",
+            "passed": true,
+            "source_page": 11,
+            "source_code": "20/10"
+          }
+        ]
+      },
+      {
+        "text": "Vốn chủ sở hữu tăng 11%, từ 102.836 tỷ đồng lên 114.647 tỷ đồng nhờ dòng lợi nhuận làm ra trong năm",
+        "page": 37,
+        "metric": "owners_equity",
+        "trend": "tăng",
+        "verdict": "nhất quán",
+        "score": 1.0,
+        "evidence": [
+          {
+            "dimension": "numeric",
+            "explanation": "Câu nêu 114.647 tỷ; báo cáo tài chính (mã 400, trang 10) ghi 114.647 tỷ — khớp 0.0%.",
+            "passed": true,
+            "source_page": 10,
+            "source_code": "400"
+          },
+          {
+            "dimension": "numeric",
+            "explanation": "Câu nêu mức 11.0%; tính từ báo cáo tài chính (102.836 tỷ → 114.647 tỷ) ra +11.5% — lệch 0.49 điểm phần trăm.",
+            "passed": true,
+            "source_page": 10,
+            "source_code": "400"
+          },
+          {
+            "dimension": "directional",
+            "explanation": "Câu khẳng định tăng; số liệu cho thấy tăng 11.5% (102.836 tỷ → 114.647 tỷ, mã 400, trang 10).",
+            "passed": true,
+            "source_page": 10,
+            "source_code": "400"
+          }
+        ]
+      },
+      {
+        "text": "Tỷ suất lợi nhuận sau thuế trên doanh thu thuần năm 2024 đạt 8,7%",
+        "page": 31,
+        "metric": "profit_after_tax",
+        "trend": "đạt",
+        "verdict": "không kiểm chứng được",
+        "score": null,
+        "evidence": [
+          {
+            "dimension": "continuity",
+            "explanation": "Số liệu hai kỳ biến động +77% (6.800 tỷ → 12.020 tỷ, mã 60, trang 11). Mức này thường đến từ thoái vốn hoặc thay đổi phạm vi hợp nhất, khiến hai năm không so sánh trực tiếp được. Hệ thống không kết luận về xu hướng.",
+            "passed": false,
+            "source_page": 11,
+            "source_code": "60"
+          }
+        ]
+      },
+      {
+        "text": "1.400 Lợi nhuận kế toán trước thuế, chi phí tài chính và khấu hao năm 2024 là 24.588 1.200 tỷ đồng, tăng 25% so với 2023 cho thấy hiệu quả thuần từ hoạt động kinh doanh không tính chi phí thuế thu nhập doanh nghiệp, chi phí tài chính và 1.000 dòng khấu hao tăng so với năm trước",
+        "page": 31,
+        "metric": "financial_expense",
+        "trend": "tăng",
+        "verdict": "không kiểm chứng được",
+        "score": null,
+        "evidence": [
+          {
+            "dimension": "scope",
+            "explanation": "Câu nêu 1.200 tỷ, trong khi số hợp nhất là 3.967 tỷ (mã 22, trang 11) — chênh 70%. Chênh lệch quá lớn nên nhiều khả năng câu nói về một công ty con, một mảng kinh doanh hoặc một thị trường lẻ. Hệ thống không kết luận mâu thuẫn.",
+            "passed": false,
+            "source_page": 11,
+            "source_code": "22"
+          }
+        ]
+      },
+      {
+        "text": "Hệ số nợ phải trả trên vốn chủ sở hữu giảm dưới mức 1, hệ số nợ vay ngân hàng trên vốn chủ sở hữu tăng lên 0,72 lần, hệ số nợ vay ròng trên vốn chủ sở hữu là 0,5 lần",
+        "page": 37,
+        "metric": "owners_equity",
+        "trend": "giảm",
+        "verdict": "không kiểm chứng được",
+        "score": null,
+        "evidence": [
+          {
+            "dimension": "lookup",
+            "explanation": "Câu không nêu con số hay hướng biến động kiểm chứng được từ báo cáo tài chính.",
+            "passed": false,
+            "source_page": 10,
+            "source_code": "400"
+          }
+        ]
+      },
+      {
+        "text": "Trong khi tài sản tăng 20% mà chỉ số ROA được cải thiện so với cùng kỳ năm 2023, cho thấy tăng trưởng của lợi nhuận sau thuế, là yếu tố chính để cải thiện chỉ số này",
+        "page": 38,
+        "metric": "profit_after_tax",
+        "trend": "tăng",
+        "verdict": "không kiểm chứng được",
+        "score": null,
+        "evidence": [
+          {
+            "dimension": "continuity",
+            "explanation": "Số liệu hai kỳ biến động +77% (6.800 tỷ → 12.020 tỷ, mã 60, trang 11). Mức này thường đến từ thoái vốn hoặc thay đổi phạm vi hợp nhất, khiến hai năm không so sánh trực tiếp được. Hệ thống không kết luận về xu hướng.",
+            "passed": false,
+            "source_page": 11,
+            "source_code": "60"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "ticker": "MBB",
     "year": 2018,
     "nnc_score": null,
@@ -3446,6 +4094,334 @@
             "passed": false,
             "source_page": null,
             "source_code": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "ticker": "MSN",
+    "year": 2018,
+    "nnc_score": 0.6666666666666666,
+    "claims": [
+      {
+        "text": "doanh thu thuần 20-30% đạt mức từ 45.000 - 50.000 tỉ đồng",
+        "page": 30,
+        "metric": "revenue_net",
+        "trend": "đạt",
+        "verdict": "mâu thuẫn",
+        "score": 0.0,
+        "evidence": [
+          {
+            "dimension": "numeric",
+            "explanation": "Câu nêu 50.000 tỷ; báo cáo tài chính (mã 10, trang 10) ghi 38.188 tỷ — lệch 30.9%.",
+            "passed": false,
+            "source_page": 10,
+            "source_code": "10"
+          },
+          {
+            "dimension": "numeric",
+            "explanation": "Câu nêu mức 30.0%; tính từ báo cáo tài chính (37.621 tỷ → 38.188 tỷ) ra +1.5% — lệch 28.49 điểm phần trăm.",
+            "passed": false,
+            "source_page": 10,
+            "source_code": "10"
+          }
+        ]
+      },
+      {
+        "text": "Với việc tung tỉ đồng biên lợi nhuận gộp hợp nhất tăng 20 nhãn hiệu MEATDeli - sản phẩm thịt sạch điểm cơ bản và tỉ lệ SG&A trên doanh thu hợp và an toàn cho sức khỏe người tiêu dùng, nhất giảm 257 điểm cơ bản",
+        "page": 29,
+        "metric": "gross_margin",
+        "trend": "tăng",
+        "verdict": "nhất quán",
+        "score": 1.0,
+        "evidence": [
+          {
+            "dimension": "directional",
+            "explanation": "Câu khẳng định tăng; số liệu cho thấy tăng 0.6% (30.9% → 31.1%, mã 20/10, trang 10).",
+            "passed": true,
+            "source_page": 10,
+            "source_code": "20/10"
+          }
+        ]
+      },
+      {
+        "text": "khả năng, trực tiếp hoặc gián tiếp, kiểm soát bên kia hoặc gây ảnh hưởng đáng kể tới bên kia trong việc ra các quyết định tài chính và (ii) Chi phí tài chính hoạt động, hoặc khi Tập đoàn và bên kia cùng chịu sự kiểm soát Chi phí tài chính bao gồm chi phí lãi vay từ các khoản vay và trái chung hoặc ảnh hưởng đáng kể chung",
+        "page": 54,
+        "metric": "financial_expense",
+        "trend": "kiểm soát",
+        "verdict": "nhất quán",
+        "score": 1.0,
+        "evidence": [
+          {
+            "dimension": "qualitative",
+            "explanation": "Câu khẳng định chi phí được kiểm soát. Tỷ lệ chi phí trên doanh thu: 9.8% → 8.1% (-1.7 điểm phần trăm, mã 22, trang 10).",
+            "passed": true,
+            "source_page": 10,
+            "source_code": "22"
+          }
+        ]
+      },
+      {
+        "text": "Cùng với sự tăng trưởng kinh tế Việt Nam, TCB tạo ra các kỉ lục mới với lợi nhuận trước thuế năm 2018 đạt 10.661 tỉ đồng (tăng 31% so với năm 2017) và tổng thu nhập hoạt động là 16.927 tỉ đồng (tăng 10% so với năm 2017)",
+        "page": 30,
+        "metric": "profit_before_tax",
+        "trend": "đạt",
+        "verdict": "không kiểm chứng được",
+        "score": null,
+        "evidence": [
+          {
+            "dimension": "scope",
+            "explanation": "Câu nêu 10.661 tỷ, trong khi số hợp nhất là 6.244 tỷ (mã 50, trang 10) — chênh 71%. Chênh lệch quá lớn nên nhiều khả năng câu nói về một công ty con, một mảng kinh doanh hoặc một thị trường lẻ. Hệ thống không kết luận mâu thuẫn.",
+            "passed": false,
+            "source_page": 10,
+            "source_code": "50"
+          }
+        ]
+      },
+      {
+        "text": "Doanh thu thuần của thịt chế biến của Masan đạt 210 tỷ đồng trong năm 2018, giảm 5% so với năm 2017, chủ yếu do sự chậm trễ trong việc thành lập liên doanh với Jinju Ham - một trong những công ty hàng đầu trong ngành thịt chế biến tại Hàn Quốc",
+        "page": 32,
+        "metric": "revenue_net",
+        "trend": "đạt",
+        "verdict": "không kiểm chứng được",
+        "score": null,
+        "evidence": [
+          {
+            "dimension": "scope",
+            "explanation": "Câu nêu 210 tỷ, trong khi số hợp nhất là 38.188 tỷ (mã 10, trang 10) — chênh 99%. Chênh lệch quá lớn nên nhiều khả năng câu nói về một công ty con, một mảng kinh doanh hoặc một thị trường lẻ. Hệ thống không kết luận mâu thuẫn.",
+            "passed": false,
+            "source_page": 10,
+            "source_code": "10"
+          }
+        ]
+      },
+      {
+        "text": "2018 vẫn tăng 20% so với năm 2017. MSR cũng tăng việc mua thêm 958 tấn tinh quặng Trong năm 2018, Techcombank đã phát hành vonfram từ nhà cung cấp thứ 3. MSR ghi nhận cổ phiểu để tăng vốn cổ phần nhằm củng lợi nhuận sau thuế kỷ lục, đạt 664 tỉ đồng cố cấu trúc tài chính, do đó, làm giảm lợi ích trong năm 2018, tăng trưởng 222% so với kinh tế của Masan Group tại Techcombank",
+        "page": 33,
+        "metric": "profit_after_tax",
+        "trend": "đạt",
+        "verdict": "không kiểm chứng được",
+        "score": null,
+        "evidence": [
+          {
+            "dimension": "continuity",
+            "explanation": "Số liệu hai kỳ biến động +56% (3.608 tỷ → 5.622 tỷ, mã 60, trang 11). Mức này thường đến từ thoái vốn hoặc thay đổi phạm vi hợp nhất, khiến hai năm không so sánh trực tiếp được. Hệ thống không kết luận về xu hướng.",
+            "passed": false,
+            "source_page": 11,
+            "source_code": "60"
+          }
+        ]
+      },
+      {
+        "text": "năm 2017. Theo đó, biên lợi nhuận sau thuế đạt 9.7% trong năm 2018. Vào tháng 8 năm Thị trường vonfram toàn cầu 2018, MSR đã mua lại 49% cổ phần tại Công ty TNHH Tinh luyện Vonfram Núi Pháo – H.C",
+        "page": 33,
+        "metric": "net_margin",
+        "trend": "đạt",
+        "verdict": "không kiểm chứng được",
+        "score": null,
+        "evidence": [
+          {
+            "dimension": "lookup",
+            "explanation": "Không tìm thấy chỉ tiêu 'net_margin' trong báo cáo tài chính tương ứng nên chưa đối chiếu được.",
+            "passed": false,
+            "source_page": null,
+            "source_code": null
+          }
+        ]
+      },
+      {
+        "text": "Thuế giảm vào vốn chủ sở hữu",
+        "page": 53,
+        "metric": "owners_equity",
+        "trend": "giảm",
+        "verdict": "không kiểm chứng được",
+        "score": null,
+        "evidence": [
+          {
+            "dimension": "continuity",
+            "explanation": "Số liệu hai kỳ biến động +69% (20.225 tỷ → 34.080 tỷ, mã 400, trang 9). Mức này thường đến từ thoái vốn hoặc thay đổi phạm vi hợp nhất, khiến hai năm không so sánh trực tiếp được. Hệ thống không kết luận về xu hướng.",
+            "passed": false,
+            "source_page": 9,
+            "source_code": "400"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "ticker": "MSN",
+    "year": 2020,
+    "nnc_score": 0.5,
+    "claims": [
+      {
+        "text": "Lợi nhuận gộp của 2019. Kết quả là biên lợi nhuận gộp tăng từ 17.889 tỷ đồng trong năm 2020 từ mức 10.941 MCH tăng lên 9.929 tỷ đồng trong năm 2020 mức 16,4% năm 2019 lên 16,9% trong năm tỷ đồng năm 2019. Biên lợi nhuận gộp của từ mức 7.890 tỷ đồng năm 2019 chủ yếu nhờ 2020. Biên lợi nhuận gộp từ kinh doanh thịt Masan Group giảm từ 29,3% năm 2019 xuống tăng trưởng doanh thu ròng 27,2%",
+        "page": 45,
+        "metric": "gross_margin",
+        "trend": "tăng",
+        "verdict": "mâu thuẫn",
+        "score": 0.0,
+        "evidence": [
+          {
+            "dimension": "numeric",
+            "explanation": "Câu nêu tăng 16.4%; tính từ báo cáo tài chính (biên lợi nhuận gộp = Lợi nhuận gộp (20 = 10 - 11) / Doanh thu thuần (10 = 01 - 02)) ra 29.3% → 23.2%, tức -6.12 điểm phần trăm, -20.9% tương đối.",
+            "passed": false,
+            "source_page": 10,
+            "source_code": "20/10"
+          },
+          {
+            "dimension": "directional",
+            "explanation": "Câu khẳng định tăng; số liệu cho thấy giảm 20.9% (29.3% → 23.2%, mã 20/10, trang 10).",
+            "passed": false,
+            "source_page": 10,
+            "source_code": "20/10"
+          }
+        ]
+      },
+      {
+        "text": "Tuy vậy, tăng thông qua cải thiện công suất và tỷ lệ còn 23,2% năm 2020 do ảnh hưởng của việc biên GPM giảm xuống còn 41,4% trong năm tiêu thụ thịt heo cũng như biên lợi nhuận tích hợp nhất VCM làm giảm biên lợi nhuận gộp 2020 từ mức 41,9% năm 2019. Tăng trưởng hợp từ chăn nuôi đến chế biến thịt",
+        "page": 45,
+        "metric": "gross_margin",
+        "trend": "tăng",
+        "verdict": "mâu thuẫn",
+        "score": 0.0,
+        "evidence": [
+          {
+            "dimension": "numeric",
+            "explanation": "Câu nêu tăng 23.2%; tính từ báo cáo tài chính (biên lợi nhuận gộp = Lợi nhuận gộp (20 = 10 - 11) / Doanh thu thuần (10 = 01 - 02)) ra 29.3% → 23.2%, tức -6.12 điểm phần trăm, -20.9% tương đối.",
+            "passed": false,
+            "source_page": 10,
+            "source_code": "20/10"
+          },
+          {
+            "dimension": "directional",
+            "explanation": "Câu khẳng định tăng; số liệu cho thấy giảm 20.9% (29.3% → 23.2%, mã 20/10, trang 10).",
+            "passed": false,
+            "source_page": 10,
+            "source_code": "20/10"
+          }
+        ]
+      },
+      {
+        "text": "Chi phí tài chính Chi phí tài chính tăng 107,1% lên 4.557 tỷ đồng trong năm 2020 từ mức 2.201 tỷ đồng năm 2019, chủ yếu các khoản nợ tăng đáng kể",
+        "page": 45,
+        "metric": "financial_expense",
+        "trend": "tăng",
+        "verdict": "nhất quán",
+        "score": 1.0,
+        "evidence": [
+          {
+            "dimension": "numeric",
+            "explanation": "Câu nêu 4.557 tỷ; báo cáo tài chính (mã 22, trang 10) ghi 4.557 tỷ — khớp 0.0%.",
+            "passed": true,
+            "source_page": 10,
+            "source_code": "22"
+          },
+          {
+            "dimension": "continuity",
+            "explanation": "Số liệu hai kỳ biến động +107% (2.201 tỷ → 4.557 tỷ, mã 22, trang 10). Mức này thường đến từ thoái vốn hoặc thay đổi phạm vi hợp nhất, khiến hai năm không so sánh trực tiếp được. Hệ thống không kết luận về xu hướng.",
+            "passed": false,
+            "source_page": 10,
+            "source_code": "22"
+          }
+        ]
+      },
+      {
+        "text": "Tổng tài sản tăng 19,0% lên 115.736 tỷ đồng Việt Nam",
+        "page": 46,
+        "metric": "total_assets",
+        "trend": "tăng",
+        "verdict": "nhất quán",
+        "score": 1.0,
+        "evidence": [
+          {
+            "dimension": "numeric",
+            "explanation": "Câu nêu 115.736 tỷ; báo cáo tài chính (mã 270, trang 7) ghi 115.737 tỷ — khớp 0.0%.",
+            "passed": true,
+            "source_page": 7,
+            "source_code": "270"
+          },
+          {
+            "dimension": "numeric",
+            "explanation": "Câu nêu mức 19.0%; tính từ báo cáo tài chính (97.297 tỷ → 115.737 tỷ) ra +19.0% — lệch 0.05 điểm phần trăm.",
+            "passed": true,
+            "source_page": 7,
+            "source_code": "270"
+          },
+          {
+            "dimension": "directional",
+            "explanation": "Câu khẳng định tăng; số liệu cho thấy tăng 19.0% (97.297 tỷ → 115.737 tỷ, mã 270, trang 7).",
+            "passed": true,
+            "source_page": 7,
+            "source_code": "270"
+          }
+        ]
+      },
+      {
+        "text": "Trong hoạch 5 năm tới của chúng ta là xây dựng thập kỷ tới, lợi nhuận gộp cũng như khả năng Chúng ta chọn hy sinh thị phần và tốc độ tăng một mô hình hiệu quả để phục vụ 30-50 triệu chi phối người tiêu dùng sẽ dịch chuyển mạnh trưởng để xây dựng nền móng của một doanh người tiêu dùng: mẽ từ các nhà sản xuất sang các nhà bán lẻ",
+        "page": 11,
+        "metric": "gross_profit",
+        "trend": "tăng",
+        "verdict": "không kiểm chứng được",
+        "score": null,
+        "evidence": [
+          {
+            "dimension": "scope",
+            "explanation": "Câu nêu 50 triệu, trong khi số hợp nhất là 17.889 tỷ (mã 20, trang 10) — chênh 100%. Chênh lệch quá lớn nên nhiều khả năng câu nói về một công ty con, một mảng kinh doanh hoặc một thị trường lẻ. Hệ thống không kết luận mâu thuẫn.",
+            "passed": false,
+            "source_page": 10,
+            "source_code": "20"
+          }
+        ]
+      },
+      {
+        "text": "tăng trưởng 55% doanh thu thuần trong năm lợi khi các nhà sản xuất tiếp tục giới thiệu các 2020. sản phẩm cà phê gu đậm hơn, phù hợp với Thông qua hợp tác với một trong những công thị hiếu truyền thống của người tiêu dùng Việt ty hàng đầu trong ngành thịt chế biến tại Hàn Sản phẩm chăm sóc cá nhân và gia đình Nam",
+        "page": 38,
+        "metric": "revenue_net",
+        "trend": "tăng",
+        "verdict": "không kiểm chứng được",
+        "score": null,
+        "evidence": [
+          {
+            "dimension": "continuity",
+            "explanation": "Số liệu hai kỳ biến động +107% (37.354 tỷ → 77.218 tỷ, mã 10, trang 10). Mức này thường đến từ thoái vốn hoặc thay đổi phạm vi hợp nhất, khiến hai năm không so sánh trực tiếp được. Hệ thống không kết luận về xu hướng.",
+            "passed": false,
+            "source_page": 10,
+            "source_code": "10"
+          }
+        ]
+      },
+      {
+        "text": "88 Masan Group Chi phí bán hàng Chi phí bán hàng năm 2020 tăng 230% lên 13.116 tỷ đồng từ mức 3.995 tỷ đồng năm 2019, chủ yếu do ảnh hưởng của việc hợp nhất VCM vốn có tỉ lệ chi phí bán hàng trên doanh thu cao hơn",
+        "page": 45,
+        "metric": "selling_expense",
+        "trend": "tăng",
+        "verdict": "không kiểm chứng được",
+        "score": null,
+        "evidence": [
+          {
+            "dimension": "continuity",
+            "explanation": "Số liệu hai kỳ biến động +230% (3.995 tỷ → 13.166 tỷ, mã 25, trang 10). Mức này thường đến từ thoái vốn hoặc thay đổi phạm vi hợp nhất, khiến hai năm không so sánh trực tiếp được. Hệ thống không kết luận về xu hướng.",
+            "passed": false,
+            "source_page": 10,
+            "source_code": "25"
+          }
+        ]
+      },
+      {
+        "text": "vào ngày 31/12/2020 so với mức 97.297 tỷ Hàng tồn kho đồng tính vào 31/12/2019. Mức tăng này chủ yếu là do việc hợp nhất các doanh nghiệp Hàng tồn kho tăng lên 12.498 tỷ đồng tính đến được mua lại bằng nguồn vốn vay nợ, làm ngày 31/12/2020 so với mức 9.622 tỷ đồng tăng hàng tồn kho, tài sản cố định và tài sản tính đến ngày 31/12/2019, chủ yếu do ảnh thuế thu nhập hoãn lại",
+        "page": 46,
+        "metric": "inventories",
+        "trend": "tăng",
+        "verdict": "không kiểm chứng được",
+        "score": null,
+        "evidence": [
+          {
+            "dimension": "scope",
+            "explanation": "Câu nêu 97.297 tỷ, trong khi số hợp nhất là 12.498 tỷ (mã 140, trang 6) — chênh 679%. Chênh lệch quá lớn nên nhiều khả năng câu nói về một công ty con, một mảng kinh doanh hoặc một thị trường lẻ. Hệ thống không kết luận mâu thuẫn.",
+            "passed": false,
+            "source_page": 6,
+            "source_code": "140"
           }
         ]
       }
@@ -4886,6 +5862,590 @@
     ]
   },
   {
+    "ticker": "PLX",
+    "year": 2019,
+    "nnc_score": 0.6804647785039942,
+    "claims": [
+      {
+        "text": "Nhiều chuyến bay quốc tế đã bị hạn chế, thậm chí bị cấm, khiến cho doanh thu chuyến bay quốc tế của các hãng hàng không trên toàn thế giới giảm sốc 40%-80%",
+        "page": 26,
+        "metric": "revenue_net",
+        "trend": "giảm",
+        "verdict": "mâu thuẫn",
+        "score": 0.4117647058823529,
+        "evidence": [
+          {
+            "dimension": "numeric",
+            "explanation": "Câu nêu mức 40.0%; tính từ báo cáo tài chính (191.932 tỷ → 189.604 tỷ) ra -1.2% — lệch 38.79 điểm phần trăm.",
+            "passed": false,
+            "source_page": 11,
+            "source_code": "10"
+          },
+          {
+            "dimension": "directional",
+            "explanation": "Câu khẳng định giảm; số liệu cho thấy giảm 1.2% (191.932 tỷ → 189.604 tỷ, mã 10, trang 11).",
+            "passed": true,
+            "source_page": 11,
+            "source_code": "10"
+          }
+        ]
+      },
+      {
+        "text": "BÁO CÁO VÀ ĐÁNH GIÁ CỦA BAN TỔNG GIÁM ĐỐC (tiếp theo) TÌNH HÌNH TÀI CHÍNH 37% 63% TÌNH HÌNH TÀI SẢN HỢP NHẤT Quy mô tài sản hợp nhất Tổng tài sản hợp nhất tại thời điểm 31/12/2019 của Tập đoàn là: 61.762 tỷ đồng, tăng trưởng 10% so với cuối kỳ năm 2018, tương ứng tăng 5.479 tỷ đồng",
+        "page": 40,
+        "metric": "total_assets",
+        "trend": "tăng",
+        "verdict": "mâu thuẫn",
+        "score": 0.6296296296296295,
+        "evidence": [
+          {
+            "dimension": "numeric",
+            "explanation": "Câu nêu 61.762 tỷ; báo cáo tài chính (mã 270, trang 8) ghi 61.762 tỷ — khớp 0.0%.",
+            "passed": true,
+            "source_page": 8,
+            "source_code": "270"
+          },
+          {
+            "dimension": "numeric",
+            "explanation": "Câu nêu mức 37.0%; tính từ báo cáo tài chính (56.283 tỷ → 61.762 tỷ) ra +9.7% — lệch 27.26 điểm phần trăm.",
+            "passed": false,
+            "source_page": 8,
+            "source_code": "270"
+          },
+          {
+            "dimension": "directional",
+            "explanation": "Câu khẳng định tăng; số liệu cho thấy tăng 9.7% (56.283 tỷ → 61.762 tỷ, mã 270, trang 8).",
+            "passed": true,
+            "source_page": 8,
+            "source_code": "270"
+          }
+        ]
+      },
+      {
+        "text": "Nguồn vốn chủ sở hữu tăng chủ yếu do kết quả kinh doanh năm 2019 tăng so với năm 2018 và kết quả từ việc bán cổ phiếu quỹ trong năm làm tăng thặng dư vốn cổ phần",
+        "page": 41,
+        "metric": "owners_equity",
+        "trend": "tăng",
+        "verdict": "nhất quán",
+        "score": 1.0,
+        "evidence": [
+          {
+            "dimension": "directional",
+            "explanation": "Câu khẳng định tăng; số liệu cho thấy tăng 12.3% (23.092 tỷ → 25.923 tỷ, mã 400, trang 10).",
+            "passed": true,
+            "source_page": 10,
+            "source_code": "400"
+          }
+        ]
+      },
+      {
+        "text": "người lao động, gia tăng thu nộp ngân sách cho Nhà nước hàng năm trở thành một Tổng công ty có năng lực Lợi nhuận trước thuế đạt 228,5 tỷ đồng, đạt tài chính vững vàng, đội ngũ sỹ quan thuyền viên giàu 115% kế hoạch, bằng 107% cùng kỳ",
+        "page": 37,
+        "metric": "profit_before_tax",
+        "trend": "đạt",
+        "verdict": "không kiểm chứng được",
+        "score": null,
+        "evidence": [
+          {
+            "dimension": "scope",
+            "explanation": "Câu nêu 228 tỷ, trong khi số hợp nhất là 5.648 tỷ (mã 50, trang 11) — chênh 96%. Chênh lệch quá lớn nên nhiều khả năng câu nói về một công ty con, một mảng kinh doanh hoặc một thị trường lẻ. Hệ thống không kết luận mâu thuẫn.",
+            "passed": false,
+            "source_page": 11,
+            "source_code": "50"
+          }
+        ]
+      },
+      {
+        "text": "tiếp và kênh phân phối qua hệ thống các công ty xăng dầu trong ngành trong công tác kinh doanh và phát triển Lợi nhuận trước thuế đạt 194,58 tỷ đồng, thị trường",
+        "page": 38,
+        "metric": "profit_before_tax",
+        "trend": "đạt",
+        "verdict": "không kiểm chứng được",
+        "score": null,
+        "evidence": [
+          {
+            "dimension": "scope",
+            "explanation": "Câu nêu 195 tỷ, trong khi số hợp nhất là 5.648 tỷ (mã 50, trang 11) — chênh 97%. Chênh lệch quá lớn nên nhiều khả năng câu nói về một công ty con, một mảng kinh doanh hoặc một thị trường lẻ. Hệ thống không kết luận mâu thuẫn.",
+            "passed": false,
+            "source_page": 11,
+            "source_code": "50"
+          }
+        ]
+      },
+      {
+        "text": "Trong đó doanh thu bảo hiểm gốc đạt 3.048 tỷ Ngân hàng Nhà nước Việt Nam chấp thuận về nguyên đồng, tăng trưởng 10% so với thực hiện năm 2018 và tắc",
+        "page": 39,
+        "metric": "revenue_net",
+        "trend": "đạt",
+        "verdict": "không kiểm chứng được",
+        "score": null,
+        "evidence": [
+          {
+            "dimension": "scope",
+            "explanation": "Câu nêu 3.048 tỷ, trong khi số hợp nhất là 189.604 tỷ (mã 10, trang 11) — chênh 98%. Chênh lệch quá lớn nên nhiều khả năng câu nói về một công ty con, một mảng kinh doanh hoặc một thị trường lẻ. Hệ thống không kết luận mâu thuẫn.",
+            "passed": false,
+            "source_page": 11,
+            "source_code": "10"
+          }
+        ]
+      },
+      {
+        "text": "Lợi nhuận trước thuế đạt: vọng do quá trình chờ sáp nhập kéo dài, dẫn đến PGBank 200,6 tỷ đồng hoàn thành 109% kế hoạch lợi nhuận năm tiếp tục có một năm khó khăn, hiệu quả kinh doanh thấp",
+        "page": 39,
+        "metric": "profit_before_tax",
+        "trend": "đạt",
+        "verdict": "không kiểm chứng được",
+        "score": null,
+        "evidence": [
+          {
+            "dimension": "scope",
+            "explanation": "Câu nêu 201 tỷ, trong khi số hợp nhất là 5.648 tỷ (mã 50, trang 11) — chênh 96%. Chênh lệch quá lớn nên nhiều khả năng câu nói về một công ty con, một mảng kinh doanh hoặc một thị trường lẻ. Hệ thống không kết luận mâu thuẫn.",
+            "passed": false,
+            "source_page": 11,
+            "source_code": "50"
+          }
+        ]
+      },
+      {
+        "text": "BÁO CÁO VÀ ĐÁNH GIÁ CỦA BAN TỔNG GIÁM ĐỐC (tiếp theo) TÌNH HÌNH TÀI CHÍNH (tiếp theo) TÌNH HÌNH NGUỒN VỐN HỢP NHẤT Quy mô nguồn vốn hợp nhất GIÁ GIAO DỊCH CỔ PHIẾU Cùng với việc gia tăng tổng tài sản thì nguồn QUỸ BÌNH QUÂN vốn cũng gia tăng tương ứng, trong đó, đặc biệt 62.455 vốn chủ sở hữu gia tăng 12% so với năm 2018 và chiếm tỷ trọng là 42%",
+        "page": 41,
+        "metric": "total_assets",
+        "trend": "tăng",
+        "verdict": "không kiểm chứng được",
+        "score": null,
+        "evidence": [
+          {
+            "dimension": "lookup",
+            "explanation": "Câu không nêu con số hay hướng biến động kiểm chứng được từ báo cáo tài chính.",
+            "passed": false,
+            "source_page": 8,
+            "source_code": "270"
+          }
+        ]
+      },
+      {
+        "text": "Cơ cấu nguồn vốn Năm 2019, cả nợ phải trả và nguồn vốn chủ sở hữu đều tăng lên về giá trị so với năm 2018. Tuy nhiên, về tỷ trọng, cơ cấu nguồn vốn năm 2019 có biến động nhẹ",
+        "page": 41,
+        "metric": "owners_equity",
+        "trend": "tăng",
+        "verdict": "không kiểm chứng được",
+        "score": null,
+        "evidence": [
+          {
+            "dimension": "lookup",
+            "explanation": "Câu không nêu con số hay hướng biến động kiểm chứng được từ báo cáo tài chính.",
+            "passed": false,
+            "source_page": 10,
+            "source_code": "400"
+          }
+        ]
+      },
+      {
+        "text": "Trong đó, nợ phải trả ngắn hạn tăng 2.593 tỷ đồng, nợ dài hạn tăng 55 tỷ đồng, vốn chủ sở hữu tăng 2.831 tỷ đồng",
+        "page": 41,
+        "metric": "owners_equity",
+        "trend": "tăng",
+        "verdict": "không kiểm chứng được",
+        "score": null,
+        "evidence": [
+          {
+            "dimension": "scope",
+            "explanation": "Câu nêu 2.593 tỷ, trong khi số hợp nhất là 25.923 tỷ (mã 400, trang 10) — chênh 90%. Chênh lệch quá lớn nên nhiều khả năng câu nói về một công ty con, một mảng kinh doanh hoặc một thị trường lẻ. Hệ thống không kết luận mâu thuẫn.",
+            "passed": false,
+            "source_page": 10,
+            "source_code": "400"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "ticker": "PLX",
+    "year": 2020,
+    "nnc_score": 0.5,
+    "claims": [
+      {
+        "text": "cho thuê kho của các CTXD tiếp tục đạt kết quả tốt, đóng góp vào kết quả chung ▶ Tổng doanh thu đạt 1.667 tỷ đồng, đạt 117% của toàn Tập đoàn",
+        "page": 35,
+        "metric": "revenue_net",
+        "trend": "đạt",
+        "verdict": "mâu thuẫn",
+        "score": 0.0,
+        "evidence": [
+          {
+            "dimension": "numeric",
+            "explanation": "Câu nêu mức 117.0%; tính từ báo cáo tài chính (189.604 tỷ → 123.919 tỷ) ra -34.6% — lệch 151.64 điểm phần trăm.",
+            "passed": false,
+            "source_page": 10,
+            "source_code": "10"
+          }
+        ]
+      },
+      {
+        "text": "Vốn chủ sở hữu tại thời điểm 31/12/2020 là 24.126 tỷ đồng, giảm 1.797 tỷ đồng so với đầu kỳ, trong đó chủ yếu là do lợi nhuận năm 2020 thấp hơn 2019 do ảnh hưởng của dịch bệnh và sự biến động di biệt của giá dầu",
+        "page": 37,
+        "metric": "owners_equity",
+        "trend": "giảm",
+        "verdict": "nhất quán",
+        "score": 1.0,
+        "evidence": [
+          {
+            "dimension": "numeric",
+            "explanation": "Câu nêu 24.126 tỷ; báo cáo tài chính (mã 400, trang 9) ghi 24.126 tỷ — khớp 0.0%.",
+            "passed": true,
+            "source_page": 9,
+            "source_code": "400"
+          },
+          {
+            "dimension": "directional",
+            "explanation": "Câu khẳng định giảm; số liệu cho thấy giảm 6.9% (25.923 tỷ → 24.126 tỷ, mã 400, trang 9).",
+            "passed": true,
+            "source_page": 9,
+            "source_code": "400"
+          }
+        ]
+      },
+      {
+        "text": "▶ Tổng sản lượng xuất bán: 597 nghìn, đạt 69% KH và chỉ bằng 45% so với TH năm 2019; ▶ Lợi nhuận trước thuế: 40 tỷ đồng, đạt 23% KH",
+        "page": 34,
+        "metric": "profit_before_tax",
+        "trend": "đạt",
+        "verdict": "không kiểm chứng được",
+        "score": null,
+        "evidence": [
+          {
+            "dimension": "continuity",
+            "explanation": "Số liệu hai kỳ biến động -75% (5.648 tỷ → 1.410 tỷ, mã 50, trang 10). Mức này thường đến từ thoái vốn hoặc thay đổi phạm vi hợp nhất, khiến hai năm không so sánh trực tiếp được. Hệ thống không kết luận về xu hướng.",
+            "passed": false,
+            "source_page": 10,
+            "source_code": "50"
+          }
+        ]
+      },
+      {
+        "text": "▶ Tổng doanh thu năm 2020: 4.089 tỷ đồng, bằng 111,2% so với TH năm 2019 và đạt 118% ▶ Tổng doanh thu: 1.127 tỷ đồng, đạt 112% KH KH đề ra",
+        "page": 35,
+        "metric": "revenue_net",
+        "trend": "đạt",
+        "verdict": "không kiểm chứng được",
+        "score": null,
+        "evidence": [
+          {
+            "dimension": "lookup",
+            "explanation": "Câu không nêu con số hay hướng biến động kiểm chứng được từ báo cáo tài chính.",
+            "passed": false,
+            "source_page": 10,
+            "source_code": "10"
+          }
+        ]
+      },
+      {
+        "text": "Cụ thể: ▶ Hệ số khả năng thanh toán nợ ngắn hạn lớn hơn 1, hệ số khả năng thanh toán nhanh lớn hơn 0,5. ▶ Hệ số nợ phải trả/tổng tài sản tăng nhẹ so với năm 2019, tuy nhiên vẫn ở mức thấp và an toàn",
+        "page": 46,
+        "metric": "total_assets",
+        "trend": "tăng",
+        "verdict": "không kiểm chứng được",
+        "score": null,
+        "evidence": [
+          {
+            "dimension": "lookup",
+            "explanation": "Câu không nêu con số hay hướng biến động kiểm chứng được từ báo cáo tài chính.",
+            "passed": false,
+            "source_page": 7,
+            "source_code": "270"
+          }
+        ]
+      },
+      {
+        "text": "Trong đó, Chỉ tiêu lợi nhuận sau thuế/Doanh thu thuần đạt 1,01%; Chỉ tiêu lợi nhuận sau thuế/Vốn chủ sở hữu (ROE) đạt 5,19%; Chỉ tiêu lợi nhuận sau thuế/Tổng tài sản (ROA) đạt 2,05%",
+        "page": 46,
+        "metric": "profit_after_tax",
+        "trend": "đạt",
+        "verdict": "không kiểm chứng được",
+        "score": null,
+        "evidence": [
+          {
+            "dimension": "continuity",
+            "explanation": "Số liệu hai kỳ biến động -73% (4.677 tỷ → 1.253 tỷ, mã 60, trang 10). Mức này thường đến từ thoái vốn hoặc thay đổi phạm vi hợp nhất, khiến hai năm không so sánh trực tiếp được. Hệ thống không kết luận về xu hướng.",
+            "passed": false,
+            "source_page": 10,
+            "source_code": "60"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "ticker": "PLX",
+    "year": 2021,
+    "nnc_score": 1.0,
+    "claims": [
+      {
+        "text": "Vốn chủ sở hữu Tại thời điểm 31/12/2021 là 28.260 tỷ đồng, tăng 4.133 tỷ đồng so với đầu kỳ, trong đó chủ yếu là từ nguồn thặng dư vốn cổ phần do bán cổ phiếu quỹ và lợi nhuận năm 2021 có sự tăng trưởng so với năm 2020.",
+        "page": 49,
+        "metric": "owners_equity",
+        "trend": "tăng",
+        "verdict": "nhất quán",
+        "score": 1.0,
+        "evidence": [
+          {
+            "dimension": "numeric",
+            "explanation": "Câu nêu 28.260 tỷ; báo cáo tài chính (mã 400, trang 9) ghi 28.260 tỷ — khớp 0.0%.",
+            "passed": true,
+            "source_page": 9,
+            "source_code": "400"
+          },
+          {
+            "dimension": "directional",
+            "explanation": "Câu khẳng định tăng; số liệu cho thấy tăng 17.1% (24.126 tỷ → 28.260 tỷ, mã 400, trang 9).",
+            "passed": true,
+            "source_page": 9,
+            "source_code": "400"
+          }
+        ]
+      },
+      {
+        "text": "Tổng sức chứa của kho Ngoại quan Vân Phong là 505.000 m3. Năm 2021, do ảnh hưởng của dịch Covid-19, sản lượng cho thuê kho của Công ty đạt 275.000 m/tháng, tương đương tỷ lệ lấp đầy 54%, bằng 93% kế hoạch năm 2021. Doanh thu hàng hóa dịch vụ trên 300 tỷ đồng, đạt 92% kế hoạch năm 2021. Lợi nhuận: 99,5 tỷ đồng đạt 97% KH, bằng 49% so với TH năm 2020. TỔNG SỨC CHỨA 505.000 M3",
+        "page": 24,
+        "metric": "revenue_net",
+        "trend": "đạt",
+        "verdict": "không kiểm chứng được",
+        "score": null,
+        "evidence": [
+          {
+            "dimension": "lookup",
+            "explanation": "Câu không nêu con số hay hướng biến động kiểm chứng được từ báo cáo tài chính.",
+            "passed": false,
+            "source_page": 10,
+            "source_code": "10"
+          }
+        ]
+      },
+      {
+        "text": "Trong đó, doanh thu phí bảo hiểm gốc đạt 3.344 tỷ đồng",
+        "page": 25,
+        "metric": "revenue_net",
+        "trend": "đạt",
+        "verdict": "không kiểm chứng được",
+        "score": null,
+        "evidence": [
+          {
+            "dimension": "scope",
+            "explanation": "Câu nêu 3.344 tỷ, trong khi số hợp nhất là 169.009 tỷ (mã 10, trang 10) — chênh 98%. Chênh lệch quá lớn nên nhiều khả năng câu nói về một công ty con, một mảng kinh doanh hoặc một thị trường lẻ. Hệ thống không kết luận mâu thuẫn.",
+            "passed": false,
+            "source_page": 10,
+            "source_code": "10"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "ticker": "PLX",
+    "year": 2022,
+    "nnc_score": 1.0,
+    "claims": [
+      {
+        "text": "Vốn chủ sở hữu tại thời điểm 31/12/2022 là 27.783 tỷ đồng, giảm 478 tỷ đồng so với đầu kỳ, chủ yếu do lợi nhuận sau thuế chưa phân phối giảm 767 tỷ đồng so với đầu kỳ",
+        "page": 45,
+        "metric": "owners_equity",
+        "trend": "giảm",
+        "verdict": "nhất quán",
+        "score": 1.0,
+        "evidence": [
+          {
+            "dimension": "numeric",
+            "explanation": "Câu nêu 27.783 tỷ; báo cáo tài chính (mã 400, trang 9) ghi 27.783 tỷ — khớp 0.0%.",
+            "passed": true,
+            "source_page": 9,
+            "source_code": "400"
+          },
+          {
+            "dimension": "directional",
+            "explanation": "Câu khẳng định giảm; số liệu cho thấy giảm 1.7% (28.260 tỷ → 27.783 tỷ, mã 400, trang 9).",
+            "passed": true,
+            "source_page": 9,
+            "source_code": "400"
+          }
+        ]
+      },
+      {
+        "text": "Chi phí lãi vay thực hiện năm 2022 là 218 tỷ đồng, giảm 5,82 tỷ đồng so với cùng kỳ năm trước nhờ việc cải thiện hiệu quả quản lý dòng tiền trong năm 2022. Cụ thể, tổng giá trị vay VNĐ (chiếm tỷ trọng chủ yếu) trong năm 2022 giảm so với năm 2021, kết hợp với thời hạn các hợp đồng vay ngắn hơn và thanh toán trước hạn nhiều hơn",
+        "page": 46,
+        "metric": "interest_expense",
+        "trend": "giảm",
+        "verdict": "không kiểm chứng được",
+        "score": null,
+        "evidence": [
+          {
+            "dimension": "lookup",
+            "explanation": "Câu không nêu con số hay hướng biến động kiểm chứng được từ báo cáo tài chính.",
+            "passed": false,
+            "source_page": 10,
+            "source_code": "23"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "ticker": "PLX",
+    "year": 2023,
+    "nnc_score": 0.5,
+    "claims": [
+      {
+        "text": "3 Nâng cao hiệu quả kinh doanh, tăng trưởng doanh thu, duy trì và đảm bảo tăng trưởng lợi nhuận ổn định, đảm bảo thu nhập và việc làm cho người lao động; tập trung phát triển kênh bán lẻ; tiếp tục củng cố các giải pháp duy trì và phát triển mạnh mẽ hệ thống thương nhân nhượng quyền, khách hàng bán buôn",
+        "page": 20,
+        "metric": "revenue_net",
+        "trend": "ổn định",
+        "verdict": "mâu thuẫn",
+        "score": 0.0,
+        "evidence": [
+          {
+            "dimension": "directional",
+            "explanation": "Câu khẳng định đi ngang; số liệu cho thấy giảm 9.9% (304.064 tỷ → 273.979 tỷ, mã 10, trang 10).",
+            "passed": false,
+            "source_page": 10,
+            "source_code": "10"
+          }
+        ]
+      },
+      {
+        "text": "70 | TÌNH HÌNH HOẠT ĐỘNG TRONG NĂM TÌNH HÌNH TÀI CHÍNH TÌNH HÌNH TÀI SẢN HỢP NHẤT Quy mô tài sản hợp nhất Tổng tài sản hợp nhất tại thời điểm 31/12/2023 của Tập đoàn là: 79.676 tỷ đồng, tăng 7% so với cuối kỳ năm 2022, tương ứng tăng 5.200 tỷ đồng",
+        "page": 36,
+        "metric": "total_assets",
+        "trend": "tăng",
+        "verdict": "nhất quán",
+        "score": 1.0,
+        "evidence": [
+          {
+            "dimension": "numeric",
+            "explanation": "Câu nêu 79.676 tỷ; báo cáo tài chính (mã 270, trang 7) ghi 79.676 tỷ — khớp 0.0%.",
+            "passed": true,
+            "source_page": 7,
+            "source_code": "270"
+          },
+          {
+            "dimension": "numeric",
+            "explanation": "Câu nêu mức 7.0%; tính từ báo cáo tài chính (74.476 tỷ → 79.676 tỷ) ra +7.0% — lệch 0.02 điểm phần trăm.",
+            "passed": true,
+            "source_page": 7,
+            "source_code": "270"
+          },
+          {
+            "dimension": "directional",
+            "explanation": "Câu khẳng định tăng; số liệu cho thấy tăng 7.0% (74.476 tỷ → 79.676 tỷ, mã 270, trang 7).",
+            "passed": true,
+            "source_page": 7,
+            "source_code": "270"
+          }
+        ]
+      },
+      {
+        "text": "Kết quả SXKD có nhiểu điểm tích cực, cụ thể: TỔNG DOANH THU LỢI NHUẬN TRƯỚC THUẾ 4.848 284 TỶ ĐỒNG TỶ ĐỒNG đạt 100,2% KH và bằng 109% so đạt 111% KH và bằng 112% so với với năm 2022. năm 2022.",
+        "page": 34,
+        "metric": "revenue_net",
+        "trend": "đạt",
+        "verdict": "không kiểm chứng được",
+        "score": null,
+        "evidence": [
+          {
+            "dimension": "scope",
+            "explanation": "Câu nêu 284 tỷ, trong khi số hợp nhất là 273.979 tỷ (mã 10, trang 10) — chênh 100%. Chênh lệch quá lớn nên nhiều khả năng câu nói về một công ty con, một mảng kinh doanh hoặc một thị trường lẻ. Hệ thống không kết luận mâu thuẫn.",
+            "passed": false,
+            "source_page": 10,
+            "source_code": "10"
+          }
+        ]
+      },
+      {
+        "text": "Kết quả SXKD của Tổng công ty năm 2023, cụ thể: TỔNG DOANH THU LỢI NHUẬN TRƯỚC THUẾ 2.092 24,31 TỶ ĐỒNG TỶ ĐỒNG đạt 94% KH và bằng 90% so với đạt 106% KH và bằng 49% so với thực hiện 2022. thực hiện 2022.",
+        "page": 35,
+        "metric": "revenue_net",
+        "trend": "đạt",
+        "verdict": "không kiểm chứng được",
+        "score": null,
+        "evidence": [
+          {
+            "dimension": "scope",
+            "explanation": "Câu nêu 24 tỷ, trong khi số hợp nhất là 273.979 tỷ (mã 10, trang 10) — chênh 100%. Chênh lệch quá lớn nên nhiều khả năng câu nói về một công ty con, một mảng kinh doanh hoặc một thị trường lẻ. Hệ thống không kết luận mâu thuẫn.",
+            "passed": false,
+            "source_page": 10,
+            "source_code": "10"
+          }
+        ]
+      },
+      {
+        "text": "TÀI SẢN NGẮN HẠN 2 Tại ngày 31/12/2023 chiếm tỷ trọng 72%, tăng 7.137 tỷ đồng tương ứng tăng 14% so với năm 2022. Trong đó, chủ yếu là tăng đầu tư tài chính ngắn hạn; tiền và tương đương tiền (tăng 11.840 tỷ đồng) do dòng tiền từ hoạt động SXKD tốt cũng như dòng tiền từ việc thoái vốn tại PGBank; Hàng tồn kho giảm 15% do Tập đoàn duy trì hàng tồn kho ở mức hợp lý",
+        "page": 36,
+        "metric": "inventories",
+        "trend": "giảm",
+        "verdict": "không kiểm chứng được",
+        "score": null,
+        "evidence": [
+          {
+            "dimension": "lookup",
+            "explanation": "Câu không nêu con số hay hướng biến động kiểm chứng được từ báo cáo tài chính.",
+            "passed": false,
+            "source_page": 6,
+            "source_code": "140"
+          }
+        ]
+      },
+      {
+        "text": "Lợi nhuận trước thuế đạt được 284 tỷ đồng, hoàn thành 111% kế hoạch, tăng trưởng 12,3% so với 2022. Theo đó, năm 2023 PJICO là Tổng Công ty chuyên doanh có có mức lợi nhuận cao nhất trong hệ sinh thái Petrolimex và tiếp tục là một trong những đơn vị Top đầu trên thị trường về hoạt động kinh doanh có hiệu quả",
+        "page": 51,
+        "metric": "profit_before_tax",
+        "trend": "đạt",
+        "verdict": "không kiểm chứng được",
+        "score": null,
+        "evidence": [
+          {
+            "dimension": "scope",
+            "explanation": "Câu nêu 284 tỷ, trong khi số hợp nhất là 3.947 tỷ (mã 50, trang 10) — chênh 93%. Chênh lệch quá lớn nên nhiều khả năng câu nói về một công ty con, một mảng kinh doanh hoặc một thị trường lẻ. Hệ thống không kết luận mâu thuẫn.",
+            "passed": false,
+            "source_page": 10,
+            "source_code": "50"
+          }
+        ]
+      },
+      {
+        "text": "Tổng tài sản ở mức 7.449 tỷ đồng tăng 10,2% so với đầu năm 2022. Trong đó, các khoản đầu tư ngắn hạn đạt 3.643 tỷ đồng, tăng 17,6% so với cùng kỳ",
+        "page": 51,
+        "metric": "total_assets",
+        "trend": "tăng",
+        "verdict": "không kiểm chứng được",
+        "score": null,
+        "evidence": [
+          {
+            "dimension": "scope",
+            "explanation": "Câu nêu 7.449 tỷ, trong khi số hợp nhất là 79.676 tỷ (mã 270, trang 7) — chênh 91%. Chênh lệch quá lớn nên nhiều khả năng câu nói về một công ty con, một mảng kinh doanh hoặc một thị trường lẻ. Hệ thống không kết luận mâu thuẫn.",
+            "passed": false,
+            "source_page": 7,
+            "source_code": "270"
+          }
+        ]
+      },
+      {
+        "text": "Tỷ suất lợi nhuận sau thuế trên vốn điều lệ đạt 20,66%, Tỷ suất lợi nhuận sau thuế trên nguồn vốn chủ sở hữu bình quân (ROE) tại thời điểm 31/12/2023 đạt 12,29%",
+        "page": 51,
+        "metric": "profit_after_tax",
+        "trend": "đạt",
+        "verdict": "không kiểm chứng được",
+        "score": null,
+        "evidence": [
+          {
+            "dimension": "continuity",
+            "explanation": "Số liệu hai kỳ biến động +62% (1.902 tỷ → 3.077 tỷ, mã 60, trang 10). Mức này thường đến từ thoái vốn hoặc thay đổi phạm vi hợp nhất, khiến hai năm không so sánh trực tiếp được. Hệ thống không kết luận về xu hướng.",
+            "passed": false,
+            "source_page": 10,
+            "source_code": "60"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "ticker": "POW",
     "year": 2018,
     "nnc_score": null,
@@ -5177,6 +6737,115 @@
   },
   {
     "ticker": "POW",
+    "year": 2021,
+    "nnc_score": 0.0,
+    "claims": [
+      {
+        "text": "của Thủ tướng về việc cách ly xã hội, đặc biệt Trong đó lợi nhuận trước thuế Công ty triển khai việc cách ly và ưu tiên công tác an mẹ đạt 1.816 tỷ đồng đạt 117% kế hoạch",
+        "page": 49,
+        "metric": "profit_before_tax",
+        "trend": "đạt",
+        "verdict": "mâu thuẫn",
+        "score": 0.0,
+        "evidence": [
+          {
+            "dimension": "numeric",
+            "explanation": "Câu nêu 1.816 tỷ; báo cáo tài chính (mã 50, trang 10) ghi 2.339 tỷ — lệch 22.4%.",
+            "passed": false,
+            "source_page": 10,
+            "source_code": "50"
+          }
+        ]
+      },
+      {
+        "text": "Năm 2021 Doanh thu 240 tỷ đồng, đạt 93% kế hoạch; Lợi nhuận trước thuế 21 tỷ đồng, đạt 131% kế hoạch; Đơn vị nộp cổ tức về Tổng công ty năm 2021 là 8,5 tỷ đồng, đạt 160% kế hoạch",
+        "page": 33,
+        "metric": "revenue_net",
+        "trend": "đạt",
+        "verdict": "không kiểm chứng được",
+        "score": null,
+        "evidence": [
+          {
+            "dimension": "scope",
+            "explanation": "Câu nêu 240 tỷ, trong khi số hợp nhất là 24.561 tỷ (mã 10, trang 10) — chênh 99%. Chênh lệch quá lớn nên nhiều khả năng câu nói về một công ty con, một mảng kinh doanh hoặc một thị trường lẻ. Hệ thống không kết luận mâu thuẫn.",
+            "passed": false,
+            "source_page": 10,
+            "source_code": "10"
+          }
+        ]
+      },
+      {
+        "text": "Lợi nhuận trước thuế đạt 9,6 tỷ đồng, bằng 164% kế hoạch",
+        "page": 34,
+        "metric": "profit_before_tax",
+        "trend": "đạt",
+        "verdict": "không kiểm chứng được",
+        "score": null,
+        "evidence": [
+          {
+            "dimension": "scope",
+            "explanation": "Câu nêu 10 tỷ, trong khi số hợp nhất là 2.339 tỷ (mã 50, trang 10) — chênh 100%. Chênh lệch quá lớn nên nhiều khả năng câu nói về một công ty con, một mảng kinh doanh hoặc một thị trường lẻ. Hệ thống không kết luận mâu thuẫn.",
+            "passed": false,
+            "source_page": 10,
+            "source_code": "50"
+          }
+        ]
+      },
+      {
+        "text": "CTCP EVN Quốc tế (EVNI): Lợi nhuận sau thuế năm 2021 đạt 168,8 tỷ đồng (chủ yếu cổ tức từ thủy điện Hạ Sê San 2)",
+        "page": 34,
+        "metric": "profit_after_tax",
+        "trend": "đạt",
+        "verdict": "không kiểm chứng được",
+        "score": null,
+        "evidence": [
+          {
+            "dimension": "scope",
+            "explanation": "Câu nêu 169 tỷ, trong khi số hợp nhất là 2.052 tỷ (mã 60, trang 10) — chênh 92%. Chênh lệch quá lớn nên nhiều khả năng câu nói về một công ty con, một mảng kinh doanh hoặc một thị trường lẻ. Hệ thống không kết luận mâu thuẫn.",
+            "passed": false,
+            "source_page": 10,
+            "source_code": "60"
+          }
+        ]
+      },
+      {
+        "text": "Tổng doanh thu năm 2021 đạt 254 tỷ đồng, tăng 40 tỷ đồng so với năm 2020. Lỗ từ hoạt động SXKD năm 2021 là 6,2 tỷ đồng (giảm lỗ so với năm 2020 là 45 tỷ đồng)",
+        "page": 34,
+        "metric": "revenue_net",
+        "trend": "đạt",
+        "verdict": "không kiểm chứng được",
+        "score": null,
+        "evidence": [
+          {
+            "dimension": "scope",
+            "explanation": "Câu nêu 254 tỷ, trong khi số hợp nhất là 24.561 tỷ (mã 10, trang 10) — chênh 99%. Chênh lệch quá lớn nên nhiều khả năng câu nói về một công ty con, một mảng kinh doanh hoặc một thị trường lẻ. Hệ thống không kết luận mâu thuẫn.",
+            "passed": false,
+            "source_page": 10,
+            "source_code": "10"
+          }
+        ]
+      },
+      {
+        "text": "Công ty CP Phát triển đô thị Dầu khí: Doanh thu năm 2021 đạt 9,4 tỷ đồng",
+        "page": 34,
+        "metric": "revenue_net",
+        "trend": "đạt",
+        "verdict": "không kiểm chứng được",
+        "score": null,
+        "evidence": [
+          {
+            "dimension": "scope",
+            "explanation": "Câu nêu 9 tỷ, trong khi số hợp nhất là 24.561 tỷ (mã 10, trang 10) — chênh 100%. Chênh lệch quá lớn nên nhiều khả năng câu nói về một công ty con, một mảng kinh doanh hoặc một thị trường lẻ. Hệ thống không kết luận mâu thuẫn.",
+            "passed": false,
+            "source_page": 10,
+            "source_code": "10"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "ticker": "POW",
     "year": 2022,
     "nnc_score": 1.0,
     "claims": [
@@ -5262,6 +6931,139 @@
             "passed": false,
             "source_page": 8,
             "source_code": "140"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "ticker": "POW",
+    "year": 2023,
+    "nnc_score": 1.0,
+    "claims": [
+      {
+        "text": "Lợi nhuận trước thuế toàn Tổng công ty đạt 1.442 tỷ đồng, đạt 113% kế hoạch được giao",
+        "page": 52,
+        "metric": "profit_before_tax",
+        "trend": "đạt",
+        "verdict": "nhất quán",
+        "score": 1.0,
+        "evidence": [
+          {
+            "dimension": "numeric",
+            "explanation": "Câu nêu 1.442 tỷ; báo cáo tài chính (mã 50, trang 13) ghi 1.442 tỷ — khớp 0.0%.",
+            "passed": true,
+            "source_page": 13,
+            "source_code": "50"
+          },
+          {
+            "dimension": "continuity",
+            "explanation": "Số liệu hai kỳ biến động -49% (2.809 tỷ → 1.442 tỷ, mã 50, trang 13). Mức này thường đến từ thoái vốn hoặc thay đổi phạm vi hợp nhất, khiến hai năm không so sánh trực tiếp được. Hệ thống không kết luận về xu hướng.",
+            "passed": false,
+            "source_page": 13,
+            "source_code": "50"
+          }
+        ]
+      },
+      {
+        "text": "TÌNH HÌNH HOẠT ĐỘNG NĂM 2023 CTCP ĐLDK Nhơn Trạch 2 (PV Power NT2) Năm 2023, sản lượng điện đạt 2.896 triệu kWh, hoàn thành 87% kế hoạch; Tổng doanh thu đạt 6.495 tỷ đồng; Lợi nhuận trước thuế đạt 514 tỷ đồng, bằng 368% kế hoạch 2023; Cổ tức năm 2022 chia cho cổ đông là 25%",
+        "page": 42,
+        "metric": "revenue_net",
+        "trend": "đạt",
+        "verdict": "không kiểm chứng được",
+        "score": null,
+        "evidence": [
+          {
+            "dimension": "scope",
+            "explanation": "Câu nêu 3 tỷ, trong khi số hợp nhất là 28.329 tỷ (mã 10, trang 13) — chênh 100%. Chênh lệch quá lớn nên nhiều khả năng câu nói về một công ty con, một mảng kinh doanh hoặc một thị trường lẻ. Hệ thống không kết luận mâu thuẫn.",
+            "passed": false,
+            "source_page": 13,
+            "source_code": "10"
+          }
+        ]
+      },
+      {
+        "text": "Tổng doanh thu đạt 763/656 tỷ đồng, bằng 116% so với kế hoạch",
+        "page": 42,
+        "metric": "revenue_net",
+        "trend": "đạt",
+        "verdict": "không kiểm chứng được",
+        "score": null,
+        "evidence": [
+          {
+            "dimension": "scope",
+            "explanation": "Câu nêu 656 tỷ, trong khi số hợp nhất là 28.329 tỷ (mã 10, trang 13) — chênh 98%. Chênh lệch quá lớn nên nhiều khả năng câu nói về một công ty con, một mảng kinh doanh hoặc một thị trường lẻ. Hệ thống không kết luận mâu thuẫn.",
+            "passed": false,
+            "source_page": 13,
+            "source_code": "10"
+          }
+        ]
+      },
+      {
+        "text": "Kết quả lợi nhuận sau thuế đạt 237/77 tỷ đồng, bằng 308% so với kế hoạch",
+        "page": 42,
+        "metric": "profit_after_tax",
+        "trend": "đạt",
+        "verdict": "không kiểm chứng được",
+        "score": null,
+        "evidence": [
+          {
+            "dimension": "scope",
+            "explanation": "Câu nêu 77 tỷ, trong khi số hợp nhất là 1.283 tỷ (mã 60, trang 13) — chênh 94%. Chênh lệch quá lớn nên nhiều khả năng câu nói về một công ty con, một mảng kinh doanh hoặc một thị trường lẻ. Hệ thống không kết luận mâu thuẫn.",
+            "passed": false,
+            "source_page": 13,
+            "source_code": "60"
+          }
+        ]
+      },
+      {
+        "text": "Năm 2023, sản lượng điện đạt 627 triệu kWh, hoàn thành 119% kế hoạch; Doanh thu đạt 726,5 tỷ đồng (bao gồm doanh thu thuế tài nguyên, phí môi trường rừng, phí tài nguyên nước là 108,6 tỷ đồng), hoàn thành 107% kế hoạch; Lợi nhuận trước thuế đạt 44 tỷ đồng (hoàn thành 91% kế hoạch)",
+        "page": 43,
+        "metric": "revenue_net",
+        "trend": "đạt",
+        "verdict": "không kiểm chứng được",
+        "score": null,
+        "evidence": [
+          {
+            "dimension": "scope",
+            "explanation": "Câu nêu 627 triệu, trong khi số hợp nhất là 28.329 tỷ (mã 10, trang 13) — chênh 100%. Chênh lệch quá lớn nên nhiều khả năng câu nói về một công ty con, một mảng kinh doanh hoặc một thị trường lẻ. Hệ thống không kết luận mâu thuẫn.",
+            "passed": false,
+            "source_page": 13,
+            "source_code": "10"
+          }
+        ]
+      },
+      {
+        "text": "Năm 2023, sản lượng điện đạt 5,11 triệu kWh; Doanh thu đạt 9,87 tỷ đồng; Cả năm 2023 lỗ 6,99 tỷ đồng (giảm lỗ so với năm 2022 khoảng 6,5 tỷ đồng)",
+        "page": 43,
+        "metric": "revenue_net",
+        "trend": "đạt",
+        "verdict": "không kiểm chứng được",
+        "score": null,
+        "evidence": [
+          {
+            "dimension": "scope",
+            "explanation": "Câu nêu 5 triệu, trong khi số hợp nhất là 28.329 tỷ (mã 10, trang 13) — chênh 100%. Chênh lệch quá lớn nên nhiều khả năng câu nói về một công ty con, một mảng kinh doanh hoặc một thị trường lẻ. Hệ thống không kết luận mâu thuẫn.",
+            "passed": false,
+            "source_page": 13,
+            "source_code": "10"
+          }
+        ]
+      },
+      {
+        "text": "Tương tự như Lợi nhuận từ hoạt động kinh doanh, Lợi nhuận trước thuế và Lợi nhuận sau thuế của năm 2023 đều giảm lần lượt 48,67% và 49,75%",
+        "page": 45,
+        "metric": "profit_before_tax",
+        "trend": "giảm",
+        "verdict": "không kiểm chứng được",
+        "score": null,
+        "evidence": [
+          {
+            "dimension": "continuity",
+            "explanation": "Số liệu hai kỳ biến động -49% (2.809 tỷ → 1.442 tỷ, mã 50, trang 13). Mức này thường đến từ thoái vốn hoặc thay đổi phạm vi hợp nhất, khiến hai năm không so sánh trực tiếp được. Hệ thống không kết luận về xu hướng.",
+            "passed": false,
+            "source_page": 13,
+            "source_code": "50"
           }
         ]
       }
@@ -5684,6 +7486,98 @@
             "passed": false,
             "source_page": 7,
             "source_code": "140"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "ticker": "VCG",
+    "year": 2020,
+    "nnc_score": null,
+    "claims": [
+      {
+        "text": "Về chi tiết các nhóm tài sản tăng chủ yếu tập trung ở tiền và đầu tư tài chính ngắn hạn, trong đó tiền và các khoản tương đương tiền tăng 652 tỷ đồng, đầu tư tài chính ngắn hạn tăng 592 tỷ đồng",
+        "page": 16,
+        "metric": "cash_and_equivalents",
+        "trend": "tăng",
+        "verdict": "không kiểm chứng được",
+        "score": null,
+        "evidence": [
+          {
+            "dimension": "scope",
+            "explanation": "Câu nêu 652 tỷ, trong khi số hợp nhất là 1.995 tỷ (mã 110, trang 7) — chênh 67%. Chênh lệch quá lớn nên nhiều khả năng câu nói về một công ty con, một mảng kinh doanh hoặc một thị trường lẻ. Hệ thống không kết luận mâu thuẫn.",
+            "passed": false,
+            "source_page": 7,
+            "source_code": "110"
+          }
+        ]
+      },
+      {
+        "text": "So với năm 2019, tổng tài sản tăng 1.272 tỷ đồng tương đương mức tăng 10,79%",
+        "page": 18,
+        "metric": "total_assets",
+        "trend": "tăng",
+        "verdict": "không kiểm chứng được",
+        "score": null,
+        "evidence": [
+          {
+            "dimension": "scope",
+            "explanation": "Câu nêu 1.272 tỷ, trong khi số hợp nhất là 19.610 tỷ (mã 270, trang 8) — chênh 94%. Chênh lệch quá lớn nên nhiều khả năng câu nói về một công ty con, một mảng kinh doanh hoặc một thị trường lẻ. Hệ thống không kết luận mâu thuẫn.",
+            "passed": false,
+            "source_page": 8,
+            "source_code": "270"
+          }
+        ]
+      },
+      {
+        "text": "Đóng góp vào mức tăng của tổng tài sản trong năm 2020, tài sản ngắn hạn tăng 923 tỷ đồng (11,96%) và tài sản dài hạn tăng 348 tỷ đồng (8,57%)",
+        "page": 18,
+        "metric": "total_assets",
+        "trend": "tăng",
+        "verdict": "không kiểm chứng được",
+        "score": null,
+        "evidence": [
+          {
+            "dimension": "scope",
+            "explanation": "Câu nêu 923 tỷ, trong khi số hợp nhất là 19.610 tỷ (mã 270, trang 8) — chênh 95%. Chênh lệch quá lớn nên nhiều khả năng câu nói về một công ty con, một mảng kinh doanh hoặc một thị trường lẻ. Hệ thống không kết luận mâu thuẫn.",
+            "passed": false,
+            "source_page": 8,
+            "source_code": "270"
+          }
+        ]
+      },
+      {
+        "text": "- Hàng tồn kho giảm 117 tỷ đồng, tương đương mức 11,91% so với đầu năm",
+        "page": 18,
+        "metric": "inventories",
+        "trend": "giảm",
+        "verdict": "không kiểm chứng được",
+        "score": null,
+        "evidence": [
+          {
+            "dimension": "scope",
+            "explanation": "Câu nêu 117 tỷ, trong khi số hợp nhất là 2.220 tỷ (mã 140, trang 7) — chênh 95%. Chênh lệch quá lớn nên nhiều khả năng câu nói về một công ty con, một mảng kinh doanh hoặc một thị trường lẻ. Hệ thống không kết luận mâu thuẫn.",
+            "passed": false,
+            "source_page": 7,
+            "source_code": "140"
+          }
+        ]
+      },
+      {
+        "text": "Doanh thu hợp nhất không đạt kế tích cực",
+        "page": 32,
+        "metric": "revenue_net",
+        "trend": "đạt",
+        "verdict": "không kiểm chứng được",
+        "score": null,
+        "evidence": [
+          {
+            "dimension": "continuity",
+            "explanation": "Số liệu hai kỳ biến động -42% (9.502 tỷ → 5.551 tỷ, mã 10, trang 11). Mức này thường đến từ thoái vốn hoặc thay đổi phạm vi hợp nhất, khiến hai năm không so sánh trực tiếp được. Hệ thống không kết luận về xu hướng.",
+            "passed": false,
+            "source_page": 11,
+            "source_code": "10"
           }
         ]
       }
@@ -6264,6 +8158,248 @@
   },
   {
     "ticker": "VHM",
+    "year": 2019,
+    "nnc_score": 0.75,
+    "claims": [
+      {
+        "text": "Trong đó, chỉ tiêu Hàng tồn kho tăng TỶ ĐỒNG 23.439 tỷ đồng trong năm 2019, và các Khoản đặt cọc ngắn hạn cho mục đích đầu 65% tư tăng 10.279 tỷ đồng so với năm 2018. Tài sản dài hạn tăng từ 28.486 tỷ đồng lên 57.686 tỷ đồng trong năm 2019. Trong đó, Chi phí xây dựng cơ bản dở dang của các dự án bất động sản tăng 9.850 tỷ đồng, Vốn chủ sở hữu chủ yếu do Vinhomes tiến hành xây dựng các dự án lớn",
+        "page": 25,
+        "metric": "inventories",
+        "trend": "tăng",
+        "verdict": "mâu thuẫn",
+        "score": 0.0,
+        "evidence": [
+          {
+            "dimension": "numeric",
+            "explanation": "Câu nêu 57.686 tỷ; báo cáo tài chính (mã 140, trang 8) ghi 60.297 tỷ — lệch 4.3%.",
+            "passed": false,
+            "source_page": 8,
+            "source_code": "140"
+          },
+          {
+            "dimension": "continuity",
+            "explanation": "Số liệu hai kỳ biến động +64% (36.858 tỷ → 60.297 tỷ, mã 140, trang 8). Mức này thường đến từ thoái vốn hoặc thay đổi phạm vi hợp nhất, khiến hai năm không so sánh trực tiếp được. Hệ thống không kết luận về xu hướng.",
+            "passed": false,
+            "source_page": 8,
+            "source_code": "140"
+          }
+        ]
+      },
+      {
+        "text": "05 Tăng doanh thu thông qua Với khả năng vận hành tòa nhà chuyên nghiệp gồm các dịch vụ trọn gói như lễ tân, cung cấp các sản phẩm, bảo vệ, kỹ thuật, Vinhomes có thể cung cấp các dịch vụ quản lý khu đô thị khép kín, đảm bảo duy trì khu đô thị theo tiêu chuẩn năm sao một cách nhất quán",
+        "page": 20,
+        "metric": "revenue_net",
+        "trend": "tăng",
+        "verdict": "nhất quán",
+        "score": 1.0,
+        "evidence": [
+          {
+            "dimension": "directional",
+            "explanation": "Câu khẳng định tăng; số liệu cho thấy tăng 33.5% (38.664 tỷ → 51.627 tỷ, mã 10, trang 12).",
+            "passed": true,
+            "source_page": 12,
+            "source_code": "10"
+          }
+        ]
+      },
+      {
+        "text": "65% Lợi nhuận trước thuế năm 2019 của Công ty đạt 29.746 tỷ đồng, trong đó tổng lợi nhuận trước thuế từ hoạt động chuyển nhượng bất động sản, bao gồm cả các dự án BCC và chuyển nhượng dự án là 29.376 tỷ đồng",
+        "page": 25,
+        "metric": "profit_before_tax",
+        "trend": "đạt",
+        "verdict": "nhất quán",
+        "score": 1.0,
+        "evidence": [
+          {
+            "dimension": "numeric",
+            "explanation": "Câu nêu 29.746 tỷ; báo cáo tài chính (mã 50, trang 12) ghi 29.746 tỷ — khớp 0.0%.",
+            "passed": true,
+            "source_page": 12,
+            "source_code": "50"
+          },
+          {
+            "dimension": "continuity",
+            "explanation": "Số liệu hai kỳ biến động +51% (19.719 tỷ → 29.746 tỷ, mã 50, trang 12). Mức này thường đến từ thoái vốn hoặc thay đổi phạm vi hợp nhất, khiến hai năm không so sánh trực tiếp được. Hệ thống không kết luận về xu hướng.",
+            "passed": false,
+            "source_page": 12,
+            "source_code": "50"
+          }
+        ]
+      },
+      {
+        "text": "Mức tăng vốn chủ sở hữu chủ yếu từ lợi nhuận sau thuế của công ty năm 2019. 49",
+        "page": 25,
+        "metric": "owners_equity",
+        "trend": "tăng",
+        "verdict": "nhất quán",
+        "score": 1.0,
+        "evidence": [
+          {
+            "dimension": "directional",
+            "explanation": "Câu khẳng định tăng; số liệu cho thấy tăng 34.4% (48.145 tỷ → 64.715 tỷ, mã 400, trang 11).",
+            "passed": true,
+            "source_page": 11,
+            "source_code": "400"
+          }
+        ]
+      },
+      {
+        "text": "Vốn chủ sở hữu tại 31 tháng 12 năm 2019 tăng 16.570 tỷ đồng so với tại 31 tháng 12 năm 2018, đạt 64.715 tỷ đồng",
+        "page": 25,
+        "metric": "owners_equity",
+        "trend": "tăng",
+        "verdict": "không kiểm chứng được",
+        "score": null,
+        "evidence": [
+          {
+            "dimension": "scope",
+            "explanation": "Câu nêu 16.570 tỷ, trong khi số hợp nhất là 64.715 tỷ (mã 400, trang 11) — chênh 74%. Chênh lệch quá lớn nên nhiều khả năng câu nói về một công ty con, một mảng kinh doanh hoặc một thị trường lẻ. Hệ thống không kết luận mâu thuẫn.",
+            "passed": false,
+            "source_page": 11,
+            "source_code": "400"
+          }
+        ]
+      },
+      {
+        "text": "Giá trị thuần có thể thực hiện được là giá bán ước tính của hàng tồn kho trong điều kiện kinh doanh bình thường trừ chi phí ước tính để hoàn thành và chi phí bán hàng ước tính",
+        "page": 51,
+        "metric": "inventories",
+        "trend": "đạt",
+        "verdict": "không kiểm chứng được",
+        "score": null,
+        "evidence": [
+          {
+            "dimension": "continuity",
+            "explanation": "Số liệu hai kỳ biến động +64% (36.858 tỷ → 60.297 tỷ, mã 140, trang 8). Mức này thường đến từ thoái vốn hoặc thay đổi phạm vi hợp nhất, khiến hai năm không so sánh trực tiếp được. Hệ thống không kết luận về xu hướng.",
+            "passed": false,
+            "source_page": 8,
+            "source_code": "140"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "ticker": "VHM",
+    "year": 2020,
+    "nnc_score": 0.5,
+    "claims": [
+      {
+        "text": "Lợi nhuận sau thuế chủ yếu đến từ việc hoàn thành và bàn 28.207 giao tại các dự án Vinhomes Ocean Park, Lợi nhuận trước thuế năm 2020 của TỶ ĐỒNG Vinhomes Smart City, Vinhomes Grand Công ty đạt 36.517 tỷ đồng, trong đó Park, Vinhomes West Point, Vinhomes tổng lợi nhuận trước thuế từ hoạt động 16% Marina và Vinhomes Symphony",
+        "page": 28,
+        "metric": "profit_after_tax",
+        "trend": "đạt",
+        "verdict": "mâu thuẫn",
+        "score": 0.5,
+        "evidence": [
+          {
+            "dimension": "numeric",
+            "explanation": "Câu nêu 36.517 tỷ; báo cáo tài chính (mã 60, trang 13) ghi 28.207 tỷ — lệch 29.5%.",
+            "passed": false,
+            "source_page": 13,
+            "source_code": "60"
+          },
+          {
+            "dimension": "numeric",
+            "explanation": "Câu nêu mức 16.0%; tính từ báo cáo tài chính (24.319 tỷ → 28.207 tỷ) ra +16.0% — lệch 0.01 điểm phần trăm.",
+            "passed": true,
+            "source_page": 13,
+            "source_code": "60"
+          }
+        ]
+      },
+      {
+        "text": "các Khoản đặt cọc ngắn hạn cho mục Thêm vào đó, các khoản Đầu tư vào công Vốn chủ sở hữu tại 31 tháng 12 năm 2020 đích đầu tư giảm 8.460 tỷ đồng so với ty liên kết, liên doanh, đơn vị khác tăng tăng 24.415 tỷ đồng so với tại 31 tháng 12 năm 2019. 9.249 tỷ đồng, Chi phí xây dựng cơ bản năm 2019, đạt 89.130 tỷ đồng",
+        "page": 28,
+        "metric": "owners_equity",
+        "trend": "giảm",
+        "verdict": "không kiểm chứng được",
+        "score": null,
+        "evidence": [
+          {
+            "dimension": "scope",
+            "explanation": "Câu nêu 8.460 tỷ, trong khi số hợp nhất là 89.130 tỷ (mã 400, trang 12) — chênh 91%. Chênh lệch quá lớn nên nhiều khả năng câu nói về một công ty con, một mảng kinh doanh hoặc một thị trường lẻ. Hệ thống không kết luận mâu thuẫn.",
+            "passed": false,
+            "source_page": 12,
+            "source_code": "400"
+          }
+        ]
+      },
+      {
+        "text": "Mức tăng dở dang của các dự án bất động sản vốn chủ sở hữu chủ yếu từ lợi nhuận sau tăng 4.149 tỷ đồng chủ yếu do Vinhomes thuế của công ty năm 2020. 55",
+        "page": 28,
+        "metric": "owners_equity",
+        "trend": "tăng",
+        "verdict": "không kiểm chứng được",
+        "score": null,
+        "evidence": [
+          {
+            "dimension": "scope",
+            "explanation": "Câu nêu 4.149 tỷ, trong khi số hợp nhất là 89.130 tỷ (mã 400, trang 12) — chênh 95%. Chênh lệch quá lớn nên nhiều khả năng câu nói về một công ty con, một mảng kinh doanh hoặc một thị trường lẻ. Hệ thống không kết luận mâu thuẫn.",
+            "passed": false,
+            "source_page": 12,
+            "source_code": "400"
+          }
+        ]
+      },
+      {
+        "text": "Giá trị thuần có thể thực hiện được là giá bán ước tính của hàng tồn kho trong điều kiện kinh doanh bình thường trừ chi phí ước tính để hoàn thành và chi phí bán hàng ước tính",
+        "page": 59,
+        "metric": "inventories",
+        "trend": "đạt",
+        "verdict": "không kiểm chứng được",
+        "score": null,
+        "evidence": [
+          {
+            "dimension": "lookup",
+            "explanation": "Câu không nêu con số hay hướng biến động kiểm chứng được từ báo cáo tài chính.",
+            "passed": false,
+            "source_page": 9,
+            "source_code": "140"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "ticker": "VHM",
+    "year": 2021,
+    "nnc_score": null,
+    "claims": []
+  },
+  {
+    "ticker": "VHM",
+    "year": 2022,
+    "nnc_score": 1.0,
+    "claims": [
+      {
+        "text": "Chỉ tiêu Hàng tồn kho tăng nhà theo các hợp đồng mua căn hộ, biệt 125% lên 64.362 tỷ đồng chủ yếu tăng thự và nhà phố thương mại tại các dự án do đẩy mạnh xây dựng các dự án trong bất động sản nhưng chưa đến thời điểm năm",
+        "page": 34,
+        "metric": "inventories",
+        "trend": "tăng",
+        "verdict": "nhất quán",
+        "score": 1.0,
+        "evidence": [
+          {
+            "dimension": "numeric",
+            "explanation": "Câu nêu 64.362 tỷ; báo cáo tài chính (mã 140, trang 8) ghi 64.362 tỷ — khớp 0.0%.",
+            "passed": true,
+            "source_page": 8,
+            "source_code": "140"
+          },
+          {
+            "dimension": "continuity",
+            "explanation": "Số liệu hai kỳ biến động +125% (28.579 tỷ → 64.362 tỷ, mã 140, trang 8). Mức này thường đến từ thoái vốn hoặc thay đổi phạm vi hợp nhất, khiến hai năm không so sánh trực tiếp được. Hệ thống không kết luận về xu hướng.",
+            "passed": false,
+            "source_page": 8,
+            "source_code": "140"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "ticker": "VHM",
     "year": 2023,
     "nnc_score": null,
     "claims": [
@@ -6418,6 +8554,129 @@
             "passed": false,
             "source_page": 11,
             "source_code": "400"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "ticker": "VIC",
+    "year": 2019,
+    "nnc_score": 1.0,
+    "claims": [
+      {
+        "text": "Cuối cùng, các công ty và bộ phận trong Tập đoàn sẽ “hiệu quả hóa” để tăng doanh thu, tối ưu hóa chi phí nhằm nâng cao năng suất và hiệu quả của cả hệ thống",
+        "page": 29,
+        "metric": "revenue_net",
+        "trend": "tăng",
+        "verdict": "nhất quán",
+        "score": 1.0,
+        "evidence": [
+          {
+            "dimension": "directional",
+            "explanation": "Câu khẳng định tăng; số liệu cho thấy tăng 6.7% (121.894 tỷ → 130.036 tỷ, mã 10, trang 12).",
+            "passed": true,
+            "source_page": 12,
+            "source_code": "10"
+          }
+        ]
+      },
+      {
+        "text": "Vốn chủ sở hữu tăng 22% từ 99.167 tỷ đồng lên 120.589 tỷ đồng cuối năm 2019, chủ yếu do trong kỳ Vingroup phát hành thêm cổ phiếu riêng lẻ",
+        "page": 43,
+        "metric": "owners_equity",
+        "trend": "tăng",
+        "verdict": "nhất quán",
+        "score": 1.0,
+        "evidence": [
+          {
+            "dimension": "numeric",
+            "explanation": "Câu nêu 120.589 tỷ; báo cáo tài chính (mã 400, trang 11) ghi 120.589 tỷ — khớp 0.0%.",
+            "passed": true,
+            "source_page": 11,
+            "source_code": "400"
+          },
+          {
+            "dimension": "numeric",
+            "explanation": "Câu nêu mức 22.0%; tính từ báo cáo tài chính (99.167 tỷ → 120.589 tỷ) ra +21.6% — lệch 0.40 điểm phần trăm.",
+            "passed": true,
+            "source_page": 11,
+            "source_code": "400"
+          },
+          {
+            "dimension": "directional",
+            "explanation": "Câu khẳng định tăng; số liệu cho thấy tăng 21.6% (99.167 tỷ → 120.589 tỷ, mã 400, trang 11).",
+            "passed": true,
+            "source_page": 11,
+            "source_code": "400"
+          }
+        ]
+      },
+      {
+        "text": "Năm 2019 ghi nhận kết quả hoạt động với 130.036 tỷ đồng doanh thu, tương đương 93% kế hoạch do ĐHĐCĐ thông qua, Lợi nhuận sau thuế đạt 7.717 tỷ đồng, vượt 19% kế hoạch do ĐHĐCĐ đề ra là 6.500 tỷ đồng",
+        "page": 49,
+        "metric": "revenue_net",
+        "trend": "đạt",
+        "verdict": "nhất quán",
+        "score": 1.0,
+        "evidence": [
+          {
+            "dimension": "numeric",
+            "explanation": "Câu nêu 130.036 tỷ; báo cáo tài chính (mã 10, trang 12) ghi 130.036 tỷ — khớp 0.0%.",
+            "passed": true,
+            "source_page": 12,
+            "source_code": "10"
+          }
+        ]
+      },
+      {
+        "text": "LƯỢT KHÁCH ĐẾN VINWONDERS Năm 2019, các cơ sở VinWonders đón gần 5,8 triệu lượt khách, và doanh thu duy trì mức tăng trưởng cao, đạt 17%",
+        "page": 40,
+        "metric": "revenue_net",
+        "trend": "ổn định",
+        "verdict": "không kiểm chứng được",
+        "score": null,
+        "evidence": [
+          {
+            "dimension": "scope",
+            "explanation": "Câu nêu 6 triệu, trong khi số hợp nhất là 130.036 tỷ (mã 10, trang 12) — chênh 100%. Chênh lệch quá lớn nên nhiều khả năng câu nói về một công ty con, một mảng kinh doanh hoặc một thị trường lẻ. Hệ thống không kết luận mâu thuẫn.",
+            "passed": false,
+            "source_page": 12,
+            "source_code": "10"
+          }
+        ]
+      },
+      {
+        "text": "Doanh thu cho thuê Bất động sản đầu tư tăng trưởng 22% từ 5.559 tỷ đồng lên 6.792 tỷ đồng trong năm 2019 do quy mô hệ thống TTTM tiếp tục được mở rộng trên toàn quốc",
+        "page": 42,
+        "metric": "revenue_net",
+        "trend": "tăng",
+        "verdict": "không kiểm chứng được",
+        "score": null,
+        "evidence": [
+          {
+            "dimension": "scope",
+            "explanation": "Câu nêu 6.792 tỷ, trong khi số hợp nhất là 130.036 tỷ (mã 10, trang 12) — chênh 95%. Chênh lệch quá lớn nên nhiều khả năng câu nói về một công ty con, một mảng kinh doanh hoặc một thị trường lẻ. Hệ thống không kết luận mâu thuẫn.",
+            "passed": false,
+            "source_page": 12,
+            "source_code": "10"
+          }
+        ]
+      },
+      {
+        "text": "Hệ số Nợ phải trả/Tổng tài sản cũng như chỉ tiêu về nợ vay ổn định so với 2018. Tuy nhiên, hệ số Nợ phải trả/Vốn chủ sở hữu có xu hướng tăng",
+        "page": 43,
+        "metric": "total_assets",
+        "trend": "ổn định",
+        "verdict": "không kiểm chứng được",
+        "score": null,
+        "evidence": [
+          {
+            "dimension": "continuity",
+            "explanation": "Số liệu hai kỳ biến động +40% (288.127 tỷ → 403.741 tỷ, mã 270, trang 9). Mức này thường đến từ thoái vốn hoặc thay đổi phạm vi hợp nhất, khiến hai năm không so sánh trực tiếp được. Hệ thống không kết luận về xu hướng.",
+            "passed": false,
+            "source_page": 9,
+            "source_code": "270"
           }
         ]
       }
@@ -6717,6 +8976,71 @@
             "passed": true,
             "source_page": 10,
             "source_code": "10"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "ticker": "VNM",
+    "year": 2019,
+    "nnc_score": 1.0,
+    "claims": [
+      {
+        "text": "Cụ thể, tổng doanh thu hợp nhất đạt 56.400 tỷ đồng và lợi nhuận sau thuế hợp nhất đạt 10.554 tỷ đồng, tăng trưởng lần lượt 7,2% và 3,4% so với cùng kỳ, đồng thời vượt kế hoạch đề ra",
+        "page": 8,
+        "metric": "revenue_net",
+        "trend": "đạt",
+        "verdict": "nhất quán",
+        "score": 1.0,
+        "evidence": [
+          {
+            "dimension": "numeric",
+            "explanation": "Câu nêu 56.400 tỷ; báo cáo tài chính (mã 10, trang 10) ghi 56.318 tỷ — khớp 0.1%.",
+            "passed": true,
+            "source_page": 10,
+            "source_code": "10"
+          },
+          {
+            "dimension": "numeric",
+            "explanation": "Câu nêu mức 7.2%; tính từ báo cáo tài chính (52.562 tỷ → 56.318 tỷ) ra +7.1% — lệch 0.05 điểm phần trăm.",
+            "passed": true,
+            "source_page": 10,
+            "source_code": "10"
+          }
+        ]
+      },
+      {
+        "text": "Thành tích này thể hiện nỗ lực của Vinamilk trong việc duy trì mức tăng trưởng doanh thu tốt hàng năm và các hoạt động đầu tư vào các hoạt động phát triển vùng nguyên liệu và cập nhật các công nghệ sản xuất nhằm đem lại các dòng sản phẩm có chất lượng cao, phục vụ cho cộng đồng và nhu cầu của thị trường",
+        "page": 48,
+        "metric": "revenue_net",
+        "trend": "tăng",
+        "verdict": "nhất quán",
+        "score": 1.0,
+        "evidence": [
+          {
+            "dimension": "directional",
+            "explanation": "Câu khẳng định tăng; số liệu cho thấy tăng 7.1% (52.562 tỷ → 56.318 tỷ, mã 10, trang 10).",
+            "passed": true,
+            "source_page": 10,
+            "source_code": "10"
+          }
+        ]
+      },
+      {
+        "text": "Biên chi phí bán hàng và quản lý doanh nghiệp hợp nhất trong năm 2019 đạt 25,6% trên doanh thu thuần, duy trì ổn định so với mức 25,5% của năm 2018. Biên lợi nhuận trước thuế, khấu hao và lãi vay (EBITDA) trong năm 2019 đạt 26,4%, tăng 30 điểm cơ bản so với cùng kỳ nhờ biên LNG cải thiện",
+        "page": 44,
+        "metric": "selling_expense",
+        "trend": "đạt",
+        "verdict": "không kiểm chứng được",
+        "score": null,
+        "evidence": [
+          {
+            "dimension": "lookup",
+            "explanation": "Câu không nêu con số hay hướng biến động kiểm chứng được từ báo cáo tài chính.",
+            "passed": false,
+            "source_page": 10,
+            "source_code": "25"
           }
         ]
       }
@@ -7107,6 +9431,54 @@
   },
   {
     "ticker": "VNM",
+    "year": 2023,
+    "nnc_score": 0.4117647058823529,
+    "claims": [
+      {
+        "text": "Doanh thu và lợi nhuận 2023 tăng lần lượt 6% và 27% so với 2022. Công ty đã tích cực triển khai, làm mới các hoạt động bán hàng, marketing",
+        "page": 46,
+        "metric": "revenue_net",
+        "trend": "tăng",
+        "verdict": "mâu thuẫn",
+        "score": 0.4117647058823529,
+        "evidence": [
+          {
+            "dimension": "numeric",
+            "explanation": "Câu nêu mức 6.0%; tính từ báo cáo tài chính (59.956 tỷ → 60.369 tỷ) ra +0.7% — lệch 5.31 điểm phần trăm.",
+            "passed": false,
+            "source_page": 10,
+            "source_code": "10"
+          },
+          {
+            "dimension": "directional",
+            "explanation": "Câu khẳng định tăng; số liệu cho thấy tăng 0.7% (59.956 tỷ → 60.369 tỷ, mã 10, trang 10).",
+            "passed": true,
+            "source_page": 10,
+            "source_code": "10"
+          }
+        ]
+      },
+      {
+        "text": "Liên doanh không ngừng thay đổi để thích nghi với điều kiện này, doanh thu cả năm 2023 vẫn đạt tăng trưởng nhẹ so với 2022. Đối mặt với khó khăn cũng là cơ hội để liên doanh đánh giá và xác định được các điểm mấu chốt trong hệ thống phân phối và kênh bán hàng",
+        "page": 46,
+        "metric": "revenue_net",
+        "trend": "đạt",
+        "verdict": "không kiểm chứng được",
+        "score": null,
+        "evidence": [
+          {
+            "dimension": "lookup",
+            "explanation": "Câu không nêu con số hay hướng biến động kiểm chứng được từ báo cáo tài chính.",
+            "passed": false,
+            "source_page": 10,
+            "source_code": "10"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "ticker": "VNM",
     "year": 2024,
     "nnc_score": 1.0,
     "claims": [
@@ -7255,6 +9627,30 @@
         "page": 31,
         "metric": "profit_before_tax",
         "trend": "đạt",
+        "verdict": "không kiểm chứng được",
+        "score": null,
+        "evidence": [
+          {
+            "dimension": "lookup",
+            "explanation": "Không tìm thấy chỉ tiêu 'profit_before_tax' trong báo cáo tài chính tương ứng nên chưa đối chiếu được.",
+            "passed": false,
+            "source_page": null,
+            "source_code": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "ticker": "VPB",
+    "year": 2019,
+    "nnc_score": null,
+    "claims": [
+      {
+        "text": "Để có được thành công vượt đầu tư các hệ thống nền tảng theo 2019. LỢI NHUẬN TRƯỚC THUẾ (PBT) Lợi nhuận tăng trưởng mạnh trong khi chi phí hoạt động được kiểm soát đã giúp VPBank tiếp tục duy trì vị thế là một trong những ngân 43% 57% hàng hoạt động hiệu quả nhất 45% 55% hệ thống",
+        "page": 9,
+        "metric": "profit_before_tax",
+        "trend": "tăng",
         "verdict": "không kiểm chứng được",
         "score": null,
         "evidence": [

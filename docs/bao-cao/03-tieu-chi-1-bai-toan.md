@@ -36,13 +36,13 @@ Ví dụ: BCTN Vinamilk 2024 tr.31 ghi *"tổng doanh thu hợp nhất 61.824 t�
 | Câu không phải kết quả | Kế hoạch, chính sách kế toán, rủi ro, số giả định "nếu … sẽ" | Bộ lọc tương lai, chính sách kế toán, giả định, số liệu quý · **đã xử lý** (có test) |
 | Đọc nhầm bảng | Mã 10 ở LCTT là biến động tồn kho; doanh thu FPT 2023 đọc thành "26 đồng" (cột Thuyết minh) | Nhận diện loại báo cáo; so độ lớn số trong hàng · **đã xử lý** (có test) |
 | Thoái vốn làm đứt chuỗi | Doanh thu FPT 2018 giảm 45,6% | Biến động > 40% hoặc "so sánh tương đương" → không kiểm chứng được, kèm lý do · **đã xử lý** |
-| Ngân hàng (Thông tư 49), BCTN scan hoặc PDF lỗi | 3 ngân hàng; 17/93 BCTN bản scan hoặc rỗng | Ngoài phạm vi, tính vào độ phủ · **có chủ đích** |
+| Ngân hàng (Thông tư 49), BCTN scan hoặc PDF lỗi | 3 ngân hàng; 11/112 BCTN là bản scan, mất dấu tiếng Việt hoặc không phải BCTN | Ngoài phạm vi, tính vào độ phủ · **có chủ đích** |
 
-Phần lớn cờ oan của bản 21/09 thuộc bốn dòng đầu bảng; bản vá ngày 19/11 nhắm đúng các nhóm này: số cờ "mâu thuẫn" giảm từ 141 xuống 35, cờ oan ước tính từ khoảng 137 xuống khoảng 23 (mục 3.4).
+Phần lớn cờ oan của bản 21/09 thuộc bốn dòng đầu bảng; bản vá ngày 19/11 nhắm đúng các nhóm này: số cờ "mâu thuẫn" giảm từ 141 (66 cặp) xuống 52 dù số cặp tăng lên 98; trên cùng tập khẳng định của bản 21/09, cờ oan ước tính giảm từ khoảng 137 xuống khoảng 23 (mục 3.4).
 
 ## Kết luận tiêu chí 1
 
-**Đã đạt:** nghiệp vụ đối chiếu thành bài toán neo bằng Mã số, ba trạng thái, có vết minh chứng; chạy end-to-end trên 73 cặp thật của 16 doanh nghiệp (391 khẳng định sau vá); bảy nhóm ràng buộc có ví dụ thật và cách xử lý.
+**Đã đạt:** nghiệp vụ đối chiếu thành bài toán neo bằng Mã số, ba trạng thái, có vết minh chứng; chạy end-to-end trên 98 cặp thật của 16 doanh nghiệp (511 khẳng định); bảy nhóm ràng buộc có ví dụ thật và cách xử lý.
 
 **Chưa đạt:** yêu cầu R2 — precision nhóm "mâu thuẫn" ≥ 80% — chưa đạt trên dữ liệu thật (0/21 cờ sau vá là mâu thuẫn thật, nhãn bạc): mâu thuẫn thật rất hiếm (ước tính khoảng 2% khẳng định) và nằm ở tỷ số cơ cấu mà hệ thống chưa tính. Chưa có nhãn người kiểm toàn bộ; chưa thử nghiệm với kiểm toán viên; ngân hàng, bản scan ngoài phạm vi.
 

@@ -75,7 +75,13 @@ class AnnualReport:
             lại pipeline tốn gần 20 phút nếu không có bộ đệm.
         """
         cache_file = self._cache_path(columns, max_pages)
-        if cache and cache_file.exists():
+        # Bản đệm chỉ dùng được khi không cũ hơn PDF: PDF được thay bằng bản
+        # mới (tải bổ sung) thì phải bóc lại. Không có PDF (gói nộp chỉ kèm
+        # văn bản đã bóc) thì luôn dùng bản đệm.
+        if cache and cache_file.exists() and (
+            not self.path.exists()
+            or cache_file.stat().st_mtime >= self.path.stat().st_mtime
+        ):
             return cache_file.read_text(encoding="utf-8")
 
         import pdfplumber

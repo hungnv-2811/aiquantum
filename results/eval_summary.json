@@ -29,8 +29,8 @@
       0.1546
     ],
     "false_flags_est": 23,
-    "flags_total": 35,
-    "flags_outside_sample": 14
+    "flags_total": 52,
+    "flags_outside_sample": 31
   },
   "test_only": {
     "before": {
@@ -66,5 +66,5 @@
     "gold_nq": 36,
     "gold_mt": 3
   },
-  "ghi_chu": "Mẫu lấy từ bản 21/09: toàn bộ 141 cờ 'mâu thuẫn' + 159 câu ngẫu nhiên (bỏ ngân hàng). Bản vá nền được thiết kế từ phân tích lỗi của chính 141 cờ đó, nên số 'sau vá' có thiên lệch lạc quan. 14 cờ sau vá nằm ngoài mẫu (chưa gán nhãn)."
+  "ghi_chu": "Mẫu lấy từ bản 21/09: toàn bộ 141 cờ 'mâu thuẫn' + 159 câu ngẫu nhiên (bỏ ngân hàng). Bản vá nền được thiết kế từ phân tích lỗi của chính 141 cờ đó, nên số 'sau vá' có thiên lệch lạc quan. 31 cờ sau vá nằm ngoài mẫu (chưa gán nhãn)."
 }

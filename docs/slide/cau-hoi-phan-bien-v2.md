@@ -121,10 +121,10 @@ Mức độ nguy hiểm: 🔴 cao (trả lời sai có thể mất điểm nặn
   - **Thương mại thì không dùng TiniX được.** Phải tự thu thập từ kênh công bố chính thức hoặc xin phép.
 - **Bằng chứng:** `NOTICE` trong zip; báo cáo mục 07, phần 5.3.
 
-#### Q8. 16 trên 93 BCTN là bản scan, tức 17% bị loại. Như vậy mẫu có bị lệch không? 🟠
+#### Q8. 11 trên 112 BCTN không đọc được, tức khoảng 10% bị loại. Như vậy mẫu có bị lệch không? 🟠
 - **Người trả lời:** Hùng
 - **Ý trả lời:**
-  - Có, và đội nói rõ: các bản này bị loại khỏi phạm vi và được tính vào chỉ số độ phủ. Ví dụ MWG mất 5 trên 7 năm chỉ vì lý do này.
+  - Có, và đội nói rõ: các bản này bị loại khỏi phạm vi và được tính vào chỉ số độ phủ (7 bản scan, 2 bản chữ mất dấu, 2 tệp là công văn thay cho báo cáo). Ví dụ MWG mất 5 trên 7 năm chỉ vì bản scan.
   - Hệ quả: precision của đội không đại diện cho doanh nghiệp chỉ nộp bản scan.
   - Đội không OCR vội, vì OCR sai một chữ số sẽ sinh ra cờ oan. OCR nằm trong lộ trình sau cuộc thi.
 - **Bằng chứng:** báo cáo mục 04 (phễu dữ liệu); slide 5.
@@ -135,12 +135,12 @@ Mức độ nguy hiểm: 🔴 cao (trả lời sai có thể mất điểm nặn
 - **Người trả lời:** Hùng
 - **Ý trả lời:**
   - **Trả lời thẳng: chưa đạt mục tiêu 80%.** Precision nhóm "cần xem xét" trên dữ liệu thật (300 cặp nhãn bạc): bản 21/09 là **2,8%** (4/141, KTC95 1,1–7,1%); bản vá 19/11 là **0%** (0/21, KTC95 0–15,5%).
-  - **Cái đã cải thiện:** cờ giảm 141 → 35; cờ oan ước tính trên toàn bộ khẳng định ~137 → ~23 (giảm ~83%).
+  - **Cái đã cải thiện:** cờ giảm 141 (66 cặp) → 52 (98 cặp); cờ oan ước tính trên tập khẳng định bản 21/09 ~137 → ~23 (giảm ~83%). 31 trong 52 cờ hiện tại nằm ngoài mẫu đã gán nhãn.
   - **Vì sao precision vẫn 0%:** mâu thuẫn thật rất hiếm (~2% khẳng định; nhãn cuối chỉ 7/300 cặp), và cả 7 ca đều là lỗi trình bày ở tỷ số/cơ cấu (hệ số nợ/VCSH; tỷ trọng tài sản ghi 51% + 69%; Nợ/VCSH ghi 1,82 trong khi BCTC cho 1,72) — loại phép tính hệ thống chưa có. Bản cũ "bắt" được 4 ca chỉ nhờ so nhầm tỷ số với khoản mục tiền; bản vá đã chặn phép so nhầm đó, nên 4 "cờ đúng" ấy biến mất. **Đừng** trình bày 2,8% như thành tích.
-  - **Khả năng bắt lỗi đo riêng trên tập chèn lỗi** (dữ liệu tổng hợp, báo cáo riêng): recall 82,6% (347/420) — đổi giá trị 86%, đổi tỷ lệ 87%, đảo hướng 71%, "kiểm soát chi phí" 47%; 0/122 báo động giả trên câu đối chứng.
+  - **Khả năng bắt lỗi đo riêng trên tập chèn lỗi** (dữ liệu tổng hợp, báo cáo riêng): recall 83,0% (473/570) — đổi giá trị 89%, đổi tỷ lệ 83%, đảo hướng 72%, "kiểm soát chi phí" 38%; 0/163 báo động giả trên câu đối chứng.
   - **Bước tiếp:** thêm phép tính tỷ số cơ cấu (Nợ/VCSH, tỷ trọng tài sản), rồi đo lại trên cùng 300 cặp. Mở slide 7 và D1.
 - **Bằng chứng:** đầu ra `evaluate.py`; slide 7 và D1; slide D3 (nguyên nhân cờ oan).
-- **Đừng nói:** "gần đạt", "precision cao"; đừng gộp 82,6% của tập chèn lỗi vào số trên dữ liệu thật; đừng nói "hệ thống không có cờ sai" (35 cờ vẫn còn, ước tính ~23 cờ oan).
+- **Đừng nói:** "gần đạt", "precision cao"; đừng gộp 83,0% của tập chèn lỗi vào số trên dữ liệu thật; đừng nói "hệ thống không có cờ sai" (52 cờ vẫn còn, ước tính ~23 cờ oan trên tập khẳng định cũ).
 
 #### Q10. Ngưỡng dung sai 1% lấy ở đâu? Nếu báo cáo làm tròn số thì sao? 🟠
 - **Người trả lời:** Hùng
@@ -235,7 +235,7 @@ Mức độ nguy hiểm: 🔴 cao (trả lời sai có thể mất điểm nặn
 - **Người trả lời:** Tài (Phong bổ sung phần hạ tầng)
 - **Ý trả lời:**
   - Trang tĩnh: 0 đồng. Chức năng "Kiểm tra khẳng định" chạy lõi Python ngay trong trình duyệt bằng Pyodide, **không có server**, nên cũng 0 đồng (người xem tải ~10 MB lần đầu). Không dùng Docker Space của Hugging Face (cần gói PRO 9 USD/tháng, giá tra 12/11/2026).
-  - Pipeline: 77 giây cho 93 BCTN trên CPU (khoảng 1 giây mỗi báo cáo khi đã bóc chữ; bóc PDF lần đầu khoảng 12 giây mỗi báo cáo, theo báo cáo mục 07). Mở rộng lên 700 doanh nghiệp vẫn chỉ cỡ vài giờ máy mỗi năm.
+  - Pipeline: 14 giây cho 112 BCTN trên CPU (khoảng 0,1 giây mỗi báo cáo khi đã bóc chữ; bóc PDF lần đầu khoảng 12 giây mỗi báo cáo, theo báo cáo mục 07). Mở rộng lên 700 doanh nghiệp vẫn chỉ cỡ vài giờ máy mỗi năm.
   - Hồ sơ từng ghi "dưới 1 phút mỗi báo cáo". Đó là **ngân sách thiết kế**, không phải số đo.
   - Chi phí lớn nhất là thời gian kiểm toán viên xử lý cờ, và bảo trì ontology.
 - **Bằng chứng:** báo cáo mục 07, Bảng 7.1; slide D6.

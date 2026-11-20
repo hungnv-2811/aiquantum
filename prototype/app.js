@@ -31,7 +31,7 @@ const PAGES = {
   quantum: "Thí nghiệm lượng tử", about: "Giới thiệu & dữ liệu",
 };
 
-const S = { results: [], facts: {}, metrics: null, examples: [], charts: {} };
+const S = { results: [], facts: {}, metrics: null, examples: [] };
 
 /* ── Tiện ích ── */
 const $ = (sel) => document.querySelector(sel);
@@ -53,10 +53,15 @@ function switchPage(page) {
   document.querySelectorAll(".page").forEach((p) => p.classList.toggle("active", p.id === `page-${page}`));
   document.querySelectorAll(".nav-item").forEach((n) => n.classList.toggle("active", n.dataset.page === page));
   $("#page-title").textContent = PAGES[page];
-  $("#breadcrumb-page").textContent = PAGES[page];
-  $("#sidebar").classList.remove("open");
+  setMenu(false);
   if (location.hash !== `#${page}`) history.replaceState(null, "", `#${page}`);
   if (page === "check") ensurePy().catch(() => {});
+}
+
+function setMenu(open) {
+  $("#sidebar").classList.toggle("open", open);
+  $("#sidebar-backdrop").hidden = !open;
+  $("#menu-btn").setAttribute("aria-expanded", String(open));
 }
 
 /* ── Thẻ khẳng định ── */
@@ -69,9 +74,8 @@ function evidenceHTML(e) {
 function claimHTML(c, ctx) {
   const v = V[c.verdict] || V["không kiểm chứng được"];
   const where = ctx ? `<b>${esc(ctx.ticker)} ${ctx.year}</b> · ` : "";
-  const score = c.score == null ? "" : ` · điểm ${nf(c.score, 2)}`;
   return `<div class="claim ${v.cls}">
-    <div class="claim-top">${badge(c.verdict)} ${where}${esc(metricVi(c.metric))}${c.page ? ` · BCTN trang ${c.page}` : " · câu nhập tay"}${score}</div>
+    <div class="claim-top">${badge(c.verdict)} ${where}${esc(metricVi(c.metric))}${c.page ? ` · BCTN trang ${c.page}` : " · câu nhập tay"}</div>
     <div class="claim-quote">“${esc(c.text)}”</div>
     ${(c.evidence || []).map(evidenceHTML).join("")}
   </div>`;
@@ -80,83 +84,150 @@ function claimHTML(c, ctx) {
 /* ── Tổng quan ── */
 function renderOverview() {
   const p = S.metrics.pipeline;
-  const now = p.verdicts_now, before = p.verdicts_before;
-  const kpis = [
-    ["Doanh nghiệp", p.companies, "13 phi ngân hàng + 3 ngân hàng (ngoài phạm vi)", "indigo", "🏢"],
-    ["Báo cáo đã đối chiếu", p.reports, "cặp BCTN ↔ BCTC kiểm toán", "cyan", "📄"],
-    ["Khẳng định trích được", nf(p.claims_now), `trước khi vá nền: ${nf(p.claims_before)}`, "purple", "🔎"],
-    ["Nhất quán", nf(now["nhất quán"]), "khớp số liệu BCTC", "emerald", "✓"],
-    ["Cần xem xét", nf(now["mâu thuẫn"]), `trước khi vá nền: ${nf(before["mâu thuẫn"])}`, "amber", "!"],
-    ["Chưa kiểm chứng được", nf(now["không kiểm chứng được"]), "im lặng có lý do", "rose", "?"],
+  const now = p.verdicts_now;
+  const total = p.claims_now;
+  // Thẻ tóm tắt: bên trái là phạm vi dữ liệu, bên phải là kết quả đối chiếu
+  // (một thanh chia ba phần, cùng bộ màu với danh sách doanh nghiệp bên dưới).
+  const parts = [
+    ["ok", "Nhất quán", now["nhất quán"], "khớp số liệu BCTC"],
+    ["review", "Cần xem xét", now["mâu thuẫn"], "tín hiệu để người xem lại"],
+    ["unk", "Chưa kiểm chứng được", now["không kiểm chứng được"], "im lặng có lý do"],
   ];
-  $("#kpi-grid").innerHTML = kpis.map(([label, value, sub, color, icon]) => `
-    <div class="kpi-card"><div class="kpi-header"><div class="kpi-label">${label}</div><div class="kpi-icon ${color}">${icon}</div></div>
-    <div class="kpi-value">${value}</div><div class="kpi-change neutral">${sub}</div></div>`).join("");
+  $("#summary").innerHTML = `
+    <div class="sum-scope">
+      <div><b>${p.companies}</b><span>doanh nghiệp</span></div>
+      <div><b>${p.reports}</b><span>báo cáo đối chiếu</span></div>
+      <div><b>${nf(total)}</b><span>khẳng định trích được</span></div>
+    </div>
+    <div class="sum-verdict">
+      <div class="sum-bar">${parts.filter(([, , n]) => n > 0)
+        .map(([k, , n]) => `<span class="seg ${k}" style="flex:${n}"></span>`).join("")}</div>
+      <div class="sum-legend">${parts.map(([k, label, n, hint]) => `
+        <div><i class="sw ${k}"></i><b>${nf(n)}</b><span>${label}</span><small>${pct(total ? n / total : 0, 0)} · ${hint}</small></div>`).join("")}
+      </div>
+    </div>`;
 
-  const labels = ["Nhất quán", "Cần xem xét", "Chưa kiểm chứng được"];
-  const keys = ["nhất quán", "mâu thuẫn", "không kiểm chứng được"];
-  drawChart("chart-before-after", {
-    type: "bar",
-    data: {
-      labels,
-      datasets: [
-        { label: `Bản 21/09 (${nf(p.claims_before)} khẳng định)`, data: keys.map((k) => before[k]), backgroundColor: "rgba(148,163,184,0.45)" },
-        { label: `Sau vá nền 19/11 (${nf(p.claims_now)} khẳng định)`, data: keys.map((k) => now[k]), backgroundColor: ["#10b981", "#f59e0b", "#64748b"] },
-      ],
-    },
-    options: { plugins: { legend: { position: "bottom" } }, scales: { y: { beginAtZero: true } } },
-  });
-  $("#before-after-note").innerHTML =
-    `Rà soát bản 21/09 cho thấy gần hết ${before["mâu thuẫn"]} cờ là cáo buộc oan (câu về công ty con, rác bố cục, câu không phải kết quả, sai đơn vị tính…). ` +
-    `Sau khi vá đúng các nguyên nhân đó còn <b>${now["mâu thuẫn"]}</b> câu cần xem xét. Số khẳng định giảm vì hệ thống lọc bỏ câu không đối chiếu được, thay vì đoán.`;
+  renderCompanyBars();
 
   const flagged = [];
   for (const r of S.results) for (const c of r.claims) if (c.verdict === "mâu thuẫn") flagged.push([r, c]);
-  const ev = S.metrics.evaluation;
-  const caveat = ev
-    ? `<div class="notice-banner"><strong>Đọc danh sách này một cách thận trọng.</strong> Khi gán nhãn mù ${ev.after.flags_in_sample} câu trong nhóm này,
-       <b>${ev.after.true_mt}</b> câu được xác nhận là mâu thuẫn thật; phần lớn còn lại là câu nói về một mảng/công ty con hoặc mảnh bố cục mà hệ thống chưa lọc được
-       (xem trang Đánh giá chất lượng). Nhóm này là danh sách để người xem lại, không phải danh sách sai phạm.</div>`
-    : "";
-  $("#review-list").innerHTML = caveat + (flagged.length
-    ? flagged.map(([r, c]) => claimHTML(c, r)).join("")
+  const sel = $("#review-filter");
+  const tickers = [...new Set(flagged.map(([r]) => r.ticker))].sort();
+  sel.innerHTML = `<option value="">Tất cả doanh nghiệp (${flagged.length})</option>` +
+    tickers.map((t) => `<option value="${t}">${t} (${flagged.filter(([r]) => r.ticker === t).length})</option>`).join("");
+  sel.onchange = () => renderReviewList(flagged);
+  renderReviewList(flagged);
+}
+
+/* Phân bố phán quyết theo doanh nghiệp: mỗi hàng một thanh mảnh chia ba phần
+   (nhất quán · cần xem xét · chưa kiểm chứng), số ghi bằng chữ bên phải để
+   không phụ thuộc vào màu. Doanh nghiệp nhiều câu cần xem xét nhất lên đầu;
+   ngân hàng (ngoài phạm vi) gom vào một dòng chú thích. */
+function renderCompanyBars() {
+  const by = {};
+  for (const r of S.results) {
+    const t = (by[r.ticker] ||= { ok: 0, review: 0, unk: 0, bank: r.bank, sector: r.sector, years: 0 });
+    t.ok += r.counts["nhất quán"]; t.review += r.counts["mâu thuẫn"]; t.unk += r.counts["không kiểm chứng được"];
+    t.years += 1;
+  }
+  const inScope = Object.keys(by).filter((t) => !by[t].bank);
+  const banks = Object.keys(by).filter((t) => by[t].bank).sort();
+  inScope.sort((a, b) => (by[b].review - by[a].review) || (by[b].ok - by[a].ok) || a.localeCompare(b));
+  const pctOf = (n, total) => (total ? (100 * n) / total : 0);
+  const num = (n, cls, sym, title) =>
+    `<span class="${n === 0 ? "zero" : cls}" title="${title}">${sym} ${n}</span>`;
+
+  $("#company-bars").innerHTML = inScope.map((t) => {
+    const d = by[t]; const total = d.ok + d.review + d.unk;
+    const segs = [["ok", d.ok], ["review", d.review], ["unk", d.unk]].filter(([, n]) => n > 0)
+      .map(([k, n]) => `<span class="seg ${k}" style="flex:${pctOf(n, total).toFixed(2)}"></span>`).join("");
+    const tip = `${t}: ${d.ok} nhất quán · ${d.review} cần xem xét · ${d.unk} chưa kiểm chứng (${total} khẳng định, ${d.years} năm)`;
+    return `<div class="cb-row" data-t="${t}" title="${esc(tip)}">
+      <div class="cb-name"><b>${t}</b><small>${esc(d.sector)}</small></div>
+      <div class="cb-bar">${segs}</div>
+      <div class="cb-nums">${num(d.ok, "", "✓", "nhất quán")}${num(d.review, "flag", "!", "cần xem xét")}${num(d.unk, "", "?", "chưa kiểm chứng")}</div>
+    </div>`;
+  }).join("");
+  $("#company-bars-note").innerHTML =
+    `Tổng số khẳng định của mỗi doanh nghiệp qua các năm có báo cáo. Bấm một hàng để lọc danh sách câu cần xem xét bên dưới.` +
+    (banks.length ? ` Ngân hàng (${banks.join(", ")}) lập BCTC theo Thông tư 49, nằm ngoài phạm vi nên không đưa vào biểu đồ.` : "");
+
+  $("#company-bars").onclick = (ev) => {
+    const row = ev.target.closest(".cb-row");
+    if (!row) return;
+    const t = row.dataset.t;
+    const sel = $("#review-filter");
+    const same = sel.value === t;
+    sel.value = same ? "" : ([...sel.options].some((o) => o.value === t) ? t : "");
+    sel.onchange();
+    document.querySelectorAll(".cb-row").forEach((r) => r.classList.toggle("active", !same && r.dataset.t === t));
+    if (!same) $("#review-list").closest(".card").scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+}
+
+function renderReviewList(flagged) {
+  const pick = $("#review-filter").value;
+  const shown = pick ? flagged.filter(([r]) => r.ticker === pick) : flagged;
+  $("#review-count").textContent = `· ${shown.length} câu`;
+  $("#review-list").innerHTML = (shown.length
+    ? shown.map(([r, c]) => claimHTML(c, r)).join("")
     : `<div class="empty-state"><p>Không có câu nào cần xem xét.</p></div>`);
 }
 
-/* ── Doanh nghiệp: bảng nhiệt ── */
-function scoreColor(s) {
-  if (s == null) return "transparent";
-  const hue = Math.round(30 + 110 * s); // 30 = cam, 140 = xanh
-  return `hsla(${hue}, 70%, 45%, 0.28)`;
-}
-
+/* ── Doanh nghiệp: bảng theo năm ──
+   Mỗi ô là một báo cáo thường niên, tô theo trạng thái (có câu cần xem xét ·
+   khớp hết · chưa kiểm chứng được) và ghi số câu ✓/! bằng chữ để không phụ
+   thuộc vào màu. Ô không đối chiếu được ghi rõ lý do (bản scan, thiếu BCTC…). */
 function renderCompanies() {
   const years = [...new Set(S.results.map((r) => r.year))].sort();
-  const tickers = [...new Set(S.results.map((r) => r.ticker))].sort();
+  const missing = S.metrics.pipeline.missing || {};
   const byKey = Object.fromEntries(S.results.map((r) => [`${r.ticker}_${r.year}`, r]));
-  let html = `<thead><tr><th>Doanh nghiệp</th>${years.map((y) => `<th>${y}</th>`).join("")}</tr></thead><tbody>`;
-  for (const t of tickers) {
-    const any = S.results.find((r) => r.ticker === t);
-    html += `<tr><td><b>${t}</b> <span class="note">${esc(any.sector)}${any.bank ? " · ngoài phạm vi (TT49)" : ""}</span></td>`;
-    for (const y of years) {
-      const r = byKey[`${t}_${y}`];
-      if (!r) { html += `<td></td>`; continue; }
-      const n = r.counts;
-      html += `<td class="cell" data-t="${t}" data-y="${y}" style="background:${scoreColor(r.score)}">
-        ${r.score == null ? "—" : nf(r.score, 2)}<span class="sub">${n["nhất quán"]}✓ ${n["mâu thuẫn"]}! ${n["không kiểm chứng được"]}?</span></td>`;
-    }
-    html += `</tr>`;
+  const info = {};
+  for (const r of S.results) {
+    const t = (info[r.ticker] ||= { review: 0, ok: 0, bank: r.bank, sector: r.sector });
+    t.review += r.counts["mâu thuẫn"]; t.ok += r.counts["nhất quán"];
   }
-  $("#heat-table").innerHTML = html + "</tbody>";
+  const all = Object.keys(info);
+  const inScope = all.filter((t) => !info[t].bank)
+    .sort((a, b) => (info[b].review - info[a].review) || (info[b].ok - info[a].ok) || a.localeCompare(b));
+  const banks = all.filter((t) => info[t].bank).sort();
+
+  const cell = (t, y) => {
+    const r = byKey[`${t}_${y}`];
+    if (!r) {
+      const m = missing[`${t}_${y}`];
+      return `<td class="hc c-none" title="${esc(m ? m.why : "Không có báo cáo thường niên của năm này")}"></td>`;
+    }
+    const n = r.counts, ok = n["nhất quán"], rv = n["mâu thuẫn"], unk = n["không kiểm chứng được"];
+    const cls = rv ? "c-review" : ok ? "c-ok" : "c-unk";
+    const tip = `${t} ${y}: ${ok} nhất quán · ${rv} cần xem xét · ${unk} chưa kiểm chứng được. Bấm để xem từng câu.`;
+    const main = ok || rv
+      ? `${ok ? `<span class="k-ok">✓ ${ok}</span>` : ""}${rv ? `<span class="k-review">! ${rv}</span>` : ""}`
+      : `<span class="k-unk">—</span>`;
+    return `<td class="hc ${cls}" data-t="${t}" data-y="${y}" title="${esc(tip)}"><div class="hc-main">${main}</div><small>${ok + rv + unk} câu</small></td>`;
+  };
+  const row = (t) => `<tr class="${info[t].bank ? "bank" : ""}"><th scope="row"><b>${t}</b><small>${esc(info[t].sector)}</small></th>${years.map((y) => cell(t, y)).join("")}</tr>`;
+  $("#heat-table").innerHTML = `<colgroup><col class="col-name">${years.map(() => "<col>").join("")}</colgroup>
+    <thead><tr><th></th>${years.map((y) => `<th>${y}</th>`).join("")}</tr></thead>
+    <tbody>${inScope.map(row).join("")}
+    ${banks.length ? `<tr class="group"><td colspan="${years.length + 1}">Ngân hàng lập BCTC theo Thông tư 49, nằm ngoài phạm vi đối chiếu nên mọi câu đều “chưa kiểm chứng được”</td></tr>${banks.map(row).join("")}` : ""}</tbody>`;
   $("#heat-table").onclick = (ev) => {
-    const td = ev.target.closest("td.cell");
-    if (!td) return;
-    openReport(td.dataset.t, Number(td.dataset.y));
+    const td = ev.target.closest("td.hc[data-t]");
+    if (td) openReport(td.dataset.t, Number(td.dataset.y));
   };
 }
 
 /* ── Chi tiết báo cáo ── */
 let reportFilter = "all";
+const GROUPS = [["mâu thuẫn", "review", "Cần xem xét"], ["nhất quán", "ok", "Nhất quán"], ["không kiểm chứng được", "unk", "Chưa kiểm chứng được"]];
+
+/* Tên tệp BCTC (vd. FPT_Baocaotaichinh_2018_Kiemtoan_Hopnhat) → mô tả dễ đọc. */
+function sourceLabel(src, year) {
+  if (!src) return "";
+  const kind = /Hopnhat/i.test(src) ? " hợp nhất" : /Rieng|Congtyme/i.test(src) ? " riêng" : "";
+  const audited = /Kiemtoan/i.test(src) ? " đã kiểm toán" : "";
+  return `BCTC${kind}${audited} năm ${year}`;
+}
 
 function fillTickerYear(tSel, ySel, keys, onChange) {
   const tickers = [...new Set(keys.map((k) => k.split("_")[0]))].sort();
@@ -172,23 +243,74 @@ function fillTickerYear(tSel, ySel, keys, onChange) {
 }
 
 function renderReport() {
-  const r = S.results.find((x) => x.ticker === $("#report-ticker").value && x.year === Number($("#report-year").value));
+  const ySel = $("#report-year");
+  $("#report-years").innerHTML = [...ySel.options].map((o) =>
+    `<button class="ychip${o.value === ySel.value ? " active" : ""}" data-y="${o.value}" role="tab" aria-selected="${o.value === ySel.value}">${o.value}</button>`).join("");
+  const r = S.results.find((x) => x.ticker === $("#report-ticker").value && x.year === Number(ySel.value));
   if (!r) return;
   const src = S.facts[`${r.ticker}_${r.year}`]?.source || "";
-  $("#report-summary").innerHTML = `<p class="note">${r.ticker} ${r.year} · ${esc(r.sector)} · điểm NNC <b>${r.score == null ? "—" : nf(r.score, 2)}</b> ·
-    ${r.counts["nhất quán"]} nhất quán · ${r.counts["mâu thuẫn"]} cần xem xét · ${r.counts["không kiểm chứng được"]} chưa kiểm chứng được<br>
-    Số liệu đối chiếu: <code>${esc(src)}</code>${r.bank ? " · <b>Ngân hàng lập BCTC theo Thông tư 49 — ngoài phạm vi</b>" : ""}</p>`;
-  const claims = r.claims.filter((c) => reportFilter === "all" || c.verdict === reportFilter);
-  $("#report-claims").innerHTML = claims.length ? claims.map((c) => claimHTML(c)).join("")
-    : `<div class="empty-state"><p>Không có khẳng định nào trong nhóm này.</p></div>`;
+  const n = r.counts;
+  const total = r.claims.length;
+  if (reportFilter !== "all" && !n[reportFilter]) reportFilter = "all";
+  $("#report-summary").innerHTML = `
+    <div class="rep-head">
+      <div class="rep-id"><b>${r.ticker} · ${r.year}</b><span>${esc(r.sector)}</span></div>
+      <div class="rep-src" title="${esc(src)}">Câu trong báo cáo thường niên được đối chiếu với <b>${esc(sourceLabel(src, r.year))}</b>
+        ${r.bank ? "<br>Ngân hàng lập BCTC theo Thông tư 49, nằm ngoài phạm vi đối chiếu." : ""}</div>
+    </div>
+    ${total ? `<div class="sum-bar">${GROUPS.filter(([v]) => n[v]).map(([v, cls]) => `<span class="seg ${cls}" style="flex:${n[v]}"></span>`).join("")}</div>` : ""}
+    <div class="rep-filters">
+      <button class="rf${reportFilter === "all" ? " active" : ""}" data-f="all">Tất cả <b>${total}</b></button>
+      ${GROUPS.map(([v, cls, label]) => `<button class="rf${reportFilter === v ? " active" : ""}" data-f="${v}"${n[v] ? "" : " disabled"}><i class="sw ${cls}"></i>${label} <b>${n[v]}</b></button>`).join("")}
+    </div>`;
+
+  const of = (v) => r.claims.filter((c) => c.verdict === v);
+  let html;
+  if (!total) {
+    html = `<div class="empty-state"><p>Không trích được khẳng định nào từ báo cáo này.</p></div>`;
+  } else if (reportFilter === "all") {
+    const onlyUnk = !n["mâu thuẫn"] && !n["nhất quán"];
+    html = GROUPS.map(([v, , label]) => {
+      const cs = of(v);
+      if (!cs.length) return "";
+      const body = cs.map((c) => claimHTML(c)).join("");
+      return v === "không kiểm chứng được"
+        ? `<details class="claim-group"${onlyUnk ? " open" : ""}><summary>${label} <b>${cs.length}</b>
+            <span>Hệ thống chưa đủ căn cứ nên không kết luận. Bấm để xem lý do từng câu.</span></summary>${body}</details>`
+        : `<div class="group-title">${label} <b>${cs.length}</b></div>${body}`;
+    }).join("");
+  } else {
+    html = of(reportFilter).map((c) => claimHTML(c)).join("");
+  }
+  $("#report-claims").innerHTML = html;
 }
 
 function openReport(ticker, year) {
   $("#report-ticker").value = ticker;
   $("#report-ticker").onchange();
   $("#report-year").value = String(year);
+  reportFilter = "all";
   renderReport();
   switchPage("report");
+}
+
+function setupReportPage() {
+  fillTickerYear($("#report-ticker"), $("#report-year"), S.results.map((r) => `${r.ticker}_${r.year}`),
+    () => { reportFilter = "all"; renderReport(); });
+  $("#report-years").onclick = (ev) => {
+    const b = ev.target.closest(".ychip");
+    if (!b) return;
+    $("#report-year").value = b.dataset.y;
+    reportFilter = "all";
+    renderReport();
+  };
+  $("#report-summary").onclick = (ev) => {
+    const b = ev.target.closest(".rf");
+    if (!b || b.disabled) return;
+    reportFilter = b.dataset.f;
+    renderReport();
+  };
+  renderReport();
 }
 
 /* ── Kiểm tra khẳng định: Pyodide ── */
@@ -222,12 +344,6 @@ def sa_check(text, year, facts_json):
     return json.dumps(out, ensure_ascii=False)
 `;
 
-function pyStatus(cls, text) {
-  const el = $("#py-status");
-  el.className = `py-status ${cls}`;
-  el.textContent = text;
-}
-
 function loadScript(src) {
   return new Promise((ok, fail) => {
     const s = document.createElement("script");
@@ -239,12 +355,10 @@ function loadScript(src) {
 async function ensurePy() {
   if (py) return py;
   if (pyLoading) return pyLoading;
-  pyStatus("busy", "Đang tải Pyodide (lần đầu ~10 MB)…");
   pyLoading = (async () => {
     try {
       if (!window.loadPyodide) await loadScript(PYODIDE_URL + "pyodide.js");
       const p = await window.loadPyodide({ indexURL: PYODIDE_URL });
-      pyStatus("busy", "Đang nạp mã nguồn SmartAudit…");
       const files = await getJSON("data/py_files.json");
       for (const rel of files) {
         const text = await (await fetch("py/" + rel)).text();
@@ -257,12 +371,10 @@ async function ensurePy() {
       }
       p.runPython(GLUE);
       py = p;
-      pyStatus("ready", "✓ Lõi Python đã sẵn sàng");
       return p;
     } catch (err) {
       pyLoading = null;
-      pyStatus("err", `Không nạp được lõi Python: ${err.message}. Cần kết nối mạng tới cdn.jsdelivr.net.`);
-      throw err;
+      throw new Error(`Không nạp được lõi Python (${err.message}). Cần kết nối mạng tới cdn.jsdelivr.net.`);
     }
   })();
   return pyLoading;
@@ -285,18 +397,25 @@ async function runCheck() {
         <div class="ev info">Câu về công ty con, một mảng/thị trường, kế hoạch tương lai, chính sách kế toán, số liệu theo quý hoặc năm khác bị loại <b>có chủ đích</b> — thà im lặng còn hơn cáo buộc sai.</div></div>`;
       return;
     }
-    box.innerHTML = `<p class="note">Đối chiếu với ${esc(S.facts[key]?.source || key)}</p>` +
+    box.innerHTML = `<p class="note check-src">Đối chiếu với <b>${esc($("#check-ticker").value)} · ${esc(sourceLabel(S.facts[key]?.source, $("#check-year").value) || key)}</b></p>` +
       out.map((c) => claimHTML(c)).join("");
   } catch (err) {
     box.innerHTML = `<div class="empty-state"><p>${esc(err.message)}</p></div>`;
   }
 }
 
+const LOAI_VI = { gia_tri: "sửa con số", phan_tram: "sửa tỷ lệ %", huong: "đảo tăng ↔ giảm", kiem_soat_chi_phi: "nói sai về chi phí" };
+
 function renderCheck() {
   fillTickerYear($("#check-ticker"), $("#check-year"), Object.keys(S.facts), () => {});
   $("#check-run").onclick = runCheck;
-  $("#examples").innerHTML = `<div class="lbl">Thử nhanh</div>` + S.examples.map((e, i) => `
-    <button class="example" data-i="${i}"><span class="tag ${e.kind.includes("chủ đích") ? "synthetic" : ""}">${esc(e.kind)} · ${e.ticker} ${e.year}</span>${esc(e.text)}</button>`).join("");
+  const btn = ([e, i]) => `<button class="example" data-i="${i}"><span class="tag${e.real ? "" : " synthetic"}">${e.ticker} ${e.year} · ${
+    e.real ? (e.page ? `BCTN trang ${e.page}` : "BCTN") : LOAI_VI[e.loai] || "đã sửa"}</span>${esc(e.text)}</button>`;
+  const all = S.examples.map((e, i) => [e, i]);
+  const real = all.filter(([e]) => e.real), fake = all.filter(([e]) => !e.real);
+  $("#examples").innerHTML =
+    (real.length ? `<div class="ex-group"><div class="lbl">Câu thật trong báo cáo thường niên</div>${real.map(btn).join("")}</div>` : "") +
+    (fake.length ? `<div class="ex-group"><div class="lbl">Câu đã sửa sai để thử <span class="muted">(không có trong báo cáo)</span></div>${fake.map(btn).join("")}</div>` : "");
   $("#examples").onclick = (ev) => {
     const b = ev.target.closest(".example");
     if (!b) return;
@@ -309,119 +428,161 @@ function renderCheck() {
   };
 }
 
-/* ── Đánh giá ── */
+/* ── Đánh giá: phép thử cố tình viết sai ── */
+/* Đánh dấu chỗ khác nhau giữa câu gốc và câu đã sửa (sửa một từ/số), chỉ giữ
+   vài từ quanh chỗ sửa để ví dụ ngắn gọn. */
+function diffSnippet(orig, changed, around = 4) {
+  const a = orig.split(/\s+/), b = changed.split(/\s+/);
+  let i = 0;
+  while (i < Math.min(a.length, b.length) && a[i] === b[i]) i++;
+  if (i >= b.length) return esc(changed);
+  const from = Math.max(0, i - around), to = Math.min(b.length, i + around + 1);
+  return (from > 0 ? "… " : "") + b.slice(from, to).map((w, k) => (from + k === i ? `<mark>${esc(w)}</mark>` : esc(w))).join(" ") + (to < b.length ? " …" : "");
+}
+
+/* Thanh ngang chia hai phần (bắt được · bỏ lọt) hoặc một phần trên nền 0–100%. */
+function hbarRow({ name, desc, tag, segs, value, sub, best }) {
+  return `<div class="hb-row${best ? " best" : ""}">
+    <div class="hb-name"><b>${name}${tag || ""}</b>${desc ? `<small>${desc}</small>` : ""}</div>
+    <div class="hb-track">${segs.filter((s) => s.n > 0).map((s) => `<span class="seg ${s.cls}" style="flex:${s.n}"></span>`).join("")}</div>
+    <div class="hb-val"><b>${value}</b>${sub ? `<small>${sub}</small>` : ""}</div>
+  </div>`;
+}
+
 function renderEvaluation() {
   const inj = S.metrics.injected;
-  const ev = S.metrics.evaluation;
-  const kpis = [];
-  if (inj) {
-    kpis.push(["Recall trên tập chèn lỗi", pct(inj.recall_chen_loi.ty_le), `${inj.recall_chen_loi.dung}/${inj.recall_chen_loi.n} câu bị sửa sai được bắt — dữ liệu tổng hợp`, "emerald", "🎯"]);
-    kpis.push(["Báo động giả trên đối chứng", `${inj.bao_dong_gia_doi_chung.n - inj.bao_dong_gia_doi_chung.dung}/${inj.bao_dong_gia_doi_chung.n}`, "câu gốc và câu lệch 0,5% (trong dung sai)", "cyan", "🛡"]);
-  }
-  if (ev) {
-    kpis.push(["Precision “cần xem xét” (sau vá)", ev.after?.precision == null ? "—" : pct(ev.after.precision, 0),
-      `${ev.after?.true_mt ?? "—"}/${ev.after?.flags_in_sample ?? "—"} cờ trong mẫu là mâu thuẫn thật · nhãn bạc`, "amber", "!"]);
-    kpis.push(["Đồng thuận 2 người gán", ev.kappa_nhan == null ? "—" : nf(ev.kappa_nhan, 2), "Cohen's kappa trên nhãn phán quyết", "purple", "κ"]);
-  }
-  $("#eval-kpis").innerHTML = kpis.map(([label, value, sub, color, icon]) => `
-    <div class="kpi-card"><div class="kpi-header"><div class="kpi-label">${label}</div><div class="kpi-icon ${color}">${icon}</div></div>
-    <div class="kpi-value">${value}</div><div class="kpi-change neutral">${sub}</div></div>`).join("");
+  if (!inj) { $("#eval-steps").innerHTML = `<p class="note">Chưa có kết quả phép thử.</p>`; return; }
+  const r = inj.recall_chen_loi;
+  const ctrl = inj.bao_dong_gia_doi_chung;
+  const vd = inj.vi_du;
+  const lech05 = (inj.chi_tiet || []).find((d) => d.loai === "doi_chung" && d.muc.startsWith("lech"));
 
-  if (inj) {
-    const names = { gia_tri: "Đổi giá trị (±2–20%)", phan_tram: "Đổi tỷ lệ % (+2–10 điểm)", huong: "Đảo hướng tăng/giảm", kiem_soat_chi_phi: "“Kiểm soát chi phí” khi tỷ lệ chi phí tăng" };
-    const ks = Object.keys(names).filter((k) => inj.recall_theo_loai[k]?.n);
-    drawChart("chart-injected", {
-      type: "bar",
-      data: { labels: ks.map((k) => `${names[k]} (n=${inj.recall_theo_loai[k].n})`),
-        datasets: [{ label: "Tỷ lệ phát hiện", data: ks.map((k) => inj.recall_theo_loai[k].ty_le * 100), backgroundColor: "#06b6d4" }] },
-      options: { indexAxis: "y", plugins: { legend: { display: false } }, scales: { x: { min: 0, max: 100, ticks: { callback: (v) => v + "%" } } } },
-    });
+  $("#eval-steps").innerHTML = `
+    <li><b>Lấy câu đúng</b><span>Câu thật trong báo cáo thường niên mà hệ thống đã xác nhận khớp với BCTC kiểm toán.</span></li>
+    <li><b>Cố tình sửa cho sai</b><span>Đổi con số, đổi tỷ lệ %, đảo “tăng” thành “giảm”, hoặc viết “chi phí được kiểm soát tốt” khi chi phí thực ra tăng nhanh hơn doanh thu.</span></li>
+    <li><b>Cho hệ thống đọc lại</b><span>Đếm xem bao nhiêu câu sai bị gắn “Cần xem xét”. Song song, giữ nguyên ${nf(ctrl.n)} câu đúng để xem hệ thống có báo nhầm không.</span></li>`;
+
+  if (vd) {
+    const kinds = [["gia_tri", "Sửa con số"], ["phan_tram", "Sửa tỷ lệ %"], ["huong", "Đảo chiều"]];
+    $("#eval-demo").innerHTML = `
+      <div class="demo-label">Ví dụ · câu thật của ${esc(vd.ticker)} ${vd.year}</div>
+      <div class="demo-orig"><span class="vbadge ok">Câu gốc · Nhất quán</span><p>“${esc(vd.goc)}”</p></div>
+      ${kinds.filter(([k]) => vd.bien_the[k]).map(([k, label]) => {
+        const v = vd.bien_the[k];
+        const caught = v.ket_qua === "mâu thuẫn";
+        return `<div class="demo-row"><span class="demo-kind">${label}</span>
+          <span class="demo-text">${diffSnippet(vd.goc, v.text)}</span>
+          <span class="demo-res ${caught ? "hit" : "miss"}">${caught ? "✓ bị bắt" : "✗ lọt"}</span></div>`;
+      }).join("")}`;
   }
 
-  if (!ev) {
-    $("#eval-real").innerHTML = `<p class="note">Chưa có kết quả gán nhãn.</p>`;
-  } else {
-    const row = (name, b, a) => `<tr><td>${name}</td><td class="num">${b}</td><td class="num">${a}</td></tr>`;
-    const ci = (x) => (x?.ci ? ` <span class="note">(KTC 95%: ${pct(x.ci[0], 0)}–${pct(x.ci[1], 0)})</span>` : "");
-    $("#eval-real").innerHTML = `
-      <table class="simple"><thead><tr><th></th><th>Bản 21/09</th><th>Sau vá 19/11</th></tr></thead><tbody>
-      ${row("Số cờ “cần xem xét” trong mẫu", nf(ev.before.flags_in_sample), nf(ev.after.flags_in_sample))}
-      ${row("… trong đó mâu thuẫn thật (theo nhãn)", nf(ev.before.true_mt), nf(ev.after.true_mt))}
-      ${row("Precision", pct(ev.before.precision, 0) + ci(ev.before), pct(ev.after.precision, 0) + ci(ev.after))}
-      ${row("Cờ oan ước tính trên toàn bộ khẳng định", nf(ev.before.false_flags_est), nf(ev.after.false_flags_est))}
-      ${row("Mâu thuẫn thật trong mẫu bị gắn cờ", `${ev.gold_mt.flagged_before}/${ev.gold_mt.n}`, `${ev.gold_mt.flagged_after}/${ev.gold_mt.n}`)}
-      </tbody></table>
-      <p class="note">Hai người gán (tác tử AI, mù, độc lập) đồng thuận ${pct(ev.dong_thuan_nhan, 0)} · Cohen's kappa ${nf(ev.kappa_nhan, 2)}.
-        Nhãn cuối: ${Object.entries(ev.gold_distribution).map(([k, v]) => `${k} ${v}`).join(" · ")}.</p>
-      <p class="note"><b>Đọc kết quả:</b> mâu thuẫn thật rất hiếm (${ev.gold_mt.n}/${ev.n_labeled} câu trong mẫu) và đều là lỗi trình bày ở tỷ số, cơ cấu
-        (hệ số nợ/VCSH, tỷ trọng tài sản) — loại mà bộ đối chiếu hiện chưa tính. Bản cũ “bắt” được ${ev.gold_mt.flagged_before} ca là do so nhầm tỷ số với khoản mục tiền;
-        bản vá chặn phép so nhầm đó nên giảm mạnh cờ oan nhưng cũng mất các ca này. Bước tiếp theo: thêm phép tính tỷ số cơ cấu.</p>
-      <p class="note">${esc(ev.ghi_chu || "")}</p>`;
+  $("#eval-kpis").innerHTML = `
+    <div class="big-kpi good"><b>${pct(r.ty_le, 0)}</b><div><span>câu viết sai bị bắt</span>
+      <small>${nf(r.dung)} trên ${nf(r.n)} câu đã cố tình sửa sai</small></div></div>
+    <div class="big-kpi good"><b>${nf(ctrl.n - ctrl.dung)}</b><div><span>câu đúng bị báo nhầm</span>
+      <small>trên ${nf(ctrl.n)} câu đúng${lech05 ? `, trong đó ${nf(lech05.n)} câu chỉ lệch 0,5% do làm tròn` : ""}</small></div></div>`;
+
+  const types = [
+    ["gia_tri", "Sai con số", "lệch từ 2% đến 20% so với số đúng"],
+    ["phan_tram", "Sai tỷ lệ %", "lệch từ 2 đến 10 điểm phần trăm"],
+    ["huong", "Đảo chiều tăng/giảm", "“tăng” thành “giảm” hoặc ngược lại"],
+    ["kiem_soat_chi_phi", "Nói sai về chi phí", "“chi phí được kiểm soát tốt” trong khi chi phí trên doanh thu tăng quá 2 điểm"],
+  ].filter(([k]) => inj.recall_theo_loai[k]?.n);
+  $("#eval-types").innerHTML = types.map(([k, name, desc]) => {
+    const t = inj.recall_theo_loai[k];
+    return hbarRow({ name, desc, segs: [{ cls: "caught", n: t.dung }, { cls: "missed", n: t.n - t.dung }],
+      value: pct(t.ty_le, 0), sub: `bắt ${nf(t.dung)}/${nf(t.n)} câu` });
+  }).join("");
+
+  // Sai càng nhỏ càng khó bắt: gộp các mức ± của phép sửa con số.
+  const byLevel = {};
+  for (const d of inj.chi_tiet || []) {
+    if (d.loai !== "gia_tri") continue;
+    const lv = d.muc.replace(/[+-]/, "");
+    (byLevel[lv] ||= { n: 0, dung: 0 });
+    byLevel[lv].n += d.n; byLevel[lv].dung += d.dung;
   }
-  const limits = [
-    "Nhãn 300 cặp do <b>hai tác tử AI gán mù, độc lập</b> theo hướng dẫn của đội rồi phân xử bất đồng (nhãn bạc) — chưa được chuyên gia kiểm toán kiểm lại toàn bộ.",
-    "Các bản vá nền dựa trên phân tích lỗi của chính 141 cờ bản 21/09, nên số đo “sau vá” trên mẫu này có thiên lệch lạc quan.",
-    "Tập chèn lỗi là dữ liệu tổng hợp: đo độ nhạy của bộ đối chiếu, không đo tần suất mâu thuẫn ngoài thực tế.",
-    "Chấp nhận 3 định nghĩa “doanh thu” (Mã 10, Mã 01, Mã 10 + 21 + 31) giảm cờ oan nhưng làm lọt một số câu bị sửa lệch nhỏ.",
-    "Ngân hàng (Thông tư 49) và 15 báo cáo thường niên bản scan chưa được xử lý.",
-  ];
-  $("#eval-limits").innerHTML = `<ul class="prose" style="padding-left:18px">${limits.map((l) => `<li class="note" style="margin-bottom:6px">${l}</li>`).join("")}</ul>`;
+  const levels = Object.entries(byLevel).sort((a, b) => parseFloat(a[0]) - parseFloat(b[0]));
+  const gold = S.metrics.evaluation?.gold_distribution;
+  $("#eval-note").innerHTML =
+    (levels.length >= 2 ? `<b>Sai càng nhỏ càng khó bắt:</b> ${levels.map(([lv, x]) => `lệch ${lv.replace(".", ",")} bắt ${pct(x.dung / x.n, 0)}`).join(" · ")}. ` : "") +
+    `<br><b>Vì sao phải tự tạo câu sai?</b> Báo cáo thật rất hiếm khi viết sai số liệu đã kiểm toán` +
+    (gold ? ` (trong ${nf(S.metrics.evaluation.n_labeled)} câu thật đội đã đọc và gán nhãn, chỉ ${nf(gold.MT)} câu mâu thuẫn thật)` : "") +
+    `, nên không đủ để đo. Đây là câu sửa nhân tạo: đo độ nhạy của hệ thống, không phải tỷ lệ sai ngoài thực tế.`;
 }
 
 /* ── Lượng tử ── */
 function renderQuantum() {
   const q = S.metrics.quantum;
-  if (!q) { $("#qka-text").innerHTML = `<p class="note">Chưa có kết quả.</p>`; return; }
-  const order = [
-    ["rapidfuzz_top8", "rapidfuzz (hệ thống đang dùng)"],
-    ["svm_rbf", "SVM-RBF cổ điển"],
-    ["qsvm_fixed", "QSVM — kernel ZZ cố định"],
-    ["qsvm_qka", "QSVM + QKA (kernel học được)"],
-  ].filter(([k]) => q.methods[k]);
-  drawChart("chart-qka", {
-    type: "bar",
-    data: { labels: order.map(([, n]) => n),
-      datasets: [{ label: "Accuracy (TB 5 phần)", data: order.map(([k]) => q.methods[k].accuracy_mean * 100),
-        backgroundColor: order.map(([k]) => (k.startsWith("qsvm") ? "#8b5cf6" : "#06b6d4")) }] },
-    options: { plugins: { legend: { display: false } }, scales: { y: { min: 50, max: 100, ticks: { callback: (v) => v + "%" } } } },
-  });
-  const best = order.reduce((a, b) => (q.methods[b[0]].accuracy_mean > q.methods[a[0]].accuracy_mean ? b : a))[0];
-  $("#qka-text").innerHTML = `
-    <table class="simple"><thead><tr><th>Phương pháp</th><th>Accuracy</th><th>Macro-F1</th><th>Huấn luyện</th></tr></thead><tbody>
-    ${order.map(([k, n]) => { const m = q.methods[k]; return `<tr class="${k === best ? "best" : ""}"><td>${n}</td>
-      <td class="num">${nf(m.accuracy_mean, 3)} ± ${nf(m.accuracy_std, 3)}</td><td class="num">${nf(m.macro_f1_mean, 3)}</td>
-      <td class="num">${nf(m.train_seconds_mean, 1)} s</td></tr>`; }).join("")}
-    </tbody></table>
-    <div class="prose" style="margin-top:12px">
-      <p><b>Kết quả trung thực: lượng tử thua cổ điển ở quy mô này.</b> QKA học được kernel tốt hơn hẳn kernel cố định
-        (kernel alignment trên tập huấn luyện ${nf(q.alignment?.qka_train_before?.mean, 3)} → ${nf(q.alignment?.qka_train_after?.mean, 3)}), nhưng vẫn thua SVM-RBF và huấn luyện chậm hơn hàng trăm lần.</p>
-      <p>${q.n_qubits} qubit, mô phỏng statevector, ${q.n_folds} phần kiểm chứng chéo, ${nf(q.dataset?.n_samples)} tên khoản mục khác nhau, chạy ${nf((q.total_seconds || 0) / 60, 1)} phút.
-        8 qubit vẫn mô phỏng được trên máy thường, nên ở cỡ này không thể có lợi thế lượng tử — đây là <b>kiểm chứng khả thi kỹ thuật</b>, không phải tuyên bố lợi thế.</p>
-      <p>Lớp lượng tử <b>tháo rời được</b>: hệ thống chạy đầy đủ với kernel cổ điển. Phát hiện phụ: SVM cổ điển khớp tên khoản mục tốt hơn rapidfuzz mà hệ thống đang dùng.</p>
-    </div>`;
-}
+  if (!q) { $("#qka-intro").innerHTML = `<p class="note">Chưa có kết quả.</p>`; return; }
+  const ds = q.dataset || {};
+  const cls = Object.fromEntries((ds.classes || []).map((c) => [c.code, c]));
+  const pair = [["23", "tiền ra", /^Tiền chi/], ["24", "tiền vào", /^Tiền thu hồi/]].filter(([c]) => cls[c]);
+  $("#qka-intro").innerHTML = `
+    <div class="prose">
+      <p>Hệ thống tìm đúng ô số liệu trong BCTC nhờ cột <b>Mã số</b>. Nhưng một số bảng (bản OCR) bị mất cột này,
+        khi đó phải đọc <b>tên dòng</b> để đoán đó là khoản mục nào.</p>
+      <p>Khó ở chỗ cùng một khoản mục có hàng chục cách viết, và có những cặp tên gần giống nhau nhưng nghĩa ngược nhau.</p>
+      <p>Đội lấy <b>${nf(ds.n_samples)} cách viết khác nhau</b> của ${nf((ds.classes || []).length)} khoản mục trong phần dòng tiền đầu tư,
+        từ ${nf(ds.n_rows)} dòng BCTC thật của ${nf((ds.tickers || []).length)} doanh nghiệp, rồi cho bốn cách đoán thi với nhau.</p>
+    </div>
+    ${pair.length === 2 ? `<div class="q-pair">
+      ${pair.map(([code, dir, re]) => `<div class="q-name"><span>“${esc(cls[code].most_common_name).replace(re, (m) => `<mark>${m}</mark>`)}”</span>
+        <em>Mã ${code} · ${dir}</em></div>`).join("")}
+      <p class="note">Chỉ khác vài chữ, nhưng đoán nhầm là đảo chiều dòng tiền.</p>
+    </div>` : ""}`;
 
-/* ── Biểu đồ ── */
-function drawChart(id, cfg) {
-  if (S.charts[id]) S.charts[id].destroy();
-  cfg.options = Object.assign({ responsive: true, maintainAspectRatio: false }, cfg.options || {});
-  S.charts[id] = new Chart(document.getElementById(id), cfg);
+  const M = q.methods;
+  const methods = [
+    ["svm_rbf", "Máy học cổ điển (SVM)", "học cách phân biệt từ các tên đã biết", false],
+    ["qsvm_qka", "Lượng tử có học (QKA)", "mạch 8 qubit tự điều chỉnh để phân biệt tên", true],
+    ["rapidfuzz_top8", "So khớp chữ (rapidfuzz)", "so độ giống nhau của chữ, như hệ thống đang dùng", false],
+    ["qsvm_fixed", "Lượng tử cố định", "mạch 8 qubit không điều chỉnh", true],
+  ].filter(([k]) => M[k]).sort((a, b) => M[b[0]].accuracy_mean - M[a[0]].accuracy_mean);
+  const best = methods[0][0];
+  const secs = (s) => (s < 0.05 ? "tức thì" : `${nf(s, s < 10 ? 1 : 0)} giây`);
+  $("#qka-bars").innerHTML = methods.map(([k, name, desc, quantum]) => {
+    const acc = M[k].accuracy_mean * 100;
+    return hbarRow({
+      name, desc, best: k === best,
+      tag: ` <span class="kind ${quantum ? "quantum" : "classic"}">${quantum ? "Lượng tử" : "Cổ điển"}</span>${k === best ? ` <span class="kind best">Tốt nhất</span>` : ""}`,
+      segs: [{ cls: quantum ? "quantum" : "classic", n: acc }, { cls: "rest", n: 100 - acc }],
+      value: `${nf(acc, 0)}%`, sub: `học mất ${secs(M[k].train_seconds_mean)}`,
+    });
+  }).join("");
+  $("#qka-bars-note").textContent = `Tỷ lệ đoán đúng trên những tên chưa từng thấy khi học (trung bình ${q.n_folds} lần chia dữ liệu). Thanh tính từ 0 đến 100%.`;
+
+  const svm = M.svm_rbf, qka = M.qsvm_qka, fixed = M.qsvm_fixed, fuzz = M.rapidfuzz_top8;
+  const slower = svm && qka ? Math.round(qka.train_seconds_mean / svm.train_seconds_mean / 10) * 10 : null;
+  const items = [];
+  if (svm && qka) items.push(["Cổ điển vẫn thắng", `Máy học cổ điển đoán đúng ${pct(svm.accuracy_mean, 0)}; lượng tử tốt nhất đúng ${pct(qka.accuracy_mean, 0)} và học chậm hơn khoảng ${nf(slower)} lần.`]);
+  if (fixed && qka) items.push(["Cho lượng tử học thì có tiến bộ", `Từ ${pct(fixed.accuracy_mean, 0)} với mạch cố định lên ${pct(qka.accuracy_mean, 0)} khi mạch được tự điều chỉnh (QKA).`]);
+  items.push(["Đây là kiểm chứng kỹ thuật", `Chạy trên máy mô phỏng ${q.n_qubits} qubit nên chưa thể có lợi thế lượng tử. Phần lượng tử tháo rời được: hệ thống chạy đủ mà không cần nó.`]);
+  if (svm && fuzz) items.push(["Lợi ích thực tế", `Máy học cổ điển đoán tốt hơn cách so khớp chữ đang dùng (${pct(svm.accuracy_mean, 0)} so với ${pct(fuzz.accuracy_mean, 0)}). Đây là hướng cải thiện tiếp theo cho hệ thống.`]);
+  $("#qka-text").innerHTML = items.map(([t, d], i) => `<div class="q-card"><em>${i + 1}</em><b>${t}</b><p>${d}</p></div>`).join("");
+
+  const rows = [...methods.map(([k, n]) => [k, n]), ["rapidfuzz_1nn", "So khớp chữ, mọi tên đã biết (tham khảo)"], ["svm_linear_full", "SVM tuyến tính, không nén (tham khảo)"]].filter(([k]) => M[k]);
+  $("#qka-tech").innerHTML = `<summary>Số liệu kỹ thuật</summary>
+    <div class="card-body">
+      <table class="simple"><thead><tr><th>Phương pháp</th><th>Accuracy</th><th>Macro-F1</th><th>Huấn luyện / phần</th></tr></thead><tbody>
+      ${rows.map(([k, n]) => { const m = M[k]; return `<tr class="${k === best ? "best" : ""}"><td>${n}</td>
+        <td class="num">${nf(m.accuracy_mean, 3)} ± ${nf(m.accuracy_std, 3)}</td><td class="num">${nf(m.macro_f1_mean, 3)}</td>
+        <td class="num">${nf(m.train_seconds_mean, 2)} s</td></tr>`; }).join("")}
+      </tbody></table>
+      <p class="note">${q.n_qubits} qubit · mô phỏng statevector (Qiskit), không nhiễu · kiểm chứng chéo ${q.n_folds} phần, chia theo tên để không tên nào nằm ở cả hai phía ·
+        ${nf(ds.n_samples)} mẫu · tổng thời gian chạy ${nf((q.total_seconds || 0) / 60, 1)} phút.
+        Kernel alignment trên tập huấn luyện: cố định ${nf(q.alignment?.qka_train_before?.mean, 3)} → QKA ${nf(q.alignment?.qka_train_after?.mean, 3)} (RBF ${nf(q.alignment?.rbf_train?.mean, 3)}).</p>
+    </div>`;
 }
 
 /* ── Khởi động ── */
 async function init() {
-  if (window.Chart) {
-    Chart.defaults.color = "#94a3b8";
-    Chart.defaults.borderColor = "rgba(255,255,255,0.06)";
-    Chart.defaults.font.family = getComputedStyle(document.body).fontFamily;
-  }
   document.querySelectorAll(".nav-item").forEach((n) => n.addEventListener("click", () => switchPage(n.dataset.page)));
-  $("#menu-btn").onclick = () => $("#sidebar").classList.toggle("open");
-  document.querySelectorAll("#report-tabs .tab").forEach((t) => t.addEventListener("click", () => {
-    document.querySelectorAll("#report-tabs .tab").forEach((x) => x.classList.toggle("active", x === t));
-    reportFilter = t.dataset.filter;
-    renderReport();
-  }));
+  // Menu trên màn hình hẹp: mở bằng ☰; đóng bằng ✕, bấm ra ngoài, phím Esc hoặc chọn một trang.
+  $("#menu-btn").onclick = () => setMenu(!$("#sidebar").classList.contains("open"));
+  $("#sidebar-close").onclick = () => setMenu(false);
+  $("#sidebar-backdrop").onclick = () => setMenu(false);
+  document.addEventListener("keydown", (ev) => { if (ev.key === "Escape") setMenu(false); });
   try {
     [S.results, S.facts, S.metrics, S.examples] = await Promise.all([
       getJSON("data/results.json"), getJSON("data/facts.json"),
@@ -432,11 +593,9 @@ async function init() {
       `<div class="notice-banner"><strong>Không đọc được dữ liệu (${esc(err.message)}).</strong> Hãy mở trang qua HTTP server (run_demo.bat), không mở trực tiếp tệp index.html.</div>`);
     return;
   }
-  $("#generated-at").textContent = `Dữ liệu xuất lúc ${S.metrics.generated_at.replace("T", " ")}`;
   renderOverview();
   renderCompanies();
-  fillTickerYear($("#report-ticker"), $("#report-year"), S.results.map((r) => `${r.ticker}_${r.year}`), renderReport);
-  renderReport();
+  setupReportPage();
   renderCheck();
   renderEvaluation();
   renderQuantum();
