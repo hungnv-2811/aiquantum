@@ -16,13 +16,11 @@
 | Prototype | ⟦CHỜ: link prototype⟧ | Bản 20/11/2026, công khai |
 | Video demo | ⟦CHỜ: link video⟧ | 142 giây, lồng tiếng |
 
-Mọi con số sinh từ script và JSON của pipeline; số đo trên tập chèn lỗi luôn ghi là dữ liệu tổng hợp.
-
 ## 6.2. Kịch bản thuyết trình và demo
 
 Bài nói 9 phút 30 giây trong khung 10 phút: **0:00–1:40** bài toán và nguyên tắc "thà im lặng có lý do còn hơn cáo buộc sai" · **1:40–3:35** kiến trúc neo Mã số, dữ liệu, hai số đo · **3:35–4:20** kết quả trước/sau vá · **4:20–6:40** demo trực tiếp · **6:40–7:55** lượng tử và giới hạn · **7:55–9:30** triển khai, kết luận.
 
-**Demo:** câu đúng được xác nhận nhất quán kèm vết minh chứng; sửa một con số thì phán quyết đổi; ca cần xem xét dùng **câu chèn lỗi** ghi rõ trên màn hình. Lõi chạy tại máy người xem nên mất mạng vẫn demo được; link lỗi thì chạy bản tại máy.
+**Demo:** câu đúng → nhất quán kèm vết minh chứng; sửa một con số → cần xem xét; câu về công ty con → không kết luận. Mất mạng vẫn demo được; link lỗi thì chạy bản tại máy.
 
 ## 6.3. Phản biện
 

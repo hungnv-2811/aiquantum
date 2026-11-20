@@ -21,6 +21,7 @@ import sys
 from pathlib import Path
 
 from docx import Document
+from docx.enum.section import WD_SECTION
 from docx.enum.table import WD_TABLE_ALIGNMENT
 from docx.oxml import OxmlElement
 from docx.oxml.ns import qn
@@ -37,7 +38,7 @@ SIGNATURE = ROOT / "deliverables" / "build" / "chu_ky.local.png"  # chữ ký đ
 
 TEAL = RGBColor(0x08, 0x67, 0x78)
 BODY_PT = 11
-TABLE_PT = 9.5
+TABLE_PT = 9
 
 V = json.loads(VALUES.read_text(encoding="utf-8"))
 
@@ -194,6 +195,31 @@ def table_before(doc, anchor, rows: list[list[str]]):
     anchor.addprevious(tbl._tbl)
     spacer = OxmlElement("w:p")
     anchor.addprevious(spacer)
+    shrink_empty(spacer)
+
+
+def shrink_empty(p_el, size_half_pt: int = 8):
+    """Đoạn trống chỉ để tách khối: thu về cỡ 4pt, không cách sau (báo cáo phải gọn 12 trang)."""
+    pPr = p_el.find(qn("w:pPr"))
+    if pPr is None:
+        pPr = OxmlElement("w:pPr")
+        p_el.insert(0, pPr)
+    spacing = pPr.find(qn("w:spacing"))
+    if spacing is None:
+        spacing = OxmlElement("w:spacing")
+        pPr.append(spacing)
+    spacing.set(qn("w:before"), "0"); spacing.set(qn("w:after"), "0")
+    spacing.set(qn("w:line"), "240"); spacing.set(qn("w:lineRule"), "auto")
+    rPr = pPr.find(qn("w:rPr"))
+    if rPr is None:
+        rPr = OxmlElement("w:rPr")
+        pPr.append(rPr)
+    for tag in ("w:sz", "w:szCs"):
+        el = rPr.find(qn(tag))
+        if el is None:
+            el = OxmlElement(tag)
+            rPr.append(el)
+        el.set(qn("w:val"), str(size_half_pt))
 
 
 def render_blocks(doc, anchor_p: Paragraph, blocks):
@@ -260,6 +286,30 @@ def set_cell(cell, text: str, size: float | None = None):
             r.text = ""
     else:
         add_runs(p, text, size=size or TABLE_PT)
+
+
+def footer_page_field(last_run):
+    """Thay số cố định cuối chân trang bằng trường PAGE (số trang thật), giữ định dạng chữ."""
+    last_run.text = re.sub(r"\d+\s*$", "", last_run.text)
+    rPr = last_run._r.rPr
+
+    def run_with(child):
+        r = OxmlElement("w:r")
+        if rPr is not None:
+            r.append(copy.deepcopy(rPr))
+        r.append(child)
+        return r
+
+    begin = OxmlElement("w:fldChar"); begin.set(qn("w:fldCharType"), "begin")
+    instr = OxmlElement("w:instrText"); instr.set(qn("xml:space"), "preserve"); instr.text = " PAGE "
+    sep = OxmlElement("w:fldChar"); sep.set(qn("w:fldCharType"), "separate")
+    shown = OxmlElement("w:t"); shown.text = "1"
+    end = OxmlElement("w:fldChar"); end.set(qn("w:fldCharType"), "end")
+    anchor = last_run._r
+    for child in (begin, instr, sep, shown, end):
+        el = run_with(child)
+        anchor.addnext(el)
+        anchor = el
 
 
 # ── Chương trình chính ────────────────────────────────────────────────────
@@ -428,6 +478,47 @@ def main() -> int:
             set_text(p, "TÊN GIẢI PHÁP\n" + V["ten_ngan"])
         elif t.startswith("Thông tin liên hệ chính: ["):
             set_text(p, f"Thông tin liên hệ chính: {lien_he}")
+
+    # Gọn khoảng trắng ở mục 03–08: tiêu đề nhỏ cách ít hơn, đoạn trống (không phải ngắt
+    # section) thu nhỏ. Chữ giữ nguyên.
+    in_body = False
+    for p in doc.paragraphs:
+        t = p.text.strip()
+        if p.style.name == "Heading 1" and t.startswith("1. MỨC ĐỘ"):
+            in_body = True
+        if t.startswith("ĐẠI DIỆN ĐỘI THI"):
+            break
+        if not in_body:
+            continue
+        if p.style.name == "Heading 2":
+            p.paragraph_format.space_before = Pt(5)
+            p.paragraph_format.space_after = Pt(3)
+        elif not t and not p._p.xpath(".//w:drawing") and not p._p.xpath(".//w:sectPr"):
+            shrink_empty(p._p)
+
+    # Băng "0X / TIÊU CHÍ n" luôn đi liền tiêu đề mục ngay sau nó (không nằm lẻ cuối trang);
+    # đoạn ngắt section ngay trước băng thu về 6pt để giữ khoảng thở mà không tốn chỗ.
+    for tbl in doc.tables:
+        if re.match(r"^\s*0[4-8]\s*/\s*TIÊU CHÍ", tbl.cell(0, 0).text):
+            for row in tbl.rows:
+                for cell in row.cells:
+                    for cp in cell.paragraphs:
+                        cp.paragraph_format.keep_with_next = True
+            nxt = tbl._tbl.getnext()  # đoạn trống của mẫu giữa băng và tiêu đề: cũng phải "đi liền"
+            if nxt is not None and nxt.tag == qn("w:p") and not "".join(nxt.itertext()).strip():
+                Paragraph(nxt, tbl._parent).paragraph_format.keep_with_next = True
+            prev = tbl._tbl.getprevious()
+            if prev is not None and prev.tag == qn("w:p") and prev.xpath(".//w:sectPr") and not "".join(prev.itertext()).strip():
+                shrink_empty(prev, size_half_pt=12)
+
+    # Báo cáo 08–12 trang: tiêu chí 2–6 (mục 04–08) chạy nối tiếp thay vì ép sang trang mới.
+    # Chân trang của mẫu ghi cứng số mục 1–8; đổi thành số trang thật để không gây nhầm.
+    for k, sec in enumerate(doc.sections):
+        if 4 <= k <= 8:
+            sec.start_type = WD_SECTION.CONTINUOUS
+        for p in sec.footer.paragraphs:
+            if p.runs and re.search(r"•\s*\d+\s*$", p.runs[-1].text):
+                footer_page_field(p.runs[-1])
 
     # Kiểm tra sót
     leftovers = []

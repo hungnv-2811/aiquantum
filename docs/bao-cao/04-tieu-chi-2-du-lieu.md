@@ -35,12 +35,12 @@ Hai nguồn độc lập, công khai, không có dữ liệu cá nhân. Hồ sơ
 
 ## 2.4. Đặc trưng / tăng cường dữ liệu
 
-**Đặc trưng:** Mã số TT200 qua ontology (tra cứu tất định); 5 tỷ số suy ra; hướng, mốc so sánh, kỳ, đơn vị; bộ lọc phạm vi, tương lai, bên thứ ba. Gán nhãn cho thấy cần thêm tỷ số trên số **bình quân** (POW 2024: vòng quay tồn kho 14,29 lần).
+**Đặc trưng:** Mã số TT200 qua ontology (tra cứu tất định); 5 tỷ số suy ra; hướng, mốc so sánh, kỳ, đơn vị; bộ lọc phạm vi, tương lai, bên thứ ba.
 
 **Không tăng cường dữ liệu để huấn luyện:** hệ thống dùng luật, không học từ dữ liệu; câu tổng hợp chỉ dùng **để đo** (tập chèn lỗi, 791 câu từ câu thật) và luôn báo cáo tách riêng. Nhãn thí nghiệm QKA sinh tự động từ bảng có Mã số: 1.945 dòng, 282 tên khác nhau, 8 Mã số.
 
 ## Minh chứng chất lượng dữ liệu
 
-![Hình 2.1. Độ phủ dữ liệu: 112 BCTN của 16 mã × 7 năm; 98 cặp đưa vào đối chiếu, 14 ô còn lại ghi rõ lý do bị loại.](hinh/do-phu-du-lieu.png "17")
+![Hình 2.1. Độ phủ dữ liệu: 112 BCTN của 16 mã × 7 năm; 98 cặp đưa vào đối chiếu, 14 ô còn lại ghi rõ lý do bị loại.](hinh/do-phu-du-lieu.png "16")
 
-![Hình 2.2. Đồng thuận giữa hai lượt gán nhãn độc lập trên 300 cặp, trước phân xử: 281/300 trùng nhãn, Cohen's kappa 0,86.](hinh/dong-thuan-gan-nhan.png "11")
+![Hình 2.2. Đồng thuận giữa hai lượt gán nhãn độc lập trên 300 cặp, trước phân xử: 281/300 trùng nhãn, Cohen's kappa 0,86.](hinh/dong-thuan-gan-nhan.png "8.5")

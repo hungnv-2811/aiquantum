@@ -2,9 +2,7 @@
 
 ### 3.1. Thiết kế tổng quan và sơ đồ luồng xử lý
 
-Hai luồng độc lập gặp nhau tại **Mã số Thông tư 200**: luồng ngôn từ (báo cáo thường niên) và luồng số liệu (BCTC hợp nhất đã kiểm toán).
-
-![Hình 3.1. Luồng xử lý: hai luồng độc lập gặp nhau tại Mã số Thông tư 200; lớp lượng tử là thí nghiệm tách rời.](hinh/luong-xu-ly.png "17")
+![Hình 3.1. Luồng xử lý: hai luồng độc lập gặp nhau tại Mã số Thông tư 200; lớp lượng tử là thí nghiệm tách rời.](hinh/luong-xu-ly.png "15.5")
 
 Mã nguồn: `smartaudit/ingest`, `nlp/claims.py`, `tables/parser.py`, `nnc/checker.py`; lớp lượng tử tách rời ở `smartaudit/quantum`.
 
@@ -28,7 +26,7 @@ Mã nguồn: `smartaudit/ingest`, `nlp/claims.py`, `tables/parser.py`, `nnc/chec
 | "Kiểm soát chi phí" | tỷ lệ chi phí/doanh thu tăng ≤ 2 điểm | quy định tính về định lượng |
 | "Doanh thu" | Mã 10, hoặc Mã 01, hoặc 10 + 21 + 31 | ba định nghĩa kế toán hợp lệ |
 
-Bản vá ngày 19/11 sửa đúng các nguyên nhân cờ oan đã định danh: đọc dòng "Đơn vị tính" (26% BCTC ghi nghìn/triệu đồng), lọc trang giới thiệu đơn vị thành viên, câu chính sách kế toán, số liệu quý, câu năm khác; lấy số "từ X lên Y" đúng vế; chặn so hướng giữa tỷ số và khoản mục tiền. Mỗi bản vá có test hồi quy: **⟦CHỜ: số test⟧ phép kiểm tự động**.
+Mỗi nguyên nhân cờ oan ở Bảng 1.1 được vá kèm test hồi quy: **⟦CHỜ: số test⟧ phép kiểm tự động**.
 
 ### 3.4. Kết quả chạy thử và so sánh cơ bản
 

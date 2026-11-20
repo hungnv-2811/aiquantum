@@ -7,7 +7,7 @@
 
 Chuẩn mực kiểm toán Việt Nam số 720 (ban hành kèm Thông tư 214/2012/TT-BTC) yêu cầu kiểm toán viên (KTV) đọc các thông tin khác trong tài liệu có BCTC đã kiểm toán, như báo cáo thường niên (BCTN), để phát hiện điểm không nhất quán trọng yếu với BCTC. Việc này hiện làm bằng mắt; công cụ tự động hoá bước sàng lọc, mỗi phát hiện có vết minh chứng tới ô bảng.
 
-Người dùng: kiểm toán viên, giám sát công bố thông tin, nhà đầu tư tổ chức, giảng dạy. Điều kiện: BCTC theo Thông tư 200 (bóc được 337/338), BCTN có lớp chữ; ngân hàng và bản scan nằm ngoài phạm vi.
+Người dùng: kiểm toán viên, giám sát công bố thông tin, nhà đầu tư tổ chức, giảng dạy.
 
 ## 5.2. Hiệu quả: đã đo gì, chưa đo gì
 
@@ -19,7 +19,7 @@ Người dùng: kiểm toán viên, giám sát công bố thông tin, nhà đầ
 
 **Quy mô toàn thị trường:** 702 doanh nghiệp niêm yết HOSE, HNX × khoảng 0,13 giây/báo cáo ≈ 1,5 phút cho một năm báo cáo khi đã bóc chữ; bóc PDF lần đầu khoảng 12 giây/báo cáo, tức khoảng 2,3 giờ trên một laptop.
 
-**Cơ sở ước tính hiệu quả kinh tế:** hồ sơ Vòng 1 ước tính tiết kiệm 8–45 tỷ đồng/năm (khoảng 700 doanh nghiệp × 40–80 giờ đối chiếu × mức tiết kiệm 60–80% × 0,5–1 triệu đồng/giờ KTV). Thử nghiệm với kiểm toán viên là bước kế tiếp, đã sẵn sàng: quy trình soạn sẵn (làm tay và dùng công cụ trên hai doanh nghiệp, đảo thứ tự, ghi thời gian và độ đúng), triển khai ngay sau Vòng 2; số đo thời gian thực tế sẽ kiểm chứng ước tính này.
+**Cơ sở ước tính hiệu quả kinh tế:** hồ sơ Vòng 1 ước tính tiết kiệm 8–45 tỷ đồng/năm (khoảng 700 doanh nghiệp × 40–80 giờ đối chiếu × mức tiết kiệm 60–80% × 0,5–1 triệu đồng/giờ KTV). Thử nghiệm với kiểm toán viên (giai đoạn 1, quy trình đã soạn sẵn) sẽ cho số đo thời gian thực tế để kiểm chứng ước tính này.
 
 ## 5.3. Chi phí, bảo mật, rủi ro
 
@@ -29,14 +29,14 @@ Người dùng: kiểm toán viên, giám sát công bố thông tin, nhà đầ
 |---|---|---|
 | Giao diện kết quả | Trang tĩnh trên Vercel, gói miễn phí | 0 |
 | "Kiểm tra khẳng định" | Lõi Python chạy trong trình duyệt bằng Pyodide, không server | 0; tải ~10 MB lần đầu |
-| Pipeline | Offline trên CPU, không gọi API trả phí | 0; 14 giây cho 112 BCTN (khoảng 0,1 giây/báo cáo khi đã bóc chữ; bóc PDF lần đầu khoảng 12 giây/báo cáo) |
+| Pipeline | Offline trên CPU, không gọi API trả phí | 0; 14 giây cho 112 BCTN đã bóc chữ |
 | Con người | KTV rà cờ, bảo trì ontology | Khoản lớn nhất |
 
 Không có dữ liệu cá nhân, không gửi văn bản ra ngoài, nên cài nội bộ được tại công ty kiểm toán hay cơ quan quản lý. **Khả năng mở rộng:** xử lý theo lô, mỗi báo cáo độc lập nên chạy song song theo mã được; thêm doanh nghiệp chỉ cần thêm dữ liệu, không sửa mã. Rủi ro và biện pháp:
 
 - **Cờ oan:** không chắc thì trả "chưa kiểm chứng được"; giao diện gọi nhóm cờ là tín hiệu để người xem lại, mỗi cờ kèm minh chứng để tự kiểm.
 - **Giấy phép:** TiniX theo CC-BY-NC-4.0, chỉ phi thương mại. Bản thương mại tự bóc BCTC từ PDF công bố (khâu OCR ở giai đoạn 3), không phụ thuộc TiniX.
-- **Thông tư 99/2025/TT-BTC** thay Thông tư 200 từ năm tài chính 2026: cần ánh xạ lại Mã số theo biểu mẫu mới. Ontology là tệp cấu hình sinh tự động từ dữ liệu, nên đây là việc cấu hình, không phải viết lại hệ thống.
+- **Thông tư 99/2025/TT-BTC** thay Thông tư 200 từ năm tài chính 2026: chỉ cần ánh xạ lại Mã số trong ontology (tệp cấu hình), không viết lại hệ thống.
 
 ## 5.4. Lộ trình sau cuộc thi
 

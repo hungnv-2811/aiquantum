@@ -46,4 +46,4 @@ Ví dụ: BCTN Vinamilk 2024 tr.31 ghi *"tổng doanh thu hợp nhất 61.824 t�
 
 **Phần còn lại:** yêu cầu R2 mới đạt một phần. Hệ thống không báo động giả trên câu đúng (0/163) và cờ oan giảm khoảng 83%, nhưng precision trên dữ liệu thật chưa đo được ổn định: chỉ 7/300 cặp là mâu thuẫn thật, và các ca này nằm ở tỷ số cơ cấu (Nợ/VCSH, tỷ trọng tài sản) mà bộ luật chưa tính. Việc tính tỷ số cơ cấu là giai đoạn 2 của lộ trình (mục 5.4).
 
-![Hình 1.1. Vết minh chứng trên prototype: câu trong BCTN FPT 2022 (tr.52) được đối chiếu tới Mã số 10, trang 13 BCTC hợp nhất đã kiểm toán; cả giá trị và tỷ lệ tăng đều khớp.](hinh/vet-minh-chung-fpt-2022.png "15")
+![Hình 1.1. Vết minh chứng trên prototype: câu trong BCTN FPT 2022 (tr.52) được đối chiếu tới Mã số 10, trang 13 BCTC hợp nhất đã kiểm toán; cả giá trị và tỷ lệ tăng đều khớp.](hinh/vet-minh-chung-fpt-2022.png "13.5")
